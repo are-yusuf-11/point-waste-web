@@ -1,66 +1,84 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# <div align="center"> 🚀 WEBSITE HIMSI CIKARANG </div>
+### <div align="center"> Universitas Bina Sarana Informatika </div>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<div align="center">
+  <img src="public/logo/himsi.png" alt="Logo HIMSI" width="180">
+  <br><br>
+  
+  ![Progress](https://img.shields.io/badge/Progress-2%25-green?style=for-the-badge&logo=github)
+  ![Tech](https://img.shields.io/badge/Tech-Laravel-777BB4?style=for-the-badge&logo=laravel)
+  ![Version](https://img.shields.io/badge/Version-1.0.0-aqua?style=for-the-badge&logo=semver)
+  <br>
 
-## About Laravel
+  **"ONE ORGANIZATION, ONE FAMILY, ONE GOAL. GOLD!"**
+</div>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📋 Tentang Project
+**Web Project** ini adalah program kerja jangka panjang **HIMSI UBSI Cikarang**. Sistem ini dirancang sebagai solusi digital terintegrasi untuk memudahkan pengurus dalam mengelola organisasi secara bertahap melalui tiga pilar utama:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* **📦 Administrasi:** Digitalisasi proses administrasi dan persuratan organisasi.
+* **👥 Kaderisasi:** Manajemen data anggota dan pengembangan sumber daya manusia (SDM).
+* **📸 Dokumentasi:** Pengarsipan dokumentasi kegiatan dan publikasi informasi resmi.
 
-## Learning Laravel
+Projek ini bertujuan untuk meningkatkan keterampilan teknis pengurus dalam membangun aplikasi web berbasis **Laravel** sekaligus meningkatkan kekuatan **branding digital** HIMSI UBSI Cikarang ke publik.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 👥 Struktur Tim & Peran
+Kolaborasi proyek ini dibagi menjadi 5 tim inti dengan tanggung jawab spesifik:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+| Tim | Peran | Deskripsi Tugas |
+| :--- | :--- | :--- |
+| **BPH** | **Project Manager** | Pengendali arah proyek, pengawas timeline, dan pengambil keputusan tertinggi. |
+| **Pendidikan** | **System Analyst** | Penanggung jawab *User Requirement*, logika alur fitur, dan perancangan sistem. |
+| **RSDM** | **Database Manager** | Arsitek basis data, bertanggung jawab atas manajemen struktur tabel dan relasi data. |
+| **Litbang** | **Backend Developer** | Pengembangan logika sisi server (server-side), integrasi API, dan performa Laravel. |
+| **Kominfo** | **Frontend Developer** | Implementasi desain antarmuka (UI/UX) agar responsif, rapi, dan nyaman digunakan. |
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🛠️ Tech Stack & Standarisasi
+Teknologi utama yang disepakati untuk digunakan dalam masa pengembangan:
 
-### Premium Partners
+* **Backend:** Laravel (PHP)
+* **Database:** MySQL
+* **Frontend:** Bootstrap 5 / Tailwind CSS
+* **Version Control:** Git & GitHub
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+> [!IMPORTANT]
+> **Catatan Penting Pengembangan:**
+> * Sangat direkomendasikan menggunakan kombinasi utama **Laravel + MySQL + Bootstrap 5**.
+> * Lihat folder `teams/tim-contoh/` sebagai referensi standarisasi penulisan struktur kode Anda.
+> * **TIDAK PERLU HOSTING!** Pengembangan dilakukan sepenuhnya di lingkungan *localhost* masing-masing.
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 🛑 Aturan Emas Git (Golden Rule)
+> **JANGAN PERNAH** melakukan `commit` atau `push` langsung ke branch `main`. 
+> Branch `main` adalah jalur suci untuk kode produksi yang stabil. Semua fitur baru wajib melalui **Pull Request (PR)**.
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 🚀 Alur Kerja Kolaborasi (Cara Mulai Git)
 
-## Security Vulnerabilities
+Bagi anggota tim, ikuti alur kerja (*Git Workflow*) harian berikut agar kode antar-tim tidak saling bertubrukan:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 1. Setup Awal (Hanya Pertama Kali)
+Jika baru bergabung, jalankan perintah ini berurutan di terminal lokal Anda:
+```bash
+# Clone repositori ke komputer lokal
+git clone [https://github.com/are-yusuf-11/point-waste-web.git](https://github.com/are-yusuf-11/point-waste-web.git)
+cd point-waste-web
 
-## License
+# Install package PHP & JavaScript
+composer install
+npm install && npm run dev
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Setup konfigurasi lingkungan (.env)
+cp .env.example .env
+php artisan key:generate
+
+# Jalankan migrasi database lokal
+php artisan migrate
