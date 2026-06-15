@@ -1,57 +1,53 @@
-# <div align="center"> 🚀 WEBSITE HIMSI CIKARANG </div>
-### <div align="center"> Universitas Bina Sarana Informatika </div>
+# <div align="center"> 🗑️ POINTWASTE WEB </div>
+### <div align="center"> Platform Manajemen Pengelolaan Sampah Berbasis Poin </div>
 
 <div align="center">
-  <img src="public/logo/himsi.png" alt="Logo HIMSI" width="180">
-  <br><br>
+  <br>
   
   ![Progress](https://img.shields.io/badge/Progress-2%25-green?style=for-the-badge&logo=github)
   ![Tech](https://img.shields.io/badge/Tech-Laravel-777BB4?style=for-the-badge&logo=laravel)
   ![Version](https://img.shields.io/badge/Version-1.0.0-aqua?style=for-the-badge&logo=semver)
   <br>
-
-  **"ONE ORGANIZATION, ONE FAMILY, ONE GOAL. GOLD!"**
 </div>
 
 ---
 
 ## 📋 Tentang Project
-**Web Project** ini adalah program kerja jangka panjang **HIMSI UBSI Cikarang**. Sistem ini dirancang sebagai solusi digital terintegrasi untuk memudahkan pengurus dalam mengelola organisasi secara bertahap melalui tiga pilar utama:
+**PointWaste Web** adalah sebuah sistem manajemen pengolahan sampah/limbah terintegrasi yang menerapkan sistem berbasis poin. Proyek ini dirancang secara bertahap untuk menyediakan solusi digital yang berfokus pada tiga pilar utama pengembangan:
 
-* **📦 Administrasi:** Digitalisasi proses administrasi dan persuratan organisasi.
-* **👥 Kaderisasi:** Manajemen data anggota dan pengembangan sumber daya manusia (SDM).
-* **📸 Dokumentasi:** Pengarsipan dokumentasi kegiatan dan publikasi informasi resmi.
+* **📦 Administrasi:** Digitalisasi manajemen data, proses pencatatan, dan persuratan internal.
+* **👥 User & Kelompok:** Pengelolaan data pengguna (nasabah/masyarakat) serta hak akses sistem.
+* **📸 Dokumentasi & Logistik:** Pengarsipan aktivitas transaksi, pelaporan berkala, dan alur distribusi/logistik data.
 
-Projek ini bertujuan untuk meningkatkan keterampilan teknis pengurus dalam membangun aplikasi web berbasis **Laravel** sekaligus meningkatkan kekuatan **branding digital** HIMSI UBSI Cikarang ke publik.
+Tujuan utama dari proyek ini adalah membangun aplikasi *full-stack* yang stabil, memiliki performa optimal, serta arsitektur kode yang bersih menggunakan **Laravel**.
 
 ---
 
 ## 👥 Struktur Tim & Peran
-Kolaborasi proyek ini dibagi menjadi 5 tim inti dengan tanggung jawab spesifik:
+Kolaborasi proyek ini dibagi menjadi beberapa peran inti dengan tanggung jawab spesifik:
 
-| Tim | Peran | Deskripsi Tugas |
-| :--- | :--- | :--- |
-| **BPH** | **Project Manager** | Pengendali arah proyek, pengawas timeline, dan pengambil keputusan tertinggi. |
-| **Pendidikan** | **System Analyst** | Penanggung jawab *User Requirement*, logika alur fitur, dan perancangan sistem. |
-| **RSDM** | **Database Manager** | Arsitek basis data, bertanggung jawab atas manajemen struktur tabel dan relasi data. |
-| **Litbang** | **Backend Developer** | Pengembangan logika sisi server (server-side), integrasi API, dan performa Laravel. |
-| **Kominfo** | **Frontend Developer** | Implementasi desain antarmuka (UI/UX) agar responsif, rapi, dan nyaman digunakan. |
+| Peran | Deskripsi Tugas |
+| :--- | :--- |
+| **Project Manager** | Pengendali arah proyek, pengawas timeline, dan pengambil keputusan tertinggi. |
+| **System Analyst** | Penanggung jawab *User Requirement*, logika alur fitur, dan perancangan sistem. |
+| **Database Manager** | Arsitek basis data, bertanggung jawab atas manajemen struktur tabel dan relasi data. |
+| **Backend Developer** | Pengembangan logika sisi server (server-side), integrasi API, dan performa Laravel. |
+| **Frontend Developer** | Implementasi desain antarmuka (UI/UX) agar responsif, rapi, dan nyaman digunakan. |
 
 ---
 
 ## 🛠️ Tech Stack & Standarisasi
-Teknologi utama yang disepakati untuk digunakan dalam masa pengembangan:
+Teknologi utama yang digunakan dalam masa pengembangan proyek PointWaste:
 
 * **Backend:** Laravel (PHP)
 * **Database:** MySQL
-* **Frontend:** Bootstrap 5 / Tailwind CSS
+* **Frontend:** Tailwind CSS / Bootstrap 5
 * **Version Control:** Git & GitHub
 
 > [!IMPORTANT]
-> **Catatan Penting Pengembangan:**
-> * Sangat direkomendasikan menggunakan kombinasi utama **Laravel + MySQL + Bootstrap 5**.
-> * Lihat folder `teams/tim-contoh/` sebagai referensi standarisasi penulisan struktur kode Anda.
-> * **TIDAK PERLU HOSTING!** Pengembangan dilakukan sepenuhnya di lingkungan *localhost* masing-masing.
+> **Catatan Penting & Aturan Arsitektur Pengembangan:**
+> * **Aturan Penamaan Tabel Database:** Wajib menggunakan bentuk **tunggal/singular** (contoh: `user`, `product`, `delivery`), **JANGAN PLURAL** saat membuat file migrasi baru[cite: 1].
+> * **TIDAK PERLU HOSTING!** Pengembangan dilakukan sepenuhnya di lingkungan *localhost* masing-masing komputer developer.
 
 ---
 
@@ -63,10 +59,10 @@ Teknologi utama yang disepakati untuk digunakan dalam masa pengembangan:
 
 ## 🚀 Alur Kerja Kolaborasi (Cara Mulai Git)
 
-Bagi anggota tim, ikuti alur kerja (*Git Workflow*) harian berikut agar kode antar-tim tidak saling bertubrukan:
+Bagi seluruh developer yang berkontribusi, ikuti alur kerja (*Git Workflow*) harian berikut agar kode antar-tim tidak saling bertubrukan:
 
 ### 1. Setup Awal (Hanya Pertama Kali)
-Jika baru bergabung, jalankan perintah ini berurutan di terminal lokal Anda:
+Jika baru bergabung ke proyek PointWaste, jalankan perintah ini berurutan di terminal lokal Anda:
 ```bash
 # Clone repositori ke komputer lokal
 git clone [https://github.com/are-yusuf-11/point-waste-web.git](https://github.com/are-yusuf-11/point-waste-web.git)
