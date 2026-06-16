@@ -23,6 +23,7 @@ use App\Http\Controllers\Warga\IuranWargaController;
 // =========================================================
 // ROUTE PUBLIC (Tidak Butuh Login)
 // =========================================================
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
