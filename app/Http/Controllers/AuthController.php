@@ -23,7 +23,7 @@ class AuthController extends Controller
         $totalSampah = DB::table('detail_setor_sampah')
             ->join('setor_sampah', 'detail_setor_sampah.id_setor_sampah', '=', 'setor_sampah.id_setor_sampah')
             ->where('setor_sampah.status', 'Selesai')
-            ->sum('detail_setor_sampah.berat_kg');
+            ->sum('detail_setor_sampah.berat_kg') ?? 0; // Mengamankan jika hasil sum null
 
         return [
             'jumlahWarga' => $jumlahWarga,
@@ -52,10 +52,10 @@ class AuthController extends Controller
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
-        ],  [
-        'username.required' => 'Email atau password tidak boleh kosong!',
-        'email.email'       => 'Format email yang Anda masukkan tidak valid.',
-        'password.required' => 'Email atau password tidak boleh kosong!',
+        ], [
+            'email.required'    => 'Email atau password tidak boleh kosong!', // Diperbaiki dari username ke email
+            'email.email'       => 'Format email yang Anda masukkan tidak valid.',
+            'password.required' => 'Email atau password tidak boleh kosong!',
         ]);
 
         if (Auth::attempt($credentials, $request->remember)) {

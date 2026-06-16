@@ -13,7 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         // Daftarkan satu alias middleware saja di sini
         $middleware->alias([
-            'role_check' => \App\Http\Middleware\CheckRole::class,
+            'check_role' => \App\Http\Middleware\CheckRole::class,
         ]);
 
     })
