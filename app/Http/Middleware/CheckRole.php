@@ -20,9 +20,12 @@ class CheckRole
         }
 
         $userRole = Auth::user()->role;
-        $currentUri = $request->route()->getPrefix();
+        
+        // Menggunakan trim() untuk menghapus '/' di awal atau akhir prefix secara otomatis
+        $currentUri = trim($request->route()->getPrefix(), '/');
 
         // 2. Logika otomatis mencocokkan URL Prefix dengan Role User
+        // Mengantisipasi jika route tersebut memang merupakan bagian dari grup ber-prefix
         if ($currentUri === 'admin' && $userRole !== 'admin') {
             return $this->redirectBasedOnRole($userRole);
         }
