@@ -12,6 +12,6 @@ class HomeController extends Controller
     public function index()
     {
         // Mengembalikan view bernama 'welcome' atau 'landing'
-        return view('landing'); 
+        return view('index'); 
     }
 }
