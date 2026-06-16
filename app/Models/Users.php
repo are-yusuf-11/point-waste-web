@@ -2,31 +2,41 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+// Menggunakan Authenticatable bawaan Laravel agar model 'Users' tetap bisa dipakai untuk sistem Login/Auth
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class User extends Authenticatable
+class Users extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
+     * Kunci nama tabel di database agar tidak otomatis terbaca sebagai 'userses'
+     */
+    protected $table = 'users';
+
+    /**
+     * Kunci nama Primary Key bawaan karena kita mengubahnya menjadi 'id_user'
+     */
+    protected $primaryKey = 'id_user';
+
+    /**
+     * Field yang diizinkan untuk diisi secara massal (Mass Assignment)
      */
     protected $fillable = [
-        'name',
+        'nama',
         'email',
         'password',
+        'role',
+        'no_hp',
+        'alamat',
+        'total_poin',
+        'id_rt',
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
+     * Field yang harus disembunyikan saat data model diubah menjadi Array atau JSON (demi keamanan)
      */
     protected $hidden = [
         'password',
@@ -34,15 +44,13 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
+     * Cast data otomatis dari Laravel (bawaan sistem autentikasi)
      */
     protected function casts(): array
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'password' => 'hashed', // Otomatis meng-hash password saat disimpan
         ];
     }
 }
