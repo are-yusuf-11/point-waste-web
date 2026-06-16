@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use App\Models\User;
+use App\Models\Users;
 use App\Models\SetorSampah;
 use App\Models\MutasiPoin;
 use App\Models\IuranRt;

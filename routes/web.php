@@ -5,12 +5,13 @@ use Illuminate\Support\Facades\Route;
 // 1. IMPORT CONTROLLER UMUM / AUTH (Di luar folder aktor)
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\HomeController;
 
 // 2. IMPORT CONTROLLER KHUSUS AKTOR: WARGA (Sesuai image_faada9.png)
 use App\Http\Controllers\Warga\WargaDashboardController;
 use App\Http\Controllers\Warga\SetorSampahController;
 use App\Http\Controllers\Warga\IuranWargaController;
-use App\Http\Controllers\Warga\ProfileController as WargaProfileController; // Di-alias jika ada nama yang kembar
+
 
 // 3. IMPORT CONTROLLER KHUSUS AKTOR: PENGURUS RT
 // use App\Http\Controllers\PengurusRT\PengurusDashboardController;
@@ -22,6 +23,7 @@ use App\Http\Controllers\Warga\ProfileController as WargaProfileController; // D
 // =========================================================
 // ROUTE PUBLIC (Tidak Butuh Login)
 // =========================================================
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);

@@ -16,13 +16,17 @@ class CheckRole
     {
         // 1. Jika belum login, tendang ke halaman login resmi
         if (!Auth::check()) {
-            return redirect()->route('login');
+            // langsung redirect ke URL /login
+            return redirect('/login');
         }
 
         $userRole = Auth::user()->role;
-        $currentUri = $request->route()->getPrefix();
+        
+        // Menggunakan trim() untuk menghapus '/' di awal atau akhir prefix secara otomatis
+        $currentUri = trim($request->route()->getPrefix(), '/');
 
         // 2. Logika otomatis mencocokkan URL Prefix dengan Role User
+        // Mengantisipasi jika route tersebut memang merupakan bagian dari grup ber-prefix
         if ($currentUri === 'admin' && $userRole !== 'admin') {
             return $this->redirectBasedOnRole($userRole);
         }
@@ -44,10 +48,10 @@ class CheckRole
     private function redirectBasedOnRole($role)
     {
         if ($role === 'admin') {
-            return redirect()->route('admin.index')->with('error', 'Anda tidak memiliki akses ke halaman tersebut.');
+            return redirect()->route('admin.dashboard')->with('error', 'Anda tidak memiliki akses ke halaman tersebut.');
         }
         if ($role === 'pengurus_rt') {
-            return redirect()->route('pengurus_rt.index')->with('error', 'Anda tidak memiliki akses ke halaman tersebut.');
+            return redirect()->route('pengurus_rt.dashboard')->with('error', 'Anda tidak memiliki akses ke halaman tersebut.');
         }
         if ($role === 'warga') {
             return redirect()->route('warga.dashboard')->with('error', 'Anda tidak memiliki akses ke halaman tersebut.');
