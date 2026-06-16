@@ -31,11 +31,11 @@ Kolaborasi proyek ini dibagi menjadi beberapa peran inti dengan tanggung jawab s
 | :--- | :--- |
 | **Project Manager** | Galang |
 | **System Analyst** | Suci, Apiw |
-| **Design & Content** | Arafly,Egy |
+| **Design & Content** | Arafly, Egy |
 | **Backend Developer** | Are, Galang |
 | **Deploymet** | Azra |
 | **Frontend Developer** |Zaidan |
-| **Testing & QA** | Ariel , Sam |
+| **Testing & QA** | Ariel, Sam |
 
 ---
 
@@ -89,11 +89,12 @@ php artisan migrate
 ```
 
 ### 2. Pull Project (Update Terbaru File Project)
-Jika ingin mengupdate repo lokal proyek PointWaste anda sesuai pada repo Github, jalankan perintah ini di terminal lokal/VS CODE Anda:
+Setiap mulai ngoding, jangan lupa:
 ```bash
 # Pull repositori ke komputer lokal
 git pull origin main
 git fetch origin
+git checkout <branch anda>
 ```
 
 ### 3. Push Project (Upload Update File Project)
@@ -101,8 +102,8 @@ Jika ingin mengupload repo lokal proyek PointWaste anda pada repo Github, jalank
 CODE Anda:
 ```bash
 # Push repositori ke komputer lokal
-git 
-
-git push origin "<branch anda>:"
+git add <file/folder yang ditambakan>
+git commit -m "keterangan"
+git push origin <branch anda>
 
 ```
