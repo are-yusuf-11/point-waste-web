@@ -1,3 +1,4 @@
+# <div align="center"><img src="public/images/logo-point-waste.png"></div>
 # <div align="center"> 🗑️ POINTWASTE WEB </div>
 ### <div align="center"> Platform Manajemen Pengelolaan Sampah Berbasis Poin </div>
 
@@ -13,11 +14,11 @@
 ---
 
 ## 📋 Tentang Project
-**PointWaste Web** adalah sebuah sistem manajemen pengolahan sampah/limbah terintegrasi yang menerapkan sistem berbasis poin. Proyek ini dirancang secara bertahap untuk menyediakan solusi digital yang berfokus pada tiga pilar utama pengembangan:
+**PointWaste Web** adalah sebuah sistem manajemen pengolahan sampah/limbah terintegrasi yang menerapkan sistem berbasis poin untuk potongan iuran RT. Proyek ini dirancang secara bertahap untuk menyediakan solusi digital yang berfokus pada tiga pilar utama pengembangan:
 
 * **📦 Administrasi:** Digitalisasi manajemen data, proses pencatatan, dan persuratan internal.
 * **👥 User & Kelompok:** Pengelolaan data pengguna (nasabah/masyarakat) serta hak akses sistem.
-* **📸 Dokumentasi & Logistik:** Pengarsipan aktivitas transaksi, pelaporan berkala, dan alur distribusi/logistik data.
+* **📸 Dokumentasi & Logistik:** Pengarsipan aktivitas transaksi dan pelaporan berkala.
 
 Tujuan utama dari proyek ini adalah membangun aplikasi *full-stack* yang stabil, memiliki performa optimal, serta arsitektur kode yang bersih menggunakan **Laravel**.
 
@@ -28,18 +29,20 @@ Kolaborasi proyek ini dibagi menjadi beberapa peran inti dengan tanggung jawab s
 
 | Peran | Deskripsi Tugas |
 | :--- | :--- |
-| **Project Manager** | Pengendali arah proyek, pengawas timeline, dan pengambil keputusan tertinggi. |
-| **System Analyst** | Penanggung jawab *User Requirement*, logika alur fitur, dan perancangan sistem. |
-| **Database Manager** | Arsitek basis data, bertanggung jawab atas manajemen struktur tabel dan relasi data. |
-| **Backend Developer** | Pengembangan logika sisi server (server-side), integrasi API, dan performa Laravel. |
-| **Frontend Developer** | Implementasi desain antarmuka (UI/UX) agar responsif, rapi, dan nyaman digunakan. |
+| **Project Manager** | Galang |
+| **System Analyst** | Suci, Apiw |
+| **Design & Content** | Arafly,Egy |
+| **Backend Developer** | Are, Galang |
+| **Deploymet** | Azra |
+| **Frontend Developer** |Zaidan |
+| **Testing & QA** | Ariel , Sam |
 
 ---
 
 ## 🛠️ Tech Stack & Standarisasi
 Teknologi utama yang digunakan dalam masa pengembangan proyek PointWaste:
 
-* **Backend:** Laravel (PHP)
+* **Backend:** Laravel 12 (PHP 8.4)
 * **Database:** MySQL
 * **Frontend:** Tailwind CSS / Bootstrap 5
 * **Version Control:** Git & GitHub
@@ -47,7 +50,6 @@ Teknologi utama yang digunakan dalam masa pengembangan proyek PointWaste:
 > [!IMPORTANT]
 > **Catatan Penting & Aturan Arsitektur Pengembangan:**
 > * **Aturan Penamaan Tabel Database:** Wajib menggunakan bentuk **tunggal/singular** (contoh: `user`, `product`, `delivery`), **JANGAN PLURAL** saat membuat file migrasi baru[cite: 1].
-> * **TIDAK PERLU HOSTING!** Pengembangan dilakukan sepenuhnya di lingkungan *localhost* masing-masing komputer developer.
 
 ---
 
@@ -70,7 +72,6 @@ cd point-waste-web
 
 # Install package PHP & JavaScript
 composer install
-npm install && npm run dev
 
 # Setup konfigurasi lingkungan (.env)
 cp .env.example .env
@@ -85,6 +86,7 @@ Jika ingin mengupdate repo lokal proyek PointWaste anda sesuai pada repo Github,
 ```bash
 # Pull repositori ke komputer lokal
 git pull origin main
+git fetch origin
 
 # Install package PHP & JavaScript
 composer install
@@ -100,20 +102,12 @@ php artisan migrate
 
 
 ### 2. Push Project (Upload Update File Project)
-Jika ingin mengupdate repo lokal proyek PointWaste anda sesuai pada repo Github, jalankan perintah ini di terminal lokal/VS CODE Anda:
+Jika ingin mengupload repo lokal proyek PointWaste anda pada repo Github, jalankan perintah ini di terminal lokal/VS CODE Anda:
 CODE Anda:
 ```bash
-# Pull repositori ke komputer lokal
-git push origin main
+# Push repositori ke komputer lokal
+git 
 
-# Install package PHP & JavaScript
-composer install
-npm install && npm run dev
+git push origin "<branch anda>:"
 
-# Setup konfigurasi lingkungan (.env)
-cp .env.example .env
-php artisan key:generate
-
-# Jalankan migrasi database lokal
-php artisan migrate
 ```
