@@ -1,0 +1,1 @@
+galang dividen with BBRI
