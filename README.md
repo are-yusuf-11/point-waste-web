@@ -62,7 +62,7 @@ Teknologi utama yang digunakan dalam masa pengembangan proyek PointWaste:
 Bagi seluruh developer yang berkontribusi, ikuti alur kerja (*Git Workflow*) harian berikut agar kode antar-tim tidak saling bertubrukan:
 
 ### 1. Setup Awal (Hanya Pertama Kali)
-Jika baru bergabung ke proyek PointWaste, jalankan perintah ini berurutan di terminal lokal Anda:
+Jika baru bergabung ke proyek PointWaste, jalankan perintah ini berurutan di terminal lokal/VS CODE Anda:
 ```bash
 # Clone repositori ke komputer lokal
 git clone [https://github.com/are-yusuf-11/point-waste-web.git](https://github.com/are-yusuf-11/point-waste-web.git)
@@ -78,3 +78,42 @@ php artisan key:generate
 
 # Jalankan migrasi database lokal
 php artisan migrate
+```
+
+### 2. Pull Project (Update Terbaru File Project)
+Jika ingin mengupdate repo lokal proyek PointWaste anda sesuai pada repo Github, jalankan perintah ini di terminal lokal/VS CODE Anda:
+```bash
+# Pull repositori ke komputer lokal
+git pull origin main
+
+# Install package PHP & JavaScript
+composer install
+npm install && npm run dev
+
+# Setup konfigurasi lingkungan (.env)
+cp .env.example .env
+php artisan key:generate
+
+# Jalankan migrasi database lokal
+php artisan migrate
+```
+
+
+### 2. Push Project (Upload Update File Project)
+Jika ingin mengupdate repo lokal proyek PointWaste anda sesuai pada repo Github, jalankan perintah ini di terminal lokal/VS CODE Anda:
+CODE Anda:
+```bash
+# Pull repositori ke komputer lokal
+git push origin main
+
+# Install package PHP & JavaScript
+composer install
+npm install && npm run dev
+
+# Setup konfigurasi lingkungan (.env)
+cp .env.example .env
+php artisan key:generate
+
+# Jalankan migrasi database lokal
+php artisan migrate
+```
