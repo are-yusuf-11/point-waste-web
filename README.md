@@ -1,5 +1,5 @@
 # <div align="center"><img src="public/images/logo-point-waste.png"></div>
-# <div align="center"> 🗑️ POINTWASTE WEB </div>
+# <div align="center"> 🗑️ POINT-WASTE-WEB </div>
 ### <div align="center"> Platform Manajemen Pengelolaan Sampah Berbasis Poin </div>
 
 <div align="center">
@@ -16,9 +16,9 @@
 ## 📋 Tentang Project
 **PointWaste Web** adalah sebuah sistem manajemen pengolahan sampah/limbah terintegrasi yang menerapkan sistem berbasis poin untuk potongan iuran RT. Proyek ini dirancang secara bertahap untuk menyediakan solusi digital yang berfokus pada tiga pilar utama pengembangan:
 
-* **📦 Administrasi:** Digitalisasi manajemen data, proses pencatatan, dan persuratan internal.
-* **👥 User & Kelompok:** Pengelolaan data pengguna (nasabah/masyarakat) serta hak akses sistem.
-* **📸 Dokumentasi & Logistik:** Pengarsipan aktivitas transaksi dan pelaporan berkala.
+* **📦 Administrasi:** Digitalisasi manajemen data, proses pencatatan iuran dan mutasi poin.
+* **👥 Hak Akses/Role:** Admin Sistem, Pengurus RT dan Warga
+* **📸 Dokumentasi & Logistik:** Pengarsipan aktivitas iuran RT, Mutasi Poin dan pelaporan berkala.
 
 Tujuan utama dari proyek ini adalah membangun aplikasi *full-stack* yang stabil, memiliki performa optimal, serta arsitektur kode yang bersih menggunakan **Laravel**.
 
@@ -74,7 +74,7 @@ Bagi seluruh developer yang berkontribusi, ikuti alur kerja (*Git Workflow*) har
 Jika baru bergabung ke proyek PointWaste, jalankan perintah ini berurutan di terminal lokal/VS CODE Anda:
 ```bash
 # Clone repositori ke komputer lokal
-git clone [https://github.com/are-yusuf-11/point-waste-web.git](https://github.com/are-yusuf-11/point-waste-web.git)
+git clone https://github.com/are-yusuf-11/point-waste-web
 cd point-waste-web
 
 # Install package PHP & JavaScript
@@ -89,12 +89,13 @@ php artisan migrate
 ```
 
 ### 2. Pull Project (Update Terbaru File Project)
-Setiap mulai ngoding, jangan lupa:
+Setiap mulai ngoding, jangan lupa ya gess!! 
 ```bash
 # Pull repositori ke komputer lokal
 git pull origin main
 git fetch origin
 git checkout <branch anda>
+php artisan migrate
 ```
 
 ### 3. Push Project (Upload Update File Project)
