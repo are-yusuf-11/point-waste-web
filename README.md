@@ -27,7 +27,7 @@ Tujuan utama dari proyek ini adalah membangun aplikasi *full-stack* yang stabil,
 ## 👥 Struktur Tim & Peran
 Kolaborasi proyek ini dibagi menjadi beberapa peran inti dengan tanggung jawab spesifik:
 
-| Peran | Deskripsi Tugas |
+| Peran | PIC |
 | :--- | :--- |
 | **Project Manager** | Galang |
 | **System Analyst** | Suci, Apiw |
@@ -71,7 +71,7 @@ Teknologi utama yang digunakan dalam masa pengembangan proyek PointWaste:
 Bagi seluruh developer yang berkontribusi, ikuti alur kerja (*Git Workflow*) harian berikut agar kode antar-tim tidak saling bertubrukan:
 
 ### 1. Setup Awal (Hanya Pertama Kali)
-Jika baru bergabung ke proyek PointWaste, jalankan perintah ini berurutan di terminal lokal/VS CODE Anda:
+Jika baru bergabung ke proyek PointWaste, jalankan perintah ini berurutan di terminal lokal/VS CODE yaa-!
 ```bash
 # Clone repositori ke komputer lokal
 git clone https://github.com/are-yusuf-11/point-waste-web
@@ -99,8 +99,7 @@ php artisan migrate
 ```
 
 ### 3. Push Project (Upload Update File Project)
-Jika ingin mengupload repo lokal proyek PointWaste anda pada repo Github, jalankan perintah ini di terminal lokal/VS CODE Anda:
-CODE Anda:
+Klo dah selesai upload repo lokal proyek PointWaste ke repo Github yaa, jalankan perintah ini di terminal lokal/VS CODE di bawah ini ^-^
 ```bash
 # Push repositori ke komputer lokal
 git add <file/folder yang ditambakan>
