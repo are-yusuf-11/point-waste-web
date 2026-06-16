@@ -57,6 +57,13 @@ Teknologi utama yang digunakan dalam masa pengembangan proyek PointWaste:
 > **JANGAN PERNAH** melakukan `commit` atau `push` langsung ke branch `main`. 
 > Branch `main` adalah jalur suci untuk kode produksi yang stabil. Semua fitur baru wajib melalui **Pull Request (PR)**.
 
+| Branch | PIC |
+| :--- | :--- |
+| **auth-migration-model** | Galang |
+| **routing-controlling** | Are |
+| **frontend-view** | Zaidan |
+| **deployment** | Azra |
+
 ---
 
 ## 🚀 Alur Kerja Kolaborasi (Cara Mulai Git)
@@ -87,21 +94,9 @@ Jika ingin mengupdate repo lokal proyek PointWaste anda sesuai pada repo Github,
 # Pull repositori ke komputer lokal
 git pull origin main
 git fetch origin
-
-# Install package PHP & JavaScript
-composer install
-npm install && npm run dev
-
-# Setup konfigurasi lingkungan (.env)
-cp .env.example .env
-php artisan key:generate
-
-# Jalankan migrasi database lokal
-php artisan migrate
 ```
 
-
-### 2. Push Project (Upload Update File Project)
+### 3. Push Project (Upload Update File Project)
 Jika ingin mengupload repo lokal proyek PointWaste anda pada repo Github, jalankan perintah ini di terminal lokal/VS CODE Anda:
 CODE Anda:
 ```bash
