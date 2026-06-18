@@ -1,96 +1,247 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>PointWaste - Ganti Password Baru</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <title>PointWaste - Reset Password</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#005226",
+                        "tertiary": "#004565",
+                        "on-tertiary-container": "#9dd5ff",
+                        "primary-fixed": "#a6f4b5",
+                        "on-surface": "#0b1c30",
+                        "on-background": "#0b1c30",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#1f6c3a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#d3e4fe",
+                        "secondary-container": "#d9e6dd",
+                        "outline": "#707a6f",
+                        "primary-fixed-dim": "#8bd79b",
+                        "tertiary-fixed": "#c9e6ff",
+                        "secondary-fixed": "#d9e6dd",
+                        "surface": "#f8f9ff",
+                        "on-tertiary-fixed-variant": "#004c6e",
+                        "surface-container-low": "#eff4ff",
+                        "inverse-surface": "#213145",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary": "#ffffff",
+                        "background": "#f8f9ff",
+                        "primary-container": "#166534",
+                        "inverse-primary": "#8bd79b",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#89ceff",
+                        "primary": "#004c22",
+                        "surface-container-high": "#dce9ff",
+                        "error": "#ba1a1a",
+                        "secondary": "#55615a",
+                        "outline-variant": "#bfc9bd",
+                        "on-secondary-fixed-variant": "#3e4943",
+                        "on-tertiary-fixed": "#001e2f",
+                        "on-primary-container": "#93e0a2",
+                        "surface-container": "#e5eeff",
+                        "on-primary-fixed": "#00210b",
+                        "surface-dim": "#cbdbf5",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-secondary-container": "#5b6760",
+                        "secondary-fixed-dim": "#bdcac1",
+                        "on-surface-variant": "#404940",
+                        "tertiary-container": "#005e87",
+                        "on-secondary-fixed": "#131e19",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "xl": "32px",
+                        "base": "4px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "sidebar-width": "260px",
+                        "md": "16px",
+                        "container-max": "1280px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "code-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {
+                            "lineHeight": "56px",
+                            "letterSpacing": "-0.02em",
+                            "fontWeight": "700"
+                        }],
+                        "code-sm": ["13px", {
+                            "lineHeight": "18px",
+                            "fontWeight": "400"
+                        }],
+                        "label-md": ["12px", {
+                            "lineHeight": "16px",
+                            "letterSpacing": "0.05em",
+                            "fontWeight": "600"
+                        }],
+                        "title-lg": ["20px", {
+                            "lineHeight": "28px",
+                            "fontWeight": "600"
+                        }],
+                        "headline-lg": ["32px", {
+                            "lineHeight": "40px",
+                            "letterSpacing": "-0.01em",
+                            "fontWeight": "600"
+                        }],
+                        "headline-md": ["24px", {
+                            "lineHeight": "32px",
+                            "fontWeight": "600"
+                        }],
+                        "body-md": ["14px", {
+                            "lineHeight": "20px",
+                            "fontWeight": "400"
+                        }],
+                        "body-lg": ["16px", {
+                            "lineHeight": "24px",
+                            "fontWeight": "400"
+                        }],
+                        "headline-lg-mobile": ["24px", {
+                            "lineHeight": "32px",
+                            "fontWeight": "600"
+                        }]
+                    }
+                },
+            },
+        }
+    </script>
     <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
         .eco-overlay {
             background: linear-gradient(180deg, rgba(0, 35, 15, 0.4) 0%, rgba(0, 50, 20, 0.75) 100%);
         }
     </style>
 </head>
-<body class="bg-[#f8f9ff] text-[#0b1c30] min-h-screen font-sans">
+
+<body class="bg-background text-on-surface min-h-screen overflow-x-hidden font-body-md text-body-md">
     <main class="flex min-h-screen w-full">
-        <section class="hidden lg:flex lg:w-1/2 relative bg-[#166534] items-center justify-center p-12 overflow-hidden">
+        <section class="hidden lg:flex lg:w-1/2 relative bg-primary-container items-center justify-center p-xl overflow-hidden">
             <div class="absolute inset-0 z-0">
-                <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&q=80&w=1000" />
+                <img class="w-full h-full object-cover object-center" src="{{ asset('images/bg-login.jpg') }}" onerror="this.src='https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&q=80&w=1000'" />
                 <div class="absolute inset-0 eco-overlay mix-blend-multiply"></div>
             </div>
             
-            <div class="relative z-10 w-full max-w-md text-white">
-                <div class="mb-10">
-                    <span class="inline-flex items-center justify-center p-4 bg-emerald-900 text-white rounded-xl mb-4 shadow-lg">
-                        <span class="material-symbols-outlined text-[40px]">recycling</span>
+            <div class="relative z-10 w-full max-w-md text-on-primary-container text-left px-md">
+                <div class="mb-lg">
+                    <span class="inline-flex items-center justify-center p-md bg-emerald-800 text-white rounded-xl mb-md shadow-md">
+                        <span class="material-symbols-outlined text-[40px]" data-icon="recycling">recycling</span>
                     </span>
-                    <h1 class="text-5xl font-bold mb-4 tracking-tight">PointWaste</h1>
-                    <p class="text-white/90 leading-relaxed text-lg">
-                        Mengelola sampah jadi lebih bernilai. Bergabunglah dengan komunitas kami untuk mewujudkan lingkungan yang lebih bersih.
+                    <h1 class="font-display-lg text-display-lg text-white mb-xs tracking-tight">PointWaste</h1>
+                    <p class="font-body-md text-body-md text-white/90 leading-relaxed max-w-sm">
+                        Mengelola sampah jadi lebih bernilai. Bergabunglah dengan komunitas kami untuk mewujudkan lingkungan yang lebih bersih dan berkelanjutan.
                     </p>
                 </div>
                 
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="p-5 bg-white/10 backdrop-blur-md rounded-xl border border-white/20">
-                        <div class="text-3xl font-bold">45.2k</div>
-                        <div class="text-[10px] uppercase font-bold text-white/70 tracking-widest mt-1">Ton Sampah Terolah</div>
+                <div class="grid grid-cols-2 gap-md mt-xl">
+                    <div class="p-md bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-sm">
+                        <span class="block font-headline-md text-headline-md text-white">45.2k</span>
+                        <span class="font-label-md text-label-md text-white/80 uppercase tracking-wider text-[11px]">Ton Sampah Terolah</span>
                     </div>
-                    <div class="p-5 bg-white/10 backdrop-blur-md rounded-xl border border-white/20">
-                        <div class="text-3xl font-bold">12.8k</div>
-                        <div class="text-[10px] uppercase font-bold text-white/70 tracking-widest mt-1">Warga Aktif</div>
+                    <div class="p-md bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-sm">
+                        <span class="block font-headline-md text-headline-md text-white">12.8k</span>
+                        <span class="font-label-md text-label-md text-white/80 uppercase tracking-wider text-[11px]">Warga Aktif</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="w-full lg:w-1/2 flex items-center justify-center p-8 bg-white">
-            <div class="w-full max-w-[440px]">
-                <div class="mb-10">
-                    <h2 class="text-3xl font-extrabold text-slate-900 mb-2">Buat Kata Sandi Baru</h2>
-                    <p class="text-slate-500 text-sm">Masukkan kata sandi baru Anda untuk mengamankan akun.</p>
+        <section class="w-full lg:w-1/2 flex items-center justify-center p-md lg:p-xl bg-surface relative">
+            <div class="w-full max-w-[440px]" id="auth-canvas">
+                <div class="lg:hidden flex items-center justify-center gap-sm mb-xl">
+                    <span class="material-symbols-outlined text-primary text-headline-lg" data-icon="recycling">recycling</span>
+                    <span class="font-headline-md text-headline-md text-primary">PointWaste</span>
                 </div>
 
-                <form class="space-y-6" method="POST" action="#">
+                <div class="mb-xl text-center lg:text-left">
+                    <h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Buat Kata Sandi Baru</h2>
+                    <p class="text-on-surface-variant font-body-md text-body-md leading-relaxed">
+                        Masukkan kata sandi baru Anda untuk mengamankan akun.
+                    </p>
+                </div>
+                
+                <form class="space-y-lg block" id="reset-password-form" method="POST" action="{{ Route::has('password.update') ? route('password.update') : '#' }}">
                     @csrf
-                    <div class="space-y-2">
-                        <label class="block text-[11px] font-bold text-slate-400 tracking-widest uppercase">KATA SANDI BARU</label>
+                    
+                    <input type="hidden" name="token" value="{{ $token ?? '' }}">
+                    <input type="hidden" name="email" value="{{ $email ?? old('email') }}">
+
+                    <div class="space-y-sm">
+                        <label class="font-label-md text-label-md text-on-surface-variant text-[11px] uppercase tracking-wider font-bold">Kata Sandi Baru</label>
                         <div class="relative">
-                            <input id="password-input" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600 outline-none transition-all placeholder:text-slate-400 text-sm" placeholder="Masukan Password baru" type="password" required />
-                            <button type="button" onclick="togglePassword()" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-emerald-700">
-                                <span id="eye-icon" class="material-symbols-outlined text-lg">visibility</span>
+                            <input class="w-full px-md py-sm bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary-fixed focus:border-primary outline-none transition-all placeholder:text-outline/40 text-on-surface" id="new-password" placeholder="Masukan Password baru" type="password" name="password" required autofocus />
+                            <button class="absolute right-md top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary transition-colors" onclick="togglePassword('new-password')" type="button">
+                                <span class="material-symbols-outlined text-outline-variant">visibility</span>
                             </button>
                         </div>
+                        @error('password')
+                            <p class="text-red-600 text-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
-                    
-                    <button class="w-full bg-[#166534] text-white hover:bg-emerald-800 transition-all py-4 rounded-xl font-bold text-sm shadow-xl shadow-emerald-900/20" type="submit">
+
+                    <button class="w-full bg-primary-container text-on-primary-container hover:bg-primary transition-all py-md rounded-xl font-headline-md text-headline-md flex items-center justify-center gap-sm group" type="submit">
                         Simpan Password
                     </button>
+                    
+                    <div class="text-center pt-xs">
+                        <a href="{{ Route::has('login') ? route('login') : '#' }}" class="inline-flex items-center gap-xs font-label-md text-label-md text-primary font-bold hover:underline transition-all">
+                            <span class="material-symbols-outlined text-[18px]" data-icon="arrow_back">arrow_back</span>
+                            Kembali ke Login
+                        </a>
+                    </div>
                 </form>
 
-                <div class="mt-8 text-center">
-                    <a class="inline-flex items-center gap-2 text-sm font-bold text-emerald-800 hover:underline" href="{{ route('login') }}">
-                        <span class="material-symbols-outlined text-sm">arrow_back</span> Kembali ke Login
-                    </a>
-                </div>
+                <p class="mt-xl text-center text-on-surface-variant font-body-md text-body-md">
+                    Butuh bantuan? <a class="text-emerald-800 font-bold hover:underline" href="#">Hubungi Admin</a>
+                </p>
             </div>
         </section>
     </main>
 
     <script>
-        function togglePassword() {
-            const input = document.getElementById('password-input');
-            const icon = document.getElementById('eye-icon');
-            if (input.type === 'password') {
-                input.type = 'text';
-                icon.innerText = 'visibility_off';
+        function togglePassword(inputId) {
+            const passwordInput = document.getElementById(inputId);
+            const icon = passwordInput.nextElementSibling.querySelector('.material-symbols-outlined');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.textContent = 'visibility_off';
             } else {
-                input.type = 'password';
-                icon.innerText = 'visibility';
+                passwordInput.type = 'password';
+                icon.textContent = 'visibility';
             }
         }
     </script>
 </body>
-</html>
 
+</html>

@@ -30,6 +30,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 
 
+
 // =========================================================
 // ROUTE GLOBAL AUTH ONLY
 // =========================================================

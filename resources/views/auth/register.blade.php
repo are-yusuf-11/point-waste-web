@@ -5,24 +5,134 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>PointWaste - Register</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
     <script id="tailwind-config">
         tailwind.config = {
+            darkMode: "class",
             theme: {
                 extend: {
-                    colors: {
-                        "primary": "#166534",      /* Hijau utama sesuai tombol login */
-                        "primary-hover": "#0f5128",
-                        "bg-light": "#f8fafc",      /* Warna background lembut */
-                        "text-dark": "#0f172a"
+                    "colors": {
+                        "on-primary-fixed-variant": "#005226",
+                        "tertiary": "#004565",
+                        "on-tertiary-container": "#9dd5ff",
+                        "primary-fixed": "#a6f4b5",
+                        "on-surface": "#0b1c30",
+                        "on-background": "#0b1c30",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#1f6c3a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#d3e4fe",
+                        "secondary-container": "#d9e6dd",
+                        "outline": "#707a6f",
+                        "primary-fixed-dim": "#8bd79b",
+                        "tertiary-fixed": "#c9e6ff",
+                        "secondary-fixed": "#d9e6dd",
+                        "surface": "#f8f9ff",
+                        "on-tertiary-fixed-variant": "#004c6e",
+                        "surface-container-low": "#eff4ff",
+                        "inverse-surface": "#213145",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary": "#ffffff",
+                        "background": "#f8f9ff",
+                        "primary-container": "#166534",
+                        "inverse-primary": "#8bd79b",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#89ceff",
+                        "primary": "#004c22",
+                        "surface-container-high": "#dce9ff",
+                        "error": "#ba1a1a",
+                        "secondary": "#55615a",
+                        "outline-variant": "#bfc9bd",
+                        "on-secondary-fixed-variant": "#3e4943",
+                        "on-tertiary-fixed": "#001e2f",
+                        "on-primary-container": "#93e0a2",
+                        "surface-container": "#e5eeff",
+                        "on-primary-fixed": "#00210b",
+                        "surface-dim": "#cbdbf5",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-secondary-container": "#5b6760",
+                        "secondary-fixed-dim": "#bdcac1",
+                        "on-surface-variant": "#404940",
+                        "tertiary-container": "#005e87",
+                        "on-secondary-fixed": "#131e19",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff"
                     },
-                    fontFamily: {
-                        sans: ["Inter", "sans-serif"]
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "xl": "32px",
+                        "base": "4px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "sidebar-width": "260px",
+                        "md": "16px",
+                        "container-max": "1280px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "code-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {
+                            "lineHeight": "56px",
+                            "letterSpacing": "-0.02em",
+                            "fontWeight": "700"
+                        }],
+                        "code-sm": ["13px", {
+                            "lineHeight": "18px",
+                            "fontWeight": "400"
+                        }],
+                        "label-md": ["12px", {
+                            "lineHeight": "16px",
+                            "letterSpacing": "0.05em",
+                            "fontWeight": "600"
+                        }],
+                        "title-lg": ["20px", {
+                            "lineHeight": "28px",
+                            "fontWeight": "600"
+                        }],
+                        "headline-lg": ["32px", {
+                            "lineHeight": "40px",
+                            "letterSpacing": "-0.01em",
+                            "fontWeight": "600"
+                        }],
+                        "headline-md": ["24px", {
+                            "lineHeight": "32px",
+                            "fontWeight": "600"
+                        }],
+                        "body-md": ["14px", {
+                            "lineHeight": "20px",
+                            "fontWeight": "400"
+                        }],
+                        "body-lg": ["16px", {
+                            "lineHeight": "24px",
+                            "fontWeight": "400"
+                        }],
+                        "headline-lg-mobile": ["24px", {
+                            "lineHeight": "32px",
+                            "fontWeight": "600"
+                        }]
                     }
-                }
-            }
+                },
+            },
         }
     </script>
     <style>
@@ -30,151 +140,142 @@
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
         .eco-overlay {
-            background: linear-gradient(180deg, rgba(22, 101, 52, 0.4) 0%, rgba(15, 23, 42, 0.6) 100%);
+            background: linear-gradient(180deg, rgba(0, 35, 15, 0.4) 0%, rgba(0, 50, 20, 0.75) 100%);
         }
     </style>
 </head>
 
-<body class="bg-white font-sans text-text-dark min-h-screen">
+<body class="bg-background text-on-surface min-h-screen overflow-x-hidden font-body-md text-body-md">
     <main class="flex min-h-screen w-full">
-        
-        <section class="hidden lg:flex lg:w-1/2 relative items-center justify-center p-12 overflow-hidden">
+        <section class="hidden lg:flex lg:w-1/2 relative bg-primary-container items-center justify-center p-xl overflow-hidden">
             <div class="absolute inset-0 z-0">
                 <img class="w-full h-full object-cover object-center" src="{{ asset('images/bg-login.jpg') }}" onerror="this.src='https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&q=80&w=1000'" />
                 <div class="absolute inset-0 eco-overlay mix-blend-multiply"></div>
             </div>
             
-            <div class="relative z-10 w-full max-w-md text-white text-left">
-                <div class="mb-8">
-                    <span class="inline-flex items-center justify-center p-3 bg-[#0d4722] text-white rounded-xl mb-4 shadow-sm">
-                        <span class="material-symbols-outlined text-[32px]">recycling</span>
+            <div class="relative z-10 w-full max-w-md text-on-primary-container text-left px-md">
+                <div class="mb-lg">
+                    <span class="inline-flex items-center justify-center p-md bg-emerald-800 text-white rounded-xl mb-md shadow-md">
+                        <span class="material-symbols-outlined text-[40px]" data-icon="recycling">recycling</span>
                     </span>
-                    <h1 class="text-4xl font-bold mb-2 tracking-tight">PointWaste</h1>
-                    <p class="text-white/80 text-sm leading-relaxed max-w-sm">
+                    <h1 class="font-display-lg text-display-lg text-white mb-xs tracking-tight">PointWaste</h1>
+                    <p class="font-body-md text-body-md text-white/90 leading-relaxed max-w-sm">
                         Mengelola sampah jadi lebih bernilai. Bergabunglah dengan komunitas kami untuk mewujudkan lingkungan yang lebih bersih dan berkelanjutan.
                     </p>
                 </div>
                 
-                <div class="grid grid-cols-2 gap-4 mt-12">
-                    <div class="p-4 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-sm">
-                        <span class="block text-2xl font-bold text-white">{{ $totalSampah ?? '45.2k' }}</span>
-                        <span class="text-[10px] uppercase font-semibold text-white/70 tracking-wider">Ton Sampah Terolah</span>
+                <div class="grid grid-cols-2 gap-md mt-xl">
+                    <div class="p-md bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-sm">
+                        <span class="block font-headline-md text-headline-md text-white">45.2k</span>
+                        <span class="font-label-md text-label-md text-white/80 uppercase tracking-wider text-[11px]">Ton Sampah Terolah</span>
                     </div>
-                    <div class="p-4 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-sm">
-                        <span class="block text-2xl font-bold text-white">{{ $jumlahWarga ?? '12.8k' }}</span>
-                        <span class="text-[10px] uppercase font-semibold text-white/70 tracking-wider">Warga Aktif</span>
+                    <div class="p-md bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-sm">
+                        <span class="block font-headline-md text-headline-md text-white">12.8k</span>
+                        <span class="font-label-md text-label-md text-white/80 uppercase tracking-wider text-[11px]">Warga Aktif</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="w-full lg:w-1/2 flex items-center justify-center p-6 bg-white">
-            <div class="w-full max-w-[400px]">
-                
-                <div class="mb-6 text-left">
-                    <h2 class="text-3xl font-bold text-text-dark mb-1">Selamat Datang</h2>
-                    <p class="text-gray-500 text-sm">Masuk ke akun Anda untuk mengelola setoran sampah.</p>
+        <section class="w-full lg:w-1/2 flex items-center justify-center p-md lg:p-xl bg-surface relative">
+            <div class="w-full max-w-[440px]" id="auth-canvas">
+                <div class="lg:hidden flex items-center justify-center gap-sm mb-xl">
+                    <span class="material-symbols-outlined text-primary text-headline-lg" data-icon="recycling">recycling</span>
+                    <span class="font-headline-md text-headline-md text-primary">PointWaste</span>
+                </div>
+                <div class="mb-xl text-center lg:text-left">
+                    <h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Selamat Datang</h2>
+                    <p class="text-on-surface-variant font-body-md text-body-md">Masuk ke akun Anda untuk mengelola setoran sampah.</p>
                 </div>
                 
-                <div class="flex bg-[#e2ece5] rounded-xl p-1 mb-6">
-                    <a href="{{ route('login') }}" class="flex-1 py-2 text-center text-sm font-medium text-gray-600 rounded-lg transition-all hover:text-primary">
+                <div class="flex bg-secondary-container rounded-lg p-xs mb-lg">
+                    <a href="{{ Route::has('login') ? route('login') : '#' }}" class="flex-1 py-sm text-center font-label-md text-label-md rounded-md transition-all text-on-secondary-container hover:text-primary">
                         Login
                     </a>
-                    <a href="{{ route('register') }}" class="flex-1 py-2 text-center text-sm font-semibold bg-white text-primary rounded-lg shadow-sm">
+                    <a href="{{ Route::has('register') ? route('register') : '#' }}" class="flex-1 py-sm text-center font-label-md text-label-md rounded-md transition-all bg-surface-container-lowest text-primary font-bold shadow-sm">
                         Register
                     </a>
                 </div>
 
-                <form class="space-y-4" method="POST" action="{{ route('register') }}">
+                <form class="space-y-lg block" id="register-form" method="POST" action="{{ Route::has('register') ? route('register') : '#' }}">
                     @csrf
                     
-                    <div class="space-y-1">
-                        <label class="block text-xs font-semibold text-gray-700">Nama</label>
-                        <input class="w-full px-4 py-2.5 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-gray-400 text-sm" placeholder="Masukan Nama" type="text" name="nama" value="{{ old('nama') }}" required autofocus />
-                        @error('nama') <p class="text-red-600 text-xs mt-1">{{ $message }}</p> @enderror
+                    <div class="space-y-sm">
+                        <label class="font-label-md text-label-md text-on-surface-variant">Nama</label>
+                        <div class="relative">
+                            <input class="w-full px-md py-sm bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary-fixed focus:border-primary outline-none transition-all placeholder:text-outline/60 text-on-surface" placeholder="Masukan Nama" type="text" name="name" value="{{ old('name') }}" required autofocus />
+                        </div>
+                        @error('name')
+                            <p class="text-red-600 text-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
                     
-                    <div class="space-y-1">
-                        <label class="block text-xs font-semibold text-gray-700">Password</label>
+                    <div class="space-y-sm">
+                        <label class="font-label-md text-label-md text-on-surface-variant">Password</label>
                         <div class="relative">
-                            <input class="w-full px-4 py-2.5 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-gray-400 text-sm" id="reg-password" placeholder="Masukan password" type="password" name="password" required />
-                            <button class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary transition-colors" onclick="togglePassword('reg-password', 'pass-icon')" type="button">
-                                <span class="material-symbols-outlined text-md" id="pass-icon">visibility</span>
+                            <input class="w-full px-md py-sm bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary-fixed focus:border-primary outline-none transition-all placeholder:text-outline/60 text-on-surface" id="register-password" placeholder="Masukan password" type="password" name="password" required />
+                            <button class="absolute right-md top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary transition-colors" onclick="togglePassword('register-password')" type="button">
+                                <span class="material-symbols-outlined" id="password-icon">visibility</span>
                             </button>
                         </div>
-                        @error('password') <p class="text-red-600 text-xs mt-1">{{ $message }}</p> @enderror
+                        @error('password')
+                            <p class="text-red-600 text-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
 
-                    <div class="space-y-1">
-                        <label class="block text-xs font-semibold text-gray-700">Email</label>
+                    <div class="space-y-sm">
+                        <label class="font-label-md text-label-md text-on-surface-variant">Email</label>
                         <div class="relative">
-                            <input class="w-full px-4 py-2.5 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-gray-400 text-sm" placeholder="Masukan Email" type="email" name="email" value="{{ old('email') }}" required />
-                            <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-md">mail</span>
+                            <input class="w-full px-md py-sm bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary-fixed focus:border-primary outline-none transition-all placeholder:text-outline/60 text-on-surface" placeholder="Masukan Email" type="email" name="email" value="{{ old('email') }}" required />
+                            <span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 text-outline-variant" data-icon="mail">mail</span>
                         </div>
-                        @error('email') <p class="text-red-600 text-xs mt-1">{{ $message }}</p> @enderror
+                        @error('email')
+                            <p class="text-red-600 text-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
-
-                    <input type="hidden" name="id_rt" value="{{ $daftar_rt->first()->id_rt ?? 1 }}">
-                    <input type="hidden" name="no_hp" value="-">
-                    <input type="hidden" name="alamat" value="Alamat belum diatur">
-                    <input type="hidden" name="password_confirmation" id="reg-password-confirm">
-
-                    <div class="flex items-center gap-2 pt-1">
-                        <input class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary" id="terms" type="checkbox" required />
-                        <label class="text-[11px] text-gray-500 select-none" for="terms">
-                            Saya menyetujui <a href="#" class="text-primary font-medium hover:underline">Syarat & Ketentuan</a> serta <a href="#" class="text-primary font-medium hover:underline">Kebijakan Privasi</a>.
+                    
+                    <div class="flex items-start gap-sm">
+                        <input class="mt-0.5 w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary" id="terms" type="checkbox" name="terms" required />
+                        <label class="font-body-md text-body-md text-on-surface-variant select-none" for="terms">
+                            Saya menyetujui <a href="#" class="text-emerald-800 font-semibold hover:underline">Syarat & Ketentuan</a> serta <a href="#" class="text-emerald-800 font-semibold hover:underline">Kebijakan Privasi</a>.
                         </label>
                     </div>
                     
-                    <button class="w-full bg-primary text-white hover:bg-primary-hover transition-all py-3 rounded-xl font-medium text-sm flex items-center justify-center gap-2 mt-2" type="submit" onclick="syncConfirmPassword()">
+                    <button class="w-full bg-primary-container text-on-primary-container hover:bg-primary transition-all py-md rounded-xl font-headline-md text-headline-md flex items-center justify-center gap-sm group" type="submit">
                         Daftar Sekarang
-                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
                     </button>
                 </form>
 
-                <div class="mt-6">
-                    <div class="relative flex items-center mb-4">
-                        <div class="flex-grow border-t border-gray-200"></div>
-                        <span class="px-3 text-xs text-gray-400">Atau masuk dengan</span>
-                        <div class="flex-grow border-t border-gray-200"></div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-3">
-                        <button class="flex items-center justify-center gap-2 py-2 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors text-xs font-medium">
-                            <img alt="Google" class="w-4 h-4" src="https://www.vectorlogo.zone/logos/google/google-icon.svg" />
-                            <span>Google</span>
-                        </button>
-                        <button class="flex items-center justify-center gap-2 py-2 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors text-xs font-medium">
-                            <img alt="Facebook" class="w-4 h-4" src="https://www.vectorlogo.zone/logos/facebook/facebook-official.svg" />
-                            <span>Facebook</span>
-                        </button>
-                    </div>
+                <div class="grid grid-cols-2 gap-md mt-xl">
+                    <button class="flex items-center justify-center gap-sm py-sm border border-outline-variant rounded-lg hover:bg-surface-variant transition-colors">
+                        <img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqEgMFZdXd5ZHkIG13XIC5ooisyep-H3QvF-pWgNkw7NLpq_86HT-8j5bE3gM91MKMjnsdUEgAAuvPOuQV8m6DcXWy9Z7qzmensrzAxAAFQL4dDmEV-WB3B3QTUql8ZCzmuDXozn4M7L9epdLw5Vc3JH9SCPVjpTDXiM2tSIf-FMxK3CP8B4Yn_04Cyws2eUgAiqybxxtXH3k1bxLzsjy7bHNVQtkQCDISUP0CEgNkj32tYuXPbPazQQMLfII0yAhAGPQR5P_myqE" />
+                        <span class="font-label-md text-label-md">Google</span>
+                    </button>
+                    <button class="flex items-center justify-center gap-sm py-sm border border-outline-variant rounded-lg hover:bg-surface-variant transition-colors">
+                        <img alt="Facebook" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSsHyif3Nk4gCA4q7lZ_aaHX6xBiNBjVIReJK-aVeOVjq2W2lFLOBXtJNNwB0z9fjZcXFxkTu9pDOAHPJYgwfAOrti0t84XARt32dgToGKIUClQkh7MLqMj7tZpaAKEFEQNtkARioIvv5DvVQl14jsBIZ14A5IuP6NXC0FqqW_xXgo5SWmIRw63t4nQHNKCpqFBnEHu98OgULV5wFUrm6HMCxBsSvTxodQO8QEkdSnLbq_42qnPxEY0lucO4XQfv3jHX1AE-kpraA" />
+                        <span class="font-label-md text-label-md">Facebook</span>
+                    </button>
                 </div>
-                
-                <p class="mt-6 text-center text-xs text-gray-500">
-                    Butuh bantuan? <a class="text-primary font-semibold hover:underline" href="#">Hubungi Admin</a>
+
+                <p class="mt-xl text-center text-on-surface-variant font-body-md text-body-md">
+                    Butuh bantuan? <a class="text-emerald-800 font-bold hover:underline" href="#">Hubungi Admin</a>
                 </p>
             </div>
         </section>
     </main>
 
     <script>
-        // Fungsi untuk memperlihatkan/menyembunyikan password
-        function togglePassword(inputId, iconId) {
-            const input = document.getElementById(inputId);
-            const icon = document.getElementById(iconId);
-            if (input.type === 'password') {
-                input.type = 'text';
-                icon.innerText = 'visibility_off';
+        function togglePassword(inputId) {
+            const passwordInput = document.getElementById(inputId);
+            const icon = passwordInput.nextElementSibling.querySelector('.material-symbols-outlined');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.textContent = 'visibility_off';
             } else {
-                input.type = 'password';
-                icon.innerText = 'visibility';
+                passwordInput.type = 'password';
+                icon.textContent = 'visibility';
             }
-        }
-
-        // Otomatis mengisi data konfirmasi password agar lolos validasi 'confirmed' di backend
-        function syncConfirmPassword() {
-            const pass = document.getElementById('reg-password').value;
-            document.getElementById('reg-password-confirm').value = pass;
         }
     </script>
 </body>
