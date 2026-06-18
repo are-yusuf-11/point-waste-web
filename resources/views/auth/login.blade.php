@@ -1,120 +1,258 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - PointWaste</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>PointWaste - Authentication</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#005226",
+                        "tertiary": "#004565",
+                        "on-tertiary-container": "#9dd5ff",
+                        "primary-fixed": "#a6f4b5",
+                        "on-surface": "#0b1c30",
+                        "on-background": "#0b1c30",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#1f6c3a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#d3e4fe",
+                        "secondary-container": "#d9e6dd",
+                        "outline": "#707a6f",
+                        "primary-fixed-dim": "#8bd79b",
+                        "tertiary-fixed": "#c9e6ff",
+                        "secondary-fixed": "#d9e6dd",
+                        "surface": "#f8f9ff",
+                        "on-tertiary-fixed-variant": "#004c6e",
+                        "surface-container-low": "#eff4ff",
+                        "inverse-surface": "#213145",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary": "#ffffff",
+                        "background": "#f8f9ff",
+                        "primary-container": "#166534",
+                        "inverse-primary": "#8bd79b",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#89ceff",
+                        "primary": "#004c22",
+                        "surface-container-high": "#dce9ff",
+                        "error": "#ba1a1a",
+                        "secondary": "#55615a",
+                        "outline-variant": "#bfc9bd",
+                        "on-secondary-fixed-variant": "#3e4943",
+                        "on-tertiary-fixed": "#001e2f",
+                        "on-primary-container": "#93e0a2",
+                        "surface-container": "#e5eeff",
+                        "on-primary-fixed": "#00210b",
+                        "surface-dim": "#cbdbf5",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-secondary-container": "#5b6760",
+                        "secondary-fixed-dim": "#bdcac1",
+                        "on-surface-variant": "#404940",
+                        "tertiary-container": "#005e87",
+                        "on-secondary-fixed": "#131e19",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "xl": "32px",
+                        "base": "4px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "sidebar-width": "260px",
+                        "md": "16px",
+                        "container-max": "1280px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "code-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {
+                            "lineHeight": "56px",
+                            "letterSpacing": "-0.02em",
+                            "fontWeight": "700"
+                        }],
+                        "code-sm": ["13px", {
+                            "lineHeight": "18px",
+                            "fontWeight": "400"
+                        }],
+                        "label-md": ["12px", {
+                            "lineHeight": "16px",
+                            "letterSpacing": "0.05em",
+                            "fontWeight": "600"
+                        }],
+                        "title-lg": ["20px", {
+                            "lineHeight": "28px",
+                            "fontWeight": "600"
+                        }],
+                        "headline-lg": ["32px", {
+                            "lineHeight": "40px",
+                            "letterSpacing": "-0.01em",
+                            "fontWeight": "600"
+                        }],
+                        "headline-md": ["24px", {
+                            "lineHeight": "32px",
+                            "fontWeight": "600"
+                        }],
+                        "body-md": ["14px", {
+                            "lineHeight": "20px",
+                            "fontWeight": "400"
+                        }],
+                        "body-lg": ["16px", {
+                            "lineHeight": "24px",
+                            "fontWeight": "400"
+                        }],
+                        "headline-lg-mobile": ["24px", {
+                            "lineHeight": "32px",
+                            "fontWeight": "600"
+                        }]
+                    }
+                },
+            },
+        }
+    </script>
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .eco-overlay {
+            background: linear-gradient(180deg, rgba(0, 35, 15, 0.4) 0%, rgba(0, 50, 20, 0.75) 100%);
+        }
     </style>
 </head>
-<body class="bg-[#fafafa] min-h-screen flex m-0 p-0 box-border">
 
-    <div class="w-full min-h-screen flex flex-row">
-        
-        <div class="hidden md:flex md:w-1/2 relative bg-cover bg-center items-center justify-center p-12" 
-             style="background-image: linear-gradient(to bottom, rgba(21, 87, 56, 0.85), rgba(12, 53, 34, 0.9)), url('https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=1000&auto=format&fit=crop');">
+<body class="bg-background text-on-surface min-h-screen overflow-x-hidden font-body-md text-body-md">
+    <main class="flex min-h-screen w-full">
+        <section class="hidden lg:flex lg:w-1/2 relative bg-primary-container items-center justify-center p-xl overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img class="w-full h-full object-cover object-center" src="{{ asset('images/bg-login.jpg') }}" onerror="this.src='https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&q=80&w=1000'" />
+                <div class="absolute inset-0 eco-overlay mix-blend-multiply"></div>
+            </div>
             
-            <div class="max-w-md text-white z-10">
-                <div class="bg-[#115e3b] w-14 h-14 rounded-2xl flex items-center justify-center mb-6 shadow-lg border border-[#1b7249]">
-                    <svg class="w-8 h-8 text-[#4ade80]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 10H17M9 21H3m0 0v-6m0 6h6"></path>
-                    </svg>
+            <div class="relative z-10 w-full max-w-md text-on-primary-container text-left px-md">
+                <div class="mb-lg">
+                    <span class="inline-flex items-center justify-center p-md bg-emerald-800 text-white rounded-xl mb-md shadow-md">
+                        <span class="material-symbols-outlined text-[40px]" data-icon="recycling">recycling</span>
+                    </span>
+                    <h1 class="font-display-lg text-display-lg text-white mb-xs tracking-tight">PointWaste</h1>
+                    <p class="font-body-md text-body-md text-white/90 leading-relaxed max-w-sm">
+                        Mengelola sampah jadi lebih bernilai. Bergabunglah dengan komunitas kami untuk mewujudkan lingkungan yang lebih bersih dan berkelanjutan.
+                    </p>
                 </div>
                 
-                <h1 class="text-4xl font-bold tracking-tight mb-4">PointWaste</h1>
-                <p class="text-gray-200 text-sm leading-relaxed mb-8">
-                    Mengelola sampah jadi lebih bernilai. Bergabunglah dengan komunitas kami untuk mewujudkan lingkungan yang lebih bersih dan berkelanjutan.
-                </p>
-
-                <div class="flex gap-4">
-                    <div class="flex-1 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl">
-                        <span class="block text-2xl font-bold">45.2k</span>
-                        <span class="text-xs text-gray-300 uppercase font-medium tracking-wider">Ton Sampah Terolah</span>
+                <div class="grid grid-cols-2 gap-md mt-xl">
+                    <div class="p-md bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-sm">
+                        <span class="block font-headline-md text-headline-md text-white">45.2k</span>
+                        <span class="font-label-md text-label-md text-white/80 uppercase tracking-wider text-[11px]">Ton Sampah Terolah</span>
                     </div>
-                    <div class="flex-1 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl">
-                        <span class="block text-2xl font-bold">12.8k</span>
-                        <span class="text-xs text-gray-300 uppercase font-medium tracking-wider">Warga Aktif</span>
+                    <div class="p-md bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-sm">
+                        <span class="block font-headline-md text-headline-md text-white">12.8k</span>
+                        <span class="font-label-md text-label-md text-white/80 uppercase tracking-wider text-[11px]">Warga Aktif</span>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="w-full md:w-1/2 flex items-center justify-center p-8 bg-white">
-            <div class="w-full max-w-md">
+        <section class="w-full lg:w-1/2 flex items-center justify-center p-md lg:p-xl bg-surface relative">
+            <div class="w-full max-w-[440px]" id="auth-canvas">
+                <div class="lg:hidden flex items-center justify-center gap-sm mb-xl">
+                    <span class="material-symbols-outlined text-primary text-headline-lg" data-icon="recycling">recycling</span>
+                    <span class="font-headline-md text-headline-md text-primary">PointWaste</span>
+                </div>
+                <div class="mb-xl text-center lg:text-left">
+                    <h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Selamat Datang</h2>
+                    <p class="text-on-surface-variant font-body-md text-body-md">Masuk ke akun Anda untuk mengelola setoran sampah.</p>
+                </div>
                 
-                <h2 class="text-3xl font-bold text-[#112233] mb-2">Selamat Datang</h2>
-                <p class="text-gray-500 text-sm mb-6">Masuk ke akun Anda untuk mengelola setoran sampah.</p>
-
-                <div class="bg-gray-100 p-1 rounded-xl flex mb-6">
-                    <button class="flex-1 py-2 text-sm font-semibold rounded-lg bg-white text-[#155738] shadow-sm transition">Login</button>
-                    <button class="flex-1 py-2 text-sm font-medium rounded-lg text-gray-500 hover:text-gray-700 transition">Register</button>
+                <div class="flex bg-secondary-container rounded-lg p-xs mb-lg">
+                    <a href="{{ Route::has('login') ? route('login') : '#' }}" class="flex-1 py-sm text-center font-label-md text-label-md rounded-md transition-all bg-surface-container-lowest text-primary font-bold shadow-sm">
+                        Login
+                    </a>
+                    <a href="{{ Route::has('register') ? route('register') : '#' }}" class="flex-1 py-sm text-center font-label-md text-label-md rounded-md transition-all text-on-secondary-container hover:text-primary">
+                        Register
+                    </a>
                 </div>
 
-                <form action="#" method="POST" class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <form class="space-y-lg block" id="login-form" method="POST" action="{{ Route::has('login') ? route('login') : '#' }}">
+                    @csrf
+                    <div class="space-y-sm">
+                        <label class="font-label-md text-label-md text-on-surface-variant">Email</label>
                         <div class="relative">
-                            <input type="email" placeholder="Masukkan Email" 
-                                   class="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#155738] focus:border-transparent transition">
-                            <span class="absolute right-4 top-3.5 text-gray-400">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 002-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                            </span>
+                            <input class="w-full px-md py-sm bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary-fixed focus:border-primary outline-none transition-all placeholder:text-outline/60 text-on-surface" placeholder="Masukan Email" type="email" name="email" value="{{ old('email') }}" required autofocus />
+                            <span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 text-outline-variant" data-icon="mail">mail</span>
                         </div>
+                        @error('email')
+                            <p class="text-red-600 text-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
-
-                    <div>
-                        <div class="flex justify-between items-center mb-1">
-                            <label class="block text-sm font-medium text-gray-700">Password</label>
-                            <a href="#" class="text-xs font-semibold text-[#155738] hover:underline">Lupa Password?</a>
+                    
+                    <div class="space-y-sm">
+                        <div class="flex justify-between items-center">
+                            <label class="font-label-md text-label-md text-on-surface-variant">Password</label>
+                            <a class="text-tertiary font-label-md text-label-md hover:underline font-semibold text-emerald-800 relative z-10 cursor-pointer" href="{{ Route::has('password.request') ? route('password.request') : '#' }}">Lupa Password?</a>
                         </div>
                         <div class="relative">
-                            <input type="password" placeholder="Masukkan password" 
-                                   class="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#155738] focus:border-transparent transition">
-                            <span class="absolute right-4 top-3.5 text-gray-400 cursor-pointer">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                            </span>
+                            <input class="w-full px-md py-sm bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary-fixed focus:border-primary outline-none transition-all placeholder:text-outline/60 text-on-surface" id="login-password" placeholder="Masukan password" type="password" name="password" required />
+                            <button class="absolute right-md top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary transition-colors" onclick="togglePassword('login-password')" type="button">
+                                <span class="material-symbols-outlined" id="password-icon">visibility</span>
+                            </button>
                         </div>
+                        @error('password')
+                            <p class="text-red-600 text-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
-
-                    <div class="flex items-center">
-                        <input id="remember_me" type="checkbox" class="h-4 w-4 text-[#155738] focus:ring-[#155738] border-gray-300 rounded-md">
-                        <label for="remember_me" class="ml-2 block text-xs text-gray-600">Ingat saya</label>
+                    
+                    <div class="flex items-center gap-sm">
+                        <input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary" id="remember" type="checkbox" name="remember" />
+                        <label class="font-body-md text-body-md text-on-surface-variant select-none" for="remember">Ingat saya</label>
                     </div>
-
-                    <button type="submit" 
-                            class="w-full bg-[#155738] hover:bg-[#0f4028] text-white py-3.5 px-4 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition shadow-md shadow-emerald-900/10">
+                    
+                    <button class="w-full bg-primary-container text-on-primary-container hover:bg-primary transition-all py-md rounded-xl font-headline-md text-headline-md flex items-center justify-center gap-sm group" type="submit">
                         Login Sekarang
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l7 7m-7-7H3"></path></svg>
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
                     </button>
                 </form>
 
-                <div class="relative my-6">
-                    <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-gray-200"></div></div>
-                    <div class="relative flex justify-center text-xs uppercase"><span class="bg-white px-3 text-gray-400 font-medium">Atau masuk dengan</span></div>
+                <div class="mt-xl">
+                    <div class="relative flex items-center mb-lg">
+                        <div class="flex-grow border-t border-outline-variant"></div>
+                        <span class="px-md font-label-md text-label-md text-outline">Atau masuk dengan</span>
+                        <div class="flex-grow border-t border-outline-variant"></div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-md">
+                        <button class="flex items-center justify-center gap-sm py-sm border border-outline-variant rounded-lg hover:bg-surface-variant transition-colors">
+                            <img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqEgMFZdXd5ZHkIG13XIC5ooisyep-H3QvF-pWgNkw7NLpq_86HT-8j5bE3gM91MKMjnsdUEgAAuvPOuQV8m6DcXWy9Z7qzmensrzAxAAFQL4dDmEV-WB3B3QTUql8ZCzmuDXozn4M7L9epdLw5Vc3JH9SCPVjpTDXiM2tSIf-FMxK3CP8B4Yn_04Cyws2eUgAiqybxxtXH3k1bxLzsjy7bHNVQtkQCDISUP0CEgNkj32tYuXPbPazQQMLfII0yAhAGPQR5P_myqE" />
+                            <span class="font-label-md text-label-md">Google</span>
+                        </button>
+                        <button class="flex items-center justify-center gap-sm py-sm border border-outline-variant rounded-lg hover:bg-surface-variant transition-colors">
+                            <img alt="Facebook" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSsHyif3Nk4gCA4q7lZ_aaHX6xBiNBjVIReJK-aVeOVjq2W2lFLOBXtJNNwB0z9fjZcXFxkTu9pDOAHPJYgwfAOrti0t84XARt32dgToGKIUClQkh7MLqMj7tZpaAKEFEQNtkARioIvv5DvVQl14jsBIZ14A5IuP6NXC0FqqW_xXgo5SWmIRw63t4nQHNKCpqFBnEHu98OgULV5wFUrm6HMCxBsSvTxodQO8QEkdSnLbq_42qnPxEY0lucO4XQfv3jHX1AE-kpraA" />
+                            <span class="font-label-md text-label-md">Facebook</span>
+                        </button>
+                    </div>
                 </div>
-
-                <div class="grid grid-cols-2 gap-3">
-                    <button class="flex items-center justify-center gap-2 py-2.5 border border-gray-200 rounded-xl text-xs font-semibold text-gray-700 hover:bg-gray-50 transition">
-                        <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-4 h-4" alt="Google">
-                        Google
-                    </button>
-                    <button class="flex items-center justify-center gap-2 py-2.5 border border-gray-200 rounded-xl text-xs font-semibold text-gray-700 hover:bg-gray-50 transition">
-                        <img src="https://www.svgrepo.com/show/475647/facebook-color.svg" class="w-4 h-4" alt="Facebook">
-                        Facebook
-                    </button>
-                </div>
-
-                <p class="text-center text-xs text-gray-500 mt-8">
-                    Butuh bantuan? <a href="#" class="text-[#155738] font-semibold hover:underline">Hubungi Admin</a>
-                </p>
-
-            </div>
-        </div>
-
-    </div>
-
-</body>
-</html>
+                <p class="mt-xl text-center text-on-surface-variant font-body-md text-body-md">
+                    Butuh bantuan? <a class="text-tertiary font-bold hover:underline
