@@ -29,6 +29,29 @@ Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 
+// -----------------------------------------------------
+// ROUTE KHUSUS PREVIEW FOLDER AUTH (Suntikan Sementara)
+// -----------------------------------------------------
+Route::get('/preview-login', function () {
+    return view('auth.login');
+});
+
+Route::get('/preview-register', function () {
+    return view('auth.register');
+});
+
+Route::get('/preview-forgot', function () {
+    return view('auth.forgot_password');
+});
+
+Route::get('/preview-reset', function () {
+    return view('auth.reset_password');
+});
+
+Route::get('/preview-verify', function () {
+    return view('auth.verify_kode');
+});
+
 
 // =========================================================
 // ROUTE GLOBAL AUTH ONLY
