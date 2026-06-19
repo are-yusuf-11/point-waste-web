@@ -48,15 +48,5 @@ Route::middleware(['auth', 'check_role'])->group(function () {
         Route::put('/profil', [ProfileWargaController::class, 'update'])->name('warga.profil.update');
         Route::put('/profil/password', [ProfileWargaController::class, 'changePassword'])->name('warga.profil.password');
     });
-
-    // PANEL AKTOR: PENGURUS RT
-    Route::prefix('pengurus-rt')->group(function () {
-        Route::get('/dashboard', [PengurusDashboardController::class, 'index'])->name('pengurus_rt.dashboard');
-    });
-
-    // PANEL AKTOR: ADMIN
-    Route::prefix('admin')->group(function () {
-        Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
-    });
-
+    
 });
