@@ -11,19 +11,14 @@ use App\Models\RT;
 
 class AuthController extends Controller
 {
-    /**
-     * Fungsi Helper Internal untuk Mengambil Statistik Umum
-     */
     private function getStats()
     {
-        // 1. Menghitung jumlah user dengan role 'warga'
         $jumlahWarga = Users::where('role', 'warga')->count();
 
-        // 2. Menghitung total berat sampah (kg) dari detail setoran yang berstatus 'Selesai'
         $totalSampah = DB::table('detail_setor_sampah')
             ->join('setor_sampah', 'detail_setor_sampah.id_setor_sampah', '=', 'setor_sampah.id_setor_sampah')
             ->where('setor_sampah.status', 'Selesai')
-            ->sum('detail_setor_sampah.berat_kg') ?? 0; // Mengamankan jika hasil sum null
+            ->sum('detail_setor_sampah.berat_kg') ?? 0;
 
         return [
             'jumlahWarga' => $jumlahWarga,
@@ -31,48 +26,38 @@ class AuthController extends Controller
         ];
     }
 
-    /**
-     * Menampilkan Halaman Login beserta Statistik
-     */
     public function showLogin()
     {
         $stats = $this->getStats();
-
         return view('auth.login', [
             'jumlahWarga' => $stats['jumlahWarga'],
             'totalSampah' => $stats['totalSampah']
         ]);
     }
 
-    /**
-     * Proses Logika Login (Multi-Aktor)
-     */
     public function login(Request $request)
     {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ], [
-            'email.required'    => 'Email atau password tidak boleh kosong!', // Diperbaiki dari username ke email
-            'email.email'       => 'Format email yang Anda masukkan tidak valid.',
-            'password.required' => 'Email atau password tidak boleh kosong!',
+            'email.required'    => 'Email tidak boleh kosong!',
+            'email.email'       => 'Format email tidak valid!',
+            'password.required' => 'Password tidak boleh kosong!',
         ]);
 
-        if (Auth::attempt($credentials, $request->remember)) {
+        if (Auth::attempt($credentials, (bool) $request->input('remember'))) {
             $request->session()->regenerate();
-
             $user = Auth::user();
 
-            if ($user->role === 'admin') {
-                return redirect()->intended(route('admin.index'))->with('success', 'Selamat datang Admin!');
-            } 
-            
-            if ($user->role === 'pengurus_rt') {
-                return redirect()->intended(route('pengurus_rt.index'))->with('success', 'Selamat datang Pengurus RT!');
-            } 
-            
-            if ($user->role === 'warga') {
-                return redirect()->intended(route('warga.dashboard'))->with('success', 'Selamat datang di PointWaste!');
+            if ($user->role === 'Admin') {
+                return redirect()->route('admin.dashboard')->with('success', 'Selamat datang Admin!');
+            }
+            if ($user->role === 'Pengurus RT') {
+                return redirect()->route('pengurus_rt.dashboard')->with('success', 'Selamat datang Pengurus RT!');
+            }
+            if ($user->role === 'Warga') {
+                return redirect()->route('warga.dashboard')->with('success', 'Selamat datang di PointWaste!');
             }
         }
 
@@ -81,14 +66,10 @@ class AuthController extends Controller
         ])->onlyInput('email');
     }
 
-    /**
-     * Menampilkan Halaman Register beserta Daftar RT dan Statistik
-     */
     public function showRegister()
     {
         $daftar_rt = RT::all(); 
         $stats = $this->getStats();
-
         return view('auth.register', [
             'daftar_rt' => $daftar_rt,
             'jumlahWarga' => $stats['jumlahWarga'],
@@ -96,46 +77,30 @@ class AuthController extends Controller
         ]);
     }
 
-    /**
-     * Proses Pendaftaran Akun Warga Baru
-     */
     public function register(Request $request)
     {
         $request->validate([
-            'id_rt' => 'required|exists:rt,id_rt', 
             'nama' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email',
-            'password' => 'required|string|min:8|confirmed', 
-            'no_hp' => 'required|string|max:15',
-            'alamat' => 'required|string',
+            'password' => 'required|string|min:8|confirmed',
         ]);
 
-        $user = Users::create([
-            'id_rt' => $request->id_rt,
+        Users::create([
             'nama' => $request->nama,
             'email' => $request->email,
-            'password' => Hash::make($request->password), 
-            'role' => 'warga', 
-            'no_hp' => $request->no_hp,
-            'alamat' => $request->alamat,
-            'total_poin' => 0, 
+            'password' => Hash::make($request->password),
+            'role' => 'Warga',
+            'total_poin' => 0,
         ]);
 
-        Auth::login($user);
-
-        return redirect()->route('warga.dashboard')->with('success', 'Registrasi berhasil! Akun Anda siap digunakan.');
+        return redirect()->route('showLogin')->with('success', 'Registrasi berhasil! Silakan masuk menggunakan akun Anda.');
     }
 
-    /**
-     * Proses Logout
-     */
     public function logout(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
         return redirect('/login')->with('success', 'Anda telah berhasil keluar dari sistem.');
     }
 }

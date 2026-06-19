@@ -175,8 +175,8 @@
                 <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Tentang Kami</a>
             </div>
             <div class="flex items-center gap-md">
-                <a href="{{ route('login') }}" class="font-label-md text-label-md text-primary px-md py-sm hover:opacity-80 transition-opacity inline-block">Login</a>
-                <a href="#" class="font-label-md text-label-md bg-primary text-on-primary px-lg py-sm rounded-lg hover:opacity-90 transition-all shadow-sm inline-block">Register</a>
+                <a href="{{ route('showLogin') }}" class="font-label-md text-label-md text-primary px-md py-sm hover:opacity-80 transition-opacity inline-block">Login</a>
+                <a href="{{ route('showRegister') }}" class="font-label-md text-label-md bg-primary text-on-primary px-lg py-sm rounded-lg hover:opacity-90 transition-all shadow-sm inline-block">Register</a>
             </div>
         </nav>
     </header>

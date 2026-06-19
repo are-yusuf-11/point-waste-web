@@ -12,6 +12,18 @@ use App\Models\KategoriSampah;
 
 class SetorSampahController extends Controller
 {
+    public function index()
+    {
+        $user = Auth::user();
+        $kategoriSampah = KategoriSampah::where('status_aktif', 1)->get();
+        $riwayatSetor = SetorSampah::where('id_user', $user->id_user)
+            ->with('detailSetorSampah.kategoriSampah')
+            ->orderBy('tgl_setor', 'desc')
+            ->paginate(10);
+
+        return view('warga.setor-sampah', compact('user', 'kategoriSampah', 'riwayatSetor'));
+    }
+
     /**
      * Menyimpan Pengajuan Setor Sampah Beserta Rincian Detailnya
      * Sesuai dengan Atribut Tabel SETOR_SAMPAH dan DETAIL_SETOR_SAMPAH pada ERD
@@ -23,7 +35,7 @@ class SetorSampahController extends Controller
             'tgl_setor'             => ['required', 'date'],
             'foto_sampah'           => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
             'rincian'               => ['required', 'array', 'min:1'],
-            'rincian.*.id_kategori' => ['required', 'exists:KATEGORI_SAMPAH,id_kategori'], // Sesuai nama tabel ERD
+            'rincian.*.id_kategori' => ['required', 'exists:KATEGORI_SAMPAH,id_kategori'],
             'rincian.*.berat_kg'    => ['required', 'numeric', 'min:0.1'],
         ]);
 
@@ -35,12 +47,11 @@ class SetorSampahController extends Controller
             $pathFoto = $request->file('foto_sampah')->store('setor_sampah', 'public');
 
             // 3. Insert ke tabel induk: SETOR_SAMPAH
-            // Sesuai ERD: id_setor_sampah (PK), id_user (FK), tgl_setor, foto_sampah, total_poin, status
             $setorSampah = SetorSampah::create([
-                'id_user'     => Auth::user()->id_user, // Mengambil PK id_user dari tabel USERS
+                'id_user'     => Auth::user()->id_user,
                 'tgl_setor'   => $request->tgl_setor,
                 'foto_sampah' => $pathFoto,
-                'total_poin'  => 0, // Diinisialisasi 0, lalu diakumulasikan dari detail
+                'total_poin'  => 0,
                 'status'      => 'Proses',
             ]);
 
@@ -48,14 +59,9 @@ class SetorSampahController extends Controller
 
             // 4. Loop data rincian untuk dimasukkan ke tabel: DETAIL_SETOR_SAMPAH
             foreach ($request->rincian as $item) {
-                // Ambil poin_per_kg langsung dari tabel KATEGORI_SAMPAH di database
                 $kategori = KategoriSampah::where('id_kategori', $item['id_kategori'])->firstOrFail();
-                
-                // Hitung poin_subtotal sesuai rumus matematika sistem (berat_kg * poin_per_kg)
                 $poinSubtotal = $item['berat_kg'] * $kategori->poin_per_kg;
 
-                // Insert ke DETAIL_SETOR_SAMPAH
-                // Sesuai ERD: id_detail_setor_sampah (PK), id_setor_sampah (FK), id_kategori (FK), berat_kg, poin_subtotal
                 DetailSetorSampah::create([
                     'id_setor_sampah' => $setorSampah->id_setor_sampah,
                     'id_kategori'     => $item['id_kategori'],
@@ -63,7 +69,6 @@ class SetorSampahController extends Controller
                     'poin_subtotal'   => $poinSubtotal,
                 ]);
 
-                // Jumlahkan ke total poin pengajuan ini
                 $grandTotalPoin += $poinSubtotal;
             }
 
@@ -72,15 +77,12 @@ class SetorSampahController extends Controller
                 'total_poin' => $grandTotalPoin
             ]);
 
-            // Commit data jika seluruh alur di atas berhasil tanpa interupsi
             DB::commit();
 
             return redirect()->route('warga.dashboard')->with('success', 'Pengajuan setoran sampah dengan estimasi ' . number_format($grandTotalPoin, 0, ',', '.') . ' poin berhasil dikirim!');
 
         } catch (\Exception $e) {
-            // Batalkan semua query jika ada kegagalan di tengah jalan
             DB::rollback();
-
             return back()->with('error', 'Gagal menyimpan pengajuan: ' . $e->getMessage())->withInput();
         }
     }
