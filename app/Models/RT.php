@@ -27,8 +27,6 @@ class RT extends Model
         'no_rt',
         'kelurahan',
         'kecamatan',
-        'alamat',
-        'no_hp',
     ];
 
     /*
