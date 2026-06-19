@@ -25,6 +25,8 @@ class IuranRT extends Model
     protected $fillable = [
         'id_user',
         'id_transaksi',
+        'judul',
+        'deskripsi',
         'periode',
         'nominal_iuran',
         'diskon_poin',
