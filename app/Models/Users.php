@@ -33,6 +33,7 @@ class Users extends Authenticatable
         'alamat',
         'total_poin',
         'id_rt',
+        'foto',
     ];
 
     /**
