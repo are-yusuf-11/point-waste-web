@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('periode', 20); // Contoh: "Juni 2026"
             $table->integer('nominal_iuran')->default(0); // Nominal sebelum diskon
             $table->integer('diskon_poin')->default(0); // Potongan dari penukaran poin (Rp)
-            $table->integer('total_payar')->default(0); // Nominal Iuran - Diskon Poin
+            $table->integer('total_bayar')->default(0); // Nominal Iuran - Diskon Poin
             $table->enum('status_bayar', ['Belum Bayar', 'Sudah Bayar'])->default('Belum Bayar');
             $table->date('tanggal_bayar')->nullable(); // Nullable jika belum dibayar
             

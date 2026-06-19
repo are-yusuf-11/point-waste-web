@@ -53,4 +53,59 @@ class Users extends Authenticatable
             'password' => 'hashed', // Otomatis meng-hash password saat disimpan
         ];
     }
+
+    /*
+    |--------------------------------------------------------------------------
+    | RELASI MODEL (ELOQUENT RELATIONS)
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * RELASI: Seorang user memiliki banyak transaksi setor sampah.
+     */
+    public function setorSampah(): HasMany
+    {
+        // 'id_user' di parameter kedua adalah Foreign Key di tabel setor_sampah
+        // 'id_user' di parameter ketiga adalah Primary Key di tabel users
+        return $this->hasMany(SetorSampah::class, 'id_user', 'id_user');
+    }
+
+    /**
+     * RELASI: Seorang warga (user) memiliki banyak tagihan/catatan iuran RT.
+     */
+    public function iuranWarga(): HasMany
+    {
+        return $this->hasMany(IuranRt::class, 'id_user', 'id_user');
+    }
+
+    /**
+     * RELASI: Seorang Pengurus RT (user) bisa membuat/mengonfirmasi banyak tagihan iuran RT.
+     */
+    public function iuranDibuat(): HasMany
+    {
+        // 'dibuat_oleh' adalah Foreign Key di tabel iuran_rt yang merujuk ke id_user pengurus
+        return $this->hasMany(IuranRt::class, 'dibuat_oleh', 'id_user');
+    }
+
+    /**
+     * RELASI: Seorang user (jika driver session menggunakan database) memiliki banyak data session.
+     */
+    public function sessions(): HasMany
+    {
+        return $this->hasMany(Session::class, 'user_id', 'id_user');
+    }
+
+    /**
+     * RELASI: User berstatus 'Warga' atau 'Pengurus RT' berada di bawah naungan sebuah RT.
+     * (Asumsi nama Model untuk RT Anda nantinya adalah 'Rt')
+     */
+    public function rt(): BelongsTo
+    {
+        return $this->belongsTo(Rt::class, 'id_rt', 'id_rt');
+    }
+
+    public function mutasiPoin(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(MutasiPoin::class, 'id_user', 'id_user');
+    }
 }

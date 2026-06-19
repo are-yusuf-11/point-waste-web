@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\Users;
 
 class Session extends Model
 {
@@ -30,12 +31,11 @@ class Session extends Model
         'last_activity',
     ];
 
-    /**
-     * RELASI: Session ini dimiliki oleh siapa?
-     * Menghubungkan kembali ke model User yang menggunakan 'id_user'
-     */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'id_user', 'id_user');
+        // Parameter ke-2: 'user_id' adalah Foreign Key di tabel sessions
+        // Parameter ke-3: 'id_user' adalah Primary Key di tabel users
+        // Pastikan nama modelnya 'Users' (pakai 's') sesuai dengan nama file model Anda
+        return $this->belongsTo(Users::class, 'user_id', 'id_user');
     }
 }
