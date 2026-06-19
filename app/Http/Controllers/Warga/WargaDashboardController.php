@@ -3,15 +3,13 @@
 namespace App\Http\Controllers\Warga;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use App\Models\Users;
-use App\Models\SetorSampah;
-use App\Models\MutasiPoin;
 use App\Models\IuranRt;
 use App\Models\KategoriSampah;
+use App\Models\MutasiPoin;
+use App\Models\SetorSampah;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class WargaDashboardController extends Controller
 {
@@ -68,17 +66,17 @@ class WargaDashboardController extends Controller
             [
                 'tipe' => 'setor_sukses',
                 'judul' => 'Setoran Sampah Berhasil Disetujui',
-                'pesan' => 'Setoran Anda pada 24 Okt telah diverifikasi petugas. +45 poin telah ditambahkan ke saldo Anda.'
-            ]
+                'pesan' => 'Setoran Anda pada 24 Okt telah diverifikasi petugas. +45 poin telah ditambahkan ke saldo Anda.',
+            ],
         ];
 
         return view('warga.dashboard', compact(
             'user',
             'saldoPoin',
-            'poinMingguIni',     
+            'poinMingguIni',
             'iuranTerbaru',
             'totalBeratSampah',
-            'mitigasiCO2',       
+            'mitigasiCO2',
             'masterKategori',
             'riwayatSetoran',
             'mutasiPoin',
