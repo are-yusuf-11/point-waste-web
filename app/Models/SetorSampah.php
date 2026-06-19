@@ -37,4 +37,27 @@ class SetorSampah extends Model
     protected $casts = [
         'tgl_setor' => 'date',
     ];
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | RELASI MODEL (ELOQUENT RELATIONS)
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * RELASI: Setiap transaksi setor sampah dimiliki atau dilakukan oleh satu User (Warga).
+     */
+    public function user(): BelongsTo
+    {
+        // 'id_user' di parameter kedua adalah Foreign Key di tabel setor_sampah
+        // 'id_user' di parameter ketiga adalah Primary Key di tabel users
+        return $this->belongsTo(Users::class, 'id_user', 'id_user');
+    }
+
+    public function detailItems(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(DetailSetorSampah::class, 'id_setor_sampah', 'id_setor_sampah');
+    }
+    
 }
