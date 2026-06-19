@@ -17,10 +17,16 @@ use App\Http\Controllers\PengurusRT\PengurusDashboardController;
 // =========================================================
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register', [AuthController::class, 'register']);
+
 Route::get('/login', [AuthController::class, 'showLogin'])->name('showLogin');
 Route::get('/register', [AuthController::class, 'showRegister'])->name('showRegister');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
+
 
 // =========================================================
 // ROUTE GLOBAL AUTH ONLY
@@ -42,15 +48,5 @@ Route::middleware(['auth', 'check_role'])->group(function () {
         Route::put('/profil', [ProfileWargaController::class, 'update'])->name('warga.profil.update');
         Route::put('/profil/password', [ProfileWargaController::class, 'changePassword'])->name('warga.profil.password');
     });
-
-    // PANEL AKTOR: PENGURUS RT
-    Route::prefix('pengurus-rt')->group(function () {
-        Route::get('/dashboard', [PengurusDashboardController::class, 'index'])->name('pengurus_rt.dashboard');
-    });
-
-    // PANEL AKTOR: ADMIN
-    Route::prefix('admin')->group(function () {
-        Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
-    });
-
+    
 });
