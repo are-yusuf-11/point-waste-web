@@ -9,51 +9,39 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CheckRole
 {
-    /**
-     * Handle an incoming request.
-     */
     public function handle(Request $request, Closure $next): Response
     {
-        // 1. Jika belum login, tendang ke halaman login resmi
         if (!Auth::check()) {
-            // langsung redirect ke URL /login
-            return redirect('/login');
+            return redirect()->route('showLogin');
         }
 
         $userRole = Auth::user()->role;
-        
-        // Menggunakan trim() untuk menghapus '/' di awal atau akhir prefix secara otomatis
         $currentUri = trim($request->route()->getPrefix(), '/');
 
-        // 2. Logika otomatis mencocokkan URL Prefix dengan Role User
-        // Mengantisipasi jika route tersebut memang merupakan bagian dari grup ber-prefix
-        if ($currentUri === 'admin' && $userRole !== 'admin') {
+        if ($currentUri === 'admin' && $userRole !== 'Admin') {
             return $this->redirectBasedOnRole($userRole);
         }
 
-        if ($currentUri === 'pengurus-rt' && $userRole !== 'pengurus_rt') {
+        if ($currentUri === 'pengurus-rt' && $userRole !== 'Pengurus RT') {
             return $this->redirectBasedOnRole($userRole);
         }
 
-        if ($currentUri === 'warga' && $userRole !== 'warga') {
+        if ($currentUri === 'warga' && $userRole !== 'Warga') {
             return $this->redirectBasedOnRole($userRole);
         }
 
         return $next($request);
     }
 
-    /**
-     * Fungsi pembantu untuk memulangkan user ke dashboard masing-masing jika salah alamat
-     */
     private function redirectBasedOnRole($role)
     {
-        if ($role === 'admin') {
+        if ($role === 'Admin') {
             return redirect()->route('admin.dashboard')->with('error', 'Anda tidak memiliki akses ke halaman tersebut.');
         }
-        if ($role === 'pengurus_rt') {
+        if ($role === 'Pengurus RT') {
             return redirect()->route('pengurus_rt.dashboard')->with('error', 'Anda tidak memiliki akses ke halaman tersebut.');
         }
-        if ($role === 'warga') {
+        if ($role === 'Warga') {
             return redirect()->route('warga.dashboard')->with('error', 'Anda tidak memiliki akses ke halaman tersebut.');
         }
         return redirect('/')->with('error', 'Akses ditolak.');

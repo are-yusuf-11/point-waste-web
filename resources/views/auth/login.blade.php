@@ -189,10 +189,10 @@
                 </div>
                 
                 <div class="flex bg-secondary-container rounded-lg p-xs mb-lg">
-                    <a href="{{ Route::has('login') ? route('login') : '#' }}" class="flex-1 py-sm text-center font-label-md text-label-md rounded-md transition-all bg-surface-container-lowest text-primary font-bold shadow-sm">
+                    <a href="{{ Route::has('showLogin') ? route('showLogin') : '#' }}" class="flex-1 py-sm text-center font-label-md text-label-md rounded-md transition-all bg-surface-container-lowest text-primary font-bold shadow-sm">
                         Login
                     </a>
-                    <a href="{{ Route::has('register') ? route('register') : '#' }}" class="flex-1 py-sm text-center font-label-md text-label-md rounded-md transition-all text-on-secondary-container hover:text-primary">
+                    <a href="{{ Route::has('showRegister') ? route('showRegister') : '#' }}" class="flex-1 py-sm text-center font-label-md text-label-md rounded-md transition-all text-on-secondary-container hover:text-primary">
                         Register
                     </a>
                 </div>
