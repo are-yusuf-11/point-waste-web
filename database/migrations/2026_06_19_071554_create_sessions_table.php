@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('id')->primary();
             
             // Menggunakan id_user agar sinkron dengan PK tabel users Anda
-            $table->foreignId('id_user')->nullable()->index(); 
+            $table->foreignId('user_id')->nullable()->index(); 
             
             $table->string('ip_address', 45)->nullable();
             $table->text('user_agent')->nullable();
