@@ -26,6 +26,7 @@ class SetorSampah extends Model
         'id_user',
         'tgl_setor',
         'foto_sampah',
+        'deskripsi',
         'status',
         'total_poin',
     ];
