@@ -23,7 +23,7 @@ class Session extends Model
      */
     protected $fillable = [
         'id',
-        'id_user',
+        'user_id',
         'ip_address',
         'user_agent',
         'payload',
