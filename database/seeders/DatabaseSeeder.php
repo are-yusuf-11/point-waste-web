@@ -13,6 +13,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call([
+            RtSeeder::class,
+            KategoriSampahSeeder::class,
+        ]);
+        
         // 1. MATIKAN pengecekan foreign key sementara (Biar lolos dari error 1701)
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 

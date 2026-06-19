@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use App\Models\Users;
 use App\Models\RT;
 
@@ -54,7 +55,8 @@ class AuthController extends Controller
                 return redirect()->route('admin.dashboard')->with('success', 'Selamat datang Admin!');
             }
             if ($user->role === 'Pengurus RT') {
-                return redirect()->route('pengurus_rt.dashboard')->with('success', 'Selamat datang Pengurus RT!');
+                // Sesuai format rute pengurus rt yang sudah diperbaiki sebelumnya
+                return redirect()->route('pengurus-rt.dashboard')->with('success', 'Selamat datang Pengurus RT!');
             }
             if ($user->role === 'Warga') {
                 return redirect()->route('warga.dashboard')->with('success', 'Selamat datang di PointWaste!');
@@ -83,6 +85,7 @@ class AuthController extends Controller
             'nama' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email',
             'password' => 'required|string|min:8',
+            'id_rt' => 'required|exists:rt,id_rt'
         ]);
 
         Users::create([
@@ -90,6 +93,7 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => 'Warga',
+            'id_rt' => $request->id_rt,
             'total_poin' => 0,
         ]);
 
@@ -102,5 +106,96 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/login')->with('success', 'Anda telah berhasil keluar dari sistem.');
+    }
+
+    // =========================================================================
+    // FITUR LUBUK UTAMA: LUPA PASSWORD (KODE OTP VERIFIKASI)
+    // =========================================================================
+
+    /**
+     * 1. TAMPILAN: Form Minta Lupa Password (Isi Email)
+     */
+    public function showForgotPassword()
+    {
+        return view('auth.forgot_password');
+    }
+
+    /**
+     * 2. AKSI: Kirim Kode Verifikasi OTP ke Sesi & Log
+     */
+    public function sendVerificationCode(Request $request)
+    {
+        $request->validate([
+            'email' => ['required', 'email', 'exists:users,email']
+        ], [
+            'email.exists' => 'Email ini belum terdaftar di sistem kami!'
+        ]);
+
+        // Generate 6 Digit Angka OTP Acak
+        $code = rand(100000, 999999);
+
+        // Amankan data ke dalam session aplikasi (Berlaku selama 10 Menit)
+        session([
+            'forgot_email' => $request->email,
+            'forgot_code'  => $code,
+            'forgot_expires_at' => now()->addMinutes(10)
+        ]);
+
+        // Catat di berkas Log lokal (storage/logs/laravel.log) agar Anda bisa mengecek kodenya saat testing
+        Log::info("Kode OTP Lupa Password PointWaste untuk {$request->email} adalah: {$code}");
+
+        return redirect()->route('auth.show-verify')->with('success', 'Kode verifikasi OTP baru telah dikirim! Silakan periksa kotak masuk email Anda.');
+    }
+
+    /**
+     * 3. TAMPILAN: Form Input Kode Verifikasi & Password Baru
+     */
+    public function showVerifyForm()
+    {
+        if (!session()->has('forgot_email')) {
+            return redirect()->route('auth.forgot-password')->with('error', 'Silakan masukkan email Anda kembali.');
+        }
+
+        return view('auth.verify-otp');
+    }
+
+    /**
+     * 4. AKSI: Validasi OTP dan Submit Reset Ubah Password
+     */
+    public function submitResetPassword(Request $request)
+    {
+        $request->validate([
+            'code'     => ['required', 'numeric'],
+            'password' => ['required', 'string', 'min:8', 'confirmed']
+        ], [
+            'code.required' => 'Kode verifikasi wajib diisi!',
+            'password.confirmed' => 'Konfirmasi password baru tidak cocok!'
+        ]);
+
+        $sessionEmail = session('forgot_email');
+        $sessionCode  = session('forgot_code');
+        $sessionExpiry = session('forgot_expires_at');
+
+        // Validasi Status Kedaluwarsa OTP
+        if (!$sessionExpiry || now()->greaterThan($sessionExpiry)) {
+            session()->forget(['forgot_email', 'forgot_code', 'forgot_expires_at']);
+            return redirect()->route('auth.forgot-password')->with('error', 'Kode verifikasi telah kedaluwarsa. Silakan ajukan ulang.');
+        }
+
+        // Validasi Kecocokan Kode OTP
+        if ($request->code != $sessionCode) {
+            return back()->with('error', 'Kode verifikasi yang Anda masukkan salah! Periksa kembali email Anda.')->withInput();
+        }
+
+        // Cari User dan Update Password-nya
+        $user = Users::where('email', $sessionEmail)->firstOrFail();
+        $user->update([
+            'password' => Hash::make($request->password)
+        ]);
+
+        // Bersihkan seluruh data sampah session forgot password
+        session()->forget(['forgot_email', 'forgot_code', 'forgot_expires_at']);
+
+        return redirect()->route('showLogin')->with('success', 'Password Anda berhasil diperbarui! Silakan masuk dengan password baru.');
     }
 }

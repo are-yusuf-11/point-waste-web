@@ -104,6 +104,7 @@
 
       </div>
   </main>
+  <x-alert />
 
 </body>
 </html>

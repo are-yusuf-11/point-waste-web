@@ -42,7 +42,7 @@ class IuranRT extends Model
     protected $casts = [
         'nominal_iuran' => 'integer',
         'diskon_poin' => 'integer',
-        'total_payar' => 'integer',
+        'total_bayar' => 'integer',
         'tanggal_bayar' => 'date',
     ];
 
