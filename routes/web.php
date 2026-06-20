@@ -27,6 +27,10 @@ Route::get('/register', [AuthController::class, 'showRegister'])->name('showRegi
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 
+// Route uji coba untuk melihat tampilan Mutasi Poin Warga
+Route::get('/mutasi-poin-test', function () {
+    return view('warga.mutasi-poin'); // Mengarah ke resources/views/warga/mutasi-poin.blade.php
+});
 
 // =========================================================
 // ROUTE GLOBAL AUTH ONLY
