@@ -160,23 +160,23 @@
         </div>
         <nav class="flex-1 space-y-sm">
             <!-- Dashboard (Active) -->
-            <a class="flex items-center gap-md bg-secondary-container text-primary font-semibold rounded-lg px-md py-sm transition-all opacity-80 scale-95" href="#">
+            <a class="flex items-center gap-md bg-secondary-container text-primary font-semibold rounded-lg px-md py-sm transition-all opacity-80 scale-95" href="{{ route('pengurus-rt.dashboard') }}">
                 <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
                 <span class="font-body-md text-body-md">Dashboard</span>
             </a>
-            <a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-low transition-colors duration-200" href="#">
+            <a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-low transition-colors duration-200" href="{{ route('pengurus-rt.setor-sampah') }}">
                 <span class="material-symbols-outlined" data-icon="recycling">recycling</span>
                 <span class="font-body-md text-body-md">Verifikasi Setoran</span>
             </a>
-            <a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-low transition-colors duration-200" href="#">
+            <a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-low transition-colors duration-200" href="{{ route('pengurus-rt.manajemen-iuran') }}">
                 <span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
                 <span class="font-body-md text-body-md">Manajemen Iuran</span>
             </a>
-            <a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-low transition-colors duration-200" href="#">
+            <a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-low transition-colors duration-200" href="{{ route('pengurus-rt.waste-categories') }}">
                 <span class="material-symbols-outlined" data-icon="category">category</span>
                 <span class="font-body-md text-body-md">Kategori Sampah</span>
             </a>
-            <a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-low transition-colors duration-200" href="#">
+            <a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-low transition-colors duration-200" href="{{ route('pengurus-rt.laporan') }}">
                 <span class="material-symbols-outlined" data-icon="bar_chart">bar_chart</span>
                 <span class="font-body-md text-body-md">Laporan</span>
             </a>
