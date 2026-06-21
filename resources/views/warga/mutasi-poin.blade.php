@@ -2,6 +2,32 @@
 <html lang="id">
 
 <head>
+<<<<<<< HEAD
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>PointWaste - Mutasi Poin</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#004c22",
+                        "primary-container": "#166534",
+                        "background": "#f8f9ff",
+                        "surface": "#ffffff",
+                        "on-surface": "#0b1c30",
+                        "on-surface-variant": "#404940",
+                        "outline-variant": "#bfc9bd",
+                    },
+                    fontFamily: { sans: ["Inter", "sans-serif"] }
+                },
+            },
+=======
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PointWaste - Mutasi Poin</title>
@@ -25,6 +51,7 @@
           fontFamily: {
             poppins: ['Poppins', 'sans-serif'],
           }
+>>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
         }
       }
     }
@@ -68,6 +95,20 @@
           </div>
         </div>
 
+<<<<<<< HEAD
+        <div class="border-t border-gray-100 pt-5 space-y-4">
+            <div class="flex items-center gap-3 px-1">
+                <img class="w-10 h-10 rounded-full object-cover border" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" alt="Avatar">
+                <div>
+                    <h4 class="text-sm font-semibold text-on-surface leading-tight">{{ Auth::user()->name ?? 'Budi Santoso' }}</h4>
+                    <span class="text-xs text-gray-400">Warga RT 01</span>
+                </div>
+            </div>
+            <a href="#" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-200 text-gray-700 bg-gray-50 hover:bg-gray-100 font-medium rounded-xl text-xs transition-all">
+                <span class="material-symbols-outlined icon-unfilled text-[18px]">logout</span>
+                Logout
+            </a>
+=======
         <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
           <div class="flex items-center space-x-1.5">
             <div class="w-1.5 h-3 bg-emerald-600 rounded-full"></div>
@@ -75,6 +116,7 @@
           </div>
           <p class="text-2xl font-bold text-slate-800 mt-1">+2.840</p>
           <p class="text-[10px] text-slate-400 mt-4">Dari 14 setoran sampah anorganik</p>
+>>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
         </div>
 
         <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
@@ -94,6 +136,37 @@
                     <div class="text-xs text-gray-400 font-medium">Dari {{ $totalAktivitasMasuk ?? 3 }} aktivitas masuk</div>
                 </div>
 
+<<<<<<< HEAD
+                <div class="bg-surface p-6 rounded-2xl border border-gray-100 shadow-sm space-y-3 relative overflow-hidden before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1.5 before:bg-red-500">
+                    <span class="text-xs font-medium text-gray-400 block tracking-wide">Poin Digunakan ({{ $bulanSekarang ?? 'Juni' }})</span>
+                    <div class="flex items-baseline gap-1.5">
+                        <span class="text-3xl font-bold text-on-surface">-{{ number_format($poinKeluar ?? 850, 0, ',', '.') }}</span>
+                    </div>
+                    <div class="text-xs text-gray-400 font-medium">Digunakan untuk iuran RT</div>
+                </div>
+            </section>
+
+            <section class="bg-surface rounded-2xl border border-gray-100 shadow-sm overflow-hidden flex flex-col">
+                <div class="p-4 border-b border-gray-50 flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="flex items-center gap-2 px-3 py-2 border border-gray-200 rounded-xl text-xs font-medium text-gray-600 bg-gray-50/50">
+                            <span class="material-symbols-outlined icon-unfilled text-[18px]">calendar_today</span>
+                            <span>{{ $bulanSekarang ?? 'Juni' }} 2026</span>
+                        </div>
+
+                        <div class="relative inline-block text-left">
+                            <select x-model="kategoriFilter" class="appearance-none pl-4 pr-10 py-2 border border-gray-200 rounded-xl text-xs font-bold text-on-surface bg-gray-50/50 focus:ring-emerald-500 focus:border-emerald-500 cursor-pointer outline-none">
+                                <option value="semua">Semua Kategori</option>
+                                <option value="setoran">Setoran</option>
+                                <option value="iuran">Iuran</option>
+                                <option value="bonus">Bonus</option>
+                            </select>
+                            <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 text-[18px]">expand_more</span>
+                        </div>
+                    </div>
+
+          <a href="{{ route('warga.mutasi-poin.ekspor-pdf') }}" class="inline-flex items-center space-x-1.5 border border-[#15803D] text-[#15803D] hover:bg-emerald-50 px-4 py-2 rounded-xl text-xs font-semibold transition-colors">
+=======
       <div class="bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
         
         <div class="p-5 border-b border-slate-100 flex flex-wrap gap-3 items-center justify-between">
@@ -118,6 +191,7 @@
           </div>
 
           <button class="inline-flex items-center space-x-1.5 border border-[#15803D] text-[#15803D] hover:bg-emerald-50 px-4 py-2 rounded-xl text-xs font-semibold transition-colors">
+>>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
             <span>▲</span>
             <span>Ekspor Laporan</span>
           </button>
@@ -199,6 +273,18 @@
           </table>
         </div>
 
+<<<<<<< HEAD
+        @if($riwayatMutasi->hasPages())
+          <div class="p-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400 font-medium">
+            <div>
+              Menampilkan {{ $riwayatMutasi->firstItem() }}-{{ $riwayatMutasi->lastItem() }} dari {{ $riwayatMutasi->total() }} transaksi
+            </div>
+            <div>
+              {{ $riwayatMutasi->links() }}
+            </div>
+          </div>
+        @endif
+=======
         <div class="p-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400 font-medium">
           <div>
             Menampilkan 1-5 dari 24 transaksi
@@ -213,6 +299,7 @@
             <button class="p-1 px-2 rounded-md hover:bg-slate-50 text-slate-600">›</button>
           </div>
         </div>
+>>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
 
       </div>
 

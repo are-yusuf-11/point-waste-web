@@ -121,8 +121,17 @@
             <p class="font-label-md text-label-md text-on-surface-variant">Sustainable Community</p>
         </div>
         <nav class="flex-1 space-y-sm">
+<<<<<<< HEAD
+<<<<<<< HEAD
+            <a class="flex items-center gap-md bg-secondary-container text-primary font-semibold rounded-lg px-md py-sm transition-all opacity-80 scale-95" href="/dashboard-pengurus-test">
+=======
+            <!-- Dashboard (Active) -->
+            <a class="flex items-center gap-md bg-secondary-container text-primary font-semibold rounded-lg px-md py-sm transition-all opacity-80 scale-95" href="{{ route('pengurus-rt.dashboard') }}">
+>>>>>>> be2db534ee81329bdc96731711d718b5391e7324
+=======
             <!-- Dashboard (Active) -->
             <a class="flex items-center gap-md bg-secondary-container text-primary font-semibold rounded-lg px-md py-sm transition-all opacity-80 scale-95" href="#">
+>>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
                 <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
                 <span class="font-body-md text-body-md">Dashboard</span>
             </a>

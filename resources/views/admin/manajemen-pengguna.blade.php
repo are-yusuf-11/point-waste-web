@@ -171,6 +171,25 @@
             <p class="text-xs text-gray-400 mt-0.5">Admin Portal</p>
         </div>
         <nav class="flex flex-col gap-sm">
+<<<<<<< HEAD
+            <a class="flex items-center gap-md text-secondary px-md py-sm hover:bg-secondary-container/50 transition-colors cursor-pointer active:scale-95 duration-200" href="{{ route('admin.dashboard') }}">
+                <span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+            <a class="flex items-center gap-md bg-secondary-container text-primary rounded-lg px-md py-sm cursor-pointer active:scale-95 duration-200" href="{{ route('admin.manajemen-pengguna') }}">
+                <span class="material-symbols-outlined">group</span>
+                User Management
+            </a>
+            <a class="flex items-center gap-md text-secondary px-md py-sm hover:bg-secondary-container/50 transition-colors cursor-pointer active:scale-95 duration-200" href="{{ route('admin.kategori-sampah') }}">
+                <span class="material-symbols-outlined">recycling</span>
+                Waste Categories
+            </a>
+            <a class="flex items-center gap-md text-secondary px-md py-sm hover:bg-secondary-container/50 transition-colors cursor-pointer active:scale-95 duration-200" href="{{ route('admin.monitoring-sistem') }}">
+                <span class="material-symbols-outlined">analytics</span>
+                <span class="font-body-md text-body-md">Monitoring Sistem</span>
+            </a>
+            <a class="flex items-center gap-md text-secondary px-md py-sm hover:bg-secondary-container/50 transition-colors cursor-pointer active:scale-95 duration-200" href="{{ route('admin.konfigurasi') }}">
+=======
             <a class="flex items-center gap-md text-secondary px-md py-sm hover:bg-secondary-container/50 transition-colors cursor-pointer active:scale-95 duration-200" href="#">
                 <span class="material-symbols-outlined">dashboard</span>
                 Dashboard
@@ -188,6 +207,7 @@
                 <span class="font-body-md text-body-md">Monitoring Sistem</span>
             </a>
             <a class="flex items-center gap-md text-secondary px-md py-sm hover:bg-secondary-container/50 transition-colors cursor-pointer active:scale-95 duration-200" href="#">
+>>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
                 <span class="material-symbols-outlined">settings</span>
                 System Configuration
             </a>
@@ -299,6 +319,118 @@
                 <!-- Table Content -->
                 <div class="table-container overflow-x-auto">
                     <table class="w-full text-left border-collapse">
+<<<<<<< HEAD
+    <thead>
+        <tr class="border-b border-outline-variant font-label-lg text-on-surface-variant bg-surface-container-low">
+            <th class="px-lg py-md font-semibold">Nama Pengguna</th>
+            <th class="px-lg py-md font-semibold">Kontak & Alamat</th>
+            <th class="px-lg py-md font-semibold">Wilayah RT</th>
+            <th class="px-lg py-md font-semibold">Peran</th>
+            <th class="px-lg py-md font-semibold">Status</th> {{-- Kolom Status Mandiri --}}
+            <th class="px-lg py-md font-semibold text-right">Aksi</th> {{-- Kolom Aksi Mandiri --}}
+        </tr>
+    </thead>
+    <tbody class="divide-y divide-outline-variant font-body-md text-on-surface">
+        @foreach($users as $user)
+        <tr class="hover:bg-surface-container-low transition-colors">
+            <td class="px-lg py-md">
+                <div class="flex items-center gap-md">
+                    <img alt="Avatar" class="h-10 w-10 rounded-full object-cover" 
+                        src="{{ $user->foto ? asset('storage/' . $user->foto) : 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80' }}" />
+                    <div>
+                        <p class="font-bold text-slate-900">{{ $user->nama }}</p>
+                        <p class="text-xs text-slate-500">{{ $user->email }}</p>
+                    </div>
+                </div>
+            </td>
+            
+            <td class="px-lg py-md">
+                <p class="text-slate-700 font-medium">{{ $user->no_hp ?? '-' }}</p>
+                <p class="text-xs text-slate-400 max-w-[200px] truncate" title="{{ $user->alamat }}">{{ $user->alamat ?? '-' }}</p>
+            </td>
+            
+            <td class="px-lg py-md font-medium text-slate-600">
+                @if($user->rt)
+                    RT {{ $user->rt->no_rt }} - {{ $user->rt->kelurahan }}
+                @else
+                    <span class="text-outline italic text-xs">Tidak Ada Wilayah</span>
+                @endif
+            </td>
+            
+            <td class="px-lg py-md">
+                @if(str_contains(strtolower($user->role), 'admin'))
+                    <span class="px-3 py-1 bg-error-container text-error rounded-full text-xs font-bold capitalize">Admin</span>
+                @elseif(str_contains(strtolower($user->role), 'pengurus'))
+                    <span class="px-3 py-1 bg-tertiary-fixed text-tertiary rounded-full text-xs font-bold capitalize">Pengurus RT</span>
+                @else
+                    <span class="px-3 py-1 bg-primary-container/20 text-primary rounded-full text-xs font-bold capitalize">Warga</span>
+                @endif
+            </td>
+            
+            <td class="px-lg py-md">
+                @if(str_contains(strtolower($user->role), 'admin'))
+                    {{-- Status Admin: Hanya teks badge statis --}}
+                    @if($user->status)
+                        <span class="h-8 inline-flex items-center gap-1 px-3 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full text-xs font-bold opacity-75 cursor-not-allowed">
+                            <span class="material-symbols-outlined text-sm">check_circle</span>
+                            Aktif
+                        </span>
+                    @else
+                        <span class="h-8 inline-flex items-center gap-1 px-3 bg-rose-50 text-rose-700 border border-rose-200 rounded-full text-xs font-bold opacity-75 cursor-not-allowed">
+                            <span class="material-symbols-outlined text-sm">cancel</span>
+                            Nonaktif
+                        </span>
+                    @endif
+                @else
+                    {{-- Status Warga/Pengurus: Tombol Sakelar Interaktif --}}
+                    <form action="{{ route('admin.manajemen-pengguna.toggle-status', $user->id_user) }}" method="POST" class="inline">
+                        @csrf
+                        @method('PATCH')
+                        
+                        @if($user->status)
+                            <button type="submit" class="h-8 flex items-center gap-1 px-3 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full text-xs font-bold hover:bg-rose-50 hover:text-rose-600 hover:border-rose-200 transition-colors" title="Klik untuk menonaktifkan pengguna">
+                                <span class="material-symbols-outlined text-sm">check_circle</span>
+                                Aktif
+                            </button>
+                        @else
+                            <button type="submit" class="h-8 flex items-center gap-1 px-3 bg-rose-50 text-rose-700 border border-rose-200 rounded-full text-xs font-bold hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-200 transition-colors" title="Klik untuk mengaktifkan pengguna">
+                                <span class="material-symbols-outlined text-sm">cancel</span>
+                                Nonaktif
+                            </button>
+                        @endif
+                    </form>
+                @endif
+            </td>
+            
+            <td class="px-lg py-md text-right">
+                <div class="flex items-center justify-end gap-sm">
+                    <a href="{{ route('admin.manajemen-pengguna.edit', $user->id_user) }}" 
+                       class="h-8 w-8 flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-full transition-colors" 
+                       title="Edit">
+                        <span class="material-symbols-outlined text-md">edit</span>
+                    </a>
+
+                    @if(!str_contains(strtolower($user->role), 'admin'))
+                        <form action="{{ route('admin.manajemen-pengguna.destroy', $user->id_user) }}" 
+                              method="POST" 
+                              onsubmit="return confirm('Apakah Anda yakin ingin menghapus pengguna ini?');"
+                              class="inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" 
+                                    class="h-8 w-8 flex items-center justify-center text-on-surface-variant hover:text-error hover:bg-error-container/20 rounded-full transition-colors" 
+                                    title="Hapus">
+                                <span class="material-symbols-outlined text-md">delete</span>
+                            </button>
+                        </form>
+                    @endif
+                </div>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+=======
                         <thead class="bg-secondary-container/30">
                             <tr>
                                 <th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">Nama Pengguna</th>
@@ -416,6 +548,7 @@
                             </tr>
                         </tbody>
                     </table>
+>>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
                 </div>
                 <!-- Pagination footer -->
                 <div class="p-md flex items-center justify-between border-t border-outline-variant bg-surface-container-low/30">

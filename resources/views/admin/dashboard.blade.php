@@ -43,6 +43,63 @@
 </style>
 </head>
 
+<<<<<<< HEAD
+<div class="flex min-h-screen">
+
+  <!-- SIDEBAR -->
+  <aside class="fixed left-0 top-0 h-screen w-64 bg-white border-r border-gray-200 flex flex-col">
+    <div class="px-6 py-6">
+      <h1 class="text-xl font-extrabold text-primary leading-tight">PointWaste</h1>
+      <p class="text-xs text-gray-400 mt-0.5">Admin Portal</p>
+    </div>
+
+    <nav class="flex-1 px-3 mt-2 space-y-1">
+      <a href="#" class="active-nav flex items-center gap-3 rounded-lg px-3 py-2.5 bg-primary-soft text-primary font-semibold text-sm">
+        <span class="material-symbols-outlined">dashboard</span>
+        Dashboard
+      </a>
+      <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700 text-sm font-medium transition-colors">
+        <span class="material-symbols-outlined">group</span>
+        User Management
+      </a>
+      <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700 text-sm font-medium transition-colors">
+        <span class="material-symbols-outlined">recycling</span>
+        Waste Categories
+      </a>
+      <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700 text-sm font-medium transition-colors">
+        <span class="material-symbols-outlined">monitoring</span>
+        System Monitoring
+      </a>
+      <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700 text-sm font-medium transition-colors">
+        <span class="material-symbols-outlined">settings</span>
+        System Configuration
+      </a>
+    </nav>
+
+    <div class="px-3 pb-6 mt-auto">
+      <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-red-500 hover:bg-red-50 text-sm font-medium transition-colors">
+        <span class="material-symbols-outlined">logout</span>
+        Logout
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="flex-1 ml-64 flex flex-col">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-30 h-16 bg-white/90 backdrop-blur border-b border-gray-200 flex items-center justify-end px-8 gap-5">
+      <button class="p-2 rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors">
+        <span class="material-symbols-outlined">notifications</span>
+      </button>
+      <button class="p-2 rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors">
+        <span class="material-symbols-outlined">help</span>
+      </button>
+      <div class="flex items-center gap-3 pl-4 border-l border-gray-200">
+        <div class="text-right">
+          <p class="text-sm font-semibold text-gray-800 leading-tight">Budi Santoso</p>
+          <p class="text-[11px] text-primary font-bold uppercase tracking-wide leading-tight">Super Admin</p>
+=======
 <body class="text-on-surface">
     <!-- SideNavBar Shell -->
     <aside class="w-sidebar-width h-screen fixed left-0 top-0 bg-surface-container-lowest border-r border-outline-variant flex flex-col p-md z-50">
@@ -100,10 +157,31 @@
                 <input class="w-full pl-10 pr-4 py-1.5 bg-surface-container text-body-md border-none rounded-full focus:ring-2 focus:ring-primary" placeholder="Search system logs..." type="text" />
             </div>
             <h2 class="font-headline-md text-headline-md font-extrabold text-primary">PointWaste Admin</h2>
+>>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
         </div>
         <img src="https://i.pravatar.cc/80?img=12" alt="Avatar Budi Santoso" class="w-10 h-10 rounded-full object-cover border border-gray-200" />
       </div>
     </header>
+<<<<<<< HEAD
+
+    <!-- CONTENT -->
+    <main class="flex-1 px-8 py-7 max-w-[1280px] w-full">
+
+      <!-- Page title -->
+      <div class="mb-7">
+        <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2">Selamat Datang Atmin <span>👋</span></h2>
+        <p class="text-gray-500 mt-1 text-sm">Mari kelola efisiensi pengelolaan sampah hari ini</p>
+      </div>
+
+      <!-- Top 3 cards -->
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-7">
+
+        <!-- Nilai Tukar Poin -->
+        <div class="bg-white border border-gray-200 rounded-xl p-5">
+          <div class="flex items-center gap-2.5 mb-2">
+            <div class="w-9 h-9 rounded-lg bg-primary-soft flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined" style="font-size:18px;">payments</span>
+=======
     <!-- Main Content Canvas -->
     <main class="ml-sidebar-width p-lg max-w-[1280px] mx-auto min-h-screen">
         <!-- Header Section -->
@@ -121,7 +199,23 @@
                     <span class="text-primary font-bold text-sm mb-2 flex items-center"><span class="material-symbols-outlined text-sm" data-icon="arrow_upward">arrow_upward</span> 4.2%</span>
                 </div>
                 <p class="text-xs text-on-surface-variant mt-2 italic">Global platform count</p>
+>>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
             </div>
+            <h3 class="font-bold text-gray-800 text-sm">Nilai Tukar Poin</h3>
+          </div>
+          <p class="text-xs text-gray-500 mb-4 leading-relaxed">Atur berapa nilai Rupiah yang didapatkan warga untuk setiap 1 poin sampah.</p>
+          <label class="text-xs font-semibold text-gray-600 mb-1.5 block">1 Poin = ... Rupiah</label>
+          <div class="flex items-center rounded-lg border border-gray-300 overflow-hidden focus-within:ring-2 focus-within:ring-primary/30 focus-within:border-primary">
+            <span class="px-3 text-sm font-bold text-gray-600 bg-gray-50 border-r border-gray-300 py-2.5">Rp</span>
+            <input type="number" value="0" class="w-full px-3 py-2.5 text-sm outline-none border-none" />
+          </div>
+        </div>
+
+        <!-- Batas Setoran -->
+        <div class="bg-white border border-gray-200 rounded-xl p-5">
+          <div class="flex items-center gap-2.5 mb-2">
+            <div class="w-9 h-9 rounded-lg bg-primary-soft flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined" style="font-size:18px;">scale</span>
             <div class="bg-white p-lg border border-outline-variant rounded-xl flex flex-col gap-xs relative overflow-hidden">
                 <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
                 <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Active RT Units</span>

@@ -2,6 +2,33 @@
 <html lang="id">
 
 <head>
+<<<<<<< HEAD
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>PointWaste - Dashboard Warga</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#004c22",
+                        "primary-container": "#166534",
+                        "background": "#f8f9ff",
+                        "surface": "#ffffff",
+                        "on-surface": "#0b1c30",
+                        "on-surface-variant": "#404940",
+                        "outline-variant": "#bfc9bd",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                    }
+                },
+            },
+=======
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PointWaste - Dashboard</title>
@@ -25,6 +52,7 @@
           fontFamily: {
             poppins: ['Poppins', 'sans-serif'],
           }
+>>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
         }
     </script>
     <style>
@@ -85,6 +113,10 @@
         </div>
     </aside>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
     <div class="flex-1 flex flex-col min-h-screen">
         
         <header class="h-[60px] bg-transparent flex items-center justify-between px-6 mb-4">
@@ -151,8 +183,35 @@
           </div>
         @endif
 
+<<<<<<< HEAD
+            <section class="bg-surface rounded-2xl border border-gray-100 shadow-sm p-6 space-y-6">
+                <h3 class="text-base font-semibold text-on-surface tracking-tight">Notifikasi Terbaru</h3>
+                
+                <div class="space-y-4">
+                    @foreach($notifikasiterbaru as $notif)
+                    <div class="p-4 rounded-xl border flex gap-4 items-start {{ $notif['tipe'] == 'warning' ? 'bg-amber-50/40 border-amber-100' : 'bg-blue-50/40 border-blue-100' }}">
+                        <span class="material-symbols-outlined text-[18px] mt-[2px] {{ $notif['tipe'] == 'warning' ? 'text-amber-600' : 'text-blue-600' }}">info</span>
+                        <div class="space-y-0.5 flex-1">
+                            <h4 class="text-sm font-semibold text-on-surface leading-snug">{{ $notif['judul'] }}</h4>
+                            <p class="text-xs text-gray-500 leading-relaxed max-w-3xl">{{ $notif['pesan'] }}</p>
+                            <span class="text-[10px] text-gray-400 block pt-1">{{ $notif['waktu'] }}</span>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </section>
+
+        </main>
+    </div>
+=======
       </div>
   </main>
+  <x-alert />
+>>>>>>> be2db534ee81329bdc96731711d718b5391e7324
+=======
+      </div>
+  </main>
+>>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
 
 </body>
 </html>
