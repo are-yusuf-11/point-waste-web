@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="id">
-
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PointWaste - Setor Sampah</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -26,13 +26,9 @@
             poppins: ['Poppins', 'sans-serif'],
           }
         }
-    </script>
-    <style>
-        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-        .icon-filled { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-        [x-cloak] { display: none !important; }
-        input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
-    </style>
+      }
+    }
+  </script>
 </head>
 <body class="font-poppins bg-pointwaste-bg text-pointwaste-dark min-h-screen flex">
 
@@ -42,9 +38,7 @@
       
     <x-header />
 
-
     <div class="p-8">
-      
       <div class="bg-white rounded-xl border border-slate-100 shadow-sm p-8 max-w-5xl">
         
         <div class="flex items-center space-x-2 text-slate-800 font-semibold border-b border-slate-100 pb-4 mb-6">
@@ -54,57 +48,47 @@
           <h2 class="text-base font-bold">Form Pengajuan Setor Sampah</h2>
         </div>
 
-        <form class="space-y-6">
+        <form action="{{ route('warga.setor-sampah.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+          @csrf
           
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-            <div class="md:col-span-5 space-y-2">
-              <label class="block text-xs font-medium text-slate-500">Tanggal Setor</label>
-              <div class="relative">
-                <input type="date" class="w-full bg-[#EEF2F6] border-0 text-slate-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-pointwaste-primary appearance-none cursor-pointer">
-              </div>
-            </div>
-
-            <div class="md:col-span-1"></div>
-
-            <div class="md:col-span-6 space-y-2">
-              <label class="block text-xs font-medium text-slate-500">Foto Sampah</label>
-              <label class="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-slate-200 rounded-xl bg-white hover:bg-slate-50 cursor-pointer transition-colors">
-                <div class="flex flex-col items-center justify-center pt-2">
-                  <svg class="w-6 h-6 text-slate-400 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                  </svg>
-                  <p class="text-[10px] text-slate-400">Klik untuk unggah foto</p>
-                </div>
-                <input type="file" class="hidden" accept="image/*" />
-              </label>
-            </div>
-          </div>
-
-          <div class="space-y-3">
-            <label class="block text-xs font-medium text-slate-500">Rincian Sampah</label>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
             
-            <div class="flex items-center space-x-3">
-              <div class="flex-1">
-                <select class="w-full bg-[#EEF2F6] border-0 text-slate-500 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-pointwaste-primary appearance-none cursor-pointer">
-                  <option value="" disabled selected>Pilih Kategori Sampah</option>
-                  <option value="plastik">Plastik (Botol / Ember)</option>
-                  <option value="kertas">Kertas / Kardus</option>
-                  <option value="logam">Logam / Besi</option>
-                </select>
+            <div class="md:col-span-7 space-y-6">
+              
+              <div class="space-y-2">
+                <label class="block text-xs font-medium text-slate-500">Tanggal Setor</label>
+                <input type="date" name="tgl_setor" value="{{ old('tgl_setor', date('Y-m-d')) }}" required class="w-full bg-[#EEF2F6] border-0 text-slate-600 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-pointwaste-primary">
+                @error('tgl_setor') <p class="text-red-600 text-xs mt-1">{{ $message }}</p> @enderror
               </div>
 
-              <div class="w-32 flex items-center bg-[#EEF2F6] rounded-xl px-3 py-3">
-                <input type="number" placeholder="-" class="w-full bg-transparent border-0 text-center text-sm text-slate-700 focus:outline-none focus:ring-0">
-                <span class="text-xs text-slate-400 ml-1 font-medium">kg</span>
-              </div>
+              <div class="space-y-3">
+                <label class="block text-xs font-medium text-slate-500">Rincian Sampah</label>
+                
+                <div id="wrapper-rincian" class="space-y-3">
+                  <div class="flex items-center space-x-3 item-rincian">
+                    <div class="flex-1">
+                      <select name="rincian[0][id_kategori]" required class="select-kategori w-full bg-[#EEF2F6] border-0 text-slate-600 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-pointwaste-primary" onchange="hitungEstimasiPoin()">
+                        <option value="" disabled selected>Pilih Kategori Sampah</option>
+                        @foreach($kategoriSampah as $kat)
+                          <option value="{{ $kat->id_kategori }}" data-poin="{{ $kat->poin_per_kg }}">
+                            {{ $kat->nama_kategori }} ({{ $kat->poin_per_kg }} Poin/kg)
+                          </option>
+                        @endforeach
+                      </select>
+                    </div>
 
-              <button type="button" class="p-2.5 text-red-500 hover:bg-red-50 rounded-xl transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                </svg>
-              </button>
-            </div>
+                    <div class="w-32 flex items-center bg-[#EEF2F6] rounded-xl px-3 py-3">
+                      <input type="number" name="rincian[0][berat_kg]" step="0.1" min="0.1" placeholder="0.0" required class="input-berat w-full bg-transparent border-0 text-center text-sm text-slate-700 focus:ring-0" oninput="hitungEstimasiPoin()">
+                      <span class="text-xs text-slate-400 ml-1 font-medium">kg</span>
+                    </div>
+
+                    <button type="button" onclick="hapusBaris(this)" class="p-2.5 text-red-500 hover:bg-red-50 rounded-xl transition-colors">
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
 
                 <div class="pt-1">
                   <button type="button" onclick="tambahBaris()" class="inline-flex items-center text-xs font-bold text-pointwaste-primary hover:text-emerald-800 transition-colors">
@@ -114,11 +98,6 @@
               </div>
 
             </div>
-            <div class="flex items-center gap-4">
-                <button class="p-2 hover:bg-gray-100 rounded-full relative"><span class="material-symbols-outlined text-[22px]">notifications</span></button>
-                <button class="p-2 hover:bg-gray-100 rounded-full"><span class="material-symbols-outlined text-[22px]">settings</span></button>
-            </div>
-        </header>
 
             <div class="md:col-span-5 space-y-2">
               <label class="block text-xs font-medium text-slate-500">Foto Sampah</label>
@@ -156,23 +135,24 @@
 
           </div>
 
-          <div class="bg-[#EBF5EE] rounded-xl px-5 py-3.5 flex justify-between items-center">
-            <span class="text-xs font-medium text-slate-500">Estimasi Poin</span>
-            <span class="text-sm font-bold text-pointwaste-primary">0 Poin</span>
+          <div class="bg-emerald-50 rounded-xl px-5 py-3.5 flex justify-between items-center">
+            <span class="text-xs font-medium text-slate-500">Estimasi Total Poin didapat</span>
+            <span id="total-estimasi-poin" class="text-sm font-bold text-pointwaste-primary">0 Poin</span>
           </div>
 
           <div class="flex items-center space-x-3 pt-4">
             <button type="submit" class="flex-1 bg-[#064E3B] hover:bg-emerald-950 text-white font-semibold text-sm py-3 px-6 rounded-xl transition-colors text-center">
-              Kirim Pengajuan
+              Kirim Pengajuan Setoran
             </button>
-            <button type="button" class="bg-white border border-slate-200 hover:bg-slate-50 text-slate-600 font-semibold text-sm py-3 px-6 rounded-xl transition-colors min-w-[100px]">
+            <a href="{{ route('warga.dashboard') }}" class="bg-white border border-slate-200 hover:bg-slate-50 text-slate-600 font-semibold text-sm py-3 px-6 rounded-xl transition-colors min-w-[100px] text-center">
               Batal
-            </button>
+            </a>
           </div>
 
         </form>
       </div>
     </div>
+  </main>
 
   <x-alert />
 

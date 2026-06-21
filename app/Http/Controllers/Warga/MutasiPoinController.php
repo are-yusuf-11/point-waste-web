@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MutasiPoin;
 use Carbon\Carbon;
-use Pdf;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class MutasiPoinController extends Controller
 {
