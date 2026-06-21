@@ -165,20 +165,20 @@
             <p class="text-on-surface-variant font-label-md text-label-md opacity-70">Admin Portal</p>
         </div>
         <nav class="flex flex-col gap-2">
-            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-secondary-fixed transition-colors duration-200 rounded-lg" href="#">
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-secondary-fixed transition-colors duration-200 rounded-lg" href="{{ route('pengurus-rt.dashboard') }}">
                 <span class="material-symbols-outlined">dashboard</span>
                 <span class="font-body-md text-body-md">Dashboard</span>
             </a>
-            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-secondary-fixed transition-colors duration-200 rounded-lg" href="#">
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-secondary-fixed transition-colors duration-200 rounded-lg" href="{{ route('pengurus-rt.setor-sampah') }}">
                 <span class="material-symbols-outlined">fact_check</span>
                 <span class="font-body-md text-body-md">Verifikasi Setoran</span>
             </a>
             <!-- Active Tab -->
-            <a class="flex items-center gap-3 px-4 py-3 text-primary bg-secondary-container rounded-lg font-semibold transition-transform active:scale-95" href="#">
+            <a class="flex items-center gap-3 px-4 py-3 text-primary bg-secondary-container rounded-lg font-semibold transition-transform active:scale-95" href="{{ route('pengurus-rt.manajemen-iuran') }}">
                 <span class="material-symbols-outlined">payments</span>
                 <span class="font-body-md text-body-md">Manajemen Iuran</span>
             </a>
-            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-secondary-fixed transition-colors duration-200 rounded-lg" href="#">
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-secondary-fixed transition-colors duration-200 rounded-lg" href="{{ route('pengurus-rt.waste-categories') }}">
                 <span class="material-symbols-outlined">category</span>
                 <span class="font-body-md text-body-md">Kategori Sampah</span>
             </a>

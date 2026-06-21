@@ -172,20 +172,20 @@
             </div>
         </div>
         <nav class="flex-1 space-y-1">
-            <a class="flex items-center gap-3 px-sm py-3 text-secondary hover:bg-surface-container-low transition-colors duration-200 rounded-lg group" href="#">
+            <a class="flex items-center gap-3 px-sm py-3 text-secondary hover:bg-surface-container-low transition-colors duration-200 rounded-lg group" href="{{ route('pengurus-rt.dashboard') }}">
                 <span class="material-symbols-outlined">dashboard</span>
                 <span class="font-body-md">Dashboard</span>
             </a>
-            <a class="flex items-center gap-3 px-sm py-3 text-secondary hover:bg-surface-container-low transition-colors duration-200 rounded-lg group" href="#">
+            <a class="flex items-center gap-3 px-sm py-3 text-secondary hover:bg-surface-container-low transition-colors duration-200 rounded-lg group" href="{{ route('pengurus-rt.setor-sampah') }}">
                 <span class="material-symbols-outlined">fact_check</span>
                 <span class="font-body-md">Verification</span>
             </a>
-            <a class="flex items-center gap-3 px-sm py-3 text-secondary hover:bg-surface-container-low transition-colors duration-200 rounded-lg group" href="#">
+            <a class="flex items-center gap-3 px-sm py-3 text-secondary hover:bg-surface-container-low transition-colors duration-200 rounded-lg group" href="{{ route('pengurus-rt.manajemen-iuran') }}">
                 <span class="material-symbols-outlined">payments</span>
                 <span class="font-body-md">Dues Management</span>
             </a>
             <!-- Active State: Waste Categories (Kategori Sampah) -->
-            <a class="flex items-center gap-3 px-sm py-3 bg-secondary-container text-primary font-semibold rounded-lg" href="#">
+            <a class="flex items-center gap-3 px-sm py-3 bg-secondary-container text-primary font-semibold rounded-lg" href="{{ route('pengurus-rt.waste-categories') }}">
                 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">category</span>
                 <span class="font-body-md">Waste Categories</span>
             </a>
