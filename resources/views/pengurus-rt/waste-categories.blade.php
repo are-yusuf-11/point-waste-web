@@ -162,53 +162,42 @@
 <body class="bg-surface text-on-surface">
     <!-- SideNavBar (Shared Component) -->
     <aside class="w-sidebar-width h-screen fixed left-0 top-0 bg-surface-container-lowest border-r border-outline-variant flex flex-col py-lg px-md h-full z-20">
-        <div class="mb-xl px-sm flex items-center gap-3">
-            <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-on-primary">
-                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">eco</span>
-            </div>
-            <div>
-                <h1 class="font-headline-md text-headline-md font-bold text-primary">WasteAdmin</h1>
-                <p class="font-body-md text-[10px] uppercase tracking-widest text-on-surface-variant opacity-70">SDG 11 Portal</p>
-            </div>
+        <div class="mb-xl px-md">
+            <h1 class="font-headline-md text-headline-md font-bold text-primary">PointWaste</h1>
+            <p class="font-label-md text-label-md text-on-surface-variant">Sustainable Community</p>
+        </div>
         </div>
         <nav class="flex-1 space-y-1">
-            <a class="flex items-center gap-3 px-sm py-3 text-secondary hover:bg-surface-container-low transition-colors duration-200 rounded-lg group" href="{{ route('pengurus-rt.dashboard') }}">
+            <a class="flex items-center gap-3 px-sm py-3 text-secondary hover:bg-surface-container-low transition-colors duration-200 rounded-lg group" href="#">
                 <span class="material-symbols-outlined">dashboard</span>
                 <span class="font-body-md">Dashboard</span>
             </a>
-            <a class="flex items-center gap-3 px-sm py-3 text-secondary hover:bg-surface-container-low transition-colors duration-200 rounded-lg group" href="{{ route('pengurus-rt.setor-sampah') }}">
+            <a class="flex items-center gap-3 px-sm py-3 text-secondary hover:bg-surface-container-low transition-colors duration-200 rounded-lg group" href="#">
                 <span class="material-symbols-outlined">fact_check</span>
                 <span class="font-body-md">Verification</span>
             </a>
-            <a class="flex items-center gap-3 px-sm py-3 text-secondary hover:bg-surface-container-low transition-colors duration-200 rounded-lg group" href="{{ route('pengurus-rt.manajemen-iuran') }}">
+            <a class="flex items-center gap-3 px-sm py-3 text-secondary hover:bg-surface-container-low transition-colors duration-200 rounded-lg group" href="#">
                 <span class="material-symbols-outlined">payments</span>
                 <span class="font-body-md">Dues Management</span>
             </a>
             <!-- Active State: Waste Categories (Kategori Sampah) -->
-            <a class="flex items-center gap-3 px-sm py-3 bg-secondary-container text-primary font-semibold rounded-lg" href="{{ route('pengurus-rt.waste-categories') }}">
+            <a class="flex items-center gap-3 px-sm py-3 bg-secondary-container text-primary font-semibold rounded-lg" href="#">
                 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">category</span>
                 <span class="font-body-md">Waste Categories</span>
             </a>
-            <a class="flex items-center gap-3 px-sm py-3 text-secondary hover:bg-surface-container-low transition-colors duration-200 rounded-lg group" href="#">
-                <span class="material-symbols-outlined">analytics</span>
-                <span class="font-body-md">Reports</span>
+            <a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-low transition-colors duration-200" href="#">
+                <span class="material-symbols-outlined" data-icon="bar_chart">bar_chart</span>
+                <span class="font-body-md text-body-md">Laporan</span>
             </a>
-            <a class="flex items-center gap-3 px-sm py-3 text-secondary hover:bg-surface-container-low transition-colors duration-200 rounded-lg group" href="#">
-                <span class="material-symbols-outlined">account_circle</span>
-                <span class="font-body-md">Profile</span>
+            <a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-low transition-colors duration-200" href="#">
+                <span class="material-symbols-outlined" data-icon="person">person</span>
+                <span class="font-body-md text-body-md">Profil</span>
             </a>
         </nav>
-        <div class="mt-auto border-t border-outline-variant pt-lg flex items-center gap-3 px-sm">
-            <img class="w-10 h-10 rounded-full border-2 border-primary-fixed" data-alt="A professional headshot of a middle-aged male administrator with a friendly expression, wearing a clean white shirt, against a soft blurred office background with subtle green plants, corporate modern photography style, high quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoGwMMgKrU4jBrQiAJ9O79sQ3TyVk8YtGRe3VUUHapjVMCG4Gp9YkslD5jmSQM8HKrksYjtlnuO9UldsLxgiOikU8Kq-f9WazmaUhovRZUJ76kWoCwiCsGzPLzsn-LCUbO7FbFNZLe8YiB_xJA3UhY54E7prS2k6HogYU2JyyCIzqbhWgdRw5mx0-rxvNHsmVl_cCup8l3pNWjL0eTDpRij4JDiF58voSIb6FPYGHm2aeg7B2HuO5tWJiadBr5nIGVN7GLKw0B08Q" />
-            <div class="overflow-hidden">
-                <p class="font-label-md text-on-surface font-bold truncate">RT Administrator</p>
-                <p class="font-label-md text-[10px] text-on-surface-variant">Admin Level 1</p>
-            </div>
-        </div>
     </aside>
     <!-- TopNavBar (Shared Component) -->
     <header class="h-16 fixed top-0 right-0 w-[calc(100%-260px)] z-10 bg-surface-container-lowest border-b border-outline-variant flex items-center justify-between px-lg">
-        <div class="flex items-center bg-surface-container-low px-4 py-2 rounded-full w-96 border border-outline-variant focus-within:ring-2 focus-within:ring-primary-container transition-all">
+        <div class="flex items-center bg-surface-container-low px-1 py-1 rounded-full w-96 border border-outline-variant focus-within:ring-2 focus-within:ring-primary-container transition-all">
             <span class="material-symbols-outlined text-on-surface-variant mr-2">search</span>
             <input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-on-surface-variant/60" placeholder="Cari kategori atau data..." type="text" />
         </div>
@@ -221,300 +210,175 @@
                 <span class="material-symbols-outlined text-secondary">settings</span>
             </button>
             <div class="h-8 w-[1px] bg-outline-variant mx-2"></div>
-            <span class="font-label-md text-primary font-bold">WasteAdmin Portal</span>
+            <div class="flex items-center gap-3 px-sm py-2 border-t border-outline-variant">
+                <img class="w-10 h-10 rounded-full border-2 border-primary-fixed object-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoGwMMgKrU4jBrQiAJ9O79sQ3TyVk8YtGRe3VUUHapjVMCG4Gp9YkslD5jmSQM8HKrksYjtlnuO9UldsLxgiOikU8Kq-f9WazmaUhovRZUJ76kWoCwiCsGzPLzsn-LCUbO7FbFNZLe8YiB_xJA3UhY54E7prS2k6HogYU2JyyCIzqbhWgdRw5mx0-rxvNHsmVl_cCup8l3pNWjL0eTDpRij4JDiF58voSIb6FPYGHm2aeg7B2HuO5tWJiadBr5nIGVN7GLKw0B08Q"
+                    alt="RT Administrator" />
+
+                <div class="flex flex-col justify-center overflow-hidden">
+                    <p class="font-label-md text-on-surface font-bold truncate leading-none">RT Administrator</p>
+                    <p class="font-label-md text-[10px] text-on-surface-variant mt-0.5">Admin Level 1</p>
+                </div>
+            </div>
         </div>
     </header>
     <!-- Main Content Canvas -->
     <main class="ml-sidebar-width pt-16 min-h-screen">
         <div class="max-w-container-max mx-auto p-lg">
-            <!-- Page Header -->
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-xl">
-                <div>
-                    <h2 class="font-headline-lg text-headline-lg text-on-surface">Manajemen Kategori Sampah</h2>
-                    <p class="font-body-lg text-on-surface-variant mt-1">Kelola daftar jenis sampah, bobot poin, dan status operasional sistem.</p>
+            <div id="view-tabel">.
+                <!-- Page Header -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-xl">
+                    <div>
+                        <h2 class="font-headline-lg text-headline-lg text-on-surface">Manajemen Kategori Sampah</h2>
+                        <p class="font-body-lg text-on-surface-variant mt-1">Kelola daftar jenis sampah, bobot poin, dan status operasional sistem.</p>
+                    </div>
+                    <button onclick="toggleForm(true)" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-on-primary rounded-xl font-semibold shadow-sm hover:opacity-90 active:scale-95 transition-all">
+                        <span class="material-symbols-outlined">add_circle</span>
+                        Tambah Kategori Baru
+                    </button>
                 </div>
-                <button class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-on-primary rounded-xl font-semibold shadow-sm hover:opacity-90 active:scale-95 transition-all">
-                    <span class="material-symbols-outlined">add_circle</span>
-                    Tambah Kategori Baru
-                </button>
-            </div>
-            <!-- Statistics Bento Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-lg mb-xl">
-                <div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl stat-card-border group hover:bg-surface-container transition-colors">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-secondary-container rounded-lg flex items-center justify-center text-primary">
-                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+                <!-- Statistics Bento Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Total Kategori</p>
+                        <h3 class="text-4xl font-bold text-gray-900">12</h3>
+                        <div class="flex items-center text-green-700 text-sm mt-2">
+                            <span class="mr-1">📈</span>
+                            <span>+2 Bulan ini</span>
                         </div>
-                        <span class="text-xs font-bold text-primary bg-primary-fixed px-2 py-1 rounded-full">+2 Bulan ini</span>
                     </div>
-                    <p class="font-label-md text-on-surface-variant uppercase tracking-wider mb-1">Total Kategori Aktif</p>
-                    <h3 class="font-headline-lg text-headline-lg text-on-surface font-black">12 <span class="text-lg font-normal text-on-surface-variant">Jenis</span></h3>
-                </div>
-                <div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl stat-card-border group hover:bg-surface-container transition-colors">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-secondary-container rounded-lg flex items-center justify-center text-primary">
-                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">loyalty</span>
+
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Rata-rata Poin / Kg</p>
+                        <h3 class="text-4xl font-bold text-gray-900">1,250</h3>
+                        <p class="text-sm text-gray-500 mt-2">Poin dasar komoditas global</p>
+                    </div>
+
+                    <div class="bg-primary p-6 rounded-xl shadow-sm text-white">
+                        <p class="text-xs font-semibold text-green-100 uppercase tracking-wider mb-2">Efisiensi Waste-To-Point</p>
+                        <h3 class="text-4xl font-bold">94.2%</h3>
+                        <div class="flex items-center text-green-100 text-sm mt-2">
+                            <span>Optimal ✅</span>
                         </div>
-                        <span class="text-xs font-bold text-on-tertiary-fixed-variant bg-tertiary-fixed px-2 py-1 rounded-full">Stabil</span>
                     </div>
-                    <p class="font-label-md text-on-surface-variant uppercase tracking-wider mb-1">Rata-rata Poin/Kg</p>
-                    <h3 class="font-headline-lg text-headline-lg text-on-surface font-black">850 <span class="text-lg font-normal text-on-surface-variant">Poin</span></h3>
+
                 </div>
-                <div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl stat-card-border group hover:bg-surface-container transition-colors">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-12 h-12 bg-secondary-container rounded-lg flex items-center justify-center text-primary">
-                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+                <!-- Table Container -->
+                <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden mt-6">
+                    <div class="p-6 border-b border-gray-100 flex justify-between items-center">
+                        <h3 class="text-lg font-bold text-gray-800">Daftar Master Kategori</h3>
+                        <div class="flex gap-2">
+                            <button class="px-4 py-2 border border-gray-200 rounded-lg text-sm font-medium hover:bg-gray-50 text-gray-600">Filter</button>
+                            <button class="px-4 py-2 border border-gray-200 rounded-lg text-sm font-medium hover:bg-gray-50 text-gray-600">Ekspor</button>
                         </div>
-                        <span class="text-xs font-bold text-on-primary-fixed-variant bg-primary-fixed px-2 py-1 rounded-full">Organik</span>
                     </div>
-                    <p class="font-label-md text-on-surface-variant uppercase tracking-wider mb-1">Paling Sering Disetor</p>
-                    <h3 class="font-headline-lg text-headline-lg text-on-surface font-black">45.2 <span class="text-lg font-normal text-on-surface-variant">kg/minggu</span></h3>
-                </div>
-            </div>
-            <!-- Table Container -->
-            <div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
-                <div class="px-lg py-4 border-b border-outline-variant flex items-center justify-between bg-surface-container-low/30">
-                    <h4 class="font-title-lg text-on-surface">Daftar Kategori Sampah</h4>
-                    <div class="flex gap-2">
-                        <button class="p-2 hover:bg-surface-container-low rounded-lg transition-colors border border-outline-variant">
-                            <span class="material-symbols-outlined text-secondary">filter_list</span>
-                        </button>
-                        <button class="p-2 hover:bg-surface-container-low rounded-lg transition-colors border border-outline-variant">
-                            <span class="material-symbols-outlined text-secondary">download</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="overflow-x-auto">
+
                     <table class="w-full text-left border-collapse">
                         <thead>
-                            <tr class="bg-secondary-container/30 border-b border-outline-variant">
-                                <th class="px-lg py-4 font-label-md text-on-secondary-container uppercase tracking-widest">Nama Kategori</th>
-                                <th class="px-lg py-4 font-label-md text-on-secondary-container uppercase tracking-widest text-center">Visual/Warna</th>
-                                <th class="px-lg py-4 font-label-md text-on-secondary-container uppercase tracking-widest">Poin per Kg</th>
-                                <th class="px-lg py-4 font-label-md text-on-secondary-container uppercase tracking-widest">Status</th>
-                                <th class="px-lg py-4 font-label-md text-on-secondary-container uppercase tracking-widest text-right">Aksi</th>
+                            <tr class="text-xs text-gray-400 uppercase tracking-wider bg-gray-50">
+                                <th class="px-6 py-4">Kategori</th>
+                                <th class="px-6 py-4">Kode</th>
+                                <th class="px-6 py-4">Bobot Poin (Per Kg)</th>
+                                <th class="px-6 py-4">Status</th>
+                                <th class="px-6 py-4 text-center">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-outline-variant">
-                            <!-- Plastic PET -->
-                            <tr class="hover:bg-surface-container-low/50 transition-colors">
-                                <td class="px-lg py-5">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600">
-                                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">water_bottle</span>
-                                        </div>
-                                        <div>
-                                            <p class="font-body-lg font-semibold text-on-surface">Plastic PET</p>
-                                            <p class="font-label-md text-on-surface-variant">Botol mineral, wadah plastik bening</p>
-                                        </div>
-                                    </div>
+                        <tbody class="divide-y divide-gray-100">
+                            <tr>
+                                <td class="px-6 py-4 flex items-center gap-3">
+                                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-xl">♻️</div>
+                                    <span class="font-semibold text-gray-800">Plastik (PET/HDPE)</span>
                                 </td>
-                                <td class="px-lg py-5 text-center">
-                                    <div class="flex justify-center">
-                                        <div class="w-6 h-6 rounded-full bg-blue-500 ring-4 ring-blue-100"></div>
-                                    </div>
-                                </td>
-                                <td class="px-lg py-5">
-                                    <div class="flex items-center gap-1 font-title-lg text-primary">
-                                        <span>1.200</span>
-                                        <span class="text-xs font-normal text-on-surface-variant">pts</span>
-                                    </div>
-                                </td>
-                                <td class="px-lg py-5">
-                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant text-xs font-bold">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Aktif
-                                    </span>
-                                </td>
-                                <td class="px-lg py-5 text-right">
-                                    <div class="flex justify-end gap-2">
-                                        <button class="w-9 h-9 flex items-center justify-center rounded-lg border border-outline-variant text-secondary hover:bg-secondary-container/50 hover:text-primary transition-all">
-                                            <span class="material-symbols-outlined text-[20px]">edit</span>
-                                        </button>
-                                        <button class="w-9 h-9 flex items-center justify-center rounded-lg border border-outline-variant text-error hover:bg-error-container/50 transition-all">
-                                            <span class="material-symbols-outlined text-[20px]">delete</span>
-                                        </button>
-                                    </div>
-                                </td>
+                                <td class="px-6 py-4"><span class="bg-blue-50 text-blue-600 px-2 py-1 rounded text-xs font-medium">PL-01</span></td>
+                                <td class="px-6 py-4 font-bold text-gray-800">1,500 <span class="text-gray-500 font-normal">Poin</span> <span class="bg-green-100 text-green-700 text-[10px] px-1 rounded ml-1">+5%</span></td>
+                                <td class="px-6 py-4"><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium">● Aktif</span></td>
+                                <td class="px-6 py-4 text-center text-gray-400">✎ &nbsp; 🗑️</td>
                             </tr>
-                            <!-- Paper/Cardboard -->
-                            <tr class="hover:bg-surface-container-low/50 transition-colors">
-                                <td class="px-lg py-5">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-orange-50 flex items-center justify-center text-orange-600">
-                                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
-                                        </div>
-                                        <div>
-                                            <p class="font-body-lg font-semibold text-on-surface">Paper/Cardboard</p>
-                                            <p class="font-label-md text-on-surface-variant">Kardus, koran, majalah, kertas HVS</p>
-                                        </div>
-                                    </div>
+                            <tr>
+                                <td class="px-6 py-4 flex items-center gap-3">
+                                    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-xl">📄</div>
+                                    <span class="font-semibold text-gray-800">Kertas & Karton</span>
                                 </td>
-                                <td class="px-lg py-5 text-center">
-                                    <div class="flex justify-center">
-                                        <div class="w-6 h-6 rounded-full bg-orange-400 ring-4 ring-orange-100"></div>
-                                    </div>
-                                </td>
-                                <td class="px-lg py-5">
-                                    <div class="flex items-center gap-1 font-title-lg text-primary">
-                                        <span>800</span>
-                                        <span class="text-xs font-normal text-on-surface-variant">pts</span>
-                                    </div>
-                                </td>
-                                <td class="px-lg py-5">
-                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant text-xs font-bold">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Aktif
-                                    </span>
-                                </td>
-                                <td class="px-lg py-5 text-right">
-                                    <div class="flex justify-end gap-2">
-                                        <button class="w-9 h-9 flex items-center justify-center rounded-lg border border-outline-variant text-secondary hover:bg-secondary-container/50 hover:text-primary transition-all">
-                                            <span class="material-symbols-outlined text-[20px]">edit</span>
-                                        </button>
-                                        <button class="w-9 h-9 flex items-center justify-center rounded-lg border border-outline-variant text-error hover:bg-error-container/50 transition-all">
-                                            <span class="material-symbols-outlined text-[20px]">delete</span>
-                                        </button>
-                                    </div>
-                                </td>
+                                <td class="px-6 py-4"><span class="bg-blue-50 text-blue-600 px-2 py-1 rounded text-xs font-medium">KR-02</span></td>
+                                <td class="px-6 py-4 font-bold text-gray-800">800 <span class="text-gray-500 font-normal">Poin</span></td>
+                                <td class="px-6 py-4"><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium">● Aktif</span></td>
+                                <td class="px-6 py-4 text-center text-gray-400">✎ &nbsp; 🗑️</td>
                             </tr>
-                            <!-- Metal -->
-                            <tr class="hover:bg-surface-container-low/50 transition-colors">
-                                <td class="px-lg py-5">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-zinc-100 flex items-center justify-center text-zinc-600">
-                                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">iron</span>
-                                        </div>
-                                        <div>
-                                            <p class="font-body-lg font-semibold text-on-surface">Metal</p>
-                                            <p class="font-label-md text-on-surface-variant">Kaleng soda, besi tua, alumunium</p>
-                                        </div>
-                                    </div>
+                            <tr>
+                                <td class="px-6 py-4 flex items-center gap-3">
+                                    <div class="w-10 h-10 bg-stone-100 rounded-lg flex items-center justify-center text-xl">🍾</div>
+                                    <span class="font-semibold text-gray-800">Kaca</span>
                                 </td>
-                                <td class="px-lg py-5 text-center">
-                                    <div class="flex justify-center">
-                                        <div class="w-6 h-6 rounded-full bg-zinc-500 ring-4 ring-zinc-200"></div>
-                                    </div>
-                                </td>
-                                <td class="px-lg py-5">
-                                    <div class="flex items-center gap-1 font-title-lg text-primary">
-                                        <span>2.500</span>
-                                        <span class="text-xs font-normal text-on-surface-variant">pts</span>
-                                    </div>
-                                </td>
-                                <td class="px-lg py-5">
-                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant text-xs font-bold">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Aktif
-                                    </span>
-                                </td>
-                                <td class="px-lg py-5 text-right">
-                                    <div class="flex justify-end gap-2">
-                                        <button class="w-9 h-9 flex items-center justify-center rounded-lg border border-outline-variant text-secondary hover:bg-secondary-container/50 hover:text-primary transition-all">
-                                            <span class="material-symbols-outlined text-[20px]">edit</span>
-                                        </button>
-                                        <button class="w-9 h-9 flex items-center justify-center rounded-lg border border-outline-variant text-error hover:bg-error-container/50 transition-all">
-                                            <span class="material-symbols-outlined text-[20px]">delete</span>
-                                        </button>
-                                    </div>
-                                </td>
+                                <td class="px-6 py-4"><span class="bg-blue-50 text-blue-600 px-2 py-1 rounded text-xs font-medium">KC-03</span></td>
+                                <td class="px-6 py-4 font-bold text-gray-800">500 <span class="text-gray-500 font-normal">Poin</span></td>
+                                <td class="px-6 py-4"><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium">● Aktif</span></td>
+                                <td class="px-6 py-4 text-center text-gray-400">✎ &nbsp; 🗑️</td>
                             </tr>
-                            <!-- Organic -->
-                            <tr class="hover:bg-surface-container-low/50 transition-colors">
-                                <td class="px-lg py-5">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-green-50 flex items-center justify-center text-green-700">
-                                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">compost</span>
-                                        </div>
-                                        <div>
-                                            <p class="font-body-lg font-semibold text-on-surface">Organic</p>
-                                            <p class="font-label-md text-on-surface-variant">Sisa makanan, dedaunan, sampah dapur</p>
-                                        </div>
-                                    </div>
+                            <tr>
+                                <td class="px-6 py-4 flex items-center gap-3">
+                                    <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-xl">🥫</div>
+                                    <span class="font-semibold text-gray-800">Logam</span>
                                 </td>
-                                <td class="px-lg py-5 text-center">
-                                    <div class="flex justify-center">
-                                        <div class="w-6 h-6 rounded-full bg-green-600 ring-4 ring-green-100"></div>
-                                    </div>
-                                </td>
-                                <td class="px-lg py-5">
-                                    <div class="flex items-center gap-1 font-title-lg text-primary">
-                                        <span>300</span>
-                                        <span class="text-xs font-normal text-on-surface-variant">pts</span>
-                                    </div>
-                                </td>
-                                <td class="px-lg py-5">
-                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant text-xs font-bold">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Aktif
-                                    </span>
-                                </td>
-                                <td class="px-lg py-5 text-right">
-                                    <div class="flex justify-end gap-2">
-                                        <button class="w-9 h-9 flex items-center justify-center rounded-lg border border-outline-variant text-secondary hover:bg-secondary-container/50 hover:text-primary transition-all">
-                                            <span class="material-symbols-outlined text-[20px]">edit</span>
-                                        </button>
-                                        <button class="w-9 h-9 flex items-center justify-center rounded-lg border border-outline-variant text-error hover:bg-error-container/50 transition-all">
-                                            <span class="material-symbols-outlined text-[20px]">delete</span>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <!-- Electronic Waste -->
-                            <tr class="hover:bg-surface-container-low/50 transition-colors">
-                                <td class="px-lg py-5">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-red-50 flex items-center justify-center text-red-600">
-                                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">devices</span>
-                                        </div>
-                                        <div>
-                                            <p class="font-body-lg font-semibold text-on-surface">Electronic Waste</p>
-                                            <p class="font-label-md text-on-surface-variant">Baterai, kabel, komponen PC, HP rusak</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-lg py-5 text-center">
-                                    <div class="flex justify-center">
-                                        <div class="w-6 h-6 rounded-full bg-red-500 ring-4 ring-red-100"></div>
-                                    </div>
-                                </td>
-                                <td class="px-lg py-5">
-                                    <div class="flex items-center gap-1 font-title-lg text-primary">
-                                        <span>5.000</span>
-                                        <span class="text-xs font-normal text-on-surface-variant">pts</span>
-                                    </div>
-                                </td>
-                                <td class="px-lg py-5">
-                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-on-surface-variant text-xs font-bold opacity-60">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-on-surface-variant"></span> Non-aktif
-                                    </span>
-                                </td>
-                                <td class="px-lg py-5 text-right">
-                                    <div class="flex justify-end gap-2">
-                                        <button class="w-9 h-9 flex items-center justify-center rounded-lg border border-outline-variant text-secondary hover:bg-secondary-container/50 hover:text-primary transition-all">
-                                            <span class="material-symbols-outlined text-[20px]">edit</span>
-                                        </button>
-                                        <button class="w-9 h-9 flex items-center justify-center rounded-lg border border-outline-variant text-error hover:bg-error-container/50 transition-all">
-                                            <span class="material-symbols-outlined text-[20px]">delete</span>
-                                        </button>
-                                    </div>
-                                </td>
+                                <td class="px-6 py-4"><span class="bg-blue-50 text-blue-600 px-2 py-1 rounded text-xs font-medium">LG-04</span></td>
+                                <td class="px-6 py-4 font-bold text-gray-800">3,000 <span class="text-gray-500 font-normal">Poin</span></td>
+                                <td class="px-6 py-4"><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium">● Aktif</span></td>
+                                <td class="px-6 py-4 text-center text-gray-400">✎ &nbsp; 🗑️</td>
                             </tr>
                         </tbody>
                     </table>
-                </div>
-                <div class="px-lg py-4 border-t border-outline-variant bg-surface-container-low/20 flex items-center justify-between">
-                    <p class="font-label-md text-on-surface-variant">Menampilkan 5 dari 12 kategori</p>
-                    <div class="flex gap-1">
-                        <button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-container transition-colors disabled:opacity-30" disabled="">
-                            <span class="material-symbols-outlined">chevron_left</span>
-                        </button>
-                        <button class="w-8 h-8 flex items-center justify-center rounded bg-primary text-on-primary font-bold text-xs">1</button>
-                        <button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-container text-on-surface-variant font-bold text-xs transition-colors">2</button>
-                        <button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-container text-on-surface-variant font-bold text-xs transition-colors">3</button>
-                        <button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-container transition-colors">
-                            <span class="material-symbols-outlined">chevron_right</span>
-                        </button>
+
+                    <div class="px-6 py-4 border-t border-gray-100 flex justify-between items-center text-sm text-gray-500">
+                        <p>Menampilkan 4 dari 4 kategori</p>
+                        <button class="bg-primary text-white w-8 h-8 rounded-lg font-bold">1</button>
                     </div>
                 </div>
             </div>
-        </div>
+
+            <div id="view-form" class="hidden">
+                <div class="bg-white p-8 rounded-xl border border-gray-200 shadow-sm">
+                    <h3 class="text-xl font-bold text-gray-800 mb-8">Tambah Kategori Master</h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Nama Kategori</label>
+                            <input type="text" placeholder="Contoh: Plastik" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-900/20 outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Kode Kategori</label>
+                            <input type="text" placeholder="Contoh: PL-01" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-900/20 outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Bobot Poin per KG</label>
+                            <div class="relative">
+                                <input type="number" placeholder="0" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-900/20 outline-none transition-all">
+                                <span class="absolute right-4 top-2 text-gray-400 text-sm">POIN</span>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                            <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-900/20 outline-none transition-all text-gray-700">
+                                <option>Aktif</option>
+                                <option>Non Aktif</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Ikon Kategori</label>
+                        <div class="border-2 border-dashed border-gray-300 rounded-lg p-10 text-center hover:border-green-800 transition-all cursor-pointer bg-gray-50/50">
+                            <span class="material-symbols-outlined text-green-900 text-3xl mb-2">cloud_upload</span>
+                            <p class="text-sm text-gray-600 font-medium">Klik untuk unggah ikon</p>
+                            <p class="text-xs text-gray-400 mt-1">PNG, JPG atau SVG (Maks. 2MB)</p>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-end gap-3 pt-6 border-t border-gray-100">
+                        <button onclick="toggleForm(false)" class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50 transition-all">Batal</button>
+                        <button class="px-6 py-2 bg-green-900 text-white rounded-lg font-medium hover:bg-green-800 transition-all">Simpan Kategori</button>
+                    </div>
+                </div>
+            </div>
     </main>
     <script>
         // Simple micro-interactions for buttons
@@ -525,6 +389,18 @@
                 setTimeout(() => this.classList.remove('active:scale-95'), 100);
             });
         });
+
+        function toggleForm(show) {
+            const tabel = document.getElementById('view-tabel');
+            const form = document.getElementById('view-form');
+            if (show) {
+                tabel.classList.add('hidden');
+                form.classList.remove('hidden');
+            } else {
+                tabel.classList.remove('hidden');
+                form.classList.add('hidden');
+            }
+        }
     </script>
 </body>
 

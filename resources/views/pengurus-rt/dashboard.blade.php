@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-
 <html class="light" lang="id">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -92,45 +90,15 @@
                         "body-md": ["Inter"]
                     },
                     "fontSize": {
-                        "code-sm": ["13px", {
-                            "lineHeight": "18px",
-                            "fontWeight": "400"
-                        }],
-                        "headline-md": ["24px", {
-                            "lineHeight": "32px",
-                            "fontWeight": "600"
-                        }],
-                        "display-lg": ["48px", {
-                            "lineHeight": "56px",
-                            "letterSpacing": "-0.02em",
-                            "fontWeight": "700"
-                        }],
-                        "body-lg": ["16px", {
-                            "lineHeight": "24px",
-                            "fontWeight": "400"
-                        }],
-                        "label-md": ["12px", {
-                            "lineHeight": "16px",
-                            "letterSpacing": "0.05em",
-                            "fontWeight": "600"
-                        }],
-                        "title-lg": ["20px", {
-                            "lineHeight": "28px",
-                            "fontWeight": "600"
-                        }],
-                        "headline-lg-mobile": ["24px", {
-                            "lineHeight": "32px",
-                            "fontWeight": "600"
-                        }],
-                        "headline-lg": ["32px", {
-                            "lineHeight": "40px",
-                            "letterSpacing": "-0.01em",
-                            "fontWeight": "600"
-                        }],
-                        "body-md": ["14px", {
-                            "lineHeight": "20px",
-                            "fontWeight": "400"
-                        }]
+                        "code-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "title-lg": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
                     }
                 },
             },
@@ -140,19 +108,13 @@
         body {
             font-family: 'Inter', sans-serif;
         }
-
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-
-        .chart-bar {
-            transition: height 1s ease-in-out;
         }
     </style>
 </head>
 
 <body class="bg-background text-on-background min-h-screen">
-    <!-- Side Navigation Bar (Anchored Component) -->
     <aside class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface-container-lowest border-r border-outline-variant flex flex-col py-lg px-md z-50">
         <div class="mb-xl px-md">
             <h1 class="font-headline-md text-headline-md font-bold text-primary">PointWaste</h1>
@@ -160,7 +122,7 @@
         </div>
         <nav class="flex-1 space-y-sm">
             <!-- Dashboard (Active) -->
-            <a class="flex items-center gap-md bg-secondary-container text-primary font-semibold rounded-lg px-md py-sm transition-all opacity-80 scale-95" href="{{ route('pengurus-rt.dashboard') }}">
+            <a class="flex items-center gap-md bg-secondary-container text-primary font-semibold rounded-lg px-md py-sm transition-all opacity-80 scale-95" href="#">
                 <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
                 <span class="font-body-md text-body-md">Dashboard</span>
             </a>
@@ -196,52 +158,45 @@
             </a>
         </div>
     </aside>
-    <!-- Top Navigation Bar (Anchored Component) -->
-    <header class="flex justify-between items-center h-16 px-lg ml-sidebar-width w-[calc(100%-var(--sidebar-width))] bg-surface-container-lowest border-b border-outline-variant fixed top-0 z-40">
-        <div class="flex items-center gap-md">
-            <div class="relative">
-                <span class="absolute inset-y-0 left-3 flex items-center text-on-surface-variant">
-                    <span class="material-symbols-outlined" data-icon="search">search</span>
-                </span>
-                <input class="bg-surface rounded-full py-sm pl-10 pr-md border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary text-body-md w-64" placeholder="Cari data warga..." type="text" />
-            </div>
+
+    <header class="flex justify-between items-center h-16 px-lg ml-[260px] md:ml-[var(--sidebar-width,260px)] w-[calc(100%-260px)] md:w-[calc(100%-var(--sidebar-width,260px))] bg-surface-container-lowest border-b border-outline-variant fixed top-0 right-0 z-40">
+    <div class="flex items-center gap-md">
+        <div class="relative">
+            <span class="absolute inset-y-0 left-3 flex items-center text-on-surface-variant">
+                <span class="material-symbols-outlined" data-icon="search">search</span>
+            </span>
+            <input class="bg-surface rounded-full py-sm pl-10 pr-md border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary text-body-md w-64" placeholder="Cari data warga..." type="text" />
         </div>
-        <div class="flex items-center gap-lg">
-            <button class="relative text-on-surface-variant hover:text-primary transition-colors">
-                <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
-                <span class="absolute -top-1 -right-1 bg-error text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">3</span>
-            </button>
-            <button class="text-on-surface-variant hover:text-primary transition-colors">
-                <span class="material-symbols-outlined" data-icon="settings">settings</span>
-            </button>
-            <div class="flex items-center gap-sm">
-                <div class="text-right">
-                    <p class="font-label-md text-label-md text-on-surface">Budi Santoso</p>
-                    <p class="text-[10px] text-on-surface-variant uppercase">Pengurus RT 04</p>
-                </div>
-                <img class="w-10 h-10 rounded-full border border-outline-variant object-cover" data-alt="A professional portrait of a middle-aged Indonesian man wearing a neat office shirt, representing a community leader. The background is a clean, modern office setting with soft green accents reflecting an eco-friendly institutional environment. The lighting is bright and professional, emphasizing trust and civic responsibility." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvp77FnINR4Y3rgOHQpm0OaJw6OyqCyKT1Z7iKvSwnxEd_tdja-L8cN7QpnX_G84JM2d7mUdDB8cMY7ya6_qLkMVZkpkgbnIlTZ-SHxyvHaajfQYRxFHqwUphugbt0R7uZC_Yo_Kv1CGAM9Y38pbSuPOqz-eAO88pxfdswmH8egc262cgp393_-TOhDcwG-SrRjNU5Da4BRQo1gV1v92ENRBXoyWrx10RWYq4a1p73Dln4CT8ndkSj9a4RnYkKv88PvHcGDTnNLbg" />
+    </div>
+    
+    <div class="flex items-center gap-md ml-auto">
+        <button class="relative text-on-surface-variant hover:text-primary transition-colors p-sm">
+            <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+            <span class="absolute top-1 right-1 bg-error text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">3</span>
+        </button>
+        <button class="text-on-surface-variant hover:text-primary transition-colors p-sm mr-sm">
+            <span class="material-symbols-outlined" data-icon="settings">settings</span>
+        </button>
+        <div class="flex items-center gap-sm border-l border-outline-variant pl-md">
+            <div class="text-right">
+                <p class="font-label-md text-label-md text-on-surface whitespace-nowrap">Budi Santoso</p>
+                <p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Pengurus RT 04</p>
             </div>
+            <img class="w-10 h-10 rounded-full border border-outline-variant object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvp77FnINR4Y3rgOHQpm0OaJw6OyqCyKT1Z7iKvSwnxEd_tdja-L8cN7QpnX_G84JM2d7mUdDB8cMY7ya6_qLkMVZkpkgbnIlTZ-SHxyvHaajfQYRxFHqwUphugbt0R7uZC_Yo_Kv1CGAM9Y38pbSuPOqz-eAO88pxfdswmH8egc262cgp393_-TOhDcwG-SrRjNU5Da4BRQo1gV1v92ENRBXoyWrx10RWYq4a1p73Dln4CT8ndkSj9a4RnYkKv88PvHcGDTnNLbg" alt="Budi Santoso" />
         </div>
-    </header>
-    <!-- Main Canvas -->
+    </div>
+</header>
+
     <main class="ml-sidebar-width pt-24 pb-xl px-lg">
         <div class="max-w-container-max mx-auto space-y-lg">
-            <!-- Header Section -->
             <div class="flex justify-between items-end">
                 <div>
                     <h2 class="font-headline-lg text-headline-lg text-on-surface">Dashboard Pengurus</h2>
                     <p class="font-body-md text-body-md text-on-surface-variant">Selamat datang kembali, pantau aktivitas warga hari ini.</p>
                 </div>
-                <div class="flex gap-md">
-                    <button class="flex items-center gap-xs bg-primary text-on-primary px-lg py-sm rounded-lg hover:opacity-90 transition-all font-label-md text-label-md">
-                        <span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
-                        Setor Sampah Sekarang
-                    </button>
-                </div>
             </div>
-            <!-- Statistics Bento Grid -->
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
-                <!-- Stat 1 -->
                 <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg relative overflow-hidden group">
                     <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-primary rounded-l-xl"></div>
                     <p class="font-label-md text-label-md text-on-surface-variant uppercase mb-xs">Total Warga Aktif</p>
@@ -251,7 +206,6 @@
                     </div>
                     <span class="material-symbols-outlined absolute top-lg right-lg text-surface-variant text-[48px] opacity-30 group-hover:opacity-60 transition-opacity" data-icon="groups">groups</span>
                 </div>
-                <!-- Stat 2 -->
                 <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg relative overflow-hidden group">
                     <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-tertiary-container rounded-l-xl"></div>
                     <p class="font-label-md text-label-md text-on-surface-variant uppercase mb-xs">Verifikasi Pending</p>
@@ -261,7 +215,6 @@
                     </div>
                     <span class="material-symbols-outlined absolute top-lg right-lg text-surface-variant text-[48px] opacity-30 group-hover:opacity-60 transition-opacity" data-icon="pending_actions">pending_actions</span>
                 </div>
-                <!-- Stat 3 -->
                 <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg relative overflow-hidden group">
                     <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-secondary rounded-l-xl"></div>
                     <p class="font-label-md text-label-md text-on-surface-variant uppercase mb-xs">Total Poin Komunitas</p>
@@ -271,7 +224,6 @@
                     </div>
                     <span class="material-symbols-outlined absolute top-lg right-lg text-surface-variant text-[48px] opacity-30 group-hover:opacity-60 transition-opacity" data-icon="token">token</span>
                 </div>
-                <!-- Stat 4 -->
                 <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg relative overflow-hidden group">
                     <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-primary-container rounded-l-xl"></div>
                     <p class="font-label-md text-label-md text-on-surface-variant uppercase mb-xs">Koleksi Iuran Bulanan</p>
@@ -282,9 +234,8 @@
                     <span class="material-symbols-outlined absolute top-lg right-lg text-surface-variant text-[48px] opacity-30 group-hover:opacity-60 transition-opacity" data-icon="account_balance">account_balance</span>
                 </div>
             </div>
-            <!-- Main Content Area: Recent Activity & Quick Actions -->
+
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
-                <!-- Left: Recent Activity Table -->
                 <div class="lg:col-span-2 space-y-lg">
                     <div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
                         <div class="px-lg py-md border-b border-outline-variant flex justify-between items-center">
@@ -302,7 +253,6 @@
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-outline-variant">
-                                    <!-- Row 1 -->
                                     <tr class="hover:bg-surface-container-low transition-colors">
                                         <td class="px-lg py-md">
                                             <div class="flex items-center gap-sm">
@@ -321,7 +271,6 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <!-- Row 2 -->
                                     <tr class="hover:bg-surface-container-low transition-colors">
                                         <td class="px-lg py-md">
                                             <div class="flex items-center gap-sm">
@@ -340,7 +289,6 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <!-- Row 3 -->
                                     <tr class="hover:bg-surface-container-low transition-colors">
                                         <td class="px-lg py-md">
                                             <div class="flex items-center gap-sm">
@@ -359,7 +307,6 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <!-- Row 4 -->
                                     <tr class="hover:bg-surface-container-low transition-colors">
                                         <td class="px-lg py-md">
                                             <div class="flex items-center gap-sm">
@@ -378,7 +325,6 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <!-- Row 5 -->
                                     <tr class="hover:bg-surface-container-low transition-colors">
                                         <td class="px-lg py-md">
                                             <div class="flex items-center gap-sm">
@@ -402,9 +348,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- Right: Quick Actions & Dues Chart -->
+
                 <div class="space-y-lg">
-                    <!-- Quick Actions -->
                     <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg">
                         <h4 class="font-title-lg text-title-lg text-on-surface mb-md">Aksi Cepat</h4>
                         <div class="grid grid-cols-1 gap-sm">
@@ -414,7 +359,7 @@
                                 </div>
                                 <div>
                                     <p class="font-label-md text-label-md text-on-surface">Verifikasi Setoran</p>
-                                    <p class="text-[11px] text-on-surface-variant">Cek timbangan &amp; foto warga</p>
+                                    <p class="text-[11px] text-on-surface-variant">Cek timbangan & foto warga</p>
                                 </div>
                             </button>
                             <button class="flex items-center gap-md p-md border border-outline-variant rounded-lg hover:bg-surface-container-low transition-all text-left group">
@@ -437,108 +382,9 @@
                             </button>
                         </div>
                     </div>
-                    <!-- Dues Status Chart -->
-                    <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg">
-                        <div class="flex justify-between items-center mb-lg">
-                            <h4 class="font-title-lg text-title-lg text-on-surface">Status Iuran</h4>
-                            <span class="font-label-md text-label-md text-on-surface-variant">Oktober 2023</span>
-                        </div>
-                        <div class="flex items-end justify-around h-40 gap-sm pb-lg relative border-b border-outline-variant">
-                            <!-- Paid Bar -->
-                            <div class="flex flex-col items-center w-full">
-                                <div class="chart-bar w-12 bg-primary rounded-t-lg" style="height: 85%;">
-                                    <div class="text-center -top-6 relative text-[10px] font-bold text-primary">85%</div>
-                                </div>
-                                <span class="font-label-md text-[10px] mt-2 text-on-surface-variant">Lunas</span>
-                            </div>
-                            <!-- Pending Bar -->
-                            <div class="flex flex-col items-center w-full">
-                                <div class="chart-bar w-12 bg-surface-variant rounded-t-lg" style="height: 15%;">
-                                    <div class="text-center -top-6 relative text-[10px] font-bold text-on-surface-variant">15%</div>
-                                </div>
-                                <span class="font-label-md text-[10px] mt-2 text-on-surface-variant">Tertunda</span>
-                            </div>
-                        </div>
-                        <div class="mt-md space-y-sm">
-                            <div class="flex justify-between items-center">
-                                <span class="font-label-md text-label-md text-on-surface-variant">Target</span>
-                                <span class="font-body-md text-body-md font-bold text-on-surface">Rp 3.500.000</span>
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <span class="font-label-md text-label-md text-on-surface-variant">Terkumpul</span>
-                                <span class="font-body-md text-body-md font-bold text-primary">Rp 2.975.000</span>
-                            </div>
-                        </div>
-                        <button class="w-full mt-lg py-sm border border-primary text-primary rounded-lg font-label-md text-label-md hover:bg-primary hover:text-white transition-all">
-                            Ingatkan Warga Belum Bayar
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <!-- Bottom Section: Map or Community Impact (Bento) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
-                <div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden h-64 relative">
-                    <div class="w-full h-full bg-cover bg-center opacity-80" data-alt="A clean, minimalist 2D illustrative map of a modern residential neighborhood in Jakarta, with highlighted recycling points and clean green streets. The map style is corporate-modern with professional iconography for waste collection centers. Soft pastel colors and professional strokes reflect urban efficiency." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB_cnf2m8lyqpYYpJ2-3y4-h4Wuj1XJNdlcSP2ii5_l46Pk-gqGwyi91oSvxXEKIZgVU_HmqBiwZoCvK3EeAwSSt1WSYbd2R-h6mzvcbI9s0bENLQvNgOnU0TRf6Jh6RVCteEobGNRONaecx9S4F1qnTClHBbh14OjcPPYCy4l3vmd5LzQDcvcQ9KFKFPlQK0F5r-Prc_SvPPZOKWXslrFIAS4AS19-dnJ5zsLnyC6VvU_uylxJfyZX6Zcf1WjfVn2fleNw_Y_FVCs')"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent"></div>
-                    <div class="absolute bottom-md left-md">
-                        <h5 class="font-title-lg text-title-lg text-on-surface">Sebaran Penjemputan</h5>
-                        <p class="font-label-md text-label-md text-on-surface-variant">4 Titik aktif hari ini</p>
-                    </div>
-                </div>
-                <div class="bg-primary-container text-on-primary-container rounded-xl p-lg flex flex-col justify-between">
-                    <div>
-                        <h5 class="font-headline-md text-headline-md font-bold">Dampak Lingkungan</h5>
-                        <p class="font-body-md text-body-md opacity-90 mt-xs">Total sampah yang berhasil dikelola oleh warga RT 04 dalam 3 bulan terakhir.</p>
-                    </div>
-                    <div class="flex items-center gap-lg mt-lg">
-                        <div class="text-center">
-                            <p class="text-[32px] font-bold">1.2</p>
-                            <p class="text-[12px] uppercase tracking-wider opacity-80">Ton Plastik</p>
-                        </div>
-                        <div class="w-px h-12 bg-white/20"></div>
-                        <div class="text-center">
-                            <p class="text-[32px] font-bold">450</p>
-                            <p class="text-[12px] uppercase tracking-wider opacity-80">Kg Kertas</p>
-                        </div>
-                        <div class="w-px h-12 bg-white/20"></div>
-                        <div class="text-center">
-                            <p class="text-[32px] font-bold">3.4</p>
-                            <p class="text-[12px] uppercase tracking-wider opacity-80">Ton Karbon</p>
-                        </div>
-                    </div>
-                    <button class="mt-lg bg-white/10 hover:bg-white/20 px-md py-sm rounded-lg text-center transition-all font-label-md text-label-md self-start">
-                        Lihat Laporan Lengkap
-                    </button>
                 </div>
             </div>
         </div>
     </main>
-    <script>
-        // Simple animation trigger for chart bars on load
-        window.addEventListener('load', () => {
-            const bars = document.querySelectorAll('.chart-bar');
-            bars.forEach(bar => {
-                const height = bar.style.height;
-                bar.style.height = '0';
-                setTimeout(() => {
-                    bar.style.height = height;
-                }, 100);
-            });
-        });
-
-        // Hover scale effect for stats cards
-        const statsCards = document.querySelectorAll('.group');
-        statsCards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-4px)';
-                card.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.05)';
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0)';
-                card.style.boxShadow = 'none';
-            });
-        });
-    </script>
 </body>
-
 </html>
