@@ -57,28 +57,18 @@
                 <span class="font-bold text-xl text-primary tracking-tight">PointWaste</span>
             </div>
 
-            <nav class="space-y-1">
-                <a href="/dashboard-warga-test" class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-gray-50 hover:text-on-surface rounded-xl transition-all">
-                    <span class="material-symbols-outlined icon-unfilled text-[22px]">dashboard</span>
-                    <span class="text-sm">Dashboard</span>
-                </a>
-                <a href="#" class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-gray-50 hover:text-on-surface rounded-xl transition-all">
-                    <span class="material-symbols-outlined icon-unfilled text-[22px]">delete</span>
-                    <span class="text-sm">Setor Sampah</span>
-                </a>
-                <a href="#" class="flex items-center gap-4 px-4 py-3 bg-emerald-50 text-primary font-semibold rounded-xl transition-all">
-                    <span class="material-symbols-outlined text-[22px]">receipt_long</span>
-                    <span class="text-sm">Mutasi Poin</span>
-                </a>
-                <a href="#" class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-gray-50 hover:text-on-surface rounded-xl transition-all">
-                    <span class="material-symbols-outlined icon-unfilled text-[22px]">credit_card</span>
-                    <span class="text-sm">Tagihan Iuran</span>
-                </a>
-                <a href="#" class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-gray-50 hover:text-on-surface rounded-xl transition-all">
-                    <span class="material-symbols-outlined icon-unfilled text-[22px]">person</span>
-                    <span class="text-sm">Profil</span>
-                </a>
-            </nav>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm relative overflow-hidden">
+          <p class="text-[11px] font-medium text-slate-400">Total Poin Saat Ini</p>
+          <p class="text-2xl font-bold text-slate-800 mt-1">{{ number_format($totalPoinSaatIni, 0, ',', '.') }}</p>
+          <span class="inline-flex items-center text-[9px] font-bold text-[#15803D] bg-emerald-50 px-2 py-0.5 rounded-full mt-3">
+            <svg class="w-2.5 h-2.5 mr-0.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+            Aktif digunakan
+          </span>
+          <div class="absolute right-4 bottom-2 opacity-5 text-slate-400">
+            <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24"><path d="M21 18V19C21 20.1 20.1 21 19 21H5C3.9 21 3 20.1 3 19V5C3 3.9 3.9 3 5 3H19C20.1 3 21 3.9 21 5V6H12C10.9 6 10 6.9 10 8V16C10 17.1 10.9 18 12 18H21ZM12 16H22V8H12V16ZM16 13.5C15.17 13.5 14.5 12.83 14.5 12C14.5 11.17 15.17 10.5 16 10.5C16.83 10.5 17.5 11.17 17.5 12C17.5 12.83 16.83 13.5 16 13.5Z"/></svg>
+          </div>
         </div>
 
         <div class="border-t border-gray-100 pt-5 space-y-4">
@@ -94,34 +84,15 @@
                 Logout
             </a>
         </div>
-    </aside>
 
-    <div class="flex-1 flex flex-col min-h-screen">
-        
-        <header class="h-[60px] bg-transparent flex items-center justify-between px-6 mb-4">
-            <div class="flex items-center gap-1.5">
-                <span class="text-lg font-semibold text-on-surface">Halo, {{ Auth::user()->name ?? 'Nama Warga' }}</span>
-                <span>👋</span>
-            </div>
-        </header>
-
-        <main class="flex-1 px-6 space-y-6">
-            <div class="space-y-1">
-                <h2 class="text-2xl font-bold text-on-surface">Mutasi Poin</h2>
-                <p class="text-sm text-gray-500">Pantau riwayat perolehan dan penggunaan poin Anda dari aktivitas pengelolaan sampah mandiri.</p>
-            </div>
-
-            <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-surface p-6 rounded-2xl border border-gray-100 shadow-sm space-y-3 relative overflow-hidden before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1.5 before:bg-emerald-600">
-                    <span class="text-xs font-medium text-gray-400 block tracking-wide">Total Poin Saat Ini</span>
-                    <div class="flex items-baseline gap-1.5">
-                        <span class="text-3xl font-bold text-on-surface">{{ number_format($totalPoin ?? 1470, 0, ',', '.') }}</span>
-                    </div>
-                    <div class="flex items-center gap-1 text-xs text-emerald-600 font-medium">
-                        <span class="material-symbols-outlined text-[16px]">check_circle</span>
-                        <span>+{{ number_format($poinMingguIni ?? 100, 0, ',', '.') }} poin minggu ini</span>
-                    </div>
-                </div>
+        <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+          <div class="flex items-center space-x-1.5">
+            <div class="w-1.5 h-3 bg-red-500 rounded-full"></div>
+            <p class="text-[11px] font-medium text-slate-400">Poin Digunakan ({{ Carbon\Carbon::now()->translatedFormat('F Y') }})</p>
+          </div>
+          <p class="text-2xl font-bold text-slate-800 mt-1">-{{ number_format($poinDigunakan, 0, ',', '.') }}</p>
+          <p class="text-[10px] text-slate-400 mt-4">Digunakan untuk iuran lingkungan & klaim</p>
+        </div>
 
                 <div class="bg-surface p-6 rounded-2xl border border-gray-100 shadow-sm space-y-3 relative overflow-hidden before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1.5 before:bg-blue-500">
                     <span class="text-xs font-medium text-gray-400 block tracking-wide">Poin Diperoleh ({{ $bulanSekarang ?? 'Juni' }})</span>
@@ -159,52 +130,78 @@
                         </div>
                     </div>
 
-                    <button @click="alert('Fitur Ekspor PDF/Excel Berhasil Dipicu!')" class="flex items-center gap-2 px-4 py-2 border border-emerald-200 text-emerald-700 bg-emerald-50/50 hover:bg-emerald-50 font-bold rounded-xl text-xs transition-all">
-                        <span class="material-symbols-outlined icon-unfilled text-[18px]">download</span>
-                        Ekspor Laporan
-                    </button>
-                </div>
+          <a href="{{ route('warga.mutasi-poin.ekspor-pdf') }}" class="inline-flex items-center space-x-1.5 border border-[#15803D] text-[#15803D] hover:bg-emerald-50 px-4 py-2 rounded-xl text-xs font-semibold transition-colors">
+            <span>▲</span>
+            <span>Ekspor Laporan</span>
+          </a>
+        </div>
 
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left">
-                        <thead class="bg-gray-50/50 border-b border-gray-100">
-                            <tr>
-                                <th class="px-6 py-4 text-[11px] font-bold text-gray-400 uppercase tracking-widest">Tanggal</th>
-                                <th class="px-6 py-4 text-[11px] font-bold text-gray-400 uppercase tracking-widest">Keterangan</th>
-                                <th class="px-6 py-4 text-[11px] font-bold text-gray-400 uppercase tracking-widest text-center">Kategori</th>
-                                <th class="px-6 py-4 text-[11px] font-bold text-gray-400 uppercase tracking-widest text-right">Jumlah (Poin)</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-50">
-                            <template x-for="item in filteredTransaksi">
-                                <tr class="hover:bg-gray-50/30 transition-colors">
-                                    <td class="px-6 py-5 text-xs font-medium text-on-surface" x-text="item.tgl"></td>
-                                    <td class="px-6 py-5">
-                                        <div class="text-xs font-bold text-on-surface" x-text="item.judul"></div>
-                                        <div class="text-[10px] text-gray-400" x-text="item.detail"></div>
-                                    </td>
-                                    <td class="px-6 py-5 text-center">
-                                        <span class="px-2.5 py-1 text-[10px] font-bold rounded-md uppercase" 
-                                              :class="{
-                                                 'bg-emerald-100 text-emerald-700': item.kat === 'setoran',
-                                                 'bg-blue-100 text-blue-700': item.kat === 'iuran',
-                                                 'bg-gray-800 text-white tracking-wider': item.kat === 'bonus'
-                                              }" x-text="item.kat"></span>
-                                    </td>
-                                    <td class="px-6 py-5 text-right text-sm font-bold" 
-                                        :class="item.tipe === 'plus' ? 'text-emerald-600' : 'text-red-500'"
-                                        x-text="item.poin"></td>
-                                </tr>
-                            </template>
-                        </tbody>
-                    </table>
-                </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-[#EBF5EE] text-slate-600 text-[11px] uppercase tracking-wider font-semibold">
+                <th class="px-6 py-3.5">Tanggal</th>
+                <th class="px-6 py-3.5">Keterangan</th>
+                <th class="px-6 py-3.5">Kategori</th>
+                <th class="px-6 py-3.5 text-right">Jumlah (Poin)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 text-xs text-slate-700">
+              
+              @forelse($riwayatMutasi as $mutasi)
+                <tr class="hover:bg-slate-50/70 transition-colors">
+                  <td class="px-6 py-4 text-slate-400">
+                    {{ $mutasi->tanggal ? $mutasi->tanggal->translatedFormat('d M Y, H:i') : '-' }}
+                  </td>
+                  
+                  <td class="px-6 py-4">
+                    <p class="font-bold text-slate-800">{{ $mutasi->keterangan }}</p>
+                    @if($mutasi->deskripsi_tambahan)
+                      <p class="text-[10px] text-slate-400 mt-0.5">{{ $mutasi->deskripsi_tambahan }}</p>
+                    @endif
+                  </td>
+                  
+                  <td class="px-6 py-4">
+                    @if(strtolower($mutasi->kategori) == 'setoran')
+                      <span class="bg-emerald-100 text-emerald-700 text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wide">Setoran</span>
+                    @elseif(strtolower($mutasi->kategori) == 'tukar poin')
+                      <span class="bg-sky-100 text-sky-700 text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wide">Tukar Poin</span>
+                    @elseif(strtolower($mutasi->kategori) == 'iuran')
+                      <span class="bg-indigo-100 text-indigo-700 text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wide">Iuran</span>
+                    @else
+                      <span class="bg-emerald-50 text-emerald-600 text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wide">Bonus</span>
+                    @endif
+                  </td>
+                  
+                  <td class="px-6 py-4 text-right font-bold {{ $mutasi->jenis_transaksi == 'Masuk' ? 'text-emerald-600' : 'text-red-500' }}">
+                    {{ $mutasi->jenis_transaksi == 'Masuk' ? '+' : '-' }}{{ number_format($mutasi->nominal_poin, 0, ',', '.') }}
+                  </td>
+                </tr>
+              @empty
+                <tr>
+                  <td colspan="4" class="px-6 py-8 text-center text-slate-400 font-medium">
+                    Belum ditemukan riwayat mutasi tabungan poin pada akun Anda.
+                  </td>
+                </tr>
+              @endforelse
 
-                <div class="p-5 bg-white border-t border-gray-50 flex items-center justify-between">
-                    <p class="text-xs text-gray-400 font-medium">Menampilkan data berdasarkan filter</p>
-                </div>
-            </section>
-        </main>
+            </tbody>
+          </table>
+        </div>
+
+        @if($riwayatMutasi->hasPages())
+          <div class="p-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400 font-medium">
+            <div>
+              Menampilkan {{ $riwayatMutasi->firstItem() }}-{{ $riwayatMutasi->lastItem() }} dari {{ $riwayatMutasi->total() }} transaksi
+            </div>
+            <div>
+              {{ $riwayatMutasi->links() }}
+            </div>
+          </div>
+        @endif
+
+      </div>
+
     </div>
 
 </body>

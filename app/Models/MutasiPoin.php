@@ -40,4 +40,30 @@ class MutasiPoin extends Model
         'nilai_konversi_rp' => 'integer',
         'tanggal' => 'date',
     ];
+
+    /*
+    |--------------------------------------------------------------------------
+    | RELASI MODEL (ELOQUENT RELATIONS)
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * RELASI: Setiap catatan mutasi poin dicatat untuk satu orang User (Warga).
+     */
+    public function user(): BelongsTo
+    {
+        // 'id_user' di parameter kedua adalah Foreign Key di tabel mutasi_poin
+        // 'id_user' di parameter ketiga adalah Primary Key di tabel users
+        return $this->belongsTo(Users::class, 'id_user', 'id_user');
+    }
+
+    /**
+     * RELASI: Mutasi poin (opsional) terhubung ke transaksi penyetoran sampah tertentu.
+     */
+    public function setorSampah(): BelongsTo
+    {
+        // 'id_setor_sampah' di parameter kedua adalah Foreign Key di tabel mutasi_poin
+        // 'id_setor_sampah' di parameter ketiga adalah Primary Key di tabel setor_sampah
+        return $this->belongsTo(SetorSampah::class, 'id_setor_sampah', 'id_setor_sampah');
+    }
 }

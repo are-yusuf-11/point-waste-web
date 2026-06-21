@@ -173,30 +173,35 @@
             <p class="font-body-md text-body-md text-secondary">Admin System</p>
         </div>
         <nav class="flex flex-col gap-sm flex-grow">
-            <div class="sidebar-inactive">
+            <a href="{{ route('admin.dashboard') }}" class="sidebar-inactive flex items-center gap-md">
                 <span class="material-symbols-outlined">dashboard</span>
                 <span class="font-body-md text-body-md">Dashboard</span>
-            </div>
-            <div class="sidebar-inactive">
+            </a>
+
+            <a href="{{ route('admin.manajemen-pengguna') }}" class="sidebar-inactive flex items-center gap-md">
                 <span class="material-symbols-outlined">group</span>
                 <span class="font-body-md text-body-md">Manajemen Pengguna</span>
-            </div>
-            <div class="sidebar-inactive">
+            </a>
+
+            <a href="{{ route('admin.kategori-sampah') }}" class="sidebar-inactive flex items-center gap-md">
                 <span class="material-symbols-outlined">recycling</span>
                 <span class="font-body-md text-body-md">Kategori Sampah</span>
-            </div>
-            <div class="sidebar-inactive">
+            </a>
+
+            <a href="{{ route('admin.monitoring-sistem') }}" class="sidebar-inactive flex items-center gap-md">
                 <span class="material-symbols-outlined">analytics</span>
                 <span class="font-body-md text-body-md">Monitoring Sistem</span>
-            </div>
-            <div class="sidebar-active">
+            </a>
+
+            <a href="{{ route('admin.konfigurasi') }}" class="sidebar-active flex items-center gap-md">
                 <span class="material-symbols-outlined">settings</span>
                 <span class="font-body-md text-body-md">Konfigurasi</span>
-            </div>
-            <div class="sidebar-inactive">
+            </a>
+
+            <a href="#" class="sidebar-inactive flex items-center gap-md">
                 <span class="material-symbols-outlined">person</span>
                 <span class="font-body-md text-body-md">Profil</span>
-            </div>
+            </a>
         </nav>
         <div class="mt-auto px-md pt-md border-t border-outline-variant">
             <div class="flex items-center gap-md">

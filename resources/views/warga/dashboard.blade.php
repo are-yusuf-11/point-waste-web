@@ -87,6 +87,7 @@
         </div>
     </aside>
 
+<<<<<<< HEAD
     <div class="flex-1 flex flex-col min-h-screen">
         
         <header class="h-[60px] bg-transparent flex items-center justify-between px-6 mb-4">
@@ -169,6 +170,11 @@
 
         </main>
     </div>
+=======
+      </div>
+  </main>
+  <x-alert />
+>>>>>>> be2db534ee81329bdc96731711d718b5391e7324
 
 </body>
 </html>

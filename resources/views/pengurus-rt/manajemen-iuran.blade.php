@@ -116,6 +116,7 @@
             <h1 class="font-headline-md text-headline-md font-bold text-primary">PointWaste</h1>
             <p class="font-label-md text-label-md text-on-surface-variant">Sustainable Community</p>
         </div>
+<<<<<<< HEAD
         <nav class="flex-1 space-y-sm">
             <a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-low transition-colors duration-200" href="/dashboard-pengurus-test">
                 <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
@@ -134,6 +135,24 @@
 
             <a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-low transition-colors duration-200" href="#">
                 <span class="material-symbols-outlined" data-icon="category">category</span>
+=======
+        <nav class="flex flex-col gap-2">
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-secondary-fixed transition-colors duration-200 rounded-lg" href="{{ route('pengurus-rt.dashboard') }}">
+                <span class="material-symbols-outlined">dashboard</span>
+                <span class="font-body-md text-body-md">Dashboard</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-secondary-fixed transition-colors duration-200 rounded-lg" href="{{ route('pengurus-rt.setor-sampah') }}">
+                <span class="material-symbols-outlined">fact_check</span>
+                <span class="font-body-md text-body-md">Verifikasi Setoran</span>
+            </a>
+            <!-- Active Tab -->
+            <a class="flex items-center gap-3 px-4 py-3 text-primary bg-secondary-container rounded-lg font-semibold transition-transform active:scale-95" href="{{ route('pengurus-rt.manajemen-iuran') }}">
+                <span class="material-symbols-outlined">payments</span>
+                <span class="font-body-md text-body-md">Manajemen Iuran</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-secondary-fixed transition-colors duration-200 rounded-lg" href="{{ route('pengurus-rt.waste-categories') }}">
+                <span class="material-symbols-outlined">category</span>
+>>>>>>> be2db534ee81329bdc96731711d718b5391e7324
                 <span class="font-body-md text-body-md">Kategori Sampah</span>
             </a>
             <a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-low transition-colors duration-200" href="#">

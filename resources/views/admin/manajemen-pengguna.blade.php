@@ -171,23 +171,23 @@
             <p class="font-body-md text-body-md text-secondary">Admin System</p>
         </div>
         <nav class="flex flex-col gap-sm">
-            <a class="flex items-center gap-md text-secondary px-md py-sm hover:bg-secondary-container/50 transition-colors cursor-pointer active:scale-95 duration-200" href="#">
+            <a class="flex items-center gap-md text-secondary px-md py-sm hover:bg-secondary-container/50 transition-colors cursor-pointer active:scale-95 duration-200" href="{{ route('admin.dashboard') }}">
                 <span class="material-symbols-outlined">dashboard</span>
                 <span class="font-body-md text-body-md">Dashboard</span>
             </a>
-            <a class="flex items-center gap-md bg-secondary-container text-primary rounded-lg px-md py-sm cursor-pointer active:scale-95 duration-200" href="#">
+            <a class="flex items-center gap-md bg-secondary-container text-primary rounded-lg px-md py-sm cursor-pointer active:scale-95 duration-200" href="{{ route('admin.manajemen-pengguna') }}">
                 <span class="material-symbols-outlined">group</span>
                 <span class="font-body-md text-body-md">Manajemen Pengguna</span>
             </a>
-            <a class="flex items-center gap-md text-secondary px-md py-sm hover:bg-secondary-container/50 transition-colors cursor-pointer active:scale-95 duration-200" href="#">
+            <a class="flex items-center gap-md text-secondary px-md py-sm hover:bg-secondary-container/50 transition-colors cursor-pointer active:scale-95 duration-200" href="{{ route('admin.kategori-sampah') }}">
                 <span class="material-symbols-outlined">recycling</span>
                 <span class="font-body-md text-body-md">Kategori Sampah</span>
             </a>
-            <a class="flex items-center gap-md text-secondary px-md py-sm hover:bg-secondary-container/50 transition-colors cursor-pointer active:scale-95 duration-200" href="#">
+            <a class="flex items-center gap-md text-secondary px-md py-sm hover:bg-secondary-container/50 transition-colors cursor-pointer active:scale-95 duration-200" href="{{ route('admin.monitoring-sistem') }}">
                 <span class="material-symbols-outlined">analytics</span>
                 <span class="font-body-md text-body-md">Monitoring Sistem</span>
             </a>
-            <a class="flex items-center gap-md text-secondary px-md py-sm hover:bg-secondary-container/50 transition-colors cursor-pointer active:scale-95 duration-200" href="#">
+            <a class="flex items-center gap-md text-secondary px-md py-sm hover:bg-secondary-container/50 transition-colors cursor-pointer active:scale-95 duration-200" href="{{ route('admin.konfigurasi') }}">
                 <span class="material-symbols-outlined">settings</span>
                 <span class="font-body-md text-body-md">Konfigurasi</span>
             </a>
@@ -230,10 +230,10 @@
                     <h2 class="font-headline-lg text-headline-lg text-primary">Manajemen Pengguna</h2>
                     <p class="font-body-lg text-body-lg text-secondary">Kelola akses dan otoritas admin sistem serta admin wilayah.</p>
                 </div>
-                <button class="flex items-center gap-sm bg-primary text-white px-lg py-md rounded-lg font-label-md hover:opacity-90 transition-all active:scale-95">
-                    <span class="material-symbols-outlined">person_add</span>
+                <a href="{{ route('admin.manajemen-pengguna.create') }}" class="bg-primary text-white px-lg py-md rounded-lg flex items-center gap-sm hover:brightness-110 active:scale-95 transition-all font-label-md inline-flex">
+                    <span class="material-symbols-outlined">add_circle</span>
                     Tambah Pengguna Baru
-                </button>
+                </a>
             </div>
             <!-- Bento Statistics Grid -->
             <div class="grid grid-cols-12 gap-lg">
@@ -241,7 +241,7 @@
                     <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
                     <div>
                         <p class="font-label-md text-label-md text-secondary uppercase tracking-wider">Total Pengguna</p>
-                        <h3 class="font-headline-lg text-headline-lg mt-xs">1,284</h3>
+                        <h3 class="font-headline-lg text-headline-lg mt-xs">{{ number_format($totalUsers) }}</h3>
                     </div>
                     <div class="mt-md flex items-center text-primary gap-xs font-label-md">
                         <span class="material-symbols-outlined text-[18px]">trending_up</span>
@@ -252,7 +252,7 @@
                     <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
                     <div>
                         <p class="font-label-md text-label-md text-secondary uppercase tracking-wider">Admin RT Aktif</p>
-                        <h3 class="font-headline-lg text-headline-lg mt-xs">86</h3>
+                        <h3 class="font-headline-lg text-headline-lg mt-xs">{{ number_format($totalPengurusRt) }}</h3>
                     </div>
                     <div class="mt-md flex items-center text-primary gap-xs font-label-md">
                         <span class="material-symbols-outlined text-[18px]">verified_user</span>
@@ -263,7 +263,7 @@
                     <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
                     <div>
                         <p class="font-label-md text-label-md text-secondary uppercase tracking-wider">Pertumbuhan Mingguan</p>
-                        <h3 class="font-headline-lg text-headline-lg mt-xs">+24</h3>
+                        <h3 class="font-headline-lg text-headline-lg mt-xs">{{ number_format($totalWarga) }}</h3>
                     </div>
                     <div class="mt-md flex items-center text-tertiary gap-xs font-label-md">
                         <span class="material-symbols-outlined text-[18px]">group_add</span>
@@ -303,123 +303,116 @@
                 <!-- Table Content -->
                 <div class="table-container overflow-x-auto">
                     <table class="w-full text-left border-collapse">
-                        <thead class="bg-secondary-container/30">
-                            <tr>
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">Nama Pengguna</th>
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">Peran</th>
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">Wilayah Tugas</th>
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">Terakhir Aktif</th>
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">Status</th>
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider text-right">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-outline-variant">
-                            <!-- Row 1 -->
-                            <tr class="hover:bg-surface-container-low/50 transition-colors">
-                                <td class="px-lg py-md">
-                                    <div class="flex items-center gap-md">
-                                        <div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center text-primary font-bold">AS</div>
-                                        <div>
-                                            <p class="font-body-md font-semibold text-on-surface">Aris Setiawan</p>
-                                            <p class="text-[12px] text-secondary">aris.s@pointwaste.id</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-lg py-md">
-                                    <span class="px-sm py-xs bg-tertiary-container/10 text-tertiary border border-tertiary-container/20 rounded-md text-[11px] font-bold uppercase tracking-tight">Admin Sistem</span>
-                                </td>
-                                <td class="px-lg py-md text-body-md text-on-surface-variant">Pusat Konfigurasi</td>
-                                <td class="px-lg py-md text-body-md text-on-surface-variant">2 jam yang lalu</td>
-                                <td class="px-lg py-md">
-                                    <div class="flex items-center gap-xs text-primary font-label-md">
-                                        <span class="w-2 h-2 rounded-full bg-primary"></span>
-                                        Aktif
-                                    </div>
-                                </td>
-                                <td class="px-lg py-md text-right">
-                                    <button class="p-xs text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined">more_vert</span></button>
-                                </td>
-                            </tr>
-                            <!-- Row 2 -->
-                            <tr class="hover:bg-surface-container-low/50 transition-colors">
-                                <td class="px-lg py-md">
-                                    <div class="flex items-center gap-md">
-                                        <div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary font-bold">BP</div>
-                                        <div>
-                                            <p class="font-body-md font-semibold text-on-surface">Bambang Pamungkas</p>
-                                            <p class="text-[12px] text-secondary">rt04.rw02@gmail.com</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-lg py-md">
-                                    <span class="px-sm py-xs bg-secondary-container text-on-secondary-container border border-outline-variant rounded-md text-[11px] font-bold uppercase tracking-tight">Admin RT</span>
-                                </td>
-                                <td class="px-lg py-md text-body-md text-on-surface-variant">RT 04 / RW 02, Sukajadi</td>
-                                <td class="px-lg py-md text-body-md text-on-surface-variant">Kemarin, 14:20</td>
-                                <td class="px-lg py-md">
-                                    <div class="flex items-center gap-xs text-primary font-label-md">
-                                        <span class="w-2 h-2 rounded-full bg-primary"></span>
-                                        Aktif
-                                    </div>
-                                </td>
-                                <td class="px-lg py-md text-right">
-                                    <button class="p-xs text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined">more_vert</span></button>
-                                </td>
-                            </tr>
-                            <!-- Row 3 -->
-                            <tr class="hover:bg-surface-container-low/50 transition-colors">
-                                <td class="px-lg py-md">
-                                    <div class="flex items-center gap-md">
-                                        <div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center text-primary font-bold">DW</div>
-                                        <div>
-                                            <p class="font-body-md font-semibold text-on-surface">Dewi Wijaya</p>
-                                            <p class="text-[12px] text-secondary">rt01.rw05@yahoo.com</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-lg py-md">
-                                    <span class="px-sm py-xs bg-secondary-container text-on-secondary-container border border-outline-variant rounded-md text-[11px] font-bold uppercase tracking-tight">Admin RT</span>
-                                </td>
-                                <td class="px-lg py-md text-body-md text-on-surface-variant">RT 01 / RW 05, Menteng</td>
-                                <td class="px-lg py-md text-body-md text-on-surface-variant">3 hari yang lalu</td>
-                                <td class="px-lg py-md">
-                                    <div class="flex items-center gap-xs text-secondary font-label-md">
-                                        <span class="w-2 h-2 rounded-full bg-outline-variant"></span>
-                                        Non-Aktif
-                                    </div>
-                                </td>
-                                <td class="px-lg py-md text-right">
-                                    <button class="p-xs text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined">more_vert</span></button>
-                                </td>
-                            </tr>
-                            <!-- Row 4 -->
-                            <tr class="hover:bg-surface-container-low/50 transition-colors">
-                                <td class="px-lg py-md">
-                                    <div class="flex items-center gap-md">
-                                        <div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center text-primary font-bold">FR</div>
-                                        <div>
-                                            <p class="font-body-md font-semibold text-on-surface">Fahri Ramadhan</p>
-                                            <p class="text-[12px] text-secondary">fahri.r@pointwaste.id</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-lg py-md">
-                                    <span class="px-sm py-xs bg-tertiary-container/10 text-tertiary border border-tertiary-container/20 rounded-md text-[11px] font-bold uppercase tracking-tight">Admin Sistem</span>
-                                </td>
-                                <td class="px-lg py-md text-body-md text-on-surface-variant">Database & Security</td>
-                                <td class="px-lg py-md text-body-md text-on-surface-variant">15 menit yang lalu</td>
-                                <td class="px-lg py-md">
-                                    <div class="flex items-center gap-xs text-primary font-label-md">
-                                        <span class="w-2 h-2 rounded-full bg-primary"></span>
-                                        Aktif
-                                    </div>
-                                </td>
-                                <td class="px-lg py-md text-right">
-                                    <button class="p-xs text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined">more_vert</span></button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+    <thead>
+        <tr class="border-b border-outline-variant font-label-lg text-on-surface-variant bg-surface-container-low">
+            <th class="px-lg py-md font-semibold">Nama Pengguna</th>
+            <th class="px-lg py-md font-semibold">Kontak & Alamat</th>
+            <th class="px-lg py-md font-semibold">Wilayah RT</th>
+            <th class="px-lg py-md font-semibold">Peran</th>
+            <th class="px-lg py-md font-semibold">Status</th> {{-- Kolom Status Mandiri --}}
+            <th class="px-lg py-md font-semibold text-right">Aksi</th> {{-- Kolom Aksi Mandiri --}}
+        </tr>
+    </thead>
+    <tbody class="divide-y divide-outline-variant font-body-md text-on-surface">
+        @foreach($users as $user)
+        <tr class="hover:bg-surface-container-low transition-colors">
+            <td class="px-lg py-md">
+                <div class="flex items-center gap-md">
+                    <img alt="Avatar" class="h-10 w-10 rounded-full object-cover" 
+                        src="{{ $user->foto ? asset('storage/' . $user->foto) : 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80' }}" />
+                    <div>
+                        <p class="font-bold text-slate-900">{{ $user->nama }}</p>
+                        <p class="text-xs text-slate-500">{{ $user->email }}</p>
+                    </div>
+                </div>
+            </td>
+            
+            <td class="px-lg py-md">
+                <p class="text-slate-700 font-medium">{{ $user->no_hp ?? '-' }}</p>
+                <p class="text-xs text-slate-400 max-w-[200px] truncate" title="{{ $user->alamat }}">{{ $user->alamat ?? '-' }}</p>
+            </td>
+            
+            <td class="px-lg py-md font-medium text-slate-600">
+                @if($user->rt)
+                    RT {{ $user->rt->no_rt }} - {{ $user->rt->kelurahan }}
+                @else
+                    <span class="text-outline italic text-xs">Tidak Ada Wilayah</span>
+                @endif
+            </td>
+            
+            <td class="px-lg py-md">
+                @if(str_contains(strtolower($user->role), 'admin'))
+                    <span class="px-3 py-1 bg-error-container text-error rounded-full text-xs font-bold capitalize">Admin</span>
+                @elseif(str_contains(strtolower($user->role), 'pengurus'))
+                    <span class="px-3 py-1 bg-tertiary-fixed text-tertiary rounded-full text-xs font-bold capitalize">Pengurus RT</span>
+                @else
+                    <span class="px-3 py-1 bg-primary-container/20 text-primary rounded-full text-xs font-bold capitalize">Warga</span>
+                @endif
+            </td>
+            
+            <td class="px-lg py-md">
+                @if(str_contains(strtolower($user->role), 'admin'))
+                    {{-- Status Admin: Hanya teks badge statis --}}
+                    @if($user->status)
+                        <span class="h-8 inline-flex items-center gap-1 px-3 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full text-xs font-bold opacity-75 cursor-not-allowed">
+                            <span class="material-symbols-outlined text-sm">check_circle</span>
+                            Aktif
+                        </span>
+                    @else
+                        <span class="h-8 inline-flex items-center gap-1 px-3 bg-rose-50 text-rose-700 border border-rose-200 rounded-full text-xs font-bold opacity-75 cursor-not-allowed">
+                            <span class="material-symbols-outlined text-sm">cancel</span>
+                            Nonaktif
+                        </span>
+                    @endif
+                @else
+                    {{-- Status Warga/Pengurus: Tombol Sakelar Interaktif --}}
+                    <form action="{{ route('admin.manajemen-pengguna.toggle-status', $user->id_user) }}" method="POST" class="inline">
+                        @csrf
+                        @method('PATCH')
+                        
+                        @if($user->status)
+                            <button type="submit" class="h-8 flex items-center gap-1 px-3 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full text-xs font-bold hover:bg-rose-50 hover:text-rose-600 hover:border-rose-200 transition-colors" title="Klik untuk menonaktifkan pengguna">
+                                <span class="material-symbols-outlined text-sm">check_circle</span>
+                                Aktif
+                            </button>
+                        @else
+                            <button type="submit" class="h-8 flex items-center gap-1 px-3 bg-rose-50 text-rose-700 border border-rose-200 rounded-full text-xs font-bold hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-200 transition-colors" title="Klik untuk mengaktifkan pengguna">
+                                <span class="material-symbols-outlined text-sm">cancel</span>
+                                Nonaktif
+                            </button>
+                        @endif
+                    </form>
+                @endif
+            </td>
+            
+            <td class="px-lg py-md text-right">
+                <div class="flex items-center justify-end gap-sm">
+                    <a href="{{ route('admin.manajemen-pengguna.edit', $user->id_user) }}" 
+                       class="h-8 w-8 flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-full transition-colors" 
+                       title="Edit">
+                        <span class="material-symbols-outlined text-md">edit</span>
+                    </a>
+
+                    @if(!str_contains(strtolower($user->role), 'admin'))
+                        <form action="{{ route('admin.manajemen-pengguna.destroy', $user->id_user) }}" 
+                              method="POST" 
+                              onsubmit="return confirm('Apakah Anda yakin ingin menghapus pengguna ini?');"
+                              class="inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" 
+                                    class="h-8 w-8 flex items-center justify-center text-on-surface-variant hover:text-error hover:bg-error-container/20 rounded-full transition-colors" 
+                                    title="Hapus">
+                                <span class="material-symbols-outlined text-md">delete</span>
+                            </button>
+                        </form>
+                    @endif
+                </div>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
                 </div>
                 <!-- Pagination footer -->
                 <div class="p-md flex items-center justify-between border-t border-outline-variant bg-surface-container-low/30">

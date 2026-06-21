@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class DetailSetorSampah extends Model
 {
@@ -36,4 +37,30 @@ class DetailSetorSampah extends Model
         'berat_kg' => 'float',
         'poin_subtotal' => 'integer',
     ];
+
+    /*
+    |--------------------------------------------------------------------------
+    | RELASI MODEL (ELOQUENT RELATIONS)
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * RELASI: Setiap baris detail item dimiliki oleh satu transaksi induk SetorSampah.
+     */
+    public function setorSampah(): BelongsTo
+    {
+        // 'id_setor_sampah' di parameter kedua adalah Foreign Key di tabel detail_setor_sampah
+        // 'id_setor_sampah' di parameter ketiga adalah Primary Key di tabel setor_sampah
+        return $this->belongsTo(SetorSampah::class, 'id_setor_sampah', 'id_setor_sampah');
+    }
+
+    /**
+     * RELASI: Setiap baris detail item merujuk ke satu KategoriSampah (misal: Plastik / Kertas).
+     */
+    public function kategoriSampah(): BelongsTo
+    {
+        // 'id_kategori' di parameter kedua adalah Foreign Key di tabel detail_setor_sampah
+        // 'id_kategori' di parameter ketiga adalah Primary Key di tabel kategori_sampah
+        return $this->belongsTo(KategoriSampah::class, 'id_kategori', 'id_kategori');
+    }
 }
