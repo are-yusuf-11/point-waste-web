@@ -159,47 +159,38 @@
 
 <body class="bg-background text-on-surface">
     <!-- Sidebar Navigation -->
-    <aside class="fixed left-0 top-0 h-full w-sidebar-width bg-surface-container-lowest border-r border-outline-variant flex flex-col gap-2 p-md z-50">
-        <div class="mb-lg px-4">
-            <h1 class="font-headline-md text-headline-md font-bold text-primary">PointWaste RT</h1>
-            <p class="text-body-md text-on-surface-variant">Admin Portal</p>
+    <aside class="w-sidebar-width h-screen fixed left-0 top-0 bg-surface-container-lowest border-r border-outline-variant flex flex-col py-lg px-md h-full z-20">
+        <div class="mb-xl px-md">
+            <h1 class="font-headline-md text-headline-md font-bold text-primary">PointWaste</h1>
+            <p class="font-label-md text-label-md text-on-surface-variant">Sustainable Community</p>
         </div>
-        <nav class="flex-1 flex flex-col gap-1">
-            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-secondary-fixed transition-colors duration-200 rounded-lg group" href="#">
-                <span class="material-symbols-outlined">dashboard</span>
+        </div>
+        <nav class="flex-1 space-y-sm">
+            <a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-low transition-colors duration-200" href="#">
+                <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
                 <span class="font-body-md text-body-md">Dashboard</span>
             </a>
-            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-secondary-fixed transition-colors duration-200 rounded-lg group" href="#">
-                <span class="material-symbols-outlined">fact_check</span>
+            <a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-low transition-colors duration-200" href="#">
+                <span class="material-symbols-outlined" data-icon="recycling">recycling</span>
                 <span class="font-body-md text-body-md">Verifikasi Setoran</span>
             </a>
-            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-secondary-fixed transition-colors duration-200 rounded-lg group" href="#">
-                <span class="material-symbols-outlined">payments</span>
+            <a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-low transition-colors duration-200" href="#">
+                <span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
                 <span class="font-body-md text-body-md">Manajemen Iuran</span>
             </a>
-            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-secondary-fixed transition-colors duration-200 rounded-lg group" href="#">
-                <span class="material-symbols-outlined">category</span>
+            <a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-low transition-colors duration-200" href="#">
+                <span class="material-symbols-outlined" data-icon="category">category</span>
                 <span class="font-body-md text-body-md">Kategori Sampah</span>
             </a>
-            <!-- Active State -->
-            <a class="flex items-center gap-3 px-4 py-3 text-primary bg-secondary-container rounded-lg font-semibold shadow-sm" href="#">
-                <span class="material-symbols-outlined">analytics</span>
+            <a class="flex items-center gap-md bg-secondary-container text-primary font-semibold rounded-lg px-md py-sm transition-all opacity-80 scale-95" href="/category-sampah-test">
+                <span class="material-symbols-outlined" data-icon="bar_chart">bar_chart</span>
                 <span class="font-body-md text-body-md">Laporan</span>
             </a>
-            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-secondary-fixed transition-colors duration-200 rounded-lg group" href="#">
-                <span class="material-symbols-outlined">account_circle</span>
+            <a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-low transition-colors duration-200" href="#">
+                <span class="material-symbols-outlined" data-icon="person">person</span>
                 <span class="font-body-md text-body-md">Profil</span>
             </a>
         </nav>
-        <div class="mt-auto p-4 bg-secondary-container/30 rounded-xl flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary">
-                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
-            </div>
-            <div>
-                <p class="font-label-md text-label-md text-primary">RT 04 Administrator</p>
-                <p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Level 2 Access</p>
-            </div>
-        </div>
     </aside>
     <!-- Main Content Area -->
     <main class="content-area min-h-screen">

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,135 +34,74 @@
 
   <x-sidebar />
 
+  @yield('content')
+
   <main class="flex-1 pl-64 min-h-screen">
-
-    <x-header />
-
-    <div class="p-8 space-y-6">
-
-      <div>
-        <h1 class="text-2xl font-bold text-[#15803D]">Tagihan Iuran</h1>
-        <p class="text-xs text-slate-500 mt-1">Kelola semua tagihan iuran RT Anda dan riwayat pembayaran.</p>
+    
+    <header class="flex justify-between items-center px-8 py-6 bg-white border-b border-slate-100">
+      <div class="flex items-center space-x-1 text-lg font-semibold text-slate-800">
+        <span>Halo, Arafly ramdani</span>
+        <span class="animate-bounce">👋</span>
       </div>
+      <div class="flex items-center space-x-4 text-slate-500">
+        <button class="p-2 hover:bg-slate-50 rounded-full relative transition-colors">
+          <div class="absolute top-2 right-2.5 w-2 h-2 bg-red-500 rounded-full"></div>
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+        </button>
+        <button class="p-2 hover:bg-slate-50 rounded-full transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+        </button>
+      </div>
+    </header>
 
-      @if(session('success'))
-        <div class="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg text-sm">
-          {{ session('success') }}
-        </div>
-      @endif
+    <div class="p-8">
+      
+      <div class="bg-white rounded-xl border border-slate-100 shadow-sm p-8 max-w-5xl flex flex-col justify-between min-h-[400px]">
+        
+        <div>
+          <div class="flex justify-between items-center border-b border-slate-100 pb-4 mb-6">
+            <h2 class="text-sm font-bold text-slate-800">Tagihan RT</h2>
+            <div class="text-slate-400 p-1 bg-slate-50 rounded-md">
+              <svg class="w-5 h-5 text-sky-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+            </div>
+          </div>
 
-      @if(session('error'))
-        <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
-          {{ session('error') }}
-        </div>
-      @endif
+          <div class="space-y-4 text-xs">
+            <div class="flex justify-between items-center text-slate-500">
+              <span>Periode</span>
+              <span class="font-semibold uppercase tracking-wider text-slate-700">Juli 2026</span>
+            </div>
 
-      <!-- Tagihan Belum Lunas -->
-      @if($iuranBelumLunas->count() > 0)
-        <div class="bg-white rounded-xl border border-slate-100 shadow-sm p-6">
-          <h3 class="text-base font-semibold text-slate-800 mb-4">Tagihan Belum Lunas</h3>
+            <div class="flex justify-between items-center text-slate-500">
+              <span>Iuran Dapur</span>
+              <span class="font-medium text-slate-700">Rp 50.000</span>
+            </div>
 
-          <div class="space-y-4">
-            @foreach($iuranBelumLunas as $tagihan)
-              <div class="flex justify-between items-start p-4 bg-red-50 border border-red-200 rounded-lg">
-                <div class="flex-1">
-                  <p class="font-semibold text-slate-800">{{ $tagihan->judul ?? 'Iuran RT' }}</p>
-                  <p class="text-xs text-slate-500 mt-1">Periode: {{ $tagihan->periode }}</p>
-                  @if($tagihan->deskripsi)
-                    <p class="text-xs text-slate-600 mt-1">{{ $tagihan->deskripsi }}</p>
-                  @endif
-                </div>
-                <div class="text-right ml-4">
-                  <p class="text-sm font-bold text-red-600">Rp {{ number_format($tagihan->total_bayar, 0, ',', '.') }}</p>
-                  <span class="inline-block text-[9px] font-bold text-red-700 bg-red-100 px-2 py-1 rounded mt-1">BELUM BAYAR</span>
-                </div>
-              </div>
-            @endforeach
+            <div class="border-t border-slate-100 my-2"></div>
+
+            <div class="flex justify-between items-center pt-2">
+              <span class="font-medium text-slate-800 text-sm">Total Tagihan</span>
+              <span class="text-base font-bold text-slate-900">Rp 50.000</span>
+            </div>
           </div>
         </div>
-      @endif
 
-      <!-- Riwayat Tagihan -->
-      <div class="bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
-
-        <div class="p-5 border-b border-slate-100 flex flex-wrap gap-3 items-center justify-between">
-          <h3 class="text-base font-semibold text-slate-800">Riwayat Tagihan</h3>
-        </div>
-
-        <div class="overflow-x-auto">
-          @if($riwayatIuran->count() > 0)
-            <table class="w-full text-left border-collapse">
-              <thead>
-                <tr class="bg-[#EBF5EE] text-slate-600 text-[11px] uppercase tracking-wider font-semibold">
-                  <th class="px-6 py-3.5">Periode</th>
-                  <th class="px-6 py-3.5">Judul</th>
-                  <th class="px-6 py-3.5">Nominal Iuran</th>
-                  <th class="px-6 py-3.5">Diskon Poin</th>
-                  <th class="px-6 py-3.5 text-right">Total Bayar</th>
-                  <th class="px-6 py-3.5">Status</th>
-                  <th class="px-6 py-3.5">Tanggal Bayar</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-slate-100 text-xs text-slate-700">
-                @foreach($riwayatIuran as $tagihan)
-                  <tr class="hover:bg-slate-50/70 transition-colors">
-                    <td class="px-6 py-4 font-medium">{{ $tagihan->periode }}</td>
-                    <td class="px-6 py-4">
-                      <p class="font-semibold text-slate-800">{{ $tagihan->judul ?? 'Iuran RT' }}</p>
-                      @if($tagihan->deskripsi)
-                        <p class="text-[10px] text-slate-500 mt-0.5">{{ Str::limit($tagihan->deskripsi, 50) }}</p>
-                      @endif
-                    </td>
-                    <td class="px-6 py-4">Rp {{ number_format($tagihan->nominal_iuran, 0, ',', '.') }}</td>
-                    <td class="px-6 py-4">
-                      @if($tagihan->diskon_poin > 0)
-                        <span class="text-green-600 font-semibold">-Rp {{ number_format($tagihan->diskon_poin, 0, ',', '.') }}</span>
-                      @else
-                        <span class="text-slate-400">-</span>
-                      @endif
-                    </td>
-                    <td class="px-6 py-4 text-right font-bold">Rp {{ number_format($tagihan->total_bayar, 0, ',', '.') }}</td>
-                    <td class="px-6 py-4">
-                      @if($tagihan->status_bayar === 'Sudah Bayar' || $tagihan->status_bayar === 'Lunas')
-                        <span class="bg-green-100 text-green-700 text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wide">Lunas</span>
-                      @else
-                        <span class="bg-red-100 text-red-700 text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wide">Belum Bayar</span>
-                      @endif
-                    </td>
-                    <td class="px-6 py-4 text-slate-600">
-                      @if($tagihan->tanggal_bayar)
-                        {{ $tagihan->tanggal_bayar->translatedFormat('d M Y') }}
-                      @else
-                        <span class="text-slate-400">-</span>
-                      @endif
-                    </td>
-                  </tr>
-                @endforeach
-              </tbody>
-            </table>
-
-            <!-- Pagination -->
-            @if($riwayatIuran->hasPages())
-              <div class="p-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400 font-medium">
-                <div>
-                  Menampilkan {{ $riwayatIuran->firstItem() }}-{{ $riwayatIuran->lastItem() }} dari {{ $riwayatIuran->total() }} tagihan
-                </div>
-                <div>
-                  {{ $riwayatIuran->links() }}
-                </div>
-              </div>
-            @endif
-          @else
-            <div class="p-8 text-center text-slate-500">
-              <p class="text-sm">Belum ada riwayat tagihan iuran</p>
-            </div>
-          @endif
+        <div class="pt-8">
+          <button type="button" class="w-full bg-[#EBF5EE] hover:bg-emerald-100 text-pointwaste-primary font-semibold text-xs py-3.5 px-6 rounded-xl transition-all flex items-center justify-center space-x-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5a2 2 0 10-2 2h2zm0 0h4m-4 0H8m12 3a2 2 0 00-2-2H6a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V11z"></path>
+            </svg>
+            <span>Tukar Poin</span>
+          </button>
         </div>
 
       </div>
 
+            <button @click="selesai()" class="w-full py-3 bg-primary hover:bg-emerald-900 text-white font-semibold rounded-xl transition-all">Selesai</button>
+        </div>
     </div>
-  </main>
 
 </body>
 </html>
