@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Users extends Authenticatable
 {
@@ -34,6 +36,7 @@ class Users extends Authenticatable
         'total_poin',
         'id_rt',
         'foto',
+        'status', // Menambahkan kolom status agar bisa diisi saat membuat user baru
     ];
 
     /**
@@ -102,7 +105,7 @@ class Users extends Authenticatable
      */
     public function rt(): BelongsTo
     {
-        return $this->belongsTo(Rt::class, 'id_rt', 'id_rt');
+        return $this->belongsTo(RT::class, 'id_rt', 'id_rt');
     }
 
     public function mutasiPoin(): \Illuminate\Database\Eloquent\Relations\HasMany

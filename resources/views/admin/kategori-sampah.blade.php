@@ -167,24 +167,24 @@
             <p class="font-body-md text-body-md text-secondary">Admin System</p>
         </div>
         <nav class="flex flex-col gap-sm">
-            <a class="flex items-center gap-md text-secondary dark:text-secondary-fixed-dim px-md py-sm hover:bg-secondary-container/50 transition-colors rounded-lg cursor-pointer active:scale-95 duration-200" href="#">
+            <a class="flex items-center gap-md text-secondary dark:text-secondary-fixed-dim px-md py-sm hover:bg-secondary-container/50 transition-colors rounded-lg cursor-pointer active:scale-95 duration-200" href="{{ route('admin.dashboard') }}">
                 <span class="material-symbols-outlined">dashboard</span>
                 <span class="font-body-md text-body-md">Dashboard</span>
             </a>
-            <a class="flex items-center gap-md text-secondary dark:text-secondary-fixed-dim px-md py-sm hover:bg-secondary-container/50 transition-colors rounded-lg cursor-pointer active:scale-95 duration-200" href="#">
+            <a class="flex items-center gap-md text-secondary dark:text-secondary-fixed-dim px-md py-sm hover:bg-secondary-container/50 transition-colors rounded-lg cursor-pointer active:scale-95 duration-200" href="{{ route('admin.manajemen-pengguna') }}">
                 <span class="material-symbols-outlined">group</span>
                 <span class="font-body-md text-body-md">Manajemen Pengguna</span>
             </a>
             <!-- Active Tab: Kategori Sampah -->
-            <a class="flex items-center gap-md bg-secondary-container dark:bg-primary-container text-primary dark:text-on-primary-container rounded-lg px-md py-sm cursor-pointer active:scale-95 duration-200" href="#">
+            <a class="flex items-center gap-md bg-secondary-container dark:bg-primary-container text-primary dark:text-on-primary-container rounded-lg px-md py-sm cursor-pointer active:scale-95 duration-200" href="{{ route('admin.kategori-sampah') }}">
                 <span class="material-symbols-outlined">recycling</span>
                 <span class="font-body-md text-body-md">Kategori Sampah</span>
             </a>
-            <a class="flex items-center gap-md text-secondary dark:text-secondary-fixed-dim px-md py-sm hover:bg-secondary-container/50 transition-colors rounded-lg cursor-pointer active:scale-95 duration-200" href="#">
+            <a class="flex items-center gap-md text-secondary dark:text-secondary-fixed-dim px-md py-sm hover:bg-secondary-container/50 transition-colors rounded-lg cursor-pointer active:scale-95 duration-200" href="{{ route('admin.monitoring-sistem') }}">
                 <span class="material-symbols-outlined">analytics</span>
                 <span class="font-body-md text-body-md">Monitoring Sistem</span>
             </a>
-            <a class="flex items-center gap-md text-secondary dark:text-secondary-fixed-dim px-md py-sm hover:bg-secondary-container/50 transition-colors rounded-lg cursor-pointer active:scale-95 duration-200" href="#">
+            <a class="flex items-center gap-md text-secondary dark:text-secondary-fixed-dim px-md py-sm hover:bg-secondary-container/50 transition-colors rounded-lg cursor-pointer active:scale-95 duration-200" href="{{ route('admin.konfigurasi') }}">
                 <span class="material-symbols-outlined">settings</span>
                 <span class="font-body-md text-body-md">Konfigurasi</span>
             </a>
@@ -235,10 +235,10 @@
                     <h2 class="font-headline-lg text-headline-lg text-on-background">Manajemen Kategori Sampah</h2>
                     <p class="font-body-md text-body-md text-secondary mt-xs">Konfigurasi master data kategori limbah dan parameter insentif poin.</p>
                 </div>
-                <button class="bg-primary text-white px-lg py-md rounded-lg flex items-center gap-sm hover:brightness-110 active:scale-95 transition-all font-label-md">
+                <a href="{{ route('admin.kategori-sampah.create') }}" class="bg-primary text-white px-lg py-md rounded-lg flex items-center gap-sm hover:brightness-110 active:scale-95 transition-all font-label-md inline-flex">
                     <span class="material-symbols-outlined">add_circle</span>
                     Tambah Kategori Master
-                </button>
+                </a>
             </div>
             <!-- Bento Stats Grid -->
             <div class="bento-grid mb-xl">
@@ -247,7 +247,7 @@
                     <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
                     <div>
                         <p class="font-label-md text-label-md text-secondary uppercase tracking-wider">Total Kategori</p>
-                        <h3 class="font-display-lg text-display-lg text-primary mt-sm">12</h3>
+                        <h3 class="font-display-lg text-display-lg text-primary mt-sm">{{ $totalKategori }} Kategori</h3>
                     </div>
                     <div class="flex items-center gap-xs text-primary text-body-md font-bold mt-md">
                         <span class="material-symbols-outlined text-[18px]">trending_up</span>
@@ -259,7 +259,7 @@
                     <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary-container"></div>
                     <div>
                         <p class="font-label-md text-label-md text-secondary uppercase tracking-wider">Rata-rata Poin / Kg</p>
-                        <h3 class="font-display-lg text-display-lg text-primary mt-sm">1,250</h3>
+                        <h3 class="font-display-lg text-display-lg text-primary mt-sm">{{ number_format($totalPoinBeredar) }} Poin</h3>
                     </div>
                     <p class="text-body-md text-secondary mt-md">Poin dasar komoditas global</p>
                 </div>
@@ -299,140 +299,44 @@
                             <th class="px-lg py-md font-label-md text-label-md text-secondary uppercase text-right">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-outline-variant">
-                        <!-- Plastik -->
-                        <tr class="hover:bg-surface-container-low transition-colors group">
-                            <td class="px-lg py-lg">
-                                <div class="flex items-center gap-md">
-                                    <div class="w-12 h-12 rounded-lg bg-primary-fixed flex items-center justify-center text-primary">
-                                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">eco</span>
-                                    </div>
-                                    <div>
-                                        <p class="font-title-lg text-title-lg text-on-surface">Plastik (PET/HDPE)</p>
-                                        <p class="text-body-md text-secondary">Botol minuman, wadah deterjen</p>
-                                    </div>
+                    <tbody class="divide-y divide-outline-variant font-body-md text-on-surface">
+                        @foreach($kategori as $item)
+                        <tr class="hover:bg-surface-container-low transition-colors">
+                            <td class="px-lg py-md font-bold">
+                                {{ $item->nama_kategori }}
+                            </td>
+                            
+                            <td class="px-lg py-md text-center text-secondary font-mono">
+                                #{{ $item->id_kategori }}
+                            </td>
+                            
+                            <td class="px-lg py-md text-primary font-bold">
+                                {{ number_format($item->poin_per_kg) }} pts/kg
+                            </td>
+                            
+                            <td class="px-lg py-md">
+                                @if($item->status_aktif)
+                                    <span class="px-3 py-1 bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-bold uppercase tracking-wider">Aktif</span>
+                                @else
+                                    <span class="px-3 py-1 bg-error-container text-error border border-error/20 rounded-full text-xs font-bold uppercase tracking-wider">Nonaktif</span>
+                                @endif
+                            </td>
+                            
+                            <td class="px-lg py-md text-right">
+                                <div class="flex gap-sm justify-end">
+                                    <a 
+                                        href="{{ route('admin.kategori-sampah.edit', $item->id_kategori) }}" 
+                                        class="h-8 w-8 flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-full transition-colors" 
+                                        title="Edit Kategori">
+                                        <span class="material-symbols-outlined text-md">edit</span>
+                                    </a>
+                                    <button class="h-8 w-8 flex items-center justify-center text-on-surface-variant hover:text-error hover:bg-error-container/20 rounded-full transition-colors" title="Hapus Kategori">
+                                        <span class="material-symbols-outlined text-md">delete</span>
+                                    </button>
                                 </div>
-                            </td>
-                            <td class="px-lg py-lg text-center">
-                                <span class="bg-surface-container-highest px-md py-xs rounded-full font-code-sm text-code-sm text-secondary">PL-01</span>
-                            </td>
-                            <td class="px-lg py-lg">
-                                <div class="flex items-center gap-sm">
-                                    <span class="font-title-lg text-title-lg text-primary">1,500</span>
-                                    <span class="text-body-md text-secondary">Poin</span>
-                                    <span class="text-[10px] bg-primary-fixed text-on-primary-fixed-variant px-xs rounded font-bold">+5%</span>
-                                </div>
-                            </td>
-                            <td class="px-lg py-lg">
-                                <span class="inline-flex items-center gap-xs px-md py-xs bg-primary-container text-on-primary-container rounded-full text-label-md">
-                                    <span class="w-2 h-2 rounded-full bg-on-primary-container"></span>
-                                    Aktif
-                                </span>
-                            </td>
-                            <td class="px-lg py-lg text-right">
-                                <button class="p-sm text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined">edit</span></button>
-                                <button class="p-sm text-secondary hover:text-error transition-colors"><span class="material-symbols-outlined">delete</span></button>
                             </td>
                         </tr>
-                        <!-- Kertas -->
-                        <tr class="hover:bg-surface-container-low transition-colors group">
-                            <td class="px-lg py-lg">
-                                <div class="flex items-center gap-md">
-                                    <div class="w-12 h-12 rounded-lg bg-tertiary-fixed flex items-center justify-center text-tertiary">
-                                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">description</span>
-                                    </div>
-                                    <div>
-                                        <p class="font-title-lg text-title-lg text-on-surface">Kertas &amp; Karton</p>
-                                        <p class="text-body-md text-secondary">Koran, kardus, dokumen bekas</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-lg py-lg text-center">
-                                <span class="bg-surface-container-highest px-md py-xs rounded-full font-code-sm text-code-sm text-secondary">KR-02</span>
-                            </td>
-                            <td class="px-lg py-lg">
-                                <div class="flex items-center gap-sm">
-                                    <span class="font-title-lg text-title-lg text-primary">800</span>
-                                    <span class="text-body-md text-secondary">Poin</span>
-                                </div>
-                            </td>
-                            <td class="px-lg py-lg">
-                                <span class="inline-flex items-center gap-xs px-md py-xs bg-primary-container text-on-primary-container rounded-full text-label-md">
-                                    <span class="w-2 h-2 rounded-full bg-on-primary-container"></span>
-                                    Aktif
-                                </span>
-                            </td>
-                            <td class="px-lg py-lg text-right">
-                                <button class="p-sm text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined">edit</span></button>
-                                <button class="p-sm text-secondary hover:text-error transition-colors"><span class="material-symbols-outlined">delete</span></button>
-                            </td>
-                        </tr>
-                        <!-- Organik -->
-                        <tr class="hover:bg-surface-container-low transition-colors group">
-                            <td class="px-lg py-lg">
-                                <div class="flex items-center gap-md">
-                                    <div class="w-12 h-12 rounded-lg bg-secondary-container flex items-center justify-center text-secondary">
-                                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">compost</span>
-                                    </div>
-                                    <div>
-                                        <p class="font-title-lg text-title-lg text-on-surface">Sampah Organik</p>
-                                        <p class="text-body-md text-secondary">Sisa makanan, dedaunan</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-lg py-lg text-center">
-                                <span class="bg-surface-container-highest px-md py-xs rounded-full font-code-sm text-code-sm text-secondary">OG-03</span>
-                            </td>
-                            <td class="px-lg py-lg">
-                                <div class="flex items-center gap-sm">
-                                    <span class="font-title-lg text-title-lg text-primary">500</span>
-                                    <span class="text-body-md text-secondary">Poin</span>
-                                </div>
-                            </td>
-                            <td class="px-lg py-lg">
-                                <span class="inline-flex items-center gap-xs px-md py-xs bg-primary-container text-on-primary-container rounded-full text-label-md">
-                                    <span class="w-2 h-2 rounded-full bg-on-primary-container"></span>
-                                    Aktif
-                                </span>
-                            </td>
-                            <td class="px-lg py-lg text-right">
-                                <button class="p-sm text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined">edit</span></button>
-                                <button class="p-sm text-secondary hover:text-error transition-colors"><span class="material-symbols-outlined">delete</span></button>
-                            </td>
-                        </tr>
-                        <!-- Elektronik -->
-                        <tr class="hover:bg-surface-container-low transition-colors group">
-                            <td class="px-lg py-lg">
-                                <div class="flex items-center gap-md">
-                                    <div class="w-12 h-12 rounded-lg bg-error-container flex items-center justify-center text-error">
-                                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">electrical_services</span>
-                                    </div>
-                                    <div>
-                                        <p class="font-title-lg text-title-lg text-on-surface">E-Waste</p>
-                                        <p class="text-body-md text-secondary">Baterai, kabel, komponen sirkuit</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-lg py-lg text-center">
-                                <span class="bg-surface-container-highest px-md py-xs rounded-full font-code-sm text-code-sm text-secondary">EW-04</span>
-                            </td>
-                            <td class="px-lg py-lg">
-                                <div class="flex items-center gap-sm">
-                                    <span class="font-title-lg text-title-lg text-primary">3,000</span>
-                                    <span class="text-body-md text-secondary">Poin</span>
-                                </div>
-                            </td>
-                            <td class="px-lg py-lg">
-                                <span class="inline-flex items-center gap-xs px-md py-xs bg-error-container text-error rounded-full text-label-md">
-                                    <span class="w-2 h-2 rounded-full bg-error"></span>
-                                    Non-Aktif
-                                </span>
-                            </td>
-                            <td class="px-lg py-lg text-right">
-                                <button class="p-sm text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined">edit</span></button>
-                                <button class="p-sm text-secondary hover:text-error transition-colors"><span class="material-symbols-outlined">delete</span></button>
-                            </td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
                 <!-- Pagination -->

@@ -80,58 +80,6 @@
                         "md": "16px",
                         "container-max": "1280px",
                         "gutter": "24px"
-                    },
-                    "fontFamily": {
-                        "display-lg": ["Inter"],
-                        "code-sm": ["Inter"],
-                        "label-md": ["Inter"],
-                        "title-lg": ["Inter"],
-                        "headline-lg": ["Inter"],
-                        "headline-md": ["Inter"],
-                        "body-md": ["Inter"],
-                        "body-lg": ["Inter"],
-                        "headline-lg-mobile": ["Inter"]
-                    },
-                    "fontSize": {
-                        "display-lg": ["48px", {
-                            "lineHeight": "56px",
-                            "letterSpacing": "-0.02em",
-                            "fontWeight": "700"
-                        }],
-                        "code-sm": ["13px", {
-                            "lineHeight": "18px",
-                            "fontWeight": "400"
-                        }],
-                        "label-md": ["12px", {
-                            "lineHeight": "16px",
-                            "letterSpacing": "0.05em",
-                            "fontWeight": "600"
-                        }],
-                        "title-lg": ["20px", {
-                            "lineHeight": "28px",
-                            "fontWeight": "600"
-                        }],
-                        "headline-lg": ["32px", {
-                            "lineHeight": "40px",
-                            "letterSpacing": "-0.01em",
-                            "fontWeight": "600"
-                        }],
-                        "headline-md": ["24px", {
-                            "lineHeight": "32px",
-                            "fontWeight": "600"
-                        }],
-                        "body-md": ["14px", {
-                            "lineHeight": "20px",
-                            "fontWeight": "400"
-                        }],
-                        "body-lg": ["16px", {
-                            "lineHeight": "24px",
-                            "fontWeight": "400"
-                        }],
-                        "headline-lg-mobile": ["24px", {
-                            "lineHeight": "32px",
-                            "fontWeight": "600"
-                        }]
                     }
                 },
             },
@@ -140,17 +88,12 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
         }
 
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
             vertical-align: middle;
-        }
-
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 24px;
         }
 
         .hero-gradient {
@@ -166,21 +109,24 @@
 </head>
 
 <body class="bg-background text-on-surface">
-    <header class="fixed top-0 left-0 right-0 z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant">
+    
+    <header class="fixed top-0 left-0 right-0 z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant transition-all duration-300">
         <nav class="flex justify-between items-center w-full px-lg py-sm max-w-container-max mx-auto h-16">
-            <div class="font-headline-md text-headline-md font-bold text-primary">PointWaste</div>
+            <div class="text-2xl font-bold text-primary tracking-tight cursor-pointer" onclick="window.scrollTo(0,0)">PointWaste</div>
             <div class="hidden md:flex gap-lg">
-                <a class="font-label-md text-label-md text-primary font-bold border-b-2 border-primary pb-1" href="#">Fitur</a>
-                <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Cara Kerja</a>
-                <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Tentang Kami</a>
+                <a class="nav-link font-label-md text-label-md text-primary font-bold border-b-2 border-primary pb-1 transition-all" href="#fitur">Fitur</a>
+                <a class="nav-link font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors pb-1" href="#cara-kerja">Cara Kerja</a>
+                <a class="nav-link font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors pb-1" href="#tentang-kami">Tentang Kami</a>
             </div>
             <div class="flex items-center gap-md">
-                <a href="{{ route('showLogin') }}" class="font-label-md text-label-md text-primary px-md py-sm hover:opacity-80 transition-opacity inline-block">Login</a>
-                <a href="{{ route('showRegister') }}" class="font-label-md text-label-md bg-primary text-on-primary px-lg py-sm rounded-lg hover:opacity-90 transition-all shadow-sm inline-block">Register</a>
+                <a href="{{ route('login') }}" class="font-label-md text-label-md text-primary px-md py-sm hover:opacity-80 transition-opacity inline-block">Login</a>
+                <a href="{{ route('register') }}" class="font-label-md text-label-md bg-primary text-on-primary px-lg py-sm rounded-lg hover:opacity-90 transition-all shadow-sm inline-block">Register</a>
             </div>
         </nav>
     </header>
-    <main class="pt-20">
+
+    <main class="pt-16">
+        
         <section class="relative overflow-hidden py-24 md:py-32 hero-gradient">
             <div class="max-w-container-max mx-auto px-lg">
                 <div class="flex flex-col md:flex-row items-center gap-xl">
@@ -189,119 +135,192 @@
                             <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">eco</span>
                             Menuju Kota Berkelanjutan
                         </div>
-                        <h1 class="font-display-lg text-display-lg text-on-surface leading-tight">
+                        <h1 class="text-4xl md:text-5xl font-bold text-on-surface leading-tight">
                             Kelola Sampah, <span class="text-primary">Ringankan Iuran</span>
                         </h1>
-                        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto md:mx-0">
+                        <p class="text-base md:text-lg text-on-surface-variant max-w-xl mx-auto md:mx-0 leading-relaxed">
                             Ubah kebiasaan membuang sampah menjadi poin yang dapat mengurangi tagihan iuran kebersihan bulanan Anda secara otomatis dan transparan.
                         </p>
                         <div class="flex flex-col sm:flex-row gap-md justify-center md:justify-start pt-md">
-                            <a href="{{ route('login') }}" class="bg-primary text-on-primary px-xl py-lg rounded-xl font-title-lg text-title-lg flex items-center justify-center gap-sm hover:scale-[1.02] transition-transform active:scale-95">
+                            <a href="{{ route('register') }}" class="bg-primary text-on-primary px-xl py-lg rounded-xl font-semibold flex items-center justify-center gap-sm hover:scale-[1.02] transition-transform active:scale-95 shadow-md">
                                 Mulai Sekarang
                                 <span class="material-symbols-outlined">arrow_forward</span>
                             </a>
-                            <button class="bg-white border border-outline-variant text-on-surface px-xl py-lg rounded-xl font-title-lg text-title-lg flex items-center justify-center gap-sm hover:bg-surface-container-low transition-colors">
-                                Lihat Demo
-                            </button>
+                            <a href="#cara-kerja" class="bg-white border border-outline-variant text-on-surface px-xl py-lg rounded-xl font-semibold flex items-center justify-center gap-sm hover:bg-surface-container-low transition-colors">
+                                Lihat Cara Kerja
+                            </a>
                         </div>
                     </div>
-                    <div class="flex-1 relative">
+                    <div class="flex-1 relative w-full max-w-md md:max-w-none">
                         <div class="relative z-10 rounded-[2rem] overflow-hidden shadow-2xl border border-white/50">
                             <img alt="Modern Waste Management" class="w-full h-auto object-cover aspect-[4/3]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1Qw5o7hMzGkY5J08CFcyrvamN1g_hvfJ9KOWs4dN7Vecw_vL012a-uxI44duIBurNebsBSltAITwe-79fsDch6g4fYzEtj46-aMl7xrf3p3NhnD0Vwp3QvMdWlNwnhTcIpcqoG2R2BgscgvFKtlppXL4Qc2TmNNlw7daxxDtAumRODQ964XqnijJJe914h40jyXd__MIxt6Vz6EtKgQW7THX1IGbX0b_ffWlmMk210LztoZHu4MoGwFUG3FgVbU0TMpUY9IOSs5Q" />
                         </div>
-                        <div class="absolute -bottom-6 -left-6 z-20 eco-glass p-lg rounded-2xl shadow-xl max-w-[200px]">
+                        <div class="absolute -bottom-6 -left-6 z-20 eco-glass p-lg rounded-2xl shadow-xl max-w-[220px]">
                             <div class="flex items-center gap-sm mb-xs">
                                 <span class="material-symbols-outlined text-primary">trending_up</span>
-                                <span class="font-label-md text-label-md text-primary">Dampak Hari Ini</span>
+                                <span class="font-label-md text-label-md text-primary font-bold">Dampak Hari Ini</span>
                             </div>
-                            <div class="font-headline-md text-headline-md text-on-surface">45.2 <span class="text-body-md">kg</span></div>
-                            <p class="font-label-md text-label-md text-on-surface-variant">Sampah terolah</p>
+                            <div class="text-2xl font-bold text-on-surface">45.2 <span class="text-sm font-normal text-slate-500">kg</span></div>
+                            <p class="text-xs text-on-surface-variant mt-1">Sampah anorganik terolah warga lingkungan RT</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         
-        <section class="bg-primary text-on-primary py-lg">
+        <section class="bg-primary text-on-primary py-6">
             <div class="max-w-container-max mx-auto px-lg flex flex-col md:flex-row items-center justify-between gap-md">
                 <div class="flex items-center gap-md">
-                    <img alt="SDG 11" class="w-12 h-12 rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOhWS8xB53xhu-eWMIWWq84m9GIAHZ0kiki0bzxp97dpryp753GrW_jk8f8HGZs2QmMLkNTqr2vPv7B8n9PXqrh0dyCfDkmkpyLwHPojDUu95d00xQeO1YQh5Q8roylT747uPuwlxO2atjW59bQC-KYtsluXHOXX0p97rc1I94_800RtfbTfdJiIBoUd9POq_i_pkxX_BnQ-9gP0G19YsJHmu81fW6C779g3yFzrRZMStT7dhbH773tV_SdAnEHol1C2WNjegTNXk" />
+                    <span class="material-symbols-outlined text-4xl text-primary-fixed">domain</span>
                     <div>
-                        <p class="font-label-md text-label-md opacity-80 uppercase tracking-widest">Global Goals</p>
-                        <h2 class="font-title-lg text-title-lg">Mendukung SDGs 11: Kota & Pemukiman Berkelanjutan</h2>
+                        <p class="text-[10px] font-bold opacity-80 uppercase tracking-widest">Global Goals Contribution</p>
+                        <h2 class="text-lg font-bold">Mendukung SDGs 11: Kota & Pemukiman Berkelanjutan</h2>
                     </div>
                 </div>
-                <p class="font-body-md text-body-md max-w-md text-on-primary-container text-right hidden md:block">
-                    Bersama membangun sistem sanitasi and pengelolaan limbah perkotaan yang cerdas, inklusif, dan ramah lingkungan.
+                <p class="text-xs max-w-md text-emerald-100 text-left md:text-right">
+                    Bersama membangun sistem sanitasi dan pengelolaan limbah sirkular tingkat rukun tetangga yang cerdas, inklusif, dan ramah lingkungan.
                 </p>
             </div>
         </section>
 
-        <section class="py-24 bg-surface">
+        <section id="fitur" class="py-24 bg-surface scroll-mt-16">
             <div class="max-w-container-max mx-auto px-lg">
                 <div class="text-center mb-20 space-y-md">
-                    <h2 class="font-headline-lg text-headline-lg text-on-surface">Solusi Modern Untuk Lingkungan</h2>
-                    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                    <h2 class="text-3xl font-bold text-on-surface">Solusi Modern Untuk Lingkungan</h2>
+                    <p class="text-sm md:text-base text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
                         Kami menyederhanakan pengelolaan sampah rumah tangga melalui platform terintegrasi yang memberi manfaat langsung bagi dompet Anda.
                     </p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
-                    <div class="bg-white p-lg rounded-2xl border border-outline-variant hover:border-primary transition-all group">
+                    <div class="bg-white p-lg rounded-2xl border border-outline-variant hover:border-primary transition-all group shadow-sm">
                         <div class="w-12 h-12 bg-secondary-container rounded-xl flex items-center justify-center text-primary mb-lg group-hover:scale-110 transition-transform">
                             <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">recycling</span>
                         </div>
-                        <h3 class="font-title-lg text-title-lg text-on-surface mb-sm">Setor Sampah</h3>
-                        <p class="font-body-md text-body-md text-on-surface-variant">
-                            Sistem penjemputan sampah terpilah terjadwal langsung dari depan rumah Anda setiap minggunya.
+                        <h3 class="text-lg font-bold text-on-surface mb-sm">Setor Sampah</h3>
+                        <p class="text-xs md:text-sm text-on-surface-variant leading-relaxed">
+                            Warga dapat mengajukan setoran sampah pilahan mandiri (plastik, kertas, botol) secara online kapan saja.
                         </p>
                     </div>
-                    <div class="bg-white p-lg rounded-2xl border border-outline-variant hover:border-primary transition-all group">
+                    <div class="bg-white p-lg rounded-2xl border border-outline-variant hover:border-primary transition-all group shadow-sm">
                         <div class="w-12 h-12 bg-secondary-container rounded-xl flex items-center justify-center text-primary mb-lg group-hover:scale-110 transition-transform">
                             <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
                         </div>
-                        <h3 class="font-title-lg text-title-lg text-on-surface mb-sm">Konversi Poin</h3>
-                        <p class="font-body-md text-body-md text-on-surface-variant">
-                            Dapatkan poin untuk setiap kilogram sampah yang Anda setor berdasarkan kategori dan berat yang akurat.
+                        <h3 class="text-lg font-bold text-on-surface mb-sm">Konversi Poin</h3>
+                        <p class="text-xs md:text-sm text-on-surface-variant leading-relaxed">
+                            Dapatkan poin digital untuk setiap kilogram sampah berdasarkan timbangan valid dan persetujuan Pengurus RT.
                         </p>
                     </div>
-                    <div class="bg-white p-lg rounded-2xl border border-outline-variant hover:border-primary transition-all group">
+                    <div class="bg-white p-lg rounded-2xl border border-outline-variant hover:border-primary transition-all group shadow-sm">
                         <div class="w-12 h-12 bg-secondary-container rounded-xl flex items-center justify-center text-primary mb-lg group-hover:scale-110 transition-transform">
                             <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
                         </div>
-                        <h3 class="font-title-lg text-title-lg text-on-surface mb-sm">Potongan Iuran</h3>
-                        <p class="font-body-md text-body-md text-on-surface-variant">
-                            Poin yang terkumpul akan langsung memotong tagihan iuran sampah bulanan Anda secara otomatis di aplikasi.
+                        <h3 class="text-lg font-bold text-on-surface mb-sm">Potongan Iuran</h3>
+                        <p class="text-xs md:text-sm text-on-surface-variant leading-relaxed">
+                            Poin yang terkumpul dikonversi otomatis menjadi saldo pengurang tagihan wajib iuran kebersihan RT bulanan Anda.
                         </p>
                     </div>
-                    <div class="bg-white p-lg rounded-2xl border border-outline-variant hover:border-primary transition-all group">
+                    <div class="bg-white p-lg rounded-2xl border border-outline-variant hover:border-primary transition-all group shadow-sm">
                         <div class="w-12 h-12 bg-secondary-container rounded-xl flex items-center justify-center text-primary mb-lg group-hover:scale-110 transition-transform">
                             <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">monitoring</span>
                         </div>
-                        <h3 class="font-title-lg text-title-lg text-on-surface mb-sm">Transparansi Data</h3>
-                        <p class="font-body-md text-body-md text-on-surface-variant">
-                            Pantau riwayat setoran, pergerakan poin, dan jejak karbon Anda melalui dashboard real-time yang detail.
+                        <h3 class="text-lg font-bold text-on-surface mb-sm">Transparansi Data</h3>
+                        <p class="text-xs md:text-sm text-on-surface-variant leading-relaxed">
+                            Pantau riwayat mutasi tabungan poin, berkas pengajuan setoran, serta status keuangan iuran warga secara *real-time*.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-24">
+        <section id="cara-kerja" class="py-24 bg-white scroll-mt-16">
             <div class="max-w-container-max mx-auto px-lg">
-                <div class="bg-primary-container rounded-[2rem] p-xl md:p-32 text-center text-on-primary-container relative overflow-hidden">
+                <div class="text-center mb-16 space-y-md">
+                    <h2 class="text-3xl font-bold text-on-surface">Bagaimana PointWaste Bekerja?</h2>
+                    <p class="text-sm md:text-base text-on-surface-variant max-w-xl mx-auto">
+                        Hanya butuh 4 langkah mudah untuk mulai menyulap limbah rumah tangga menjadi keuntungan finansial lingkungan.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+                    <div class="text-center flex flex-col items-center space-y-4">
+                        <div class="w-16 h-16 bg-emerald-50 text-primary rounded-full flex items-center justify-center text-xl font-bold border border-emerald-100 shadow-sm">
+                            1
+                        </div>
+                        <h3 class="text-base font-bold text-slate-800">Pilah Sampah</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed max-w-xs">Pisahkan sampah anorganik Anda seperti kertas, kardus, plastik, logam, atau minyak jelantah.</p>
+                    </div>
+                    <div class="text-center flex flex-col items-center space-y-4">
+                        <div class="w-16 h-16 bg-emerald-50 text-primary rounded-full flex items-center justify-center text-xl font-bold border border-emerald-100 shadow-sm">
+                            2
+                        </div>
+                        <h3 class="text-base font-bold text-slate-800">Ajukan di Aplikasi</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed max-w-xs">Buka form setor sampah, masukkan tanggal, rincian estimasi berat, dan lampirkan foto fisik sampah.</p>
+                    </div>
+                    <div class="text-center flex flex-col items-center space-y-4">
+                        <div class="w-16 h-16 bg-emerald-50 text-primary rounded-full flex items-center justify-center text-xl font-bold border border-emerald-100 shadow-sm">
+                            3
+                        </div>
+                        <h3 class="text-base font-bold text-slate-800">Verifikasi RT</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed max-w-xs">Bawa sampah ke titik pengumpulan, Pengurus RT akan memvalidasi berat riil dan menyetujui poin masuk.</p>
+                    </div>
+                    <div class="text-center flex flex-col items-center space-y-4">
+                        <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold shadow-md">
+                            4
+                        </div>
+                        <h3 class="text-base font-bold text-slate-800">Iuran Terpotong</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed max-w-xs">Poin otomatis memotong total akumulasi tagihan iuran bulanan kebersihan Anda secara instan.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tentang-kami" class="py-24 bg-surface scroll-mt-16">
+            <div class="max-w-container-max mx-auto px-lg">
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="flex-1 space-y-6">
+                        <h2 class="text-3xl font-bold text-on-surface">Misi Kami Menciptakan Ekosistem Rukun Tetangga Digital Peduli Lingkungan</h2>
+                        <p class="text-sm text-on-surface-variant leading-relaxed">
+                            PointWaste lahir sebagai wadah inovasi digital untuk mengatasi isu pembuangan akhir sampah perkotaan yang berlebihan. Kami percaya bahwa perubahan besar dimulai dari insentif kecil yang konsisten di tingkat komunitas terkecil: keluarga dan lingkungan Rukun Tetangga (RT).
+                        </p>
+                        <p class="text-sm text-on-surface-variant leading-relaxed">
+                            Melalui integrasi manajemen sirkular ekonomi antara warga dan pengurus wilayah, kita tidak hanya melestarikan kelayakan bumi, namun juga membangun transparansi keuangan iuran kebersihan masyarakat yang modern dan akuntabel.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 pt-2">
+                            <div class="p-4 bg-white rounded-xl border border-outline-variant">
+                                <h4 class="text-2xl font-bold text-primary">100%</h4>
+                                <p class="text-[11px] text-slate-500 mt-1">Transparansi Aliran Kas Iuran</p>
+                            </div>
+                            <div class="p-4 bg-white rounded-xl border border-outline-variant">
+                                <h4 class="text-2xl font-bold text-primary">>1.2 Ton</h4>
+                                <p class="text-[11px] text-slate-500 mt-1">Limbah Plastik Tereduksi</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-1 w-full">
+                        <div class="rounded-2xl overflow-hidden shadow-lg">
+                            <img alt="Community Team Action" class="w-full h-auto object-cover aspect-[16/10]" src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-white">
+            <div class="max-w-container-max mx-auto px-lg">
+                <div class="bg-primary-container rounded-[2rem] p-xl md:p-20 text-center text-on-primary-container relative overflow-hidden shadow-md">
                     <div class="absolute top-0 right-0 w-64 h-64 bg-primary opacity-20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
                     <div class="absolute bottom-0 left-0 w-64 h-64 bg-primary opacity-20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
                     <div class="relative z-10 max-w-2xl mx-auto space-y-lg">
-                        <h2 class="font-headline-lg text-headline-lg text-on-primary">Siap Berkontribusi Untuk Lingkungan?</h2>
-                        <p class="font-body-lg text-body-lg opacity-90">
-                            Bergabunglah dengan ribuan warga lainnya yang telah memulai langkah kecil untuk dampak besar bagi kota kita.
+                        <h2 class="text-2xl md:text-3xl font-bold text-on-primary">Siap Berkontribusi Untuk Lingkungan?</h2>
+                        <p class="text-sm md:text-base opacity-90 leading-relaxed">
+                            Bergabunglah dengan ratusan keluarga lainnya yang telah memulai langkah kecil untuk dampak sirkular ekonomi bagi wilayah pemukiman kita.
                         </p>
                         <div class="flex flex-col sm:flex-row gap-md justify-center pt-md">
-                            <a href="#" class="bg-primary-fixed text-on-primary-fixed px-xl py-lg rounded-xl font-title-lg text-title-lg hover:bg-primary-fixed-dim transition-colors flex items-center justify-center">
+                            <a href="{{ route('register') }}" class="bg-primary-fixed text-on-primary-fixed px-xl py-lg rounded-xl font-semibold hover:bg-primary-fixed-dim transition-colors flex items-center justify-center shadow-sm">
                                 Daftar Sebagai Warga
                             </a>
-                            <button class="bg-transparent border border-on-primary-container text-on-primary px-xl py-lg rounded-xl font-title-lg text-title-lg hover:bg-white/10 transition-colors">
-                                Kerjasama Instansi
+                            <button type="button" class="bg-transparent border border-on-primary-container text-on-primary px-xl py-lg rounded-xl font-semibold hover:bg-white/10 transition-colors">
+                                Hubungi Pengurus Wilayah
                             </button>
                         </div>
                     </div>
@@ -312,93 +331,85 @@
 
     <footer class="bg-on-surface text-white pt-24 pb-12">
         <div class="max-w-container-max mx-auto px-lg">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-xl mb-24">
-                <div class="col-span-1 md:col-span-1 space-y-md">
-                    <div class="font-headline-md text-headline-md font-bold text-primary-fixed">PointWaste</div>
-                    <p class="font-body-md text-body-md text-surface-variant">
-                        Solusi pengelolaan sampah digital terintegrasi untuk pemukiman cerdas dan berkelanjutan.
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-xl mb-16">
+                <div class="space-y-md">
+                    <div class="text-xl font-bold text-primary-fixed">PointWaste</div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Solusi digital integrasi tabungan sampah sirkular dan pengurangan beban tagihan wajib iuran lingkungan pemukiman cerdas.
                     </p>
                 </div>
                 <div>
-                    <h4 class="font-title-lg text-title-lg mb-lg">Layanan</h4>
-                    <ul class="space-y-sm font-body-md text-body-md text-surface-variant">
-                        <li><a class="hover:text-primary-fixed transition-colors" href="#">Setor Sampah</a></li>
-                        <li><a class="hover:text-primary-fixed transition-colors" href="#">Tukar Poin</a></li>
-                        <li><a class="hover:text-primary-fixed transition-colors" href="#">Iuran Sampah</a></li>
-                        <li><a class="hover:text-primary-fixed transition-colors" href="#">Laporan RT/RW</a></li>
+                    <h4 class="text-sm font-bold text-white mb-4">Layanan</h4>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li><a class="hover:text-primary-fixed transition-colors" href="#fitur">Setor Sampah</a></li>
+                        <li><a class="hover:text-primary-fixed transition-colors" href="#fitur">Tukar Poin</a></li>
+                        <li><a class="hover:text-primary-fixed transition-colors" href="#fitur">Iuran Sampah</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-title-lg text-title-lg mb-lg">Perusahaan</h4>
-                    <ul class="space-y-sm font-body-md text-body-md text-surface-variant">
-                        <li><a class="hover:text-primary-fixed transition-colors" href="#">Tentang Kami</a></li>
-                        <li><a class="hover:text-primary-fixed transition-colors" href="#">Hubungi Kami</a></li>
-                        <li><a class="hover:text-primary-fixed transition-colors" href="#">Karir</a></li>
+                    <h4 class="text-sm font-bold text-white mb-4">Perusahaan</h4>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li><a class="hover:text-primary-fixed transition-colors" href="#tentang-kami">Tentang Kami</a></li>
                         <li><a class="hover:text-primary-fixed transition-colors" href="#">Kebijakan Privasi</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-title-lg text-title-lg mb-lg">Kontak</h4>
-                    <ul class="space-y-sm font-body-md text-body-md text-surface-variant">
+                    <h4 class="text-sm font-bold text-white mb-4">Kontak</h4>
+                    <ul class="space-y-2 text-xs text-slate-400">
                         <li class="flex items-center gap-sm">
-                            <span class="material-symbols-outlined text-[18px]">mail</span>
+                            <span class="material-symbols-outlined text-[16px]">mail</span>
                             hello@pointwaste.id
                         </li>
                         <li class="flex items-center gap-sm">
-                            <span class="material-symbols-outlined text-[18px]">call</span>
-                            (021) 555-0123
-                        </li>
-                        <li class="flex items-center gap-sm">
-                            <span class="material-symbols-outlined text-[18px]">location_on</span>
-                            Jakarta, Indonesia
+                            <span class="material-symbols-outlined text-[16px]">location_on</span>
+                            Bekasi, Indonesia
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="pt-12 border-t border-outline/20 flex flex-col md:flex-row justify-between items-center gap-md">
-                <p class="font-label-md text-label-md text-surface-variant opacity-60">
-                    © 2024 PointWaste. Hak Cipta Dilindungi Undang-Undang.
+            <div class="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-md">
+                <p class="text-xs text-slate-500">
+                    © 2026 PointWaste. Hak Cipta Dilindungi Undang-Undang.
                 </p>
-                <div class="flex gap-lg">
-                    <a class="text-surface-variant hover:text-primary-fixed transition-colors" href="#">
-                        <span class="material-symbols-outlined">public</span>
-                    </a>
-                    <a class="text-surface-variant hover:text-primary-fixed transition-colors" href="#">
-                        <span class="material-symbols-outlined">share</span>
-                    </a>
-                    <a class="text-surface-variant hover:text-primary-fixed transition-colors" href="#">
-                        <span class="material-symbols-outlined">smartphone</span>
-                    </a>
-                </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Smooth scroll implementation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                if(targetId !== "#") {
-                    e.preventDefault();
-                    document.querySelector(targetId).scrollIntoView({
-                        behavior: 'smooth'
-                    });
+        // 1. Fungsi Smooth Scroll & Highlight Menu Aktif
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            // Deteksi posisi scroll saat ini
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
                 }
             });
-        });
 
-        // Sticky header background transition on scroll
-        window.addEventListener('scroll', () => {
+            // Ganti kelas border hijau aktif di navbar secara dinamis
+            navLinks.forEach(link => {
+                link.classList.remove('text-primary', 'font-bold', 'border-b-2', 'border-primary');
+                link.classList.add('text-on-surface-variant');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.remove('text-on-surface-variant');
+                    link.classList.add('text-primary', 'font-bold', 'border-b-2', 'border-primary');
+                }
+            });
+
+            // 2. Efek Transisi Bayangan Sticky Header
             const header = document.querySelector('header');
             if (window.scrollY > 20) {
-                header.classList.add('shadow-md');
+                header.classList.add('shadow-md', 'bg-white');
                 header.classList.remove('bg-surface/80');
-                header.classList.add('bg-white');
             } else {
-                header.classList.remove('shadow-md');
+                header.classList.remove('shadow-md', 'bg-white');
                 header.classList.add('bg-surface/80');
-                header.classList.remove('bg-white');
             }
         });
     </script>

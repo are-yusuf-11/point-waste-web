@@ -111,7 +111,7 @@
                     <div class="space-y-sm">
                         <div class="flex justify-between items-center">
                             <label class="font-label-md text-label-md text-on-surface-variant">Password</label>
-                            <a class="text-tertiary font-label-md text-label-md hover:underline font-semibold text-emerald-800 relative z-10 cursor-pointer" href="{{ Route::has('password.request') ? route('password.request') : '#' }}">Lupa Password?</a>
+                            <a class="text-tertiary font-label-md text-label-md hover:underline font-semibold text-emerald-800 relative z-10 cursor-pointer" href="{{ Route::has('auth.forgot-password') ? route('auth.forgot-password') : '#' }}">Lupa Password?</a>
                         </div>
                         <div class="relative">
                             <input class="w-full px-md py-sm bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary-fixed focus:border-primary outline-none transition-all placeholder:text-outline/60 text-on-surface" id="login-password" placeholder="Masukan password" type="password" name="password" required />
