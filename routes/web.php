@@ -10,6 +10,8 @@ use App\Http\Controllers\Warga\IuranWargaController;
 use App\Http\Controllers\Warga\MutasiPoinController;
 use App\Http\Controllers\Warga\ProfileWargaController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\PengurusRT\LaporanController;
+use App\Http\Controllers\PengurusRT\ManajemenIuaranController;
 use App\Http\Controllers\PengurusRT\PengurusDashboardController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Admin\KategoriSampahController;
