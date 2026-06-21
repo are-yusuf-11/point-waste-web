@@ -54,7 +54,7 @@ class AuthController extends Controller
                 return redirect()->route('admin.dashboard')->with('success', 'Selamat datang Admin!');
             }
             if ($user->role === 'Pengurus RT') {
-                return redirect()->route('pengurus_rt.dashboard')->with('success', 'Selamat datang Pengurus RT!');
+                return redirect()->route('pengurus-rt.dashboard')->with('success', 'Selamat datang Pengurus RT!');
             }
             if ($user->role === 'Warga') {
                 return redirect()->route('warga.dashboard')->with('success', 'Selamat datang di PointWaste!');
