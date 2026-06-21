@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="id">
-
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PointWaste - Setor Sampah</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -58,9 +58,7 @@
 
     <x-header />
 
-
     <div class="p-8">
-
       <div class="bg-white rounded-xl border border-slate-100 shadow-sm p-8 max-w-5xl">
 
         <div class="flex items-center space-x-2 text-slate-800 font-semibold border-b border-slate-100 pb-4 mb-6">
@@ -110,17 +108,34 @@
                 </select>
               </div>
 
-              <div class="w-32 flex items-center bg-[#EEF2F6] rounded-xl px-3 py-3">
-                <input type="number" placeholder="-" class="w-full bg-transparent border-0 text-center text-sm text-slate-700 focus:outline-none focus:ring-0">
-                <span class="text-xs text-slate-400 ml-1 font-medium">kg</span>
-              </div>
+              <div class="space-y-3">
+                <label class="block text-xs font-medium text-slate-500">Rincian Sampah</label>
+                
+                <div id="wrapper-rincian" class="space-y-3">
+                  <div class="flex items-center space-x-3 item-rincian">
+                    <div class="flex-1">
+                      <select name="rincian[0][id_kategori]" required class="select-kategori w-full bg-[#EEF2F6] border-0 text-slate-600 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-pointwaste-primary" onchange="hitungEstimasiPoin()">
+                        <option value="" disabled selected>Pilih Kategori Sampah</option>
+                        @foreach($kategoriSampah as $kat)
+                          <option value="{{ $kat->id_kategori }}" data-poin="{{ $kat->poin_per_kg }}">
+                            {{ $kat->nama_kategori }} ({{ $kat->poin_per_kg }} Poin/kg)
+                          </option>
+                        @endforeach
+                      </select>
+                    </div>
 
-              <button type="button" class="p-2.5 text-red-500 hover:bg-red-50 rounded-xl transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                </svg>
-              </button>
-            </div>
+                    <div class="w-32 flex items-center bg-[#EEF2F6] rounded-xl px-3 py-3">
+                      <input type="number" name="rincian[0][berat_kg]" step="0.1" min="0.1" placeholder="0.0" required class="input-berat w-full bg-transparent border-0 text-center text-sm text-slate-700 focus:ring-0" oninput="hitungEstimasiPoin()">
+                      <span class="text-xs text-slate-400 ml-1 font-medium">kg</span>
+                    </div>
+
+                    <button type="button" onclick="hapusBaris(this)" class="p-2.5 text-red-500 hover:bg-red-50 rounded-xl transition-colors">
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
 
             <div class="pt-1">
               <button type="button" onclick="tambahBaris()" class="inline-flex items-center text-xs font-bold text-pointwaste-primary hover:text-emerald-800 transition-colors">
@@ -171,6 +186,7 @@
       </div>
 
     </div>
+  </main>
 
     <div class="bg-[#EBF5EE] rounded-xl px-5 py-3.5 flex justify-between items-center">
       <span class="text-xs font-medium text-slate-500">Estimasi Poin</span>

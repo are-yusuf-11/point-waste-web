@@ -15,10 +15,12 @@ use App\Http\Controllers\Admin\KategoriSampahController;
 use App\Http\Controllers\Admin\MonitoringSistemController;
 use App\Http\Controllers\Admin\KonfigurasiController;
 use App\Http\Controllers\PengurusRT\LaporanController;
-use App\Http\Controllers\PengurusRT\PengurusDashboardController;
+use App\Http\Controllers\PengurusRT\DashboardRTController;
 use App\Http\Controllers\PengurusRT\VerifikasiSetoranController;
 use App\Http\Controllers\PengurusRT\TagihanIuranController;
 use App\Http\Controllers\PengurusRT\KategoriSampahController as PengurusKategoriSampahController;
+use App\Http\Controllers\Admin\ProfileAdminController;
+
 
 // =========================================================
 // ROUTE PUBLIC (Tidak Butuh Login)
@@ -69,6 +71,7 @@ Route::middleware(['auth', 'check_role'])->group(function () {
     // ==========================================
     Route::prefix('admin')->group(function () {
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+        Route::post('/admin/dashboard/update', [AdminDashboardController::class, 'update'])->name('admin.dashboard.update');
 
         // Manajemen Pengguna
         Route::get('/manajemen-pengguna', [UserManagementController::class, 'index'])->name('admin.manajemen-pengguna');
@@ -86,6 +89,9 @@ Route::middleware(['auth', 'check_role'])->group(function () {
         Route::get('/kategori-sampah/{id}/edit', [KategoriSampahController::class, 'edit'])->name('admin.kategori-sampah.edit');
         Route::put('/kategori-sampah/{id}/update', [KategoriSampahController::class, 'update'])->name('admin.kategori-sampah.update');
 
+        Route::get('/profil-saya', [ProfileAdminController::class, 'index'])->name('admin.profil-saya');
+        Route::put('/profil-saya/update', [ProfileAdminController::class, 'update'])->name('admin.profil-saya.update');
+
         Route::get('/monitoring-sistem', [MonitoringSistemController::class, 'index'])->name('admin.monitoring-sistem');
         Route::get('/konfigurasi', [KonfigurasiController::class, 'index'])->name('admin.konfigurasi');
     });
@@ -94,7 +100,7 @@ Route::middleware(['auth', 'check_role'])->group(function () {
     // PANEL AKTOR: PENGURUS RT
     // ==========================================
     Route::prefix('pengurus-rt')->group(function () {
-        Route::get('/dashboard', [PengurusDashboardController::class, 'index'])->name('pengurus-rt.dashboard');
+        Route::get('/dashboard', [DashboardRTController::class, 'index'])->name('pengurus-rt.dashboard');
         Route::get('/verifikasi-setoran', [VerifikasiSetoranController::class, 'index'])->name('pengurus-rt.setor-sampah');
         Route::get('/tagihan-iuran', [TagihanIuranController::class, 'index'])->name('pengurus-rt.manajemen-iuran');
         Route::get('/kategori-sampah', [PengurusKategoriSampahController::class, 'index'])->name('pengurus-rt.waste-categories');

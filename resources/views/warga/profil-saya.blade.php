@@ -125,18 +125,48 @@
                 Ubah Email
               </button>
             </div>
-          </div>
 
-          <div class="space-y-1.5 pt-1">
-            <label class="text-[11px] font-medium text-slate-400">Kata Sandi</label>
-            <div class="flex justify-between items-center bg-[#EEF2F6] rounded-xl px-4 py-3 w-full">
-              <span class="text-xs text-slate-400 tracking-widest select-none">••••••••••••</span>
-              <button type="button" onclick="openPasswordModal()" class="text-xs font-bold text-[#004c22] hover:underline shrink-0 ml-2">
-                Ubah Kata Sandi
-              </button>
-            </div>
-          </div>
+            <nav class="space-y-1">
+                <a href="{{ route('warga.dashboard') }}" class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-gray-50 hover:text-on-surface rounded-xl transition-all">
+                    <span class="material-symbols-outlined icon-unfilled text-[22px]">dashboard</span>
+                    <span class="text-sm">Dashboard</span>
+                </a>
+                <a href="{{ route('warga.setor-sampah') }}" class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-gray-50 hover:text-on-surface rounded-xl transition-all">
+                    <span class="material-symbols-outlined icon-unfilled text-[22px]">delete</span>
+                    <span class="text-sm">Setor Sampah</span>
+                </a>
+                <a href="{{ route('warga.mutasi-poin') }}" class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-gray-50 hover:text-on-surface rounded-xl transition-all">
+                    <span class="material-symbols-outlined icon-unfilled text-[22px]">receipt_long</span>
+                    <span class="text-sm">Mutasi Poin</span>
+                </a>
+                <a href="{{ route('warga.iuran') }}" class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-gray-50 hover:text-on-surface rounded-xl transition-all">
+                    <span class="material-symbols-outlined icon-unfilled text-[22px]">credit_card</span>
+                    <span class="text-sm">Tagihan Iuran</span>
+                </a>
+                <a href="{{ route('warga.profil') }}" class="flex items-center gap-4 px-4 py-3 bg-emerald-50 text-primary font-semibold rounded-xl transition-all">
+                    <span class="material-symbols-outlined text-[22px]">person</span>
+                    <span class="text-sm">Profil</span>
+                </a>
+            </nav>
         </div>
+
+        <div class="border-t border-gray-100 pt-5 space-y-4">
+            <div class="flex items-center gap-3 px-1">
+                <img class="w-10 h-10 rounded-full object-cover border" src="{{ $user->foto ? asset('storage/'.$user->foto) : 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150' }}" alt="Avatar">
+                <div>
+                    <h4 class="text-sm font-semibold text-on-surface leading-tight">{{ $user->nama }}</h4>
+                    <span class="text-xs text-gray-400">Warga RT 0{{ $user->id_rt ?? '1' }}</span>
+                </div>
+            </div>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-200 text-gray-700 bg-gray-50 hover:bg-gray-100 font-medium rounded-xl text-xs transition-all">
+                    <span class="material-symbols-outlined icon-unfilled text-[18px]">logout</span>
+                    Logout
+                </button>
+            </form>
+        </div>
+    </aside>
 
         <div class="flex items-center space-x-3 pt-2">
           <button type="submit" class="flex-1 bg-[#004c22] hover:bg-emerald-950 text-white font-semibold text-xs py-3.5 rounded-xl transition-colors text-center shadow-sm">

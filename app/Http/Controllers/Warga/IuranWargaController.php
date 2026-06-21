@@ -16,13 +16,13 @@ class IuranWargaController extends Controller
     {
         $userId = Auth::id();
 
-        $daftarTagihan = IuranRT::where('user_id', $userId)
+        $daftarTagihan = IuranRT::where('id_user', $userId)
                             ->orderBy('created_at', 'desc')
                             ->get();
 
-        $totalSaldoPoin = MutasiPoin::where('user_id', $userId)->sum('poin');
+        $totalSaldoPoin = MutasiPoin::where('id_user', $userId)->sum('nominal_poin');
 
-        return view('warga.iuran.index', compact('daftarTagihan', 'totalSaldoPoin'));
+        return view('warga.tagihan-iuran', compact('daftarTagihan', 'totalSaldoPoin'));
     }
 
     // Proses menukarkan poin untuk memotong/membayar tagihan iuran
