@@ -15,7 +15,7 @@ use App\Http\Controllers\Admin\KategoriSampahController;
 use App\Http\Controllers\Admin\MonitoringSistemController;
 use App\Http\Controllers\Admin\KonfigurasiController;
 use App\Http\Controllers\PengurusRT\LaporanController;
-use App\Http\Controllers\PengurusRT\PengurusDashboardController;
+use App\Http\Controllers\PengurusRT\DashboardRTController;
 use App\Http\Controllers\PengurusRT\VerifikasiSetoranController;
 use App\Http\Controllers\PengurusRT\TagihanIuranController;
 use App\Http\Controllers\PengurusRT\KategoriSampahController as PengurusKategoriSampahController;
@@ -94,7 +94,7 @@ Route::middleware(['auth', 'check_role'])->group(function () {
     // PANEL AKTOR: PENGURUS RT
     // ==========================================
     Route::prefix('pengurus-rt')->group(function () {
-        Route::get('/dashboard', [PengurusDashboardController::class, 'index'])->name('pengurus-rt.dashboard');
+        Route::get('/dashboard', [DashboardRTController::class, 'index'])->name('pengurus-rt.dashboard');
         Route::get('/verifikasi-setoran', [VerifikasiSetoranController::class, 'index'])->name('pengurus-rt.setor-sampah');
         Route::get('/tagihan-iuran', [TagihanIuranController::class, 'index'])->name('pengurus-rt.manajemen-iuran');
         Route::get('/kategori-sampah', [PengurusKategoriSampahController::class, 'index'])->name('pengurus-rt.waste-categories');
