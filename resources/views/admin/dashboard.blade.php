@@ -1,187 +1,48 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>PointWaste - System Configuration</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+@extends('layouts.admin')
+
+@section('title', 'Konfigurasi Sistem - PointWaste Admin')
+
+@section('content')
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          primary: '#166534',
-          'primary-dark': '#14532d',
-          'primary-light': '#16a34a',
-          'primary-soft': '#ecfdf3',
-          'surface': '#f7faf8',
-          'success-bg': '#dcfce7',
-          'success-text': '#15803d',
-        },
-        fontFamily: {
-          sans: ['Inter', 'sans-serif'],
-        },
-        borderRadius: {
-          xl: '0.85rem',
-        }
-      }
-    }
-  }
-</script>
-<style>
-  body { font-family: 'Inter', sans-serif; }
-  .material-symbols-outlined {
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-    font-size: 20px;
-  }
-  .active-nav .material-symbols-outlined { font-variation-settings: 'FILL' 1; }
-  ::-webkit-scrollbar { width: 6px; height: 6px; }
-  ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
-</style>
-</head>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-<<<<<<< HEAD
-<div class="flex min-h-screen">
+<main class="font-sans antialiased text-slate-800 p-6" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+    <section class="mb-8 bg-transparent">
+        <h3 class="text-3xl font-extrabold tracking-tight text-slate-900 mb-1 flex items-center gap-2">
+            Selamat Datang Atmin 👋
+        </h3>
+        <p class="text-sm font-medium text-slate-500">
+            Mari kelola efisiensi pengelolaan sampah hari ini.
+        </p>
+    </section>
 
-  <!-- SIDEBAR -->
-  <aside class="fixed left-0 top-0 h-screen w-64 bg-white border-r border-gray-200 flex flex-col">
-    <div class="px-6 py-6">
-      <h1 class="text-xl font-extrabold text-primary leading-tight">PointWaste</h1>
-      <p class="text-xs text-gray-400 mt-0.5">Admin Portal</p>
-    </div>
-
-    <nav class="flex-1 px-3 mt-2 space-y-1">
-      <a href="#" class="active-nav flex items-center gap-3 rounded-lg px-3 py-2.5 bg-primary-soft text-primary font-semibold text-sm">
-        <span class="material-symbols-outlined">dashboard</span>
-        Dashboard
-      </a>
-      <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700 text-sm font-medium transition-colors">
-        <span class="material-symbols-outlined">group</span>
-        User Management
-      </a>
-      <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700 text-sm font-medium transition-colors">
-        <span class="material-symbols-outlined">recycling</span>
-        Waste Categories
-      </a>
-      <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700 text-sm font-medium transition-colors">
-        <span class="material-symbols-outlined">monitoring</span>
-        System Monitoring
-      </a>
-      <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700 text-sm font-medium transition-colors">
-        <span class="material-symbols-outlined">settings</span>
-        System Configuration
-      </a>
-    </nav>
-
-    <div class="px-3 pb-6 mt-auto">
-      <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-red-500 hover:bg-red-50 text-sm font-medium transition-colors">
-        <span class="material-symbols-outlined">logout</span>
-        Logout
-      </a>
-    </div>
-  </aside>
-
-  <!-- MAIN -->
-  <div class="flex-1 ml-64 flex flex-col">
-
-    <!-- HEADER -->
-    <header class="sticky top-0 z-30 h-16 bg-white/90 backdrop-blur border-b border-gray-200 flex items-center justify-end px-8 gap-5">
-      <button class="p-2 rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors">
-        <span class="material-symbols-outlined">notifications</span>
-      </button>
-      <button class="p-2 rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors">
-        <span class="material-symbols-outlined">help</span>
-      </button>
-      <div class="flex items-center gap-3 pl-4 border-l border-gray-200">
-        <div class="text-right">
-          <p class="text-sm font-semibold text-gray-800 leading-tight">Budi Santoso</p>
-          <p class="text-[11px] text-primary font-bold uppercase tracking-wide leading-tight">Super Admin</p>
-=======
-<body class="text-on-surface">
-    <!-- SideNavBar Shell -->
-    <aside class="w-sidebar-width h-screen fixed left-0 top-0 bg-surface-container-lowest border-r border-outline-variant flex flex-col p-md z-50">
-        <div class="mb-xl px-sm">
-            <h1 class="font-headline-md text-headline-md font-bold text-primary">PointWaste</h1>
-            <p class="font-label-md text-label-md text-on-surface-variant">System Administrator</p>
-        </div>
-        <nav class="flex-1 space-y-sm overflow-y-auto">
-            <!-- Dashboard (Active) -->
-            <a class="flex items-center gap-md p-md bg-secondary-container text-primary rounded-xl font-bold transition-transform active:scale-95" href="#">
-                <span class="material-symbols-outlined active-nav-item" data-icon="dashboard">dashboard</span>
-                <span class="font-body-md text-body-md">Dashboard</span>
-            </a>
-            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="#">
-                <span class="material-symbols-outlined" data-icon="group">group</span>
-                <span class="font-body-md text-body-md">User Management</span>
-            </a>
-            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="#">
-                <span class="material-symbols-outlined" data-icon="category">category</span>
-                <span class="font-body-md text-body-md">Waste Categories</span>
-            </a>
-            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="#">
-                <span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
-                <span class="font-body-md text-body-md">System Monitoring</span>
-            </a>
-            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="#">
-                <span class="material-symbols-outlined" data-icon="settings">settings</span>
-                <span class="font-body-md text-body-md">Configurations</span>
-            </a>
-            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="#">
-                <span class="material-symbols-outlined" data-icon="person">person</span>
-                <span class="font-body-md text-body-md">Profile</span>
-            </a>
-        </nav>
-        <div class="mt-auto border-t border-outline-variant pt-md space-y-sm">
-            <button class="w-full flex items-center justify-center gap-sm bg-primary text-white py-md rounded-xl font-bold hover:opacity-90 transition-opacity">
-                <span class="material-symbols-outlined" data-icon="add">add</span>
-                <span>New Report</span>
-            </button>
-            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="#">
-                <span class="material-symbols-outlined" data-icon="help">help</span>
-                <span class="font-body-md text-body-md">Help Center</span>
-            </a>
-            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="#">
-                <span class="material-symbols-outlined" data-icon="logout">logout</span>
-                <span class="font-body-md text-body-md">Logout</span>
-            </a>
-        </div>
-    </aside>
-    <!-- TopNavBar Shell -->
-    <header class="h-16 w-[calc(100%-260px)] sticky top-0 z-40 bg-surface flex justify-between items-center px-lg ml-sidebar-width border-b border-outline-variant">
-        <div class="flex items-center gap-lg">
-            <div class="relative w-64">
-                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
-                <input class="w-full pl-10 pr-4 py-1.5 bg-surface-container text-body-md border-none rounded-full focus:ring-2 focus:ring-primary" placeholder="Search system logs..." type="text" />
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white p-6 border border-slate-200 rounded-2xl flex flex-col justify-between relative overflow-hidden shadow-sm min-h-[260px]">
+            <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#166534]"></div>
+            <div>
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="h-9 w-9 bg-emerald-50 text-[#166534] rounded-xl flex items-center justify-center border border-emerald-100/70">
+                        <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1">payments</span>
+                    </div>
+                    <h4 class="font-bold text-sm text-slate-700 tracking-wide">Nilai Tukar Poin</h4>
+                </div>
+                <p class="text-xs font-medium text-slate-500 leading-relaxed mb-6">
+                    Atur berapa nilai Rupiah yang didapatkan warga untuk setiap 1 poin sampah.
+                </p>
             </div>
             <h2 class="font-headline-md text-headline-md font-extrabold text-primary">PointWaste Admin</h2>
->>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
         </div>
-        <img src="https://i.pravatar.cc/80?img=12" alt="Avatar Budi Santoso" class="w-10 h-10 rounded-full object-cover border border-gray-200" />
-      </div>
+        <div class="flex items-center gap-md">
+            <button class="p-2 hover:bg-surface-container rounded-full text-on-surface-variant"><span class="material-symbols-outlined" data-icon="notifications">notifications</span></button>
+            <button class="p-2 hover:bg-surface-container rounded-full text-on-surface-variant"><span class="material-symbols-outlined" data-icon="settings_suggest">settings_suggest</span></button>
+            <button class="p-2 hover:bg-surface-container rounded-full text-on-surface-variant"><span class="material-symbols-outlined" data-icon="apps">apps</span></button>
+            <div class="h-10 w-10 rounded-full overflow-hidden border border-outline-variant">
+                <img class="w-full h-full object-cover" data-alt="A professional headshot of a system administrator in their 30s, dressed in business casual attire with a focused and friendly expression. The background is a clean, modern corporate office with soft natural lighting and subtle green plants to represent sustainability. The image style is sharp, professional photography with a shallow depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLZFvA6DHznuSrtSycfDbBdbMS_vcSrXodAwwxTYiWkOq60ZYetBQWlSR038KhZRaFyWoYLBgeKk6HIa1yQHr9Nci9IFPQkrS_SRfm6pPWL5PI-bjHv5zJfd1QDGe8rS4C4FZOhnssPyPw0u2pV8WPSWKtbl90FQ2rMQRGV_SrKDXCfEFZyC3EeOD1Se4i8foDgdODpfGjUTVblC2j264Yn_Pin6e99HPf7cwXej3-ra0phN7dauYQll1u-LcdVhQ63-vdJ_Nodzk" />
+            </div>
+        </div>
     </header>
-<<<<<<< HEAD
-
-    <!-- CONTENT -->
-    <main class="flex-1 px-8 py-7 max-w-[1280px] w-full">
-
-      <!-- Page title -->
-      <div class="mb-7">
-        <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2">Selamat Datang Atmin <span>👋</span></h2>
-        <p class="text-gray-500 mt-1 text-sm">Mari kelola efisiensi pengelolaan sampah hari ini</p>
-      </div>
-
-      <!-- Top 3 cards -->
-      <section class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-7">
-
-        <!-- Nilai Tukar Poin -->
-        <div class="bg-white border border-gray-200 rounded-xl p-5">
-          <div class="flex items-center gap-2.5 mb-2">
-            <div class="w-9 h-9 rounded-lg bg-primary-soft flex items-center justify-center text-primary">
-              <span class="material-symbols-outlined" style="font-size:18px;">payments</span>
-=======
     <!-- Main Content Canvas -->
     <main class="ml-sidebar-width p-lg max-w-[1280px] mx-auto min-h-screen">
         <!-- Header Section -->
@@ -195,102 +56,82 @@
                 <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
                 <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Total Registered Users</span>
                 <div class="flex items-end gap-xs">
-                    <span class="font-display-lg text-headline-lg font-bold text-on-surface">12,482</span>
+                    <span class="font-display-lg text-headline-lg font-bold text-on-surface">{{ number_format($totalUsers) }}</span>
                     <span class="text-primary font-bold text-sm mb-2 flex items-center"><span class="material-symbols-outlined text-sm" data-icon="arrow_upward">arrow_upward</span> 4.2%</span>
                 </div>
                 <p class="text-xs text-on-surface-variant mt-2 italic">Global platform count</p>
->>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
             </div>
-            <h3 class="font-bold text-gray-800 text-sm">Nilai Tukar Poin</h3>
-          </div>
-          <p class="text-xs text-gray-500 mb-4 leading-relaxed">Atur berapa nilai Rupiah yang didapatkan warga untuk setiap 1 poin sampah.</p>
-          <label class="text-xs font-semibold text-gray-600 mb-1.5 block">1 Poin = ... Rupiah</label>
-          <div class="flex items-center rounded-lg border border-gray-300 overflow-hidden focus-within:ring-2 focus-within:ring-primary/30 focus-within:border-primary">
-            <span class="px-3 text-sm font-bold text-gray-600 bg-gray-50 border-r border-gray-300 py-2.5">Rp</span>
-            <input type="number" value="0" class="w-full px-3 py-2.5 text-sm outline-none border-none" />
-          </div>
-        </div>
-
-        <!-- Batas Setoran -->
-        <div class="bg-white border border-gray-200 rounded-xl p-5">
-          <div class="flex items-center gap-2.5 mb-2">
-            <div class="w-9 h-9 rounded-lg bg-primary-soft flex items-center justify-center text-primary">
-              <span class="material-symbols-outlined" style="font-size:18px;">scale</span>
             <div class="bg-white p-lg border border-outline-variant rounded-xl flex flex-col gap-xs relative overflow-hidden">
                 <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
                 <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Active RT Units</span>
                 <div class="flex items-end gap-xs">
-                    <span class="font-display-lg text-headline-lg font-bold text-on-surface">156</span>
-                    <span class="text-on-surface-variant font-bold text-sm mb-2">/ 180 total</span>
+                    <span class="font-display-lg text-headline-lg font-bold text-on-surface">{{ $activeRtCount }}</span>
+                    <span class="text-on-surface-variant font-bold text-sm mb-2">/ {{ $totalRtTarget }} total</span>
                 </div>
-                <p class="text-xs text-on-surface-variant mt-2 italic">86% participation rate</p>
             </div>
             <div class="bg-white p-lg border border-outline-variant rounded-xl flex flex-col gap-xs relative overflow-hidden">
                 <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
                 <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Total Waste Processed</span>
                 <div class="flex items-end gap-xs">
-                    <span class="font-display-lg text-headline-lg font-bold text-on-surface">412.5</span>
+                    <span class="font-display-lg text-headline-lg font-bold text-on-surface">{{ $totalTonnes }}</span>
                     <span class="text-on-surface-variant font-bold text-sm mb-2">Tonnes</span>
                 </div>
                 <p class="text-xs text-on-surface-variant mt-2 italic">Past 30 days global average</p>
             </div>
-            <h3 class="font-bold text-gray-800 text-sm">Batas Setoran</h3>
-          </div>
-          <p class="text-xs text-gray-500 mb-4 leading-relaxed">Maksimal berat sampah yang dapat disetorkan per warga setiap harinya.</p>
-          <label class="text-xs font-semibold text-gray-600 mb-1.5 block">Batas Harian (kg)</label>
-          <div class="flex items-center rounded-lg border border-gray-300 overflow-hidden focus-within:ring-2 focus-within:ring-primary/30 focus-within:border-primary">
-            <input type="number" value="0" class="w-full px-3 py-2.5 text-sm outline-none border-none" />
-            <span class="px-3 text-sm font-bold text-gray-600 bg-gray-50 border-l border-gray-300 py-2.5">kg</span>
-          </div>
-        </div>
-
-        <!-- Saluran Notifikasi -->
-        <div class="bg-white border border-gray-200 rounded-xl p-5">
-          <div class="flex items-center gap-2.5 mb-2">
-            <div class="w-9 h-9 rounded-lg bg-primary-soft flex items-center justify-center text-primary">
-              <span class="material-symbols-outlined" style="font-size:18px;">campaign</span>
-            </div>
-        </section>
-        <!-- Middle Row: Chart & Quick Actions -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-lg mb-xl">
-            <!-- Performance Chart Card -->
-            <section class="lg:col-span-2 bg-white border border-outline-variant rounded-xl p-lg">
-                <div class="flex justify-between items-center mb-lg">
-                    <div>
-                        <h4 class="font-title-lg text-title-lg text-on-surface">Waste Collection Growth</h4>
-                        <p class="font-body-md text-body-md text-on-surface-variant">6-month trend analysis (Tonnes vs Points)</p>
+            <div class="bg-white p-lg border border-outline-variant rounded-xl flex flex-col gap-xs relative overflow-hidden">
+                <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary-container"></div>
+                <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">System Health</span>
+                <div class="flex items-center gap-sm mt-2">
+                    <div class="flex items-center gap-2 px-3 py-1 bg-primary-container/10 text-primary border border-primary/20 rounded-full">
+                        <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                        <span class="font-bold text-sm uppercase">Operational</span>
                     </div>
-                    <select class="bg-surface-container border-none text-body-md rounded-lg py-1 px-4 focus:ring-primary">
-                        <option>Last 6 Months</option>
-                        <option>Last Year</option>
-                    </select>
+                </div>
+                <p class="text-xs text-on-surface-variant mt-3 italic">Uptime: 99.98% (Last 24h)</p>
+            </div>
+            <div class="flex flex-col gap-2.5">
+                <div class="flex items-center justify-between border border-slate-200 rounded-xl p-3 bg-white shadow-sm">
+                    <div class="flex items-center gap-3 text-slate-700">
+                        <span class="material-symbols-outlined text-lg text-slate-500">mail</span>
+                        <span class="text-xs font-bold">E-mail</span>
+                    </div>
+                    <span class="material-symbols-outlined {{ $notificationChannels['email'] ? 'text-emerald-800' : 'text-slate-300' }} font-bold text-xl cursor-pointer" style="font-variation-settings: 'FILL' {{ $notificationChannels['email'] ? 1 : 0 }}">
+                        {{ $notificationChannels['email'] ? 'select_check_box' : 'check_box_outline_blank' }}
+                    </span>
                 </div>
                 <!-- Simple Bar Chart Mockup -->
                 <div class="h-64 flex items-end justify-between gap-sm px-4 border-b border-outline-variant pb-2">
-                    <div class="flex flex-col items-center gap-2 w-full">
-                        <div class="w-full bg-primary-fixed rounded-t h-[40%] chart-bar"></div>
-                        <span class="text-xs text-on-surface-variant font-medium">Jan</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-2 w-full">
-                        <div class="w-full bg-primary-fixed rounded-t h-[55%] chart-bar"></div>
-                        <span class="text-xs text-on-surface-variant font-medium">Feb</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-2 w-full">
-                        <div class="w-full bg-primary-fixed rounded-t h-[50%] chart-bar"></div>
-                        <span class="text-xs text-on-surface-variant font-medium">Mar</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-2 w-full">
-                        <div class="w-full bg-primary-fixed rounded-t h-[75%] chart-bar"></div>
-                        <span class="text-xs text-on-surface-variant font-medium">Apr</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-2 w-full">
-                        <div class="w-full bg-primary-fixed rounded-t h-[65%] chart-bar"></div>
-                        <span class="text-xs text-on-surface-variant font-medium">May</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-2 w-full">
-                        <div class="w-full bg-primary rounded-t h-[90%] chart-bar shadow-lg"></div>
-                        <span class="text-xs text-primary font-bold">Jun</span>
-                    </div>
+                    @php
+                        // Daftar nama bulan manual untuk menjamin teks Januari - Desember selalu muncul
+                        $daftarBulan = [
+                            1 => 'Jan', 2 => 'Feb', 3 => 'Mar', 4 => 'Apr', 
+                            5 => 'May', 6 => 'Jun', 7 => 'Jul', 8 => 'Aug', 
+                            9 => 'Sep', 10 => 'Oct', 11 => 'Nov', 12 => 'Dec'
+                        ];
+                        $bulanSekarang = (int) date('m');
+                    @endphp
+
+                    @foreach($daftarBulan as $angka => $nama)
+                        @php
+                            // Ambil berat dari database jika ada, jika tidak ada set ke 0
+                            $berat = $monthlyData[$angka] ?? 0; 
+                            
+                            // Hitung tinggi grafik (contoh target maksimal 1000 kg per bulan untuk tinggi 100%)
+                            $percentage = $berat > 0 ? min(($berat / 1000) * 100, 100) : 0;
+                            
+                            // Cek apakah iterasi ini merupakan bulan berjalan saat ini
+                            $isBulanSekarang = ($angka === $bulanSekarang);
+                        @endphp
+                        <div class="flex flex-col items-center gap-2 w-full">
+                            <div class="w-full {{ $isBulanSekarang ? 'bg-primary shadow-lg' : 'bg-primary-fixed' }} rounded-t chart-bar" 
+                                style="height: {{ $percentage > 0 ? $percentage : 2 }}%"
+                                title="{{ $nama }}: {{ $berat }} kg"></div>
+                            
+                            <span class="text-xs {{ $isBulanSekarang ? 'text-primary font-bold' : 'text-on-surface-variant font-medium' }}">
+                                {{ $nama }}
+                            </span>
+                        </div>
+                    @endforeach
                 </div>
             </section>
             <!-- Quick Management Actions -->
@@ -351,38 +192,16 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-outline-variant font-body-md">
+                        @foreach($topRt as $rt)
                         <tr class="hover:bg-surface-container-low transition-colors">
-                            <td class="px-lg py-md font-bold">RT 005 - Cilandak</td>
-                            <td class="px-lg py-md">428 Users</td>
-                            <td class="px-lg py-md">1.2 Tons</td>
+                            <td class="px-lg py-md font-bold">{{ $rt->no_rt }} - {{ $rt->kelurahan }}</td>
+                            <td class="px-lg py-md">{{ $rt->warga_count }} Users</td>
+                            <td class="px-lg py-md">{{ $rt->total_waste_ton }} Tons</td>
                             <td class="px-lg py-md">
-                                <span class="px-3 py-1 bg-primary text-white rounded-full text-xs">98.2</span>
+                                <span class="px-3 py-1 bg-primary text-white rounded-full text-xs">95.0</span>
                             </td>
                         </tr>
-                        <tr class="hover:bg-surface-container-low transition-colors">
-                            <td class="px-lg py-md font-bold">RT 012 - Kemang</td>
-                            <td class="px-lg py-md">315 Users</td>
-                            <td class="px-lg py-md">0.9 Tons</td>
-                            <td class="px-lg py-md">
-                                <span class="px-3 py-1 bg-primary text-white rounded-full text-xs">94.5</span>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-surface-container-low transition-colors">
-                            <td class="px-lg py-md font-bold">RT 003 - Menteng</td>
-                            <td class="px-lg py-md">289 Users</td>
-                            <td class="px-lg py-md">0.85 Tons</td>
-                            <td class="px-lg py-md">
-                                <span class="px-3 py-1 bg-primary text-white rounded-full text-xs">92.1</span>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-surface-container-low transition-colors">
-                            <td class="px-lg py-md font-bold">RT 008 - Kebayoran</td>
-                            <td class="px-lg py-md">210 Users</td>
-                            <td class="px-lg py-md">0.6 Tons</td>
-                            <td class="px-lg py-md">
-                                <span class="px-3 py-1 bg-primary text-white rounded-full text-xs">89.4</span>
-                            </td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </section>
@@ -392,68 +211,59 @@
                     <h4 class="font-title-lg text-title-lg text-on-surface">System Activity Log</h4>
                 </div>
                 <div class="flex-1 p-lg space-y-lg overflow-y-auto max-h-[400px]">
+                    @foreach($recentActivities as $activity)
                     <div class="flex gap-md">
                         <div class="flex flex-col items-center">
                             <div class="h-8 w-8 rounded-full bg-primary-container/20 flex items-center justify-center text-primary">
                                 <span class="material-symbols-outlined text-sm" data-icon="add_circle">add_circle</span>
                             </div>
-                            <div class="w-0.5 h-full bg-outline-variant mt-2"></div>
+                            @if(!$loop->last)
+                                <div class="w-0.5 h-full bg-outline-variant mt-2"></div>
+                            @endif
                         </div>
                         <div>
-                            <p class="font-bold text-body-md text-on-surface">New RT Onboarded</p>
-                            <p class="text-xs text-on-surface-variant">RT 014 - Pasar Minggu now active.</p>
-                            <span class="text-[10px] text-outline uppercase font-bold mt-1 block">12 Minutes ago</span>
+                            <p class="font-bold text-body-md text-on-surface">Setor Sampah</p>
+                            <p class="text-xs text-on-surface-variant">
+                                {{ $activity->user->nama ?? 'Warga' }} telah menyetor sampah dengan status <strong class="capitalize">{{ $activity->status }}</strong>.
+                            </p>
+                            <span class="text-[10px] text-outline uppercase font-bold mt-1 block">
+                                {{ $activity->created_at->diffForHumans() }}
+                            </span>
                         </div>
                     </div>
-                    <div class="flex gap-md">
-                        <div class="flex flex-col items-center">
-                            <div class="h-8 w-8 rounded-full bg-error-container/20 flex items-center justify-center text-error">
-                                <span class="material-symbols-outlined text-sm" data-icon="warning">warning</span>
-                            </div>
-                            <div class="w-0.5 h-full bg-outline-variant mt-2"></div>
-                        </div>
-                        <div>
-                            <p class="font-bold text-body-md text-on-surface">User Limit Warning</p>
-                            <p class="text-xs text-on-surface-variant">RT 005 reached 95% capacity.</p>
-                            <span class="text-[10px] text-outline uppercase font-bold mt-1 block">45 Minutes ago</span>
-                        </div>
-                    </div>
-                    <div class="flex gap-md">
-                        <div class="flex flex-col items-center">
-                            <div class="h-8 w-8 rounded-full bg-tertiary-fixed/20 flex items-center justify-center text-tertiary">
-                                <span class="material-symbols-outlined text-sm" data-icon="sync">sync</span>
-                            </div>
-                            <div class="w-0.5 h-full bg-outline-variant mt-2"></div>
-                        </div>
-                        <div>
-                            <p class="font-bold text-body-md text-on-surface">System Update Complete</p>
-                            <p class="text-xs text-on-surface-variant">Version 2.4.1 deployment successful.</p>
-                            <span class="text-[10px] text-outline uppercase font-bold mt-1 block">2 Hours ago</span>
-                        </div>
-                    </div>
-                    <div class="flex gap-md">
-                        <div class="flex flex-col items-center">
-                            <div class="h-8 w-8 rounded-full bg-primary-container/20 flex items-center justify-center text-primary">
-                                <span class="material-symbols-outlined text-sm" data-icon="person_add">person_add</span>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="font-bold text-body-md text-on-surface">Bulk Admin Created</p>
-                            <p class="text-xs text-on-surface-variant">Created 5 regional manager accounts.</p>
-                            <span class="text-[10px] text-outline uppercase font-bold mt-1 block">5 Hours ago</span>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="p-md bg-surface-container-low border-t border-outline-variant text-center">
                     <button class="text-on-surface-variant text-xs font-bold hover:text-primary transition-colors">LOAD MORE LOGS</button>
                 </div>
             </section>
         </div>
-      </section>
-
     </main>
-  </div>
-</div>
+    <script>
+        // Micro-interactions for chart bars
+        document.addEventListener('DOMContentLoaded', () => {
+            const bars = document.querySelectorAll('.chart-bar');
+            bars.forEach(bar => {
+                const targetHeight = bar.style.height;
+                bar.style.height = '0px';
+                setTimeout(() => {
+                    bar.style.height = targetHeight;
+                }, 100);
+            });
+        });
 
+        // Hover animation for dashboard cards
+        const cards = document.querySelectorAll('.bg-white.p-lg');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+                card.style.transition = 'transform 0.3s ease';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0px)';
+            });
+        });
+    </script>
 </body>
+
 </html>
