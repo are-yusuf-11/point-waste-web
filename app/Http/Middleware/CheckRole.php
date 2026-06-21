@@ -39,7 +39,7 @@ class CheckRole
             return redirect()->route('admin.dashboard')->with('error', 'Anda tidak memiliki akses ke halaman tersebut.');
         }
         if ($role === 'Pengurus RT') {
-            return redirect()->route('pengurus_rt.dashboard')->with('error', 'Anda tidak memiliki akses ke halaman tersebut.');
+            return redirect()->route('pengurus-rt.dashboard')->with('error', 'Anda tidak memiliki akses ke halaman tersebut.');
         }
         if ($role === 'Warga') {
             return redirect()->route('warga.dashboard')->with('error', 'Anda tidak memiliki akses ke halaman tersebut.');
