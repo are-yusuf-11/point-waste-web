@@ -15,7 +15,7 @@ use App\Http\Controllers\Admin\KategoriSampahController;
 use App\Http\Controllers\Admin\MonitoringSistemController;
 use App\Http\Controllers\Admin\KonfigurasiController;
 use App\Http\Controllers\PengurusRT\LaporanController;
-use App\Http\Controllers\PengurusRT\DashboardRTController as PengurusDashboardController;
+use App\Http\Controllers\PengurusRT\DashboardRTController;
 use App\Http\Controllers\PengurusRT\VerifikasiSetoranController;
 use App\Http\Controllers\PengurusRT\TagihanIuranController;
 use App\Http\Controllers\PengurusRT\KategoriSampahController as PengurusKategoriSampahController;
@@ -26,18 +26,10 @@ use App\Http\Controllers\PengurusRT\KategoriSampahController as PengurusKategori
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-// Autentikasi Utama
 Route::get('/login', [AuthController::class, 'showLogin'])->name('showLogin');
-Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/register', [AuthController::class, 'showRegister'])->name('showRegister');
-Route::post('/register', [AuthController::class, 'register'])->name('register');
-
-// [PERBAIKAN] Sinkronisasi Fitur Lupa Password dengan AuthController & View Profil
-Route::get('/forgot-password', [AuthController::class, 'showForgotPassword'])->name('auth.forgot-password');
-Route::post('/forgot-password', [AuthController::class, 'sendVerificationCode'])->name('auth.forgot-password.post');
-Route::get('/verify-otp', [AuthController::class, 'showVerifyForm'])->name('auth.show-verify');
-Route::post('/verify-otp', [AuthController::class, 'submitResetPassword'])->name('auth.verify-otp');
-
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/register', [AuthController::class, 'register'])->name('register');  
 
 // =========================================================
 // ROUTE GLOBAL AUTH ONLY
@@ -58,15 +50,15 @@ Route::middleware(['auth', 'check_role'])->group(function () {
         Route::get('/setor-sampah', [SetorSampahController::class, 'index'])->name('warga.setor-sampah');
         Route::post('/setor-sampah', [SetorSampahController::class, 'store'])->name('warga.setor-sampah.store');
         
-        // Fitur Riwayat & Laporan Mutasi Poin Warga
+        // [TAMBAHAN] Fitur Riwayat & Laporan Mutasi Poin Warga
         Route::get('/mutasi-poin', [MutasiPoinController::class, 'index'])->name('warga.mutasi-poin');
         Route::get('/mutasi-poin/laporan', [MutasiPoinController::class, 'laporan'])->name('warga.mutasi-poin.laporan');
-        Route::get('/mutasi-poin/cetak', [MutasiPoinController::class, 'cetak'])->name('warga.mutasi-poin.cetak');
+        Route::get('/mutasi-poin/cetak', [MutasiPoinController::class, 'cetakPdf'])->name('warga.mutasi-poin.cetak');
         
         // Iuran
         Route::get('/iuran', [IuranWargaController::class, 'index'])->name('warga.iuran');
         
-        // Profil Akun (Sudah Selaras dengan Form & Modal View Anda)
+        // Profil Akun
         Route::get('/profil', [ProfileWargaController::class, 'index'])->name('warga.profil');
         Route::put('/profil', [ProfileWargaController::class, 'update'])->name('warga.profil.update');
         Route::put('/profil/password', [ProfileWargaController::class, 'changePassword'])->name('warga.profil.password');
@@ -102,7 +94,7 @@ Route::middleware(['auth', 'check_role'])->group(function () {
     // PANEL AKTOR: PENGURUS RT
     // ==========================================
     Route::prefix('pengurus-rt')->group(function () {
-        Route::get('/dashboard', [PengurusDashboardController::class, 'index'])->name('pengurus-rt.dashboard');
+        Route::get('/dashboard', [DashboardRTController::class, 'index'])->name('pengurus-rt.dashboard');
         Route::get('/verifikasi-setoran', [VerifikasiSetoranController::class, 'index'])->name('pengurus-rt.setor-sampah');
         Route::get('/tagihan-iuran', [TagihanIuranController::class, 'index'])->name('pengurus-rt.manajemen-iuran');
         Route::get('/kategori-sampah', [PengurusKategoriSampahController::class, 'index'])->name('pengurus-rt.waste-categories');
