@@ -140,14 +140,14 @@
   </main>
 
   <div id="photo-modal" class="hidden fixed inset-0 z-[100] items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-    <div class="bg-white rounded-2xl shadow-xl w-full max-w-xs overflow-hidden border border-slate-100 flex flex-col">
-      <div class="px-5 py-4 border-b border-slate-100 flex justify-between items-center">
-        <h3 class="text-xs font-bold text-slate-800">Ubah Foto Profil</h3>
-        <button type="button" onclick="closePhotoModal()" class="text-slate-400 hover:text-slate-600">
+    <div class="bg-[#F8F9FA] rounded-2xl shadow-xl w-full max-w-xs overflow-hidden border border-slate-100 flex flex-col font-sans">
+      <div class="px-5 py-4 bg-[#F8F9FA] border-b border-gray-100 flex justify-between items-center">
+        <h3 class="text-sm font-bold text-gray-900 tracking-tight">Ubah Foto Profil</h3>
+        <button type="button" onclick="closePhotoModal()" class="text-gray-400 hover:text-gray-600">
           <span class="material-symbols-outlined text-sm">close</span>
         </button>
       </div>
-      <div class="p-6 flex flex-col items-center space-y-5">
+      <div class="p-6 bg-white flex flex-col items-center space-y-5">
         <div class="w-32 h-32 rounded-full border-2 border-emerald-800 bg-slate-50 overflow-hidden flex items-center justify-center relative">
           <img id="modal-preview-img" src="{{ $user->foto ? asset('storage/'.$user->foto) : 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80' }}" class="w-full h-full object-cover rounded-full transition-transform duration-200" alt="Preview">
         </div>
@@ -172,7 +172,7 @@
           </button>
         </div>
       </div>
-      <div class="bg-slate-50 px-5 py-3.5 flex justify-end space-x-2 border-t border-slate-100">
+      <div class="bg-[#F8F9FA] px-5 py-3.5 flex justify-end space-x-2 border-t border-gray-100">
         <button type="button" onclick="closePhotoModal()" class="px-4 py-2 text-[11px] font-semibold text-slate-500 hover:bg-slate-200 rounded-lg">Batal</button>
         <button type="button" onclick="applyPhotoSelection()" class="px-4 py-2 bg-slate-900 text-white text-[11px] font-semibold rounded-lg hover:bg-black">Simpan</button>
       </div>
@@ -180,62 +180,108 @@
   </div>
 
   <div id="email-modal" class="hidden fixed inset-0 z-[100] items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-    <div class="bg-white rounded-2xl shadow-xl w-full max-w-sm overflow-hidden border border-slate-100 flex flex-col">
-      <div class="px-5 py-4 border-b border-slate-100 flex justify-between items-center">
-        <h3 class="text-xs font-bold text-slate-800">Ubah Email Hubungan Warga</h3>
-        <button type="button" onclick="closeEmailModal()" class="text-slate-400 hover:text-slate-600">
+    <div class="bg-[#F8F9FA] rounded-2xl shadow-xl w-full max-w-sm overflow-hidden border border-slate-100 flex flex-col font-sans">
+      <div class="px-5 py-4 bg-[#F8F9FA] border-b border-gray-100 flex justify-between items-center">
+        <div>
+          <h3 class="text-sm font-bold text-gray-900 tracking-tight">Ubah Alamat Email</h3>
+          <p class="text-[10px] text-gray-400 mt-0.5">Perbarui email korespondensi akun warga Anda</p>
+        </div>
+        <button type="button" onclick="closeEmailModal()" class="text-gray-400 hover:text-gray-600">
           <span class="material-symbols-outlined text-sm">close</span>
         </button>
       </div>
       <form action="{{ route('warga.profil.update') }}" method="POST">
         @csrf
         @method('PUT')
-        <div class="p-6 space-y-4">
+        <div class="p-6 bg-white space-y-4">
           <div class="space-y-1.5">
-            <label class="text-[11px] font-medium text-slate-400">Email Baru</label>
-            <input type="email" name="email" required placeholder="nama.baru@email.com" class="w-full bg-[#EEF2F6] border-0 text-slate-700 rounded-xl px-4 py-3 text-xs font-medium focus:ring-1 focus:ring-pointwaste-primary">
+            <label class="block text-sm font-semibold text-gray-700">Email Baru</label>
+            <input type="email" name="email" required placeholder="nama.baru@email.com" class="block w-full px-4 py-3 bg-[#F8F9FA] border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 focus:bg-white text-gray-900 placeholder-gray-400 text-xs font-medium transition-all">
           </div>
           <div class="space-y-1.5">
-            <label class="text-[11px] font-medium text-slate-400">Konfirmasi Kata Sandi Akun</label>
-            <input type="password" name="password_verification" required class="w-full bg-[#EEF2F6] border-0 text-slate-700 rounded-xl px-4 py-3 text-xs font-medium focus:ring-1 focus:ring-pointwaste-primary">
+            <label class="block text-sm font-semibold text-gray-700">Konfirmasi Kata Sandi Akun</label>
+            <input type="password" name="password_verification" required class="block w-full px-4 py-3 bg-[#F8F9FA] border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 focus:bg-white text-gray-900 text-xs font-medium transition-all">
           </div>
         </div>
-        <div class="bg-slate-50 px-5 py-3.5 flex justify-end space-x-2 border-t border-slate-100">
-          <button type="button" onclick="closeEmailModal()" class="px-4 py-2 text-[11px] font-semibold text-slate-500 hover:bg-slate-200 rounded-lg">Batal</button>
-          <button type="submit" class="px-4 py-2 bg-[#004c22] hover:bg-emerald-950 text-white text-[11px] font-semibold rounded-lg shadow-sm">Simpan Email</button>
+        <div class="bg-[#F8F9FA] px-6 py-4 flex justify-end space-x-3 border-t border-gray-100">
+          <button type="button" onclick="closeEmailModal()" class="px-5 py-2 bg-white border border-gray-300 text-gray-700 text-xs font-medium rounded-xl hover:bg-gray-50 transition-colors">Batal</button>
+          <button type="submit" class="px-5 py-2 bg-[#004c22] hover:bg-emerald-950 text-white text-xs font-medium rounded-xl shadow-sm transition-colors">Simpan Email</button>
         </div>
       </form>
     </div>
   </div>
 
   <div id="password-modal" class="hidden fixed inset-0 z-[100] items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-    <div class="bg-white rounded-2xl shadow-xl w-full max-w-sm overflow-hidden border border-slate-100 flex flex-col">
-      <div class="px-5 py-4 border-b border-slate-100 flex justify-between items-center">
-        <h3 class="text-xs font-bold text-slate-800">Ubah Kata Sandi Akun</h3>
-        <button type="button" onclick="closePasswordModal()" class="text-slate-400 hover:text-slate-600">
-          <span class="material-symbols-outlined text-sm">close</span>
+    <div class="bg-[#F8F9FA] rounded-2xl border border-gray-200 shadow-xl w-full max-w-lg overflow-hidden font-sans">
+      
+      <div class="p-6 bg-[#F8F9FA] flex justify-between items-start border-b border-gray-100">
+        <div>
+          <h3 class="text-xl font-bold text-gray-900 tracking-tight">Ubah Kata Sandi</h3>
+          <p class="text-xs text-gray-500 mt-1">Amankan akun Anda dengan kata sandi baru</p>
+        </div>
+        <button type="button" onclick="closePasswordModal()" class="text-gray-400 hover:text-gray-600 transition-colors">
+          <span class="material-symbols-outlined text-lg">close</span>
         </button>
       </div>
-      <form action="{{ route('warga.profil.password') }}" method="POST">
+
+      <form action="{{ route('warga.profil.password') }}" method="POST" class="p-6 bg-white space-y-6">
         @csrf
         @method('PUT')
-        <div class="p-6 space-y-4">
-          <div class="space-y-1.5">
-            <label class="text-[11px] font-medium text-slate-400">Kata Sandi Saat Ini</label>
-            <input type="password" name="current_password" required class="w-full bg-[#EEF2F6] border-0 text-slate-700 rounded-xl px-4 py-3 text-xs font-medium focus:ring-1 focus:ring-pointwaste-primary">
-          </div>
-          <div class="space-y-1.5">
-            <label class="text-[11px] font-medium text-slate-400">Kata Sandi Baru</label>
-            <input type="password" name="password" required class="w-full bg-[#EEF2F6] border-0 text-slate-700 rounded-xl px-4 py-3 text-xs font-medium focus:ring-1 focus:ring-pointwaste-primary">
-          </div>
-          <div class="space-y-1.5">
-            <label class="text-[11px] font-medium text-slate-400">Konfirmasi Kata Sandi Baru</label>
-            <input type="password" name="password_confirmation" required class="w-full bg-[#EEF2F6] border-0 text-slate-700 rounded-xl px-4 py-3 text-xs font-medium focus:ring-1 focus:ring-pointwaste-primary">
+
+        <div class="space-y-2">
+          <label for="current_password" class="block text-sm font-semibold text-gray-700">Kata Sandi Saat Ini</label>
+          <div class="relative rounded-xl shadow-sm">
+            <input type="password" name="current_password" id="current_password" 
+                class="block w-full px-4 py-3 bg-[#F8F9FA] border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 focus:bg-white text-gray-900 text-xs font-medium placeholder-gray-400 transition-all duration-200 pr-10" 
+                placeholder="••••••••" required>
+            <button type="button" onclick="togglePasswordVisibility('current_password', this)" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600">
+              <span class="material-symbols-outlined text-lg select-none">visibility</span>
+            </button>
           </div>
         </div>
-        <div class="bg-slate-50 px-5 py-3.5 flex justify-end space-x-2 border-t border-slate-100">
-          <button type="button" onclick="closePasswordModal()" class="px-4 py-2 text-[11px] font-semibold text-slate-500 hover:bg-slate-200 rounded-lg">Batal</button>
-          <button type="submit" class="px-4 py-2 bg-[#004c22] hover:bg-emerald-950 text-white text-[11px] font-semibold rounded-lg shadow-sm">Perbarui Sandi</button>
+
+        <hr class="border-gray-100">
+
+        <div class="space-y-2">
+          <label for="password" class="block text-sm font-semibold text-gray-700">Kata Sandi Baru</label>
+          <div class="relative rounded-xl shadow-sm">
+            <input type="password" name="password" id="password" 
+                class="block w-full px-4 py-3 bg-[#F8F9FA] border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 focus:bg-white text-gray-900 text-xs font-medium placeholder-gray-400 transition-all duration-200 pr-10" 
+                placeholder="••••••••" required>
+            <button type="button" onclick="togglePasswordVisibility('password', this)" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600">
+              <span class="material-symbols-outlined text-lg select-none">visibility</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <label for="password_confirmation" class="block text-sm font-semibold text-gray-700">Konfirmasi Kata Sandi Baru</label>
+          <div class="relative rounded-xl shadow-sm">
+            <input type="password" name="password_confirmation" id="password_confirmation" 
+                class="block w-full px-4 py-3 bg-[#F8F9FA] border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 focus:bg-white text-gray-900 text-xs font-medium placeholder-gray-400 transition-all duration-200 pr-10" 
+                placeholder="Ulangi kata sandi baru" required>
+            <button type="button" onclick="togglePasswordVisibility('password_confirmation', this)" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600">
+              <span class="material-symbols-outlined text-lg select-none">visibility</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-[#F0FDF4] border border-[#DCFCE7] rounded-xl p-4 flex items-start space-x-3">
+          <div class="text-[#004c22] mt-0.5 shrink-0">
+            <span class="material-symbols-outlined text-lg">info</span>
+          </div>
+          <p class="text-xs text-gray-600 leading-normal">
+            Kata sandi harus terdiri dari kombinasi huruf besar, huruf kecil, angka, dan simbol untuk keamanan maksimal.
+          </p>
+        </div>
+
+        <div class="pt-4 border-t border-gray-100 flex justify-end space-x-3 bg-[#F8F9FA] -mx-6 -mb-6 p-6">
+          <button type="button" onclick="closePasswordModal()" class="px-6 py-2.5 bg-white border border-gray-300 text-gray-700 text-xs font-medium rounded-xl hover:bg-gray-50 transition-colors">
+            Batal
+          </button>
+          <button type="submit" class="px-6 py-2.5 bg-[#0A3622] text-white text-xs font-medium rounded-xl hover:bg-[#082c1b] transition-colors shadow-sm">
+            Simpan Perubahan
+          </button>
         </div>
       </form>
     </div>
@@ -253,13 +299,22 @@
     let currentRotation = 0;
     let currentScale = 1;
 
+    // Trigger Modals
     function openPhotoModal() { photoModal.classList.replace('hidden', 'flex'); }
     function closePhotoModal() { photoModal.classList.replace('flex', 'hidden'); }
+    
+    function openEmailModal() { emailModal.classList.replace('hidden', 'flex'); }
+    function closeEmailModal() { emailModal.classList.replace('flex', 'hidden'); }
+
+    function openPasswordModal() { passwordModal.classList.replace('hidden', 'flex'); }
+    function closePasswordModal() { passwordModal.classList.replace('flex', 'hidden'); }
+
+    // Photo Management
     function triggerFileBrowser() { hiddenFileInput.click(); }
     
     function syncModalPreview(input) {
         if (input.files && input.files[0]) {
-            hapusFotoFlag.value = "0"; // Batalkan flag hapus jika memilih file baru
+            hapusFotoFlag.value = "0";
             const reader = new FileReader();
             reader.onload = function(e) {
                 modalPreviewImg.src = e.target.result;
@@ -280,17 +335,25 @@
 
     function resetToDefaultPhoto() {
         hiddenFileInput.value = "";
-        hapusFotoFlag.value = "1"; // Aktifkan tanda hapus foto untuk Controller
+        hapusFotoFlag.value = "1";
         modalPreviewImg.src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80";
         modalPreviewImg.style.transform = `rotate(0deg) scale(1)`;
         avatarDisplay.src = modalPreviewImg.src;
     }
 
-    function openEmailModal() { emailModal.classList.replace('hidden', 'flex'); }
-    function closeEmailModal() { emailModal.classList.replace('flex', 'hidden'); }
-
-    function openPasswordModal() { passwordModal.classList.replace('hidden', 'flex'); }
-    function closePasswordModal() { passwordModal.classList.replace('flex', 'hidden'); }
+    // Interactive Show/Hide Password Controller
+    function togglePasswordVisibility(inputId, buttonEl) {
+      const input = document.getElementById(inputId);
+      const icon = buttonEl.querySelector('.material-symbols-outlined');
+      
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.textContent = 'visibility_off';
+      } else {
+        input.type = 'password';
+        icon.textContent = 'visibility';
+      }
+    }
   </script>
 </body>
 </html>
