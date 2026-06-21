@@ -15,11 +15,13 @@ class SetorSampahController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $userId = Auth::id();
         $kategoriSampah = KategoriSampah::where('status_aktif', 1)->get();
-        $riwayatSetor = SetorSampah::where('id_user', $user->id_user)
-            ->with('detailSetorSampah.kategoriSampah')
+        $riwayatSetor = SetorSampah::where('id_user', $userId)
+            ->with(['detailSetorSampah.kategoriSampah'])
             ->orderBy('tgl_setor', 'desc')
-            ->paginate(10);
+            ->take(5)
+            ->get();
 
         return view('warga.setor-sampah', compact('user', 'kategoriSampah', 'riwayatSetor'));
     }
@@ -52,7 +54,7 @@ class SetorSampahController extends Controller
                 'tgl_setor'   => $request->tgl_setor,
                 'foto_sampah' => $pathFoto,
                 'total_poin'  => 0,
-                'status'      => 'Proses',
+                'status'      => 'Menunggu',
             ]);
 
             $grandTotalPoin = 0;
