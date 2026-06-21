@@ -140,7 +140,7 @@ class AuthController extends Controller
             return redirect()->route('auth.forgot-password')->with('error', 'Silakan masukkan email Anda kembali.');
         }
 
-        return view('auth.verify-otp');
+        return view('auth.verify_kode');
     }
 
     public function submitResetPassword(Request $request)

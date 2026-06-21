@@ -58,7 +58,7 @@
       @endif
 
       <!-- Tagihan Belum Lunas -->
-      @if($iuranBelumLunas->count() > 0)
+      @if($daftarTagihan->count() > 0)
         <div class="bg-white rounded-xl border border-slate-100 shadow-sm p-6">
           <h3 class="text-base font-semibold text-slate-800 mb-4">Tagihan Belum Lunas</h3>
 
@@ -90,7 +90,7 @@
         </div>
 
         <div class="overflow-x-auto">
-          @if($riwayatIuran->count() > 0)
+          @if($daftarTagihan->count() > 0)
             <table class="w-full text-left border-collapse">
               <thead>
                 <tr class="bg-[#EBF5EE] text-slate-600 text-[11px] uppercase tracking-wider font-semibold">
