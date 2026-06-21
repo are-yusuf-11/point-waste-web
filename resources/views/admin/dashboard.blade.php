@@ -4,35 +4,98 @@
 
 @section('content')
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: '#166534',
+          'primary-dark': '#14532d',
+          'primary-light': '#16a34a',
+          'primary-soft': '#ecfdf3',
+          'surface': '#f7faf8',
+          'success-bg': '#dcfce7',
+          'success-text': '#15803d',
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+        },
+        borderRadius: {
+          xl: '0.85rem',
+        }
+      }
+    }
+  }
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    font-size: 20px;
+  }
+  .active-nav .material-symbols-outlined { font-variation-settings: 'FILL' 1; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+</style>
+</head>
 
-<main class="font-sans antialiased text-slate-800 p-6" style="font-family: 'Plus Jakarta Sans', sans-serif;">
-    <section class="mb-8 bg-transparent">
-        <h3 class="text-3xl font-extrabold tracking-tight text-slate-900 mb-1 flex items-center gap-2">
-            Selamat Datang Atmin 👋
-        </h3>
-        <p class="text-sm font-medium text-slate-500">
-            Mari kelola efisiensi pengelolaan sampah hari ini.
-        </p>
-    </section>
+<div class="flex min-h-screen">
 
-    <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div class="bg-white p-6 border border-slate-200 rounded-2xl flex flex-col justify-between relative overflow-hidden shadow-sm min-h-[260px]">
-            <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#166534]"></div>
-            <div>
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="h-9 w-9 bg-emerald-50 text-[#166534] rounded-xl flex items-center justify-center border border-emerald-100/70">
-                        <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1">payments</span>
-                    </div>
-                    <h4 class="font-bold text-sm text-slate-700 tracking-wide">Nilai Tukar Poin</h4>
-                </div>
-                <p class="text-xs font-medium text-slate-500 leading-relaxed mb-6">
-                    Atur berapa nilai Rupiah yang didapatkan warga untuk setiap 1 poin sampah.
-                </p>
-            </div>
-            <h2 class="font-headline-md text-headline-md font-extrabold text-primary">PointWaste Admin</h2>
+  <!-- SIDEBAR -->
+  <aside class="fixed left-0 top-0 h-screen w-64 bg-white border-r border-gray-200 flex flex-col">
+    <div class="px-6 py-6">
+      <h1 class="text-xl font-extrabold text-primary leading-tight">PointWaste</h1>
+      <p class="text-xs text-gray-400 mt-0.5">Admin Portal</p>
+    </div>
+
+    <nav class="flex-1 px-3 mt-2 space-y-1">
+      <a href="#" class="active-nav flex items-center gap-3 rounded-lg px-3 py-2.5 bg-primary-soft text-primary font-semibold text-sm">
+        <span class="material-symbols-outlined">dashboard</span>
+        Dashboard
+      </a>
+      <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700 text-sm font-medium transition-colors">
+        <span class="material-symbols-outlined">group</span>
+        User Management
+      </a>
+      <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700 text-sm font-medium transition-colors">
+        <span class="material-symbols-outlined">recycling</span>
+        Waste Categories
+      </a>
+      <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700 text-sm font-medium transition-colors">
+        <span class="material-symbols-outlined">monitoring</span>
+        System Monitoring
+      </a>
+      <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700 text-sm font-medium transition-colors">
+        <span class="material-symbols-outlined">settings</span>
+        System Configuration
+      </a>
+    </nav>
+
+    <div class="px-3 pb-6 mt-auto">
+      <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-red-500 hover:bg-red-50 text-sm font-medium transition-colors">
+        <span class="material-symbols-outlined">logout</span>
+        Logout
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="flex-1 ml-64 flex flex-col">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-30 h-16 bg-white/90 backdrop-blur border-b border-gray-200 flex items-center justify-end px-8 gap-5">
+      <button class="p-2 rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors">
+        <span class="material-symbols-outlined">notifications</span>
+      </button>
+      <button class="p-2 rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors">
+        <span class="material-symbols-outlined">help</span>
+      </button>
+      <div class="flex items-center gap-3 pl-4 border-l border-gray-200">
+        <div class="text-right">
+          <p class="text-sm font-semibold text-gray-800 leading-tight">Budi Santoso</p>
+          <p class="text-[11px] text-primary font-bold uppercase tracking-wide leading-tight">Super Admin</p>
         </div>
         <div class="flex items-center gap-md">
             <button class="p-2 hover:bg-surface-container rounded-full text-on-surface-variant"><span class="material-symbols-outlined" data-icon="notifications">notifications</span></button>
@@ -43,7 +106,6 @@
             </div>
         </div>
     </header>
-<<<<<<< HEAD
 
     <!-- CONTENT -->
     <main class="flex-1 px-8 py-7 max-w-[1280px] w-full">
@@ -62,25 +124,6 @@
           <div class="flex items-center gap-2.5 mb-2">
             <div class="w-9 h-9 rounded-lg bg-primary-soft flex items-center justify-center text-primary">
               <span class="material-symbols-outlined" style="font-size:18px;">payments</span>
-=======
-    <!-- Main Content Canvas -->
-    <main class="ml-sidebar-width p-lg max-w-[1280px] mx-auto min-h-screen">
-        <!-- Header Section -->
-        <section class="mb-lg">
-            <h3 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Platform Performance</h3>
-            <p class="font-body-lg text-body-lg text-on-surface-variant">Real-time oversight of waste management across all regional units.</p>
-        </section>
-        <!-- Global Stats Bento Grid -->
-        <section class="grid grid-cols-1 md:grid-cols-4 gap-lg mb-xl">
-            <div class="bg-white p-lg border border-outline-variant rounded-xl flex flex-col gap-xs relative overflow-hidden">
-                <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
-                <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Total Registered Users</span>
-                <div class="flex items-end gap-xs">
-                    <span class="font-display-lg text-headline-lg font-bold text-on-surface">12,482</span>
-                    <span class="text-primary font-bold text-sm mb-2 flex items-center"><span class="material-symbols-outlined text-sm" data-icon="arrow_upward">arrow_upward</span> 4.2%</span>
-                </div>
-                <p class="text-xs text-on-surface-variant mt-2 italic">Global platform count</p>
->>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
             </div>
             <div class="bg-white p-lg border border-outline-variant rounded-xl flex flex-col gap-xs relative overflow-hidden">
                 <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
