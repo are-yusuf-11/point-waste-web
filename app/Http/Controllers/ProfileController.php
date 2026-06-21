@@ -49,19 +49,6 @@ class ProfileController extends Controller
         return redirect()->route('profile.index')->with('success', 'Profil Anda berhasil diperbarui!');
     }
 
-    /**
-     * Route::get('/password/ganti')
-     * Menampilkan form ganti password
-     */
-    public function editPassword()
-    {
-        return view('profile.ganti-password'); // resources/views/profile/ganti-password.blade.php
-    }
-
-    /**
-     * Route::put('/password/ganti')
-     * Memproses penggantian password user
-     */
     public function updatePassword(Request $request)
     {
         // 1. Validasi kecocokan input password baru
