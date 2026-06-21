@@ -4,41 +4,126 @@
 
 @section('content')
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: '#166534',
+          'primary-dark': '#14532d',
+          'primary-light': '#16a34a',
+          'primary-soft': '#ecfdf3',
+          'surface': '#f7faf8',
+          'success-bg': '#dcfce7',
+          'success-text': '#15803d',
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+        },
+        borderRadius: {
+          xl: '0.85rem',
+        }
+      }
+    }
+  }
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    font-size: 20px;
+  }
+  .active-nav .material-symbols-outlined { font-variation-settings: 'FILL' 1; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+</style>
+</head>
 
-<div class="p-6 font-sans antialiased text-slate-800 bg-slate-50/50 min-h-screen" style="font-family: 'Plus Jakarta Sans', sans-serif;">
-    
-    <div class="mb-8">
-        <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
-            Selamat Datang Atmin 👋
-        </h1>
-        <p class="text-slate-500 text-sm font-medium mt-1">
-            Mari kelola efisiensi pengelolaan sampah hari ini.
-        </p>
+<div class="flex min-h-screen">
+
+  <!-- SIDEBAR -->
+  <aside class="fixed left-0 top-0 h-screen w-64 bg-white border-r border-gray-200 flex flex-col">
+    <div class="px-6 py-6">
+      <h1 class="text-xl font-extrabold text-primary leading-tight">PointWaste</h1>
+      <p class="text-xs text-gray-400 mt-0.5">Admin Portal</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        
-        <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between relative overflow-hidden group border-l-4 border-l-emerald-600">
-            <div>
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="h-10 w-10 bg-emerald-50 text-emerald-700 rounded-xl flex items-center justify-center border border-emerald-100">
-                        <span class="material-symbols-outlined text-xl">payments</span>
-                    </div>
-                    <h3 class="font-bold text-slate-800 text-base">Nilai Tukar Poin</h3>
-                </div>
-                <p class="text-slate-500 text-xs leading-relaxed mb-6">
-                    Atur berapa nilai Rupiah yang didapatkan warga untuk setiap 1 poin sampah.
-                </p>
+    <nav class="flex-1 px-3 mt-2 space-y-1">
+      <a href="#" class="active-nav flex items-center gap-3 rounded-lg px-3 py-2.5 bg-primary-soft text-primary font-semibold text-sm">
+        <span class="material-symbols-outlined">dashboard</span>
+        Dashboard
+      </a>
+      <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700 text-sm font-medium transition-colors">
+        <span class="material-symbols-outlined">group</span>
+        User Management
+      </a>
+      <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700 text-sm font-medium transition-colors">
+        <span class="material-symbols-outlined">recycling</span>
+        Waste Categories
+      </a>
+      <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700 text-sm font-medium transition-colors">
+        <span class="material-symbols-outlined">monitoring</span>
+        System Monitoring
+      </a>
+      <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700 text-sm font-medium transition-colors">
+        <span class="material-symbols-outlined">settings</span>
+        System Configuration
+      </a>
+    </nav>
+
+    <div class="px-3 pb-6 mt-auto">
+      <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-red-500 hover:bg-red-50 text-sm font-medium transition-colors">
+        <span class="material-symbols-outlined">logout</span>
+        Logout
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="flex-1 ml-64 flex flex-col">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-30 h-16 bg-white/90 backdrop-blur border-b border-gray-200 flex items-center justify-end px-8 gap-5">
+      <button class="p-2 rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors">
+        <span class="material-symbols-outlined">notifications</span>
+      </button>
+      <button class="p-2 rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors">
+        <span class="material-symbols-outlined">help</span>
+      </button>
+      <div class="flex items-center gap-3 pl-4 border-l border-gray-200">
+        <div class="text-right">
+          <p class="text-sm font-semibold text-gray-800 leading-tight">Budi Santoso</p>
+          <p class="text-[11px] text-primary font-bold uppercase tracking-wide leading-tight">Super Admin</p>
+        </div>
+        <div class="flex items-center gap-md">
+            <button class="p-2 hover:bg-surface-container rounded-full text-on-surface-variant"><span class="material-symbols-outlined" data-icon="notifications">notifications</span></button>
+            <button class="p-2 hover:bg-surface-container rounded-full text-on-surface-variant"><span class="material-symbols-outlined" data-icon="settings_suggest">settings_suggest</span></button>
+            <button class="p-2 hover:bg-surface-container rounded-full text-on-surface-variant"><span class="material-symbols-outlined" data-icon="apps">apps</span></button>
+            <div class="h-10 w-10 rounded-full overflow-hidden border border-outline-variant">
+                <img class="w-full h-full object-cover" data-alt="A professional headshot of a system administrator in their 30s, dressed in business casual attire with a focused and friendly expression. The background is a clean, modern corporate office with soft natural lighting and subtle green plants to represent sustainability. The image style is sharp, professional photography with a shallow depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLZFvA6DHznuSrtSycfDbBdbMS_vcSrXodAwwxTYiWkOq60ZYetBQWlSR038KhZRaFyWoYLBgeKk6HIa1yQHr9Nci9IFPQkrS_SRfm6pPWL5PI-bjHv5zJfd1QDGe8rS4C4FZOhnssPyPw0u2pV8WPSWKtbl90FQ2rMQRGV_SrKDXCfEFZyC3EeOD1Se4i8foDgdODpfGjUTVblC2j264Yn_Pin6e99HPf7cwXej3-ra0phN7dauYQll1u-LcdVhQ63-vdJ_Nodzk" />
             </div>
-            <div>
-                <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">1 Poin = ... Rupiah</label>
-                <div class="flex items-center gap-3">
-                    <span class="font-extrabold text-emerald-700 text-lg">Rp</span>
-                    <input type="number" name="nilai_poin" value="{{ $currentPoinExchange ?? 0 }}" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 font-bold text-slate-800 focus:outline-none focus:border-emerald-500 focus:bg-white transition-all">
-                </div>
+        </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="flex-1 px-8 py-7 max-w-[1280px] w-full">
+
+      <!-- Page title -->
+      <div class="mb-7">
+        <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2">Selamat Datang Atmin <span>👋</span></h2>
+        <p class="text-gray-500 mt-1 text-sm">Mari kelola efisiensi pengelolaan sampah hari ini</p>
+      </div>
+
+      <!-- Top 3 cards -->
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-7">
+
+        <!-- Nilai Tukar Poin -->
+        <div class="bg-white border border-gray-200 rounded-xl p-5">
+          <div class="flex items-center gap-2.5 mb-2">
+            <div class="w-9 h-9 rounded-lg bg-primary-soft flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined" style="font-size:18px;">payments</span>
             </div>
         </div>
 
