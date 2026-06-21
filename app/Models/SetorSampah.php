@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class SetorSampah extends Model
 {
@@ -50,12 +51,10 @@ class SetorSampah extends Model
      */
     public function user(): BelongsTo
     {
-        // 'id_user' di parameter kedua adalah Foreign Key di tabel setor_sampah
-        // 'id_user' di parameter ketiga adalah Primary Key di tabel users
         return $this->belongsTo(Users::class, 'id_user', 'id_user');
     }
 
-    public function detailItems(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function detailSetorSampah(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(DetailSetorSampah::class, 'id_setor_sampah', 'id_setor_sampah');
     }

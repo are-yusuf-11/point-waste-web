@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MutasiPoin;
 use Carbon\Carbon;
+use Pdf;
 
 class MutasiPoinController extends Controller
 {
@@ -41,5 +42,27 @@ class MutasiPoinController extends Controller
             'poinDigunakan',
             'riwayatMutasi'
         ));
+    }
+
+    public function eksporPdf()
+    {
+        $user = Auth::user();
+        
+        // Ambil seluruh data mutasi poin tanpa pagination agar tercetak semua di PDF
+        $riwayatMutasi = \App\Models\MutasiPoin::where('id_user', $user->id_user)
+            ->orderBy('tanggal', 'desc')
+            ->get();
+
+        $totalPoinSaatIni = $user->total_poin;
+
+        // Load view cetak-mutasi dan kirim datanya
+        $pdf = Pdf::loadView('warga.cetak-mutasi', compact('user', 'riwayatMutasi', 'totalPoinSaatIni'));
+
+        // Set ukuran kertas menjadi A4 dengan orientasi Portrait
+        $pdf->setPaper('a4', 'portrait');
+
+        // Menghasilkan file download PDF dengan nama dinamis
+        $namaFile = 'Laporan_Mutasi_Poin_' . str_replace(' ', '_', $user->nama) . '_' . date('Ymd') . '.pdf';
+        return $pdf->download($namaFile);
     }
 }
