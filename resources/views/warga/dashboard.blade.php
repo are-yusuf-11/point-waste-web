@@ -2,7 +2,6 @@
 <html lang="id">
 
 <head>
-<<<<<<< HEAD
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>PointWaste - Dashboard Warga</title>
@@ -155,7 +154,7 @@
           </div>
         @endif
 
-<<<<<<< HEAD
+
             <section class="bg-surface rounded-2xl border border-gray-100 shadow-sm p-6 space-y-6">
                 <h3 class="text-base font-semibold text-on-surface tracking-tight">Notifikasi Terbaru</h3>
                 
@@ -175,15 +174,12 @@
 
         </main>
     </div>
-=======
+
       </div>
   </main>
   <x-alert />
->>>>>>> be2db534ee81329bdc96731711d718b5391e7324
-=======
-      </div>
-  </main>
->>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
+
+ 
 
 </body>
 </html>
