@@ -43,6 +43,26 @@
             </div>
         </div>
     </header>
+<<<<<<< HEAD
+
+    <!-- CONTENT -->
+    <main class="flex-1 px-8 py-7 max-w-[1280px] w-full">
+
+      <!-- Page title -->
+      <div class="mb-7">
+        <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2">Selamat Datang Atmin <span>👋</span></h2>
+        <p class="text-gray-500 mt-1 text-sm">Mari kelola efisiensi pengelolaan sampah hari ini</p>
+      </div>
+
+      <!-- Top 3 cards -->
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-7">
+
+        <!-- Nilai Tukar Poin -->
+        <div class="bg-white border border-gray-200 rounded-xl p-5">
+          <div class="flex items-center gap-2.5 mb-2">
+            <div class="w-9 h-9 rounded-lg bg-primary-soft flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined" style="font-size:18px;">payments</span>
+=======
     <!-- Main Content Canvas -->
     <main class="ml-sidebar-width p-lg max-w-[1280px] mx-auto min-h-screen">
         <!-- Header Section -->
@@ -56,10 +76,11 @@
                 <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
                 <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Total Registered Users</span>
                 <div class="flex items-end gap-xs">
-                    <span class="font-display-lg text-headline-lg font-bold text-on-surface">{{ number_format($totalUsers) }}</span>
+                    <span class="font-display-lg text-headline-lg font-bold text-on-surface">12,482</span>
                     <span class="text-primary font-bold text-sm mb-2 flex items-center"><span class="material-symbols-outlined text-sm" data-icon="arrow_upward">arrow_upward</span> 4.2%</span>
                 </div>
                 <p class="text-xs text-on-surface-variant mt-2 italic">Global platform count</p>
+>>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
             </div>
             <div class="bg-white p-lg border border-outline-variant rounded-xl flex flex-col gap-xs relative overflow-hidden">
                 <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
