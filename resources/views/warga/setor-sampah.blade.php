@@ -26,27 +26,43 @@
             poppins: ['Poppins', 'sans-serif'],
           }
         }
-    </script>
-    <style>
-        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-        .icon-filled { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-        [x-cloak] { display: none !important; }
-        input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
-    </style>
+      }
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    .icon-filled {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    [x-cloak] {
+      display: none !important;
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  </style>
 </head>
+
 <body class="font-poppins bg-pointwaste-bg text-pointwaste-dark min-h-screen flex">
 
   <x-sidebar />
 
   <main class="flex-1 pl-64 min-h-screen">
-      
+
     <x-header />
 
 
     <div class="p-8">
-      
+
       <div class="bg-white rounded-xl border border-slate-100 shadow-sm p-8 max-w-5xl">
-        
+
         <div class="flex items-center space-x-2 text-slate-800 font-semibold border-b border-slate-100 pb-4 mb-6">
           <svg class="w-5 h-5 text-pointwaste-primary" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -55,7 +71,7 @@
         </div>
 
         <form class="space-y-6">
-          
+
           <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
             <div class="md:col-span-5 space-y-2">
               <label class="block text-xs font-medium text-slate-500">Tanggal Setor</label>
@@ -83,7 +99,7 @@
 
           <div class="space-y-3">
             <label class="block text-xs font-medium text-slate-500">Rincian Sampah</label>
-            
+
             <div class="flex items-center space-x-3">
               <div class="flex-1">
                 <select class="w-full bg-[#EEF2F6] border-0 text-slate-500 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-pointwaste-primary appearance-none cursor-pointer">
@@ -106,81 +122,81 @@
               </button>
             </div>
 
-                <div class="pt-1">
-                  <button type="button" onclick="tambahBaris()" class="inline-flex items-center text-xs font-bold text-pointwaste-primary hover:text-emerald-800 transition-colors">
-                    <span class="text-base mr-1">+</span> Tambah Kategori
-                  </button>
-                </div>
-              </div>
-
+            <div class="pt-1">
+              <button type="button" onclick="tambahBaris()" class="inline-flex items-center text-xs font-bold text-pointwaste-primary hover:text-emerald-800 transition-colors">
+                <span class="text-base mr-1">+</span> Tambah Kategori
+              </button>
             </div>
-            <div class="flex items-center gap-4">
-                <button class="p-2 hover:bg-gray-100 rounded-full relative"><span class="material-symbols-outlined text-[22px]">notifications</span></button>
-                <button class="p-2 hover:bg-gray-100 rounded-full"><span class="material-symbols-outlined text-[22px]">settings</span></button>
-            </div>
-        </header>
-
-            <div class="md:col-span-5 space-y-2">
-              <label class="block text-xs font-medium text-slate-500">Foto Sampah</label>
-              
-              <div class="relative w-full h-[240px]">
-                
-                <label class="relative flex flex-col items-center justify-center w-full h-full border-2 border-dashed border-slate-200 rounded-xl bg-white hover:bg-slate-50 cursor-pointer transition-colors overflow-hidden group p-4">
-                  
-                  <div id="upload-placeholder" class="flex flex-col items-center justify-center space-y-2 text-center">
-                    <svg class="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    </svg>
-                    <p id="upload-text" class="text-xs text-slate-400">Klik untuk unggah foto sampah</p>
-                  </div>
-
-                  <img id="image-preview" class="hidden absolute inset-0 w-full h-full object-cover z-10" alt="Thumbnail Sampah">
-
-                  <div id="upload-overlay" class="hidden absolute inset-0 bg-black/40 z-20 items-center justify-center text-white text-xs font-medium transition-opacity opacity-0 group-hover:opacity-100">
-                     Ganti Foto Sampah
-                  </div>
-
-                  <input type="file" name="foto_sampah" id="foto_sampah" class="hidden" accept="image/*" required onchange="previewImage(this)" />
-                </label>
-
-                <button type="button" id="btn-delete-foto" onclick="resetImage(event)" class="hidden absolute top-3 right-3 z-30 bg-red-500 hover:bg-red-600 text-white p-1.5 rounded-full shadow-md transition-transform active:scale-95 flex items-center justify-center">
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                  </svg>
-                </button>
-
-              </div>
-              @error('foto_sampah') <p class="text-red-600 text-xs mt-1">{{ $message }}</p> @enderror
-            </div>
-
           </div>
 
-          <div class="bg-[#EBF5EE] rounded-xl px-5 py-3.5 flex justify-between items-center">
-            <span class="text-xs font-medium text-slate-500">Estimasi Poin</span>
-            <span class="text-sm font-bold text-pointwaste-primary">0 Poin</span>
-          </div>
-
-          <div class="flex items-center space-x-3 pt-4">
-            <button type="submit" class="flex-1 bg-[#064E3B] hover:bg-emerald-950 text-white font-semibold text-sm py-3 px-6 rounded-xl transition-colors text-center">
-              Kirim Pengajuan
-            </button>
-            <button type="button" class="bg-white border border-slate-200 hover:bg-slate-50 text-slate-600 font-semibold text-sm py-3 px-6 rounded-xl transition-colors min-w-[100px]">
-              Batal
-            </button>
-          </div>
-
-        </form>
       </div>
+      <div class="flex items-center gap-4">
+        <button class="p-2 hover:bg-gray-100 rounded-full relative"><span class="material-symbols-outlined text-[22px]">notifications</span></button>
+        <button class="p-2 hover:bg-gray-100 rounded-full"><span class="material-symbols-outlined text-[22px]">settings</span></button>
+      </div>
+      </header>
+
+      <div class="md:col-span-5 space-y-2">
+        <label class="block text-xs font-medium text-slate-500">Foto Sampah</label>
+
+        <div class="relative w-full h-[240px]">
+
+          <label class="relative flex flex-col items-center justify-center w-full h-full border-2 border-dashed border-slate-200 rounded-xl bg-white hover:bg-slate-50 cursor-pointer transition-colors overflow-hidden group p-4">
+
+            <div id="upload-placeholder" class="flex flex-col items-center justify-center space-y-2 text-center">
+              <svg class="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              <p id="upload-text" class="text-xs text-slate-400">Klik untuk unggah foto sampah</p>
+            </div>
+
+            <img id="image-preview" class="hidden absolute inset-0 w-full h-full object-cover z-10" alt="Thumbnail Sampah">
+
+            <div id="upload-overlay" class="hidden absolute inset-0 bg-black/40 z-20 items-center justify-center text-white text-xs font-medium transition-opacity opacity-0 group-hover:opacity-100">
+              Ganti Foto Sampah
+            </div>
+
+            <input type="file" name="foto_sampah" id="foto_sampah" class="hidden" accept="image/*" required onchange="previewImage(this)" />
+          </label>
+
+          <button type="button" id="btn-delete-foto" onclick="resetImage(event)" class="hidden absolute top-3 right-3 z-30 bg-red-500 hover:bg-red-600 text-white p-1.5 rounded-full shadow-md transition-transform active:scale-95 flex items-center justify-center">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+
+        </div>
+        @error('foto_sampah') <p class="text-red-600 text-xs mt-1">{{ $message }}</p> @enderror
+      </div>
+
     </div>
 
-  <x-alert />
+    <div class="bg-[#EBF5EE] rounded-xl px-5 py-3.5 flex justify-between items-center">
+      <span class="text-xs font-medium text-slate-500">Estimasi Poin</span>
+      <span class="text-sm font-bold text-pointwaste-primary">0 Poin</span>
+    </div>
 
-  <script>
-    let barisIndex = 1;
+    <div class="flex items-center space-x-3 pt-4">
+      <button type="submit" class="flex-1 bg-[#064E3B] hover:bg-emerald-950 text-white font-semibold text-sm py-3 px-6 rounded-xl transition-colors text-center">
+        Kirim Pengajuan
+      </button>
+      <button type="button" class="bg-white border border-slate-200 hover:bg-slate-50 text-slate-600 font-semibold text-sm py-3 px-6 rounded-xl transition-colors min-w-[100px]">
+        Batal
+      </button>
+    </div>
 
-    // 1. Fungsi Tambah Baris Form Rincian Sampah Baru
-    function tambahBaris() {
+    </form>
+    </div>
+    </div>
+
+    <x-alert />
+
+    <script>
+      let barisIndex = 1;
+
+      // 1. Fungsi Tambah Baris Form Rincian Sampah Baru
+      function tambahBaris() {
         const wrapper = document.getElementById('wrapper-rincian');
         const template = `
           <div class="flex items-center space-x-3 item-rincian animate-fade-in">
@@ -202,40 +218,40 @@
           </div>`;
         wrapper.insertAdjacentHTML('beforeend', template);
         barisIndex++;
-    }
+      }
 
-    // 2. Fungsi Hapus Baris Form Rincian Sampah
-    function hapusBaris(button) {
+      // 2. Fungsi Hapus Baris Form Rincian Sampah
+      function hapusBaris(button) {
         const item = button.closest('.item-rincian');
         const semuaBaris = document.querySelectorAll('.item-rincian');
         if (semuaBaris.length > 1) {
-            item.remove();
-            hitungEstimasiPoin();
+          item.remove();
+          hitungEstimasiPoin();
         }
-    }
+      }
 
-    // 3. Fungsi Hitung Estimasi Poin Kumulatif Otomatis di Layar
-    function hitungEstimasiPoin() {
+      // 3. Fungsi Hitung Estimasi Poin Kumulatif Otomatis di Layar
+      function hitungEstimasiPoin() {
         let totalPoin = 0;
         const items = document.querySelectorAll('.item-rincian');
-        
-        items.forEach(item => {
-            const select = item.querySelector('.select-kategori');
-            const beratInput = item.querySelector('.input-berat');
-            
-            if(select.value && beratInput.value) {
-                const opsiTerpilih = select.options[select.selectedIndex];
-                const poinPerKg = parseFloat(opsiTerpilih.getAttribute('data-poin')) || 0;
-                const berat = parseFloat(beratInput.value) || 0;
-                totalPoin += (poinPerKg * berat);
-            }
-        });
-        
-        document.getElementById('total-estimasi-poin').textContent = Math.round(totalPoin).toLocaleString('id-ID') + ' Poin';
-    }
 
-    // 4. Fungsi Mengonversi File Input Menjadi Pratinjau Gambar (Thumbnail Preview)
-    function previewImage(input) {
+        items.forEach(item => {
+          const select = item.querySelector('.select-kategori');
+          const beratInput = item.querySelector('.input-berat');
+
+          if (select.value && beratInput.value) {
+            const opsiTerpilih = select.options[select.selectedIndex];
+            const poinPerKg = parseFloat(opsiTerpilih.getAttribute('data-poin')) || 0;
+            const berat = parseFloat(beratInput.value) || 0;
+            totalPoin += (poinPerKg * berat);
+          }
+        });
+
+        document.getElementById('total-estimasi-poin').textContent = Math.round(totalPoin).toLocaleString('id-ID') + ' Poin';
+      }
+
+      // 4. Fungsi Mengonversi File Input Menjadi Pratinjau Gambar (Thumbnail Preview)
+      function previewImage(input) {
         const file = input.files[0];
         const placeholder = document.getElementById('upload-placeholder');
         const preview = document.getElementById('image-preview');
@@ -243,28 +259,28 @@
         const btnDelete = document.getElementById('btn-delete-foto');
 
         if (file) {
-            const reader = new FileReader();
+          const reader = new FileReader();
 
-            reader.onload = function(e) {
-                preview.src = e.target.result;
-                
-                // Tampilkan gambar thumbnail & tombol hapus silang
-                preview.classList.remove('hidden');
-                overlay.classList.remove('hidden');
-                overlay.classList.add('flex');
-                placeholder.classList.add('hidden');
-                btnDelete.classList.remove('hidden');
-            }
+          reader.onload = function(e) {
+            preview.src = e.target.result;
 
-            reader.readAsDataURL(file);
+            // Tampilkan gambar thumbnail & tombol hapus silang
+            preview.classList.remove('hidden');
+            overlay.classList.remove('hidden');
+            overlay.classList.add('flex');
+            placeholder.classList.add('hidden');
+            btnDelete.classList.remove('hidden');
+          }
+
+          reader.readAsDataURL(file);
         }
-    }
+      }
 
-    // 5. Fungsi Membatalkan Pilihan Berkas Foto (Reset Image)
-    function resetImage(event) {
+      // 5. Fungsi Membatalkan Pilihan Berkas Foto (Reset Image)
+      function resetImage(event) {
         // Stop bubbling action agar popup file chooser tidak terpancing terbuka kembali
-        event.preventDefault(); 
-        
+        event.preventDefault();
+
         const input = document.getElementById('foto_sampah');
         const placeholder = document.getElementById('upload-placeholder');
         const preview = document.getElementById('image-preview');
@@ -274,14 +290,15 @@
         // Kosongkan value asli input file & tag source gambar
         input.value = "";
         preview.src = "";
-        
+
         // Sembunyikan elemen preview, munculkan kembali tulisan upload bawaan
         preview.classList.add('hidden');
         overlay.classList.add('hidden');
         overlay.classList.remove('flex');
         placeholder.classList.remove('hidden');
         btnDelete.classList.add('hidden');
-    }
-  </script>
+      }
+    </script>
 </body>
+
 </html>

@@ -28,31 +28,7 @@
                     }
                 },
             },
-=======
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PointWaste - Dashboard</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            pointwaste: {
-              primary: '#15803D',
-              secondary: '#22C55E',
-              white: '#FFFFFF',
-              dark: '#1F2937',
-              bg: '#F8FAFC'
-            }
-          },
-          fontFamily: {
-            poppins: ['Poppins', 'sans-serif'],
-          }
->>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
+
         }
     </script>
     <style>
@@ -113,10 +89,6 @@
         </div>
     </aside>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
     <div class="flex-1 flex flex-col min-h-screen">
         
         <header class="h-[60px] bg-transparent flex items-center justify-between px-6 mb-4">
