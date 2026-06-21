@@ -4,54 +4,88 @@ namespace App\Http\Controllers\Warga;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\SetorSampah;
-use App\Models\MutasiPoin;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Models\SetorSampah;
+use App\Models\DetailSetorSampah;
+use App\Models\KategoriSampah;
 
 class SetorSampahController extends Controller
 {
-    // Menampilkan halaman Riwayat Setoran & Saldo Poin
     public function index()
     {
+        $user = Auth::user();
         $userId = Auth::id();
+        $kategoriSampah = KategoriSampah::where('status_aktif', 1)->get();
+        $riwayatSetor = SetorSampah::where('id_user', $userId)
+            ->with(['detailSetorSampah.kategoriSampah'])
+            ->orderBy('tgl_setor', 'desc')
+            ->take(5)
+            ->get();
 
-        // Mengambil semua data transaksi setor sampah milik warga ini
-        $riwayatSetoran = SetorSampah::where('user_id', $userId)
-                            ->orderBy('created_at', 'desc')
-                            ->get();
-
-        // Mengambil semua riwayat mutasi poin (masuk/keluar)
-        $riwayatPoin = MutasiPoin::where('user_id', $userId)
-                        ->orderBy('created_at', 'desc')
-                        ->get();
-
-        return view('warga.setor.index', compact('riwayatSetoran', 'riwayatPoin'));
+        return view('warga.setor-sampah', compact('user', 'kategoriSampah', 'riwayatSetor'));
     }
 
-    // Menampilkan form untuk mengajukan setoran sampah baru
-    public function create()
-    {
-        return view('warga.setor.create');
-    }
-
-    // Menyimpan data pengajuan setoran sampah warga ke database
+    /**
+     * Menyimpan Pengajuan Setor Sampah Beserta Rincian Detailnya
+     * Sesuai dengan Atribut Tabel SETOR_SAMPAH dan DETAIL_SETOR_SAMPAH pada ERD
+     */
     public function store(Request $request)
     {
+        // 1. Validasi Input Form (Menyesuaikan dengan Foreign Key di ERD)
         $request->validate([
-            'deskripsi_sampah' => 'required|string|max:255',
-            'perkiraan_berat' => 'required|numeric|min:0.1',
+            'tgl_setor'             => ['required', 'date'],
+            'foto_sampah'           => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
+            'rincian'               => ['required', 'array', 'min:1'],
+            'rincian.*.id_kategori' => ['required', 'exists:KATEGORI_SAMPAH,id_kategori'],
+            'rincian.*.berat_kg'    => ['required', 'numeric', 'min:0.1'],
         ]);
 
-        // Membuat data setoran baru dengan status awal 'pending'
-        SetorSampah::create([
-            'user_id' => Auth::id(),
-            'deskripsi_sampah' => $request->deskripsi_sampah,
-            'berat' => $request->perkiraan_berat,
-            'status' => 'pending', // Menunggu tim Pengurus RT memverifikasi fisik sampahnya
-            'poin_didapat' => 0
-        ]);
+        // 2. Gunakan Database Transaction agar eksekusi data induk & detail sinkron
+        DB::beginTransaction();
 
-        return redirect()->route('warga.setor.index')
-            ->with('success', 'Pengajuan setoran berhasil dikirim! Silakan bawa sampah Anda ke Pengurus RT untuk diverifikasi.');
+        try {
+            // Upload file foto sampah
+            $pathFoto = $request->file('foto_sampah')->store('setor_sampah', 'public');
+
+            // 3. Insert ke tabel induk: SETOR_SAMPAH
+            $setorSampah = SetorSampah::create([
+                'id_user'     => Auth::user()->id_user,
+                'tgl_setor'   => $request->tgl_setor,
+                'foto_sampah' => $pathFoto,
+                'total_poin'  => 0,
+                'status'      => 'Menunggu',
+            ]);
+
+            $grandTotalPoin = 0;
+
+            // 4. Loop data rincian untuk dimasukkan ke tabel: DETAIL_SETOR_SAMPAH
+            foreach ($request->rincian as $item) {
+                $kategori = KategoriSampah::where('id_kategori', $item['id_kategori'])->firstOrFail();
+                $poinSubtotal = $item['berat_kg'] * $kategori->poin_per_kg;
+
+                DetailSetorSampah::create([
+                    'id_setor_sampah' => $setorSampah->id_setor_sampah,
+                    'id_kategori'     => $item['id_kategori'],
+                    'berat_kg'        => $item['berat_kg'],
+                    'poin_subtotal'   => $poinSubtotal,
+                ]);
+
+                $grandTotalPoin += $poinSubtotal;
+            }
+
+            // 5. Update kolom total_poin di tabel induk SETOR_SAMPAH
+            $setorSampah->update([
+                'total_poin' => $grandTotalPoin
+            ]);
+
+            DB::commit();
+
+            return redirect()->route('warga.dashboard')->with('success', 'Pengajuan setoran sampah dengan estimasi ' . number_format($grandTotalPoin, 0, ',', '.') . ' poin berhasil dikirim!');
+
+        } catch (\Exception $e) {
+            DB::rollback();
+            return back()->with('error', 'Gagal menyimpan pengajuan: ' . $e->getMessage())->withInput();
+        }
     }
 }

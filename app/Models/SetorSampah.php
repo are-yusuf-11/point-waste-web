@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class SetorSampah extends Model
 {
@@ -26,6 +27,7 @@ class SetorSampah extends Model
         'id_user',
         'tgl_setor',
         'foto_sampah',
+        'deskripsi',
         'status',
         'total_poin',
     ];
@@ -36,4 +38,25 @@ class SetorSampah extends Model
     protected $casts = [
         'tgl_setor' => 'date',
     ];
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | RELASI MODEL (ELOQUENT RELATIONS)
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * RELASI: Setiap transaksi setor sampah dimiliki atau dilakukan oleh satu User (Warga).
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(Users::class, 'id_user', 'id_user');
+    }
+
+    public function detailSetorSampah(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(DetailSetorSampah::class, 'id_setor_sampah', 'id_setor_sampah');
+    }
+    
 }

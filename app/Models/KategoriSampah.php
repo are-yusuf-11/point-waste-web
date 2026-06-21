@@ -35,4 +35,9 @@ class KategoriSampah extends Model
     protected $casts = [
         'status_aktif' => 'boolean',
     ];
+
+    public function detailSetoran(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(DetailSetorSampah::class, 'id_kategori', 'id_kategori');
+    }
 }
