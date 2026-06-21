@@ -28,9 +28,9 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // [BERSIH] Duplikasi route login & register yang menumpuk sudah dihapus
 Route::get('/login', [AuthController::class, 'showLogin'])->name('showLogin');
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/register', [AuthController::class, 'showRegister'])->name('showRegister');
-Route::post('/register', [AuthController::class, 'register']);
+Route::post('/register', [AuthController::class, 'register'])->name('register');
 
 // =========================================================
 // ROUTE GLOBAL AUTH ONLY
