@@ -10,6 +10,9 @@ use App\Http\Controllers\Warga\IuranWargaController;
 use App\Http\Controllers\Warga\MutasiPoinController;
 use App\Http\Controllers\Warga\ProfileWargaController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\PengurusRT\LaporanController;
+use App\Http\Controllers\PengurusRT\ManajemenIuaranController;
+use App\Http\Controllers\PengurusRT\PengurusDashboardController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Admin\KategoriSampahController;
 use App\Http\Controllers\Admin\MonitoringSistemController;
@@ -20,6 +23,7 @@ use App\Http\Controllers\PengurusRT\VerifikasiSetoranController;
 use App\Http\Controllers\PengurusRT\TagihanIuranController;
 use App\Http\Controllers\PengurusRT\KategoriSampahController as PengurusKategoriSampahController;
 use App\Http\Controllers\Admin\ProfileAdminController;
+
 
 
 // =========================================================
@@ -66,9 +70,8 @@ Route::middleware(['auth', 'check_role'])->group(function () {
         Route::put('/profil/password', [ProfileWargaController::class, 'changePassword'])->name('warga.profil.password');
     });
 
-    // ==========================================
-    // PANEL AKTOR: ADMIN
-    // ==========================================
+
+    // BENAR  
     Route::prefix('admin')->group(function () {
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
         Route::post('/admin/dashboard/update', [AdminDashboardController::class, 'update'])->name('admin.dashboard.update');
@@ -105,6 +108,8 @@ Route::middleware(['auth', 'check_role'])->group(function () {
         Route::get('/tagihan-iuran', [TagihanIuranController::class, 'index'])->name('pengurus-rt.manajemen-iuran');
         Route::get('/kategori-sampah', [PengurusKategoriSampahController::class, 'index'])->name('pengurus-rt.waste-categories');
         Route::get('/laporan', [LaporanController::class, 'index'])->name('pengurus-rt.laporan');
+        Route::get('/laporan/setor-sampah', [LaporanController::class, 'laporanSetorSampah'])->name('pengurus-rt.laporan.setor-sampah');
+
     });
     
 });
