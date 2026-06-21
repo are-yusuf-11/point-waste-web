@@ -19,6 +19,7 @@ use App\Http\Controllers\PengurusRT\VerifikasiSetoranController;
 use App\Http\Controllers\PengurusRT\TagihanIuranController;
 use App\Http\Controllers\PengurusRT\KategoriSampahController as PengurusKategoriSampahController;
 use App\Http\Controllers\PengurusRT\LaporanController;
+use App\Http\Controllers\Admin\ProfileAdminController;
 
 
 // =========================================================
@@ -61,6 +62,7 @@ Route::middleware(['auth', 'check_role'])->group(function () {
     // BENAR  
     Route::prefix('admin')->group(function () {
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+        Route::post('/admin/dashboard/update', [AdminDashboardController::class, 'update'])->name('admin.dashboard.update');
 
         Route::get('/manajemen-pengguna', [UserManagementController::class, 'index'])->name('admin.manajemen-pengguna');
         Route::get('/manajemen-pengguna/tambah', [UserManagementController::class, 'create'])->name('admin.manajemen-pengguna.create');
@@ -75,6 +77,9 @@ Route::middleware(['auth', 'check_role'])->group(function () {
         Route::post('/kategori-sampah/simpan', [KategoriSampahController::class, 'store'])->name('admin.kategori-sampah.store');
         Route::get('/kategori-sampah/{id}/edit', [KategoriSampahController::class, 'edit'])->name('admin.kategori-sampah.edit');
         Route::put('/kategori-sampah/{id}/update', [KategoriSampahController::class, 'update'])->name('admin.kategori-sampah.update');
+
+        Route::get('/profil-saya', [ProfileAdminController::class, 'index'])->name('admin.profil-saya');
+        Route::put('/profil-saya/update', [ProfileAdminController::class, 'update'])->name('admin.profil-saya.update');
 
         Route::get('/monitoring-sistem', [MonitoringSistemController::class, 'index'])->name('admin.monitoring-sistem');
         Route::get('/konfigurasi', [KonfigurasiController::class, 'index'])->name('admin.konfigurasi');
