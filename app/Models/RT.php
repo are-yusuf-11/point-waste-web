@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class RT extends Model
 {
@@ -27,7 +29,31 @@ class RT extends Model
         'no_rt',
         'kelurahan',
         'kecamatan',
-        'alamat',
-        'no_hp',
     ];
+
+    /*
+    |--------------------------------------------------------------------------
+    | RELASI MODEL (ELOQUENT RELATIONS)
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * RELASI: Setiap data RT dikelola oleh satu orang Pengurus RT (User).
+     */
+    public function pengurus(): BelongsTo
+    {
+        // 'id_user' di parameter kedua adalah Foreign Key di tabel rt
+        // 'id_user' di parameter ketiga adalah Primary Key di tabel users
+        return $this->belongsTo(Users::class, 'id_user', 'id_user');
+    }
+
+    /**
+     * RELASI: Satu RT memiliki banyak Anggota Warga (Users).
+     */
+    public function warga(): HasMany
+    {
+        // 'id_rt' di parameter kedua adalah Foreign Key di tabel users
+        // 'id_rt' di parameter ketiga adalah Primary Key di tabel rt
+        return $this->hasMany(Users::class, 'id_rt', 'id_rt');
+    }
 }

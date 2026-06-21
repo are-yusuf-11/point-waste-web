@@ -167,22 +167,23 @@
             <p class="font-label-md text-label-md text-on-surface-variant">Sustainable Community</p>
         </div>
         </div>
-        <nav class="flex-1 space-y-sm">
-            <a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-low transition-colors duration-200" href="#">
-                <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
-                <span class="font-body-md text-body-md">Dashboard</span>
+        <nav class="flex-1 space-y-1">
+            <a class="flex items-center gap-3 px-sm py-3 text-secondary hover:bg-surface-container-low transition-colors duration-200 rounded-lg group" href="#">
+                <span class="material-symbols-outlined">dashboard</span>
+                <span class="font-body-md">Dashboard</span>
             </a>
-            <a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-low transition-colors duration-200" href="#">
-                <span class="material-symbols-outlined" data-icon="recycling">recycling</span>
-                <span class="font-body-md text-body-md">Verifikasi Setoran</span>
+            <a class="flex items-center gap-3 px-sm py-3 text-secondary hover:bg-surface-container-low transition-colors duration-200 rounded-lg group" href="#">
+                <span class="material-symbols-outlined">fact_check</span>
+                <span class="font-body-md">Verification</span>
             </a>
-            <a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-low transition-colors duration-200" href="#">
-                <span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
-                <span class="font-body-md text-body-md">Manajemen Iuran</span>
+            <a class="flex items-center gap-3 px-sm py-3 text-secondary hover:bg-surface-container-low transition-colors duration-200 rounded-lg group" href="#">
+                <span class="material-symbols-outlined">payments</span>
+                <span class="font-body-md">Dues Management</span>
             </a>
-            <a class="flex items-center gap-md bg-secondary-container text-primary font-semibold rounded-lg px-md py-sm transition-all opacity-80 scale-95" href="/category-sampah-test">
-                <span class="material-symbols-outlined" data-icon="category">category</span>
-                <span class="font-body-md text-body-md">Kategori Sampah</span>
+            <!-- Active State: Waste Categories (Kategori Sampah) -->
+            <a class="flex items-center gap-3 px-sm py-3 bg-secondary-container text-primary font-semibold rounded-lg" href="#">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">category</span>
+                <span class="font-body-md">Waste Categories</span>
             </a>
             <a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-low transition-colors duration-200" href="#">
                 <span class="material-symbols-outlined" data-icon="bar_chart">bar_chart</span>

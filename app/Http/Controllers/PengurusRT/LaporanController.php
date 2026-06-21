@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\PengurusRT;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
-class PengurusDashboardController extends Controller
+class LaporanController extends Controller
 {
     public function index()
     {
-        return view('pengurus-rt.dashboard');
+        return view('pengurus-rt.laporan');
     }
 }
