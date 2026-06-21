@@ -71,6 +71,11 @@ Route::middleware(['auth', 'check_role'])->group(function () {
         Route::patch('/manajemen-pengguna/toggle-status/{id}', [UserManagementController::class, 'toggleStatus'])->name('admin.manajemen-pengguna.toggle-status');
 
         Route::get('/kategori-sampah', [KategoriSampahController::class, 'index'])->name('admin.kategori-sampah');
+        Route::get('/kategori-sampah/tambah', [KategoriSampahController::class, 'create'])->name('admin.kategori-sampah.create');
+        Route::post('/kategori-sampah/simpan', [KategoriSampahController::class, 'store'])->name('admin.kategori-sampah.store');
+        Route::get('/kategori-sampah/{id}/edit', [KategoriSampahController::class, 'edit'])->name('admin.kategori-sampah.edit');
+        Route::put('/kategori-sampah/{id}/update', [KategoriSampahController::class, 'update'])->name('admin.kategori-sampah.update');
+
         Route::get('/monitoring-sistem', [MonitoringSistemController::class, 'index'])->name('admin.monitoring-sistem');
         Route::get('/konfigurasi', [KonfigurasiController::class, 'index'])->name('admin.konfigurasi');
     });
