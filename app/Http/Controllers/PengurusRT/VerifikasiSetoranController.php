@@ -9,6 +9,6 @@ class VerifikasiSetoranController extends Controller
 {
     public function index()
     {
-        return view('pengurus-rt.setor-sampah');
+        return view('pengurus-rt.verifikasi-setoran');
     }
 }

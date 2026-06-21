@@ -178,82 +178,81 @@
                                     <span class="material-symbols-outlined text-md">edit</span>
                                 </a>
 
-                                @if(!str_contains(strtolower($user->role), 'admin'))
-                                    <form action="{{ route('admin.manajemen-pengguna.destroy', $user->id_user) }}" 
-                                          method="POST" 
-                                          onsubmit="return confirm('Apakah Anda yakin ingin menghapus pengguna ini?');"
-                                          class="inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" 
-                                                class="h-8 w-8 flex items-center justify-center text-on-surface-variant hover:text-error hover:bg-error-container/20 rounded-full transition-colors" 
-                                                title="Hapus">
-                                            <span class="material-symbols-outlined text-md">delete</span>
-                                        </button>
-                                    </form>
-                                @endif
-                            </div>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-
-        <div class="p-md flex items-center justify-between border-t border-outline-variant bg-surface-container-low/30">
-            <button class="px-md py-sm border border-outline-variant rounded-lg text-body-md font-label-md hover:bg-white transition-colors">Sebelumnya</button>
-            <div class="flex gap-xs">
-                <button class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-lg text-body-md">1</button>
-                <button class="w-8 h-8 flex items-center justify-center hover:bg-white border border-transparent hover:border-outline-variant rounded-lg text-body-md transition-colors">2</button>
-                <button class="w-8 h-8 flex items-center justify-center hover:bg-white border border-transparent hover:border-outline-variant rounded-lg text-body-md transition-colors">3</button>
-                <span class="w-8 h-8 flex items-center justify-center text-secondary">...</span>
-                <button class="w-8 h-8 flex items-center justify-center hover:bg-white border border-transparent hover:border-outline-variant rounded-lg text-body-md transition-colors">12</button>
+                    @if(!str_contains(strtolower($user->role), 'admin'))
+                        <form action="{{ route('admin.manajemen-pengguna.destroy', $user->id_user) }}" 
+                              method="POST" 
+                              onsubmit="return confirm('Apakah Anda yakin ingin menghapus pengguna ini?');"
+                              class="inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" 
+                                    class="h-8 w-8 flex items-center justify-center text-on-surface-variant hover:text-error hover:bg-error-container/20 rounded-full transition-colors" 
+                                    title="Hapus">
+                                <span class="material-symbols-outlined text-md">delete</span>
+                            </button>
+                        </form>
+                    @endif
+                </div>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+                </div>
+                <!-- Pagination footer -->
+                <div class="p-md flex items-center justify-between border-t border-outline-variant bg-surface-container-low/30">
+                    <button class="px-md py-sm border border-outline-variant rounded-lg text-body-md font-label-md hover:bg-white transition-colors">Sebelumnya</button>
+                    <div class="flex gap-xs">
+                        <button class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-lg text-body-md">1</button>
+                        <button class="w-8 h-8 flex items-center justify-center hover:bg-white border border-transparent hover:border-outline-variant rounded-lg text-body-md transition-colors">2</button>
+                        <button class="w-8 h-8 flex items-center justify-center hover:bg-white border border-transparent hover:border-outline-variant rounded-lg text-body-md transition-colors">3</button>
+                        <span class="w-8 h-8 flex items-center justify-center text-secondary">...</span>
+                        <button class="w-8 h-8 flex items-center justify-center hover:bg-white border border-transparent hover:border-outline-variant rounded-lg text-body-md transition-colors">12</button>
+                    </div>
+                    <button class="px-md py-sm border border-outline-variant rounded-lg text-body-md font-label-md hover:bg-white transition-colors">Berikutnya</button>
+                </div>
             </div>
-            <button class="px-md py-sm border border-outline-variant rounded-lg text-body-md font-label-md hover:bg-white transition-colors">Berikutnya</button>
-        </div>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
-        <div class="bg-primary/5 p-lg rounded-xl border border-primary-container/20 flex gap-lg items-center">
-            <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary">
-                <span class="material-symbols-outlined text-[32px]">shield</span>
+            <!-- Additional Context Section (Bottom) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+                <div class="bg-primary/5 p-lg rounded-xl border border-primary-container/20 flex gap-lg items-center">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                        <span class="material-symbols-outlined text-[32px]">shield</span>
+                    </div>
+                    <div>
+                        <h4 class="font-title-lg text-title-lg text-primary">Keamanan Data Admin</h4>
+                        <p class="font-body-md text-body-md text-on-surface-variant mt-xs">Seluruh aktivitas admin tercatat secara otomatis dalam log audit sistem untuk menjamin transparansi pengelolaan.</p>
+                    </div>
+                </div>
+                <div class="bg-secondary/5 p-lg rounded-xl border border-secondary/20 flex gap-lg items-center">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center text-secondary">
+                        <span class="material-symbols-outlined text-[32px]">hub</span>
+                    </div>
+                    <div>
+                        <h4 class="font-title-lg text-title-lg text-secondary">Interkoneksi Wilayah</h4>
+                        <p class="font-body-md text-body-md text-on-surface-variant mt-xs">Sistem ini saat ini memfasilitasi 24 Kelurahan dengan integrasi data point real-time antar RT.</p>
+                    </div>
+                </div>
             </div>
-            <div>
-                <h4 class="font-title-lg text-title-lg text-primary">Keamanan Data Admin</h4>
-                <p class="font-body-md text-body-md text-on-surface-variant mt-xs">Seluruh aktivitas admin tercatat secara otomatis dalam log audit sistem untuk menjamin transparansi pengelolaan.</p>
+        </section>
+        <!-- Footer -->
+        <footer class="mt-auto p-xl border-t border-outline-variant flex justify-between items-center text-secondary font-label-md">
+            <p>© 2024 PointWaste System Dashboard. All Rights Reserved.</p>
+            <div class="flex gap-lg">
+                <a class="hover:underline" href="#">Syarat & Ketentuan</a>
+                <a class="hover:underline" href="#">Kebijakan Privasi</a>
+                <a class="hover:underline" href="#">Pusat Bantuan</a>
             </div>
-        </div>
-        <div class="bg-secondary/5 p-lg rounded-xl border border-secondary/20 flex gap-lg items-center">
-            <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center text-secondary">
-                <span class="material-symbols-outlined text-[32px]">hub</span>
-            </div>
-            <div>
-                <h4 class="font-title-lg text-title-lg text-secondary">Interkoneksi Wilayah</h4>
-                <p class="font-body-md text-body-md text-on-surface-variant mt-xs">Sistem ini saat ini memfasilitasi 24 Kelurahan dengan integrasi data point real-time antar RT.</p>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
-
-{{-- Menyisipkan Script Interaksi Khusus Halaman ini ke @stack('scripts') di Layout --}}
-@push('scripts')
-<script>
-    // Micro-interactions untuk tombol klik/aktif
-    document.querySelectorAll('button, a').forEach(el => {
-        el.addEventListener('mousedown', () => { el.style.transform = 'scale(0.97)'; });
-        el.addEventListener('mouseup', () => { el.style.transform = 'scale(1)'; });
-    });
-
-    // Fitur Live Search Sederhana di Sisi Klien
-    const searchInput = document.querySelector('input[placeholder="Cari pengguna atau NIK..."]');
-    if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase();
-            const rows = document.querySelectorAll('tbody tr');
-            rows.forEach(row => {
-                const text = row.innerText.toLowerCase();
-                row.style.display = text.includes(term) ? '' : 'none';
+        </footer>
+    </main>
+    <!-- FAB Suppression Logic: Not rendered on Management screens -->
+    <script>
+        // Simple Micro-interactions
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.style.transform = 'scale(0.97)';
+            });
+            el.addEventListener('mouseup', () => {
+                el.style.transform = 'scale(1)';
             });
         });
     }

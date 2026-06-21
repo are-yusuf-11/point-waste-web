@@ -46,10 +46,10 @@ class WargaDashboardController extends Controller
         $mitigasiCO2 = $totalBeratSampah * $koefisienCO2;
 
         // 4. DROPDOWN FORM: Master Kategori Sampah yang Aktif
-        $masterKategori = KategoriSampah::where('status_aktif', 1)->get();
+        $masterKategori = KategoriSampah::query()->where('status_aktif', 1)->get();
 
         // 5. TABEL: Riwayat Setoran Sampah (Terbaru)
-        $riwayatSetoran = SetorSampah::where('id_user', $userId)
+        $riwayatSetoran = SetorSampah::query()->where('id_user', $userId)
             ->with(['detailSetorSampah.kategoriSampah'])
             ->orderBy('tgl_setor', 'desc')
             ->take(5)
