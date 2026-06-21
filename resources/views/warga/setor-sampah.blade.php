@@ -1,131 +1,264 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PointWaste - Setor Sampah</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            pointwaste: {
-              primary: '#15803D',
-              secondary: '#22C55E',
-              white: '#FFFFFF',
-              dark: '#1F2937',
-              bg: '#F8FAFC'
-            }
-          },
-          fontFamily: {
-            poppins: ['Poppins', 'sans-serif'],
-          }
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>PointWaste - Setor Sampah</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#004c22",
+                        "background": "#f8f9ff",
+                        "surface": "#ffffff",
+                        "on-surface": "#0b1c30",
+                    },
+                    fontFamily: { sans: ["Inter", "sans-serif"] }
+                },
+            },
         }
-      }
-    }
-  </script>
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .icon-filled { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        [x-cloak] { display: none !important; }
+        input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+    </style>
 </head>
-<body class="font-poppins bg-pointwaste-bg text-pointwaste-dark min-h-screen flex">
 
-  <x-sidebar />
+<body class="bg-[#f8f9ff] text-on-surface font-sans min-h-screen flex p-4 gap-4" x-data="setorSampah()">
 
-  <main class="flex-1 pl-64 min-h-screen">
-      
-    <x-header />
-
-
-    <div class="p-8">
-      
-      <div class="bg-white rounded-xl border border-slate-100 shadow-sm p-8 max-w-5xl">
-        
-        <div class="flex items-center space-x-2 text-slate-800 font-semibold border-b border-slate-100 pb-4 mb-6">
-          <svg class="w-5 h-5 text-pointwaste-primary" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-          </svg>
-          <h2 class="text-base font-bold">Form Pengajuan Setor Sampah</h2>
+    <aside class="w-[260px] bg-surface border border-gray-100 flex flex-col justify-between p-6 h-[calc(100vh-2rem)] sticky top-4 z-30 rounded-2xl shadow-sm">
+        <div class="space-y-10">
+            <div class="flex items-center gap-3 px-2 py-2">
+                <span class="material-symbols-outlined text-primary text-[32px] icon-filled">recycling</span>
+                <span class="font-bold text-xl text-primary tracking-tight">PointWaste</span>
+            </div>
+            <nav class="space-y-1">
+                <a href="/dashboard-warga-test" class="flex items-center gap-4 px-4 py-3 text-gray-500 hover:bg-gray-50 hover:text-on-surface rounded-xl transition-all">
+                    <span class="material-symbols-outlined text-[22px]">dashboard</span>
+                    <span class="text-sm font-medium">Dashboard</span>
+                </a>
+                <a href="#" class="flex items-center gap-4 px-4 py-3 bg-[#e8f5e9] text-primary font-semibold rounded-xl transition-all">
+                    <span class="material-symbols-outlined text-[22px] icon-filled">delete</span>
+                    <span class="text-sm">Setor Sampah</span>
+                </a>
+                <a href="/mutasi-poin-test" class="flex items-center gap-4 px-4 py-3 text-gray-500 hover:bg-gray-50 hover:text-on-surface rounded-xl transition-all">
+                    <span class="material-symbols-outlined text-[22px]">receipt_long</span>
+                    <span class="text-sm font-medium">Mutasi Poin</span>
+                </a>
+                <a href="#" class="flex items-center gap-4 px-4 py-3 text-gray-500 hover:bg-gray-50 hover:text-on-surface rounded-xl transition-all">
+                    <span class="material-symbols-outlined text-[22px]">credit_card</span>
+                    <span class="text-sm font-medium">Tagihan Iuran</span>
+                </a>
+                <a href="/profil-saya-test" class="flex items-center gap-4 px-4 py-3 text-gray-500 hover:bg-gray-50 hover:text-on-surface rounded-xl transition-all">
+                    <span class="material-symbols-outlined text-[22px]">person</span>
+                    <span class="text-sm font-medium">Profil</span>
+                </a>
+            </nav>
         </div>
-
-        <form class="space-y-6">
-          
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-            <div class="md:col-span-5 space-y-2">
-              <label class="block text-xs font-medium text-slate-500">Tanggal Setor</label>
-              <div class="relative">
-                <input type="date" class="w-full bg-[#EEF2F6] border-0 text-slate-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-pointwaste-primary appearance-none cursor-pointer">
-              </div>
-            </div>
-
-            <div class="md:col-span-1"></div>
-
-            <div class="md:col-span-6 space-y-2">
-              <label class="block text-xs font-medium text-slate-500">Foto Sampah</label>
-              <label class="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-slate-200 rounded-xl bg-white hover:bg-slate-50 cursor-pointer transition-colors">
-                <div class="flex flex-col items-center justify-center pt-2">
-                  <svg class="w-6 h-6 text-slate-400 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                  </svg>
-                  <p class="text-[10px] text-slate-400">Klik untuk unggah foto</p>
+        <div class="border-t border-gray-100 pt-5 space-y-4">
+            <div class="flex items-center gap-3 px-1">
+                <img class="w-10 h-10 rounded-full object-cover border" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" alt="Avatar">
+                <div>
+                    <h4 class="text-sm font-semibold text-on-surface leading-tight">Budi Santoso</h4>
+                    <span class="text-xs text-gray-400">Warga RT 01</span>
                 </div>
-                <input type="file" class="hidden" accept="image/*" />
-              </label>
             </div>
-          </div>
+            <button class="w-full flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-200 text-gray-700 bg-gray-50 hover:bg-gray-100 font-medium rounded-xl text-xs transition-all">
+                <span class="material-symbols-outlined text-[18px]">logout</span> Logout
+            </button>
+        </div>
+    </aside>
 
-          <div class="space-y-3">
-            <label class="block text-xs font-medium text-slate-500">Rincian Sampah</label>
-            
-            <div class="flex items-center space-x-3">
-              <div class="flex-1">
-                <select class="w-full bg-[#EEF2F6] border-0 text-slate-500 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-pointwaste-primary appearance-none cursor-pointer">
-                  <option value="" disabled selected>Pilih Kategori Sampah</option>
-                  <option value="plastik">Plastik (Botol / Ember)</option>
-                  <option value="kertas">Kertas / Kardus</option>
-                  <option value="logam">Logam / Besi</option>
-                </select>
-              </div>
-
-              <div class="w-32 flex items-center bg-[#EEF2F6] rounded-xl px-3 py-3">
-                <input type="number" placeholder="-" class="w-full bg-transparent border-0 text-center text-sm text-slate-700 focus:outline-none focus:ring-0">
-                <span class="text-xs text-slate-400 ml-1 font-medium">kg</span>
-              </div>
-
-              <button type="button" class="p-2.5 text-red-500 hover:bg-red-50 rounded-xl transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                </svg>
-              </button>
+    <div class="flex-1 flex flex-col h-[calc(100vh-2rem)] overflow-hidden">
+        <header class="h-[60px] flex items-center justify-between px-6 mb-2 shrink-0">
+            <div class="flex items-center gap-1.5">
+                <span class="text-lg font-semibold text-on-surface">Halo, Arafly ramdani</span>
+                <span>👋</span>
             </div>
+            <div class="flex items-center gap-4">
+                <button class="p-2 hover:bg-gray-100 rounded-full relative"><span class="material-symbols-outlined text-[22px]">notifications</span></button>
+                <button class="p-2 hover:bg-gray-100 rounded-full"><span class="material-symbols-outlined text-[22px]">settings</span></button>
+            </div>
+        </header>
 
-            <button type="button" class="inline-flex items-center text-xs font-bold text-pointwaste-primary hover:text-emerald-800 transition-colors pt-1">
-              <span class="text-base mr-1">+</span> Tambah Kategori
-            </button>
-          </div>
+        <main class="flex-1 px-6 overflow-y-auto pb-20">
+            <form action="#" method="POST" enctype="multipart/form-data" class="max-w-5xl bg-surface rounded-2xl border border-gray-100 shadow-sm p-6 space-y-6">
+                @csrf
+                
+                <div class="flex items-center gap-2.5 pb-2">
+                    <span class="material-symbols-outlined text-primary text-[24px]">assignment</span>
+                    <h2 class="font-bold text-gray-800 text-base">Form Pengajuan Setor Sampah</h2>
+                </div>
 
-          <div class="bg-[#EBF5EE] rounded-xl px-5 py-3.5 flex justify-between items-center">
-            <span class="text-xs font-medium text-slate-500">Estimasi Poin</span>
-            <span class="text-sm font-bold text-pointwaste-primary">0 Poin</span>
-          </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2 relative">
+                        <label class="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Tanggal Setor</label>
+                        <div @click="showKalender = !showKalender" @click.away="showKalender = false"
+                             class="flex items-center justify-between px-4 py-3 bg-[#eef2f6] hover:bg-gray-100 rounded-xl cursor-pointer transition-all border border-transparent"
+                             :class="showKalender ? 'ring-2 ring-primary bg-white border-transparent' : ''">
+                            <span class="text-sm font-medium text-[#0f2942]" x-text="tanggalTerpilih || 'Masukan Tanggal'"></span>
+                            <span class="material-symbols-outlined text-gray-400 text-[20px] transition-transform" :class="showKalender ? 'rotate-180' : ''">expand_more</span>
+                        </div>
 
-          <div class="flex items-center space-x-3 pt-4">
-            <button type="submit" class="flex-1 bg-[#064E3B] hover:bg-emerald-950 text-white font-semibold text-sm py-3 px-6 rounded-xl transition-colors text-center">
-              Kirim Pengajuan
-            </button>
-            <button type="button" class="bg-white border border-slate-200 hover:bg-slate-50 text-slate-600 font-semibold text-sm py-3 px-6 rounded-xl transition-colors min-w-[100px]">
-              Batal
-            </button>
-          </div>
+                        <div x-show="showKalender" x-cloak x-transition
+                             class="absolute top-full left-0 mt-1 z-50 bg-white border border-gray-100 shadow-xl rounded-2xl p-5 w-[300px]">
+                            <div class="flex items-center justify-center mb-4">
+                                <h4 class="font-bold text-sm text-gray-800">Juni 2026</h4>
+                            </div>
+                            <div class="grid grid-cols-7 text-center text-[10px] font-bold text-gray-400 mb-2 uppercase tracking-wider">
+                                <span>San</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                            </div>
+                            <div class="grid grid-cols-7 gap-y-1 text-center">
+                                <template x-for="day in daysInMonth">
+                                    <button type="button" @click="pilihTanggal(day)" 
+                                            class="w-7 h-7 flex items-center justify-center text-xs font-semibold rounded-full transition-all"
+                                            :class="day === 26 ? 'bg-[#b6f05a] text-[#004c22]' : (day === null ? '' : 'text-gray-700 hover:bg-gray-100')">
+                                        <span x-text="day"></span>
+                                    </button>
+                                </template>
+                            </div>
+                        </div>
+                        <input type="hidden" name="tanggal_setor" :value="tanggalTerpilih">
+                    </div>
 
-        </form>
+                    <div class="space-y-2">
+                        <label class="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Foto Sampah</label>
+                        <div class="relative h-[46px] border border-dashed border-gray-300 rounded-xl flex items-center justify-center bg-white hover:bg-gray-50 transition-all group cursor-pointer">
+                            <input type="file" name="foto_sampah" class="absolute inset-0 opacity-0 cursor-pointer">
+                            <div class="flex items-center gap-2 text-gray-400 group-hover:text-primary">
+                                <span class="material-symbols-outlined text-[20px]">add_photo_alternate</span>
+                                <span class="text-xs font-medium">Klik untuk unggah foto</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-      </div>
+                <div class="space-y-3">
+                    <label class="text-[11px] font-bold text-gray-400 uppercase tracking-wider block">Rincian Sampah</label>
+                    
+                    <div class="space-y-2.5">
+                        <template x-for="(item, index) in barisSampah" :key="index">
+                            <div class="flex items-center gap-3">
+                                
+                                <div class="flex-1 relative" @click.away="item.openDropdown = false">
+                                    <div @click="item.openDropdown = !item.openDropdown"
+                                         class="w-full flex items-center justify-between px-4 py-3 bg-[#eef2f6] rounded-xl cursor-pointer text-sm font-medium text-[#0f2942] border border-transparent"
+                                         :class="item.openDropdown ? 'ring-2 ring-primary bg-white' : ''">
+                                        <span x-text="item.label || 'Pilih Kategori Sampah'"></span>
+                                        <span class="material-symbols-outlined text-gray-400 text-[20px]">expand_more</span>
+                                    </div>
+                                    
+                                    <div x-show="item.openDropdown" x-cloak x-transition
+                                         class="absolute left-0 right-0 mt-1 bg-white border border-gray-100 shadow-lg rounded-xl overflow-hidden z-40 max-h-[200px] overflow-y-auto">
+                                        <template x-for="cat in listKategori">
+                                            <div @click="pilihKategori(index, cat)" 
+                                                 class="px-4 py-2.5 text-sm font-medium text-[#0f2942] hover:bg-[#eef2f6] cursor-pointer border-b border-gray-50 last:border-none"
+                                                 :class="item.kategori === cat.value ? 'bg-[#e8f5e9] text-primary' : ''"
+                                                 x-text="cat.text">
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
 
+                                <div class="w-24 md:w-28 relative">
+                                    <input type="number" x-model="item.bobot" @input="updateTotal()"
+                                           class="w-full pl-4 pr-10 py-3 bg-[#eef2f6] border-none rounded-xl text-sm font-bold text-[#0f2942] text-center focus:ring-2 focus:ring-primary" placeholder="0">
+                                    <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[11px] font-bold text-gray-400 uppercase">kg</span>
+                                </div>
+
+                                <button type="button" @click="hapusBaris(index)" x-show="barisSampah.length > 1"
+                                        class="w-11 h-11 flex items-center justify-center border border-red-100 bg-red-50 text-red-500 rounded-xl hover:bg-red-100 transition-all shrink-0">
+                                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                                </button>
+                            </div>
+                        </template>
+                    </div>
+
+                    <button type="button" @click="tambahBaris()" class="text-xs font-bold text-primary flex items-center gap-1.5 hover:underline pl-0.5 pt-1">
+                        <span class="material-symbols-outlined text-[18px]">add_circle</span>
+                        Tambah Kategori
+                    </button>
+                </div>
+
+                <div class="bg-[#e8f5e9] border border-[#c8e6c9] rounded-xl px-4 py-3 flex items-center justify-between">
+                    <span class="text-xs font-semibold text-emerald-950">Estimasi Poin</span>
+                    <span class="text-sm font-black text-primary" x-text="`${formatNumber(estimasiTotal)} Poin`">0 Poin</span>
+                </div>
+
+                <div class="flex items-center justify-end gap-2 pt-2">
+                    <button type="submit" class="px-8 py-2.5 bg-primary hover:bg-emerald-900 text-white font-bold rounded-xl text-xs transition-all shadow-sm">
+                        Kirim Pengajuan
+                    </button>
+                    <button type="button" class="px-6 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-xl text-xs transition-all">
+                        Batal
+                    </button>
+                </div>
+            </form>
+        </main>
     </div>
-  </main>
 
+    <script>
+        function setorSampah() {
+            return {
+                showKalender: false,
+                tanggalTerpilih: '',
+                daysInMonth: [null, null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+                
+                // Daftar Variasi Kategori Sampah Lengkap Sesuai Mockup Gambar
+                listKategori: [
+                    { value: 'Kaca', text: 'Kaca = 90 poin/kg', rate: 90 },
+                    { value: 'Plastik', text: 'Plastik = 10 poin/kg', rate: 10 },
+                    { value: 'Kertas', text: 'Kertas = 5 poin/kg', rate: 5 },
+                    { value: 'Logam', text: 'Logam = 20 poin/kg', rate: 20 }
+                ],
+                
+                barisSampah: [{ kategori: '', label: 'Pilih Kategori Sampah', bobot: '', poinPerKg: 0, openDropdown: false }],
+                estimasiTotal: 0,
+                
+                pilihTanggal(day) {
+                    if (day) {
+                        this.tanggalTerpilih = `${day} Juni 2026`;
+                        this.showKalender = false;
+                    }
+                },
+
+                tambahBaris() {
+                    this.barisSampah.push({ kategori: '', label: 'Pilih Kategori Sampah', bobot: '', poinPerKg: 0, openDropdown: false });
+                },
+
+                hapusBaris(index) {
+                    this.barisSampah.splice(index, 1);
+                    this.updateTotal();
+                },
+
+                pilihKategori(index, cat) {
+                    this.barisSampah[index].kategori = cat.value;
+                    this.barisSampah[index].label = cat.text;
+                    this.barisSampah[index].poinPerKg = cat.rate;
+                    this.barisSampah[index].openDropdown = false;
+                    this.updateTotal();
+                },
+
+                updateTotal() {
+                    this.estimasiTotal = this.barisSampah.reduce((sum, item) => {
+                        return sum + (parseFloat(item.bobot || 0) * item.poinPerKg);
+                    }, 0);
+                },
+
+                formatNumber(val) {
+                    return new Intl.NumberFormat('id-ID').format(val);
+                }
+            }
+        }
+    </script>
 </body>
 </html>

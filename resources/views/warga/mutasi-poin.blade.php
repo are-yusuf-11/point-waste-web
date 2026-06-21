@@ -34,19 +34,21 @@
     </style>
 </head>
 
-<body class="bg-[#fdfdfd] text-on-surface font-sans min-h-screen flex p-4 gap-4" x-data="{ 
-    kategoriFilter: 'semua',
-    transaksi: [
-        { tgl: '25 Juni 2026, 10:15', judul: 'Reward Setoran Sampah #2', detail: 'Setoran Plastik PET & Kardus (3.5 Kg)', kat: 'setoran', poin: '+450', tipe: 'plus' },
-        { tgl: '20 Juni 2026, 08:00', judul: 'Pembayaran Iuran RT Juni 2026', detail: 'Potongan otomatis iuran bulanan', kat: 'iuran', poin: '-850', tipe: 'minus' },
-        { tgl: '18 Juni 2026, 09:40', judul: 'Reward Setoran Sampah #1', detail: 'Logam (Aluminium) & Kaca (2.0 Kg)', kat: 'setoran', poin: '+820', tipe: 'plus' },
-        { tgl: '15 Juni 2026, 11:20', judul: 'Bonus Program Pilih Sampah Mandiri', detail: 'Bonus insentif keaktifan 3 bulan berturut-turut', kat: 'bonus', poin: '+1.000', tipe: 'plus' }
-    ],
-    get filteredTransaksi() {
-        if (this.kategoriFilter === 'semua') return this.transaksi;
-        return this.transaksi.filter(t => t.kat === this.kategoriFilter);
-    }
-}">
+<body class="bg-[#fdfdfd] text-on-surface font-sans min-h-screen flex p-4 gap-4" 
+      x-data="{ 
+        kategoriFilter: 'semua',
+        // Data dilempar langsung secara aman dari Controller Backend berupa JSON Array
+        transaksi: {{ json_encode($transaksi ?? [
+            ['tgl' => '25 Juni 2026, 10:15', 'judul' => 'Reward Setoran Sampah #2', 'detail' => 'Setoran Plastik PET & Kardus (3.5 Kg)', 'kat' => 'setoran', 'poin' => '+450', 'tipe' => 'plus'],
+            ['tgl' => '20 Juni 2026, 08:00', 'judul' => 'Pembayaran Iuran RT Juni 2026', 'detail' => 'Potongan otomatis iuran bulanan', 'kat' => 'iuran', 'poin' => '-850', 'tipe' => 'minus'],
+            ['tgl' => '18 Juni 2026, 09:40', 'judul' => 'Reward Setoran Sampah #1', 'detail' => 'Logam (Aluminium) & Kaca (2.0 Kg)', 'kat' => 'setoran', 'poin' => '+820', 'tipe' => 'plus'],
+            ['tgl' => '15 Juni 2026, 11:20', 'judul' => 'Bonus Program Pilih Sampah Mandiri', 'detail' => 'Bonus insentif keaktifan 3 bulan berturut-turut', 'kat' => 'bonus', 'poin' => '+1.000', 'tipe' => 'plus']
+        ]) }},
+        get filteredTransaksi() {
+            if (this.kategoriFilter === 'semua') return this.transaksi;
+            return this.transaksi.filter(t => t.kat === this.kategoriFilter);
+        }
+      }">
 
     <aside class="w-[260px] bg-surface border border-gray-100 flex flex-col justify-between p-6 h-[calc(100vh-2rem)] sticky top-4 z-30 rounded-2xl shadow-sm">
         <div class="space-y-10">
@@ -83,7 +85,7 @@
             <div class="flex items-center gap-3 px-1">
                 <img class="w-10 h-10 rounded-full object-cover border" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" alt="Avatar">
                 <div>
-                    <h4 class="text-sm font-semibold text-on-surface leading-tight">Budi Santoso</h4>
+                    <h4 class="text-sm font-semibold text-on-surface leading-tight">{{ Auth::user()->name ?? 'Budi Santoso' }}</h4>
                     <span class="text-xs text-gray-400">Warga RT 01</span>
                 </div>
             </div>
@@ -113,26 +115,26 @@
                 <div class="bg-surface p-6 rounded-2xl border border-gray-100 shadow-sm space-y-3 relative overflow-hidden before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1.5 before:bg-emerald-600">
                     <span class="text-xs font-medium text-gray-400 block tracking-wide">Total Poin Saat Ini</span>
                     <div class="flex items-baseline gap-1.5">
-                        <span class="text-3xl font-bold text-on-surface">1.470</span>
+                        <span class="text-3xl font-bold text-on-surface">{{ number_format($totalPoin ?? 1470, 0, ',', '.') }}</span>
                     </div>
                     <div class="flex items-center gap-1 text-xs text-emerald-600 font-medium">
                         <span class="material-symbols-outlined text-[16px]">check_circle</span>
-                        <span>+100 poin minggu ini</span>
+                        <span>+{{ number_format($poinMingguIni ?? 100, 0, ',', '.') }} poin minggu ini</span>
                     </div>
                 </div>
 
                 <div class="bg-surface p-6 rounded-2xl border border-gray-100 shadow-sm space-y-3 relative overflow-hidden before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1.5 before:bg-blue-500">
-                    <span class="text-xs font-medium text-gray-400 block tracking-wide">Poin Diperoleh (Juni)</span>
+                    <span class="text-xs font-medium text-gray-400 block tracking-wide">Poin Diperoleh ({{ $bulanSekarang ?? 'Juni' }})</span>
                     <div class="flex items-baseline gap-1.5">
-                        <span class="text-3xl font-bold text-on-surface">+2.270</span>
+                        <span class="text-3xl font-bold text-on-surface">+{{ number_format($poinMasuk ?? 2270, 0, ',', '.') }}</span>
                     </div>
-                    <div class="text-xs text-gray-400 font-medium">Dari 3 aktivitas masuk</div>
+                    <div class="text-xs text-gray-400 font-medium">Dari {{ $totalAktivitasMasuk ?? 3 }} aktivitas masuk</div>
                 </div>
 
                 <div class="bg-surface p-6 rounded-2xl border border-gray-100 shadow-sm space-y-3 relative overflow-hidden before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1.5 before:bg-red-500">
-                    <span class="text-xs font-medium text-gray-400 block tracking-wide">Poin Digunakan (Juni)</span>
+                    <span class="text-xs font-medium text-gray-400 block tracking-wide">Poin Digunakan ({{ $bulanSekarang ?? 'Juni' }})</span>
                     <div class="flex items-baseline gap-1.5">
-                        <span class="text-3xl font-bold text-on-surface">-850</span>
+                        <span class="text-3xl font-bold text-on-surface">-{{ number_format($poinKeluar ?? 850, 0, ',', '.') }}</span>
                     </div>
                     <div class="text-xs text-gray-400 font-medium">Digunakan untuk iuran RT</div>
                 </div>
@@ -143,7 +145,7 @@
                     <div class="flex items-center gap-3">
                         <div class="flex items-center gap-2 px-3 py-2 border border-gray-200 rounded-xl text-xs font-medium text-gray-600 bg-gray-50/50">
                             <span class="material-symbols-outlined icon-unfilled text-[18px]">calendar_today</span>
-                            <span>Juni 2026</span>
+                            <span>{{ $bulanSekarang ?? 'Juni' }} 2026</span>
                         </div>
 
                         <div class="relative inline-block text-left">
@@ -199,7 +201,7 @@
                 </div>
 
                 <div class="p-5 bg-white border-t border-gray-50 flex items-center justify-between">
-                    <p class="text-xs text-gray-400 font-medium">Menampilkan data terpilih</p>
+                    <p class="text-xs text-gray-400 font-medium">Menampilkan data berdasarkan filter</p>
                 </div>
             </section>
         </main>
