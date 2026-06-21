@@ -85,7 +85,6 @@ class AuthController extends Controller
             'nama' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email',
             'password' => 'required|string|min:8',
-            'id_rt' => 'required|exists:rt,id_rt'
         ]);
 
         Users::create([
