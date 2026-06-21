@@ -224,111 +224,158 @@
     <!-- Main Content Canvas -->
     <main class="ml-sidebar-width pt-16 min-h-screen">
         <div class="max-w-container-max mx-auto p-lg">
-            <!-- Page Header -->
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-xl">
-                <div>
-                    <h2 class="font-headline-lg text-headline-lg text-on-surface">Manajemen Kategori Sampah</h2>
-                    <p class="font-body-lg text-on-surface-variant mt-1">Kelola daftar jenis sampah, bobot poin, dan status operasional sistem.</p>
+            <div id="view-tabel">.
+                <!-- Page Header -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-xl">
+                    <div>
+                        <h2 class="font-headline-lg text-headline-lg text-on-surface">Manajemen Kategori Sampah</h2>
+                        <p class="font-body-lg text-on-surface-variant mt-1">Kelola daftar jenis sampah, bobot poin, dan status operasional sistem.</p>
+                    </div>
+                    <button onclick="toggleForm(true)" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-on-primary rounded-xl font-semibold shadow-sm hover:opacity-90 active:scale-95 transition-all">
+                        <span class="material-symbols-outlined">add_circle</span>
+                        Tambah Kategori Baru
+                    </button>
                 </div>
-                <button class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-on-primary rounded-xl font-semibold shadow-sm hover:opacity-90 active:scale-95 transition-all">
-                    <span class="material-symbols-outlined">add_circle</span>
-                    Tambah Kategori Baru
-                </button>
+                <!-- Statistics Bento Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Total Kategori</p>
+                        <h3 class="text-4xl font-bold text-gray-900">12</h3>
+                        <div class="flex items-center text-green-700 text-sm mt-2">
+                            <span class="mr-1">📈</span>
+                            <span>+2 Bulan ini</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Rata-rata Poin / Kg</p>
+                        <h3 class="text-4xl font-bold text-gray-900">1,250</h3>
+                        <p class="text-sm text-gray-500 mt-2">Poin dasar komoditas global</p>
+                    </div>
+
+                    <div class="bg-primary p-6 rounded-xl shadow-sm text-white">
+                        <p class="text-xs font-semibold text-green-100 uppercase tracking-wider mb-2">Efisiensi Waste-To-Point</p>
+                        <h3 class="text-4xl font-bold">94.2%</h3>
+                        <div class="flex items-center text-green-100 text-sm mt-2">
+                            <span>Optimal ✅</span>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Table Container -->
+                <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden mt-6">
+                    <div class="p-6 border-b border-gray-100 flex justify-between items-center">
+                        <h3 class="text-lg font-bold text-gray-800">Daftar Master Kategori</h3>
+                        <div class="flex gap-2">
+                            <button class="px-4 py-2 border border-gray-200 rounded-lg text-sm font-medium hover:bg-gray-50 text-gray-600">Filter</button>
+                            <button class="px-4 py-2 border border-gray-200 rounded-lg text-sm font-medium hover:bg-gray-50 text-gray-600">Ekspor</button>
+                        </div>
+                    </div>
+
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="text-xs text-gray-400 uppercase tracking-wider bg-gray-50">
+                                <th class="px-6 py-4">Kategori</th>
+                                <th class="px-6 py-4">Kode</th>
+                                <th class="px-6 py-4">Bobot Poin (Per Kg)</th>
+                                <th class="px-6 py-4">Status</th>
+                                <th class="px-6 py-4 text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            <tr>
+                                <td class="px-6 py-4 flex items-center gap-3">
+                                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-xl">♻️</div>
+                                    <span class="font-semibold text-gray-800">Plastik (PET/HDPE)</span>
+                                </td>
+                                <td class="px-6 py-4"><span class="bg-blue-50 text-blue-600 px-2 py-1 rounded text-xs font-medium">PL-01</span></td>
+                                <td class="px-6 py-4 font-bold text-gray-800">1,500 <span class="text-gray-500 font-normal">Poin</span> <span class="bg-green-100 text-green-700 text-[10px] px-1 rounded ml-1">+5%</span></td>
+                                <td class="px-6 py-4"><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium">● Aktif</span></td>
+                                <td class="px-6 py-4 text-center text-gray-400">✎ &nbsp; 🗑️</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 flex items-center gap-3">
+                                    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-xl">📄</div>
+                                    <span class="font-semibold text-gray-800">Kertas & Karton</span>
+                                </td>
+                                <td class="px-6 py-4"><span class="bg-blue-50 text-blue-600 px-2 py-1 rounded text-xs font-medium">KR-02</span></td>
+                                <td class="px-6 py-4 font-bold text-gray-800">800 <span class="text-gray-500 font-normal">Poin</span></td>
+                                <td class="px-6 py-4"><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium">● Aktif</span></td>
+                                <td class="px-6 py-4 text-center text-gray-400">✎ &nbsp; 🗑️</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 flex items-center gap-3">
+                                    <div class="w-10 h-10 bg-stone-100 rounded-lg flex items-center justify-center text-xl">🍾</div>
+                                    <span class="font-semibold text-gray-800">Kaca</span>
+                                </td>
+                                <td class="px-6 py-4"><span class="bg-blue-50 text-blue-600 px-2 py-1 rounded text-xs font-medium">KC-03</span></td>
+                                <td class="px-6 py-4 font-bold text-gray-800">500 <span class="text-gray-500 font-normal">Poin</span></td>
+                                <td class="px-6 py-4"><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium">● Aktif</span></td>
+                                <td class="px-6 py-4 text-center text-gray-400">✎ &nbsp; 🗑️</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 flex items-center gap-3">
+                                    <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-xl">🥫</div>
+                                    <span class="font-semibold text-gray-800">Logam</span>
+                                </td>
+                                <td class="px-6 py-4"><span class="bg-blue-50 text-blue-600 px-2 py-1 rounded text-xs font-medium">LG-04</span></td>
+                                <td class="px-6 py-4 font-bold text-gray-800">3,000 <span class="text-gray-500 font-normal">Poin</span></td>
+                                <td class="px-6 py-4"><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium">● Aktif</span></td>
+                                <td class="px-6 py-4 text-center text-gray-400">✎ &nbsp; 🗑️</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="px-6 py-4 border-t border-gray-100 flex justify-between items-center text-sm text-gray-500">
+                        <p>Menampilkan 4 dari 4 kategori</p>
+                        <button class="bg-primary text-white w-8 h-8 rounded-lg font-bold">1</button>
+                    </div>
+                </div>
             </div>
-            <!-- Statistics Bento Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
 
-                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Total Kategori</p>
-                    <h3 class="text-4xl font-bold text-gray-900">12</h3>
-                    <div class="flex items-center text-green-700 text-sm mt-2">
-                        <span class="mr-1">📈</span>
-                        <span>+2 Bulan ini</span>
+            <div id="view-form" class="hidden">
+                <div class="bg-white p-8 rounded-xl border border-gray-200 shadow-sm">
+                    <h3 class="text-xl font-bold text-gray-800 mb-8">Tambah Kategori Master</h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Nama Kategori</label>
+                            <input type="text" placeholder="Contoh: Plastik" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-900/20 outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Kode Kategori</label>
+                            <input type="text" placeholder="Contoh: PL-01" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-900/20 outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Bobot Poin per KG</label>
+                            <div class="relative">
+                                <input type="number" placeholder="0" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-900/20 outline-none transition-all">
+                                <span class="absolute right-4 top-2 text-gray-400 text-sm">POIN</span>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                            <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-900/20 outline-none transition-all text-gray-700">
+                                <option>Aktif</option>
+                                <option>Non Aktif</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
 
-                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Rata-rata Poin / Kg</p>
-                    <h3 class="text-4xl font-bold text-gray-900">1,250</h3>
-                    <p class="text-sm text-gray-500 mt-2">Poin dasar komoditas global</p>
-                </div>
-
-                <div class="bg-primary p-6 rounded-xl shadow-sm text-white">
-                    <p class="text-xs font-semibold text-green-100 uppercase tracking-wider mb-2">Efisiensi Waste-To-Point</p>
-                    <h3 class="text-4xl font-bold">94.2%</h3>
-                    <div class="flex items-center text-green-100 text-sm mt-2">
-                        <span>Optimal ✅</span>
+                    <div class="mb-8">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Ikon Kategori</label>
+                        <div class="border-2 border-dashed border-gray-300 rounded-lg p-10 text-center hover:border-green-800 transition-all cursor-pointer bg-gray-50/50">
+                            <span class="material-symbols-outlined text-green-900 text-3xl mb-2">cloud_upload</span>
+                            <p class="text-sm text-gray-600 font-medium">Klik untuk unggah ikon</p>
+                            <p class="text-xs text-gray-400 mt-1">PNG, JPG atau SVG (Maks. 2MB)</p>
+                        </div>
                     </div>
-                </div>
 
-            </div>
-            <!-- Table Container -->
-            <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden mt-6">
-                <div class="p-6 border-b border-gray-100 flex justify-between items-center">
-                    <h3 class="text-lg font-bold text-gray-800">Daftar Master Kategori</h3>
-                    <div class="flex gap-2">
-                        <button class="px-4 py-2 border border-gray-200 rounded-lg text-sm font-medium hover:bg-gray-50 text-gray-600">Filter</button>
-                        <button class="px-4 py-2 border border-gray-200 rounded-lg text-sm font-medium hover:bg-gray-50 text-gray-600">Ekspor</button>
+                    <div class="flex justify-end gap-3 pt-6 border-t border-gray-100">
+                        <button onclick="toggleForm(false)" class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50 transition-all">Batal</button>
+                        <button class="px-6 py-2 bg-green-900 text-white rounded-lg font-medium hover:bg-green-800 transition-all">Simpan Kategori</button>
                     </div>
-                </div>
-
-                <table class="w-full text-left border-collapse">
-                    <thead>
-                        <tr class="text-xs text-gray-400 uppercase tracking-wider bg-gray-50">
-                            <th class="px-6 py-4">Kategori</th>
-                            <th class="px-6 py-4">Kode</th>
-                            <th class="px-6 py-4">Bobot Poin (Per Kg)</th>
-                            <th class="px-6 py-4">Status</th>
-                            <th class="px-6 py-4 text-center">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-100">
-                        <tr>
-                            <td class="px-6 py-4 flex items-center gap-3">
-                                <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-xl">♻️</div>
-                                <span class="font-semibold text-gray-800">Plastik (PET/HDPE)</span>
-                            </td>
-                            <td class="px-6 py-4"><span class="bg-blue-50 text-blue-600 px-2 py-1 rounded text-xs font-medium">PL-01</span></td>
-                            <td class="px-6 py-4 font-bold text-gray-800">1,500 <span class="text-gray-500 font-normal">Poin</span> <span class="bg-green-100 text-green-700 text-[10px] px-1 rounded ml-1">+5%</span></td>
-                            <td class="px-6 py-4"><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium">● Aktif</span></td>
-                            <td class="px-6 py-4 text-center text-gray-400">✎ &nbsp; 🗑️</td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4 flex items-center gap-3">
-                                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-xl">📄</div>
-                                <span class="font-semibold text-gray-800">Kertas & Karton</span>
-                            </td>
-                            <td class="px-6 py-4"><span class="bg-blue-50 text-blue-600 px-2 py-1 rounded text-xs font-medium">KR-02</span></td>
-                            <td class="px-6 py-4 font-bold text-gray-800">800 <span class="text-gray-500 font-normal">Poin</span></td>
-                            <td class="px-6 py-4"><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium">● Aktif</span></td>
-                            <td class="px-6 py-4 text-center text-gray-400">✎ &nbsp; 🗑️</td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4 flex items-center gap-3">
-                                <div class="w-10 h-10 bg-stone-100 rounded-lg flex items-center justify-center text-xl">🍾</div>
-                                <span class="font-semibold text-gray-800">Kaca</span>
-                            </td>
-                            <td class="px-6 py-4"><span class="bg-blue-50 text-blue-600 px-2 py-1 rounded text-xs font-medium">KC-03</span></td>
-                            <td class="px-6 py-4 font-bold text-gray-800">500 <span class="text-gray-500 font-normal">Poin</span></td>
-                            <td class="px-6 py-4"><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium">● Aktif</span></td>
-                            <td class="px-6 py-4 text-center text-gray-400">✎ &nbsp; 🗑️</td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4 flex items-center gap-3">
-                                <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-xl">🥫</div>
-                                <span class="font-semibold text-gray-800">Logam</span>
-                            </td>
-                            <td class="px-6 py-4"><span class="bg-blue-50 text-blue-600 px-2 py-1 rounded text-xs font-medium">LG-04</span></td>
-                            <td class="px-6 py-4 font-bold text-gray-800">3,000 <span class="text-gray-500 font-normal">Poin</span></td>
-                            <td class="px-6 py-4"><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium">● Aktif</span></td>
-                            <td class="px-6 py-4 text-center text-gray-400">✎ &nbsp; 🗑️</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="px-6 py-4 border-t border-gray-100 flex justify-between items-center text-sm text-gray-500">
-                    <p>Menampilkan 4 dari 4 kategori</p>
-                    <button class="bg-primary text-white w-8 h-8 rounded-lg font-bold">1</button>
                 </div>
             </div>
     </main>
@@ -341,6 +388,18 @@
                 setTimeout(() => this.classList.remove('active:scale-95'), 100);
             });
         });
+
+        function toggleForm(show) {
+            const tabel = document.getElementById('view-tabel');
+            const form = document.getElementById('view-form');
+            if (show) {
+                tabel.classList.add('hidden');
+                form.classList.remove('hidden');
+            } else {
+                tabel.classList.remove('hidden');
+                form.classList.add('hidden');
+            }
+        }
     </script>
 </body>
 
