@@ -48,6 +48,8 @@
         @csrf
         @method('PUT')
 
+        <input type="hidden" name="hapus_foto_flag" id="hapus-foto-flag" value="0">
+
         <div class="bg-white rounded-xl border border-slate-100 shadow-sm p-6 flex items-center space-x-6">
           <div class="relative w-20 h-20 rounded-full bg-slate-100 border-2 border-emerald-800 flex-shrink-0">
             <img id="avatar-display" src="{{ $user->foto ? asset('storage/'.$user->foto) : 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80' }}" alt="Avatar" class="w-full h-full object-cover rounded-full">
@@ -246,6 +248,7 @@
     const hiddenFileInput = document.getElementById('hidden-file-input');
     const modalPreviewImg = document.getElementById('modal-preview-img');
     const avatarDisplay = document.getElementById('avatar-display');
+    const hapusFotoFlag = document.getElementById('hapus-foto-flag');
 
     let currentRotation = 0;
     let currentScale = 1;
@@ -256,6 +259,7 @@
     
     function syncModalPreview(input) {
         if (input.files && input.files[0]) {
+            hapusFotoFlag.value = "0"; // Batalkan flag hapus jika memilih file baru
             const reader = new FileReader();
             reader.onload = function(e) {
                 modalPreviewImg.src = e.target.result;
@@ -276,6 +280,7 @@
 
     function resetToDefaultPhoto() {
         hiddenFileInput.value = "";
+        hapusFotoFlag.value = "1"; // Aktifkan tanda hapus foto untuk Controller
         modalPreviewImg.src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80";
         modalPreviewImg.style.transform = `rotate(0deg) scale(1)`;
         avatarDisplay.src = modalPreviewImg.src;
@@ -283,10 +288,6 @@
 
     function openEmailModal() { emailModal.classList.replace('hidden', 'flex'); }
     function closeEmailModal() { emailModal.classList.replace('flex', 'hidden'); }
-
-    document.getElementById('email-modal').querySelector('form').addEventListener('submit', function() {
-        closeEmailModal();
-    });
 
     function openPasswordModal() { passwordModal.classList.replace('hidden', 'flex'); }
     function closePasswordModal() { passwordModal.classList.replace('flex', 'hidden'); }

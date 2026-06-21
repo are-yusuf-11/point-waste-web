@@ -68,17 +68,19 @@ class ProfileWargaController extends Controller
             'id_rt'  => $request->id_rt,
         ];
 
-        // Logika Eksekusi File Upload Foto Profil
-        if ($request->hasFile('foto_profil')) {
-            // Hapus foto lama dari penyimpanan jika ada (menggunakan kolom 'foto' sesuai database)
+        // LOGIKA HAPUS FOTO (Jika user menekan tombol Hapus Foto)
+        if ($request->input('hapus_foto_flag') == '1') {
             if ($user->foto && Storage::disk('public')->exists($user->foto)) {
                 Storage::disk('public')->delete($user->foto);
             }
-
-            // Simpan berkas baru ke direktori: storage/app/public/foto_profil
+            $updateData['foto'] = null; // Set nilai kolom foto di DB menjadi NULL
+        } 
+        // LOGIKA UPLOAD FOTO BARU
+        elseif ($request->hasFile('foto_profil')) {
+            if ($user->foto && Storage::disk('public')->exists($user->foto)) {
+                Storage::disk('public')->delete($user->foto);
+            }
             $path = $request->file('foto_profil')->store('foto_profil', 'public');
-            
-            // Menggunakan nama kolom 'foto' agar sinkron dengan database kamu
             $updateData['foto'] = $path;
         }
 
