@@ -43,7 +43,6 @@
 </style>
 </head>
 
-<<<<<<< HEAD
 <div class="flex min-h-screen">
 
   <!-- SIDEBAR -->
@@ -99,70 +98,10 @@
         <div class="text-right">
           <p class="text-sm font-semibold text-gray-800 leading-tight">Budi Santoso</p>
           <p class="text-[11px] text-primary font-bold uppercase tracking-wide leading-tight">Super Admin</p>
-=======
-<body class="text-on-surface">
-    <!-- SideNavBar Shell -->
-    <aside class="w-sidebar-width h-screen fixed left-0 top-0 bg-surface-container-lowest border-r border-outline-variant flex flex-col p-md z-50">
-        <div class="mb-xl px-sm">
-            <h1 class="font-headline-md text-headline-md font-bold text-primary">PointWaste</h1>
-            <p class="font-label-md text-label-md text-on-surface-variant">System Administrator</p>
-        </div>
-        <nav class="flex-1 space-y-sm overflow-y-auto">
-            <!-- Dashboard (Active) -->
-            <a class="flex items-center gap-md p-md bg-secondary-container text-primary rounded-xl font-bold transition-transform active:scale-95" href="#">
-                <span class="material-symbols-outlined active-nav-item" data-icon="dashboard">dashboard</span>
-                <span class="font-body-md text-body-md">Dashboard</span>
-            </a>
-            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="#">
-                <span class="material-symbols-outlined" data-icon="group">group</span>
-                <span class="font-body-md text-body-md">User Management</span>
-            </a>
-            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="#">
-                <span class="material-symbols-outlined" data-icon="category">category</span>
-                <span class="font-body-md text-body-md">Waste Categories</span>
-            </a>
-            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="#">
-                <span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
-                <span class="font-body-md text-body-md">System Monitoring</span>
-            </a>
-            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="#">
-                <span class="material-symbols-outlined" data-icon="settings">settings</span>
-                <span class="font-body-md text-body-md">Configurations</span>
-            </a>
-            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="#">
-                <span class="material-symbols-outlined" data-icon="person">person</span>
-                <span class="font-body-md text-body-md">Profile</span>
-            </a>
-        </nav>
-        <div class="mt-auto border-t border-outline-variant pt-md space-y-sm">
-            <button class="w-full flex items-center justify-center gap-sm bg-primary text-white py-md rounded-xl font-bold hover:opacity-90 transition-opacity">
-                <span class="material-symbols-outlined" data-icon="add">add</span>
-                <span>New Report</span>
-            </button>
-            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="#">
-                <span class="material-symbols-outlined" data-icon="help">help</span>
-                <span class="font-body-md text-body-md">Help Center</span>
-            </a>
-            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="#">
-                <span class="material-symbols-outlined" data-icon="logout">logout</span>
-                <span class="font-body-md text-body-md">Logout</span>
-            </a>
-        </div>
-    </aside>
-    <!-- TopNavBar Shell -->
-    <header class="h-16 w-[calc(100%-260px)] sticky top-0 z-40 bg-surface flex justify-between items-center px-lg ml-sidebar-width border-b border-outline-variant">
-        <div class="flex items-center gap-lg">
-            <div class="relative w-64">
-                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
-                <input class="w-full pl-10 pr-4 py-1.5 bg-surface-container text-body-md border-none rounded-full focus:ring-2 focus:ring-primary" placeholder="Search system logs..." type="text" />
-            </div>
-            <h2 class="font-headline-md text-headline-md font-extrabold text-primary">PointWaste Admin</h2>
->>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
         </div>
         <img src="https://i.pravatar.cc/80?img=12" alt="Avatar Budi Santoso" class="w-10 h-10 rounded-full object-cover border border-gray-200" />
       </div>
     </header>
-<<<<<<< HEAD
 
     <!-- CONTENT -->
     <main class="flex-1 px-8 py-7 max-w-[1280px] w-full">
@@ -181,25 +120,6 @@
           <div class="flex items-center gap-2.5 mb-2">
             <div class="w-9 h-9 rounded-lg bg-primary-soft flex items-center justify-center text-primary">
               <span class="material-symbols-outlined" style="font-size:18px;">payments</span>
-=======
-    <!-- Main Content Canvas -->
-    <main class="ml-sidebar-width p-lg max-w-[1280px] mx-auto min-h-screen">
-        <!-- Header Section -->
-        <section class="mb-lg">
-            <h3 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Platform Performance</h3>
-            <p class="font-body-lg text-body-lg text-on-surface-variant">Real-time oversight of waste management across all regional units.</p>
-        </section>
-        <!-- Global Stats Bento Grid -->
-        <section class="grid grid-cols-1 md:grid-cols-4 gap-lg mb-xl">
-            <div class="bg-white p-lg border border-outline-variant rounded-xl flex flex-col gap-xs relative overflow-hidden">
-                <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
-                <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Total Registered Users</span>
-                <div class="flex items-end gap-xs">
-                    <span class="font-display-lg text-headline-lg font-bold text-on-surface">12,482</span>
-                    <span class="text-primary font-bold text-sm mb-2 flex items-center"><span class="material-symbols-outlined text-sm" data-icon="arrow_upward">arrow_upward</span> 4.2%</span>
-                </div>
-                <p class="text-xs text-on-surface-variant mt-2 italic">Global platform count</p>
->>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
             </div>
             <h3 class="font-bold text-gray-800 text-sm">Nilai Tukar Poin</h3>
           </div>
