@@ -102,7 +102,7 @@
             </div>
           </div>
 
-          <a href="{{ route('warga.mutasi-poin.ekspor-pdf') }}" class="inline-flex items-center space-x-1.5 border border-[#15803D] text-[#15803D] hover:bg-emerald-50 px-4 py-2 rounded-xl text-xs font-semibold transition-colors">
+          <a href="{{ route('warga.mutasi-poin.cetak') }}" class="inline-flex items-center space-x-1.5 border border-[#15803D] text-[#15803D] hover:bg-emerald-50 px-4 py-2 rounded-xl text-xs font-semibold transition-colors">
             <span>▲</span>
             <span>Ekspor Laporan</span>
           </a>
