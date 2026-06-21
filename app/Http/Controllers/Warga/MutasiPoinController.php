@@ -44,12 +44,25 @@ class MutasiPoinController extends Controller
         ));
     }
 
-    public function eksporPdf()
+    // SINKRONISASI 1: Menambahkan method 'laporan' yang dipanggil di web.php
+    public function laporan()
+    {
+        $user = Auth::user();
+        
+        $riwayatMutasi = MutasiPoin::where('id_user', $user->id_user)
+            ->orderBy('tanggal', 'desc')
+            ->get();
+
+        return view('warga.laporan-mutasi', compact('user', 'riwayatMutasi'));
+    }
+
+    // SINKRONISASI 2: Mengubah nama method dari 'eksporPdf' menjadi 'cetakPdf' agar sesuai web.php
+    public function cetakPdf()
     {
         $user = Auth::user();
         
         // Ambil seluruh data mutasi poin tanpa pagination agar tercetak semua di PDF
-        $riwayatMutasi = \App\Models\MutasiPoin::where('id_user', $user->id_user)
+        $riwayatMutasi = MutasiPoin::where('id_user', $user->id_user)
             ->orderBy('tanggal', 'desc')
             ->get();
 

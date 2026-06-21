@@ -1,18 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+//USER AUTH & LANDING PAGE
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
+
+//USER WARGA
 use App\Http\Controllers\Warga\WargaDashboardController;
 use App\Http\Controllers\Warga\SetorSampahController;
 use App\Http\Controllers\Warga\IuranWargaController;
 use App\Http\Controllers\Warga\MutasiPoinController;
 use App\Http\Controllers\Warga\ProfileWargaController;
+
+
 use App\Http\Controllers\Admin\AdminDashboardController;
-use App\Http\Controllers\PengurusRT\LaporanController;
-use App\Http\Controllers\PengurusRT\ManajemenIuaranController;
-use App\Http\Controllers\PengurusRT\PengurusDashboardController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Admin\KategoriSampahController;
 use App\Http\Controllers\Admin\MonitoringSistemController;
@@ -36,6 +38,16 @@ Route::get('/login', [AuthController::class, 'showLogin'])->name('showLogin');
 Route::get('/register', [AuthController::class, 'showRegister'])->name('showRegister');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/register', [AuthController::class, 'register'])->name('register');  
+
+// SINKRONISASI ALUR LUPA PASSWORD (3-LANGKAH)
+Route::get('/forgot-password', [AuthController::class, 'showForgotPassword'])->name('auth.forgot-password');
+Route::post('/forgot-password', [AuthController::class, 'sendVerificationCode'])->name('auth.send-verification');
+
+Route::get('/verify-code', [AuthController::class, 'showVerifyForm'])->name('auth.show-verify');
+Route::post('/verify-code', [AuthController::class, 'submitResetPassword'])->name('auth.submit-reset');
+
+Route::get('/reset-password', [AuthController::class, 'showResetPasswordForm'])->name('auth.show-reset-password');
+Route::post('/reset-password', [AuthController::class, 'updatePassword'])->name('auth.update-password');
 
 // =========================================================
 // ROUTE GLOBAL AUTH ONLY
