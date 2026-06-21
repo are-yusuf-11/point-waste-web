@@ -174,15 +174,19 @@
             <div class="h-8 w-[1px] bg-outline-variant"></div>
             
             <!-- Penempatan Nama di Kiri & Foto di Kanan Ujung -->
-            <div class="flex items-center gap-md">
+            <a href="{{ route('admin.profil-saya') }}" class="flex items-center gap-md cursor-pointer hover:opacity-80 transition-all group">
                 <div class="flex flex-col text-right">
-                    <span class="font-label-md text-label-md font-bold text-on-surface leading-tight">{{ auth()->user()->nama ?? 'Budi Santoso' }}</span>
-                    <span class="text-[10px] text-secondary font-bold uppercase tracking-wider mt-0.5">{{ auth()->user()->role ?? 'SUPER ADMIN' }}</span>
+                    <span class="font-label-md text-label-md font-bold text-on-surface leading-tight group-hover:text-primary transition-colors">
+                        {{ auth()->user()->nama ?? 'Budi Santoso' }}
+                    </span>
+                    <span class="text-[10px] text-secondary font-bold uppercase tracking-wider mt-0.5">
+                        {{ auth()->user()->role ?? 'SUPER ADMIN' }}
+                    </span>
                 </div>
-                <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden border border-outline-variant shadow-sm">
+                <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden border border-outline-variant shadow-sm group-hover:border-primary transition-colors">
                     <img class="w-full h-full object-cover" src="{{ auth()->user()->foto ? (str_contains(auth()->user()->foto, 'http') ? auth()->user()->foto : asset('storage/' . auth()->user()->foto)) : 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=256&auto=format&fit=crop' }}" alt="User Profile" />
                 </div>
-            </div>
+            </a>
         </div>
     </header>
 
