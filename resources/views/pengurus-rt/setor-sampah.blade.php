@@ -159,11 +159,11 @@
             <p class="font-label-md text-label-md text-secondary opacity-70">Resident Portal</p>
         </div>
         <nav class="flex-1 space-y-xs">
-            <a class="flex items-center gap-md px-md py-sm text-secondary hover:bg-surface-container-low transition-colors rounded-lg group" href="#">
+            <a class="flex items-center gap-md px-md py-sm text-secondary hover:bg-surface-container-low transition-colors rounded-lg group" href="{{ route('pengurus-rt.dashboard') }}">
                 <span class="material-symbols-outlined text-secondary group-hover:text-primary">dashboard</span>
                 <span class="font-body-md">Dashboard</span>
             </a>
-            <a class="flex items-center gap-md px-md py-sm bg-secondary-container text-primary font-semibold rounded-lg" href="#">
+            <a class="flex items-center gap-md px-md py-sm bg-secondary-container text-primary font-semibold rounded-lg" href="{{ route('pengurus-rt.setor-sampah') }}">
                 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">recycling</span>
                 <span class="font-body-md">Setor Sampah</span>
             </a>
@@ -171,7 +171,7 @@
                 <span class="material-symbols-outlined text-secondary group-hover:text-primary">account_balance_wallet</span>
                 <span class="font-body-md">Mutasi Poin</span>
             </a>
-            <a class="flex items-center gap-md px-md py-sm text-secondary hover:bg-surface-container-low transition-colors rounded-lg group" href="#">
+            <a class="flex items-center gap-md px-md py-sm text-secondary hover:bg-surface-container-low transition-colors rounded-lg group" href="{{ route('pengurus-rt.manajemen-iuran') }}">
                 <span class="material-symbols-outlined text-secondary group-hover:text-primary">receipt_long</span>
                 <span class="font-body-md">Tagihan Iuran</span>
             </a>

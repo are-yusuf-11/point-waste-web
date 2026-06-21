@@ -173,29 +173,29 @@
         </div>
         <nav class="flex-1 space-y-sm overflow-y-auto">
             <!-- Dashboard (Active) -->
-            <a class="flex items-center gap-md p-md bg-secondary-container text-primary rounded-xl font-bold transition-transform active:scale-95" href="#">
+            <a class="flex items-center gap-md p-md bg-secondary-container text-primary rounded-xl font-bold transition-transform active:scale-95" href="{{ route('admin.dashboard') }}">
                 <span class="material-symbols-outlined active-nav-item" data-icon="dashboard">dashboard</span>
                 <span class="font-body-md text-body-md">Dashboard</span>
             </a>
-            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="#">
+            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="{{ route('admin.manajemen-pengguna') }}">
                 <span class="material-symbols-outlined" data-icon="group">group</span>
-                <span class="font-body-md text-body-md">User Management</span>
+                <span class="font-body-md text-body-md">Manajemen Pengguna</span>
             </a>
-            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="#">
+            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="{{ route('admin.kategori-sampah') }}">
                 <span class="material-symbols-outlined" data-icon="category">category</span>
-                <span class="font-body-md text-body-md">Waste Categories</span>
+                <span class="font-body-md text-body-md">Kategori Sampah</span>
             </a>
-            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="#">
+            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="{{ route('admin.monitoring-sistem') }}">
                 <span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
-                <span class="font-body-md text-body-md">System Monitoring</span>
+                <span class="font-body-md text-body-md">Monitoring Sistem</span>
             </a>
-            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="#">
+            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="{{ route('admin.konfigurasi') }}">
                 <span class="material-symbols-outlined" data-icon="settings">settings</span>
-                <span class="font-body-md text-body-md">Configurations</span>
+                <span class="font-body-md text-body-md">Konfigurasi</span>
             </a>
             <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="#">
                 <span class="material-symbols-outlined" data-icon="person">person</span>
-                <span class="font-body-md text-body-md">Profile</span>
+                <span class="font-body-md text-body-md">Profil</span>
             </a>
         </nav>
         <div class="mt-auto border-t border-outline-variant pt-md space-y-sm">
@@ -244,7 +244,7 @@
                 <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
                 <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Total Registered Users</span>
                 <div class="flex items-end gap-xs">
-                    <span class="font-display-lg text-headline-lg font-bold text-on-surface">12,482</span>
+                    <span class="font-display-lg text-headline-lg font-bold text-on-surface">{{ number_format($totalUsers) }}</span>
                     <span class="text-primary font-bold text-sm mb-2 flex items-center"><span class="material-symbols-outlined text-sm" data-icon="arrow_upward">arrow_upward</span> 4.2%</span>
                 </div>
                 <p class="text-xs text-on-surface-variant mt-2 italic">Global platform count</p>
@@ -253,8 +253,8 @@
                 <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
                 <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Active RT Units</span>
                 <div class="flex items-end gap-xs">
-                    <span class="font-display-lg text-headline-lg font-bold text-on-surface">156</span>
-                    <span class="text-on-surface-variant font-bold text-sm mb-2">/ 180 total</span>
+                    <span class="font-display-lg text-headline-lg font-bold text-on-surface">{{ $activeRtCount }}</span>
+                    <span class="text-on-surface-variant font-bold text-sm mb-2">/ {{ $totalRtTarget }} total</span>
                 </div>
                 <p class="text-xs text-on-surface-variant mt-2 italic">86% participation rate</p>
             </div>
@@ -262,7 +262,7 @@
                 <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
                 <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Total Waste Processed</span>
                 <div class="flex items-end gap-xs">
-                    <span class="font-display-lg text-headline-lg font-bold text-on-surface">412.5</span>
+                    <span class="font-display-lg text-headline-lg font-bold text-on-surface">{{ $totalTonnes }}</span>
                     <span class="text-on-surface-variant font-bold text-sm mb-2">Tonnes</span>
                 </div>
                 <p class="text-xs text-on-surface-variant mt-2 italic">Past 30 days global average</p>
@@ -295,30 +295,37 @@
                 </div>
                 <!-- Simple Bar Chart Mockup -->
                 <div class="h-64 flex items-end justify-between gap-sm px-4 border-b border-outline-variant pb-2">
-                    <div class="flex flex-col items-center gap-2 w-full">
-                        <div class="w-full bg-primary-fixed rounded-t h-[40%] chart-bar"></div>
-                        <span class="text-xs text-on-surface-variant font-medium">Jan</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-2 w-full">
-                        <div class="w-full bg-primary-fixed rounded-t h-[55%] chart-bar"></div>
-                        <span class="text-xs text-on-surface-variant font-medium">Feb</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-2 w-full">
-                        <div class="w-full bg-primary-fixed rounded-t h-[50%] chart-bar"></div>
-                        <span class="text-xs text-on-surface-variant font-medium">Mar</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-2 w-full">
-                        <div class="w-full bg-primary-fixed rounded-t h-[75%] chart-bar"></div>
-                        <span class="text-xs text-on-surface-variant font-medium">Apr</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-2 w-full">
-                        <div class="w-full bg-primary-fixed rounded-t h-[65%] chart-bar"></div>
-                        <span class="text-xs text-on-surface-variant font-medium">May</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-2 w-full">
-                        <div class="w-full bg-primary rounded-t h-[90%] chart-bar shadow-lg"></div>
-                        <span class="text-xs text-primary font-bold">Jun</span>
-                    </div>
+                    @php
+                        // Daftar nama bulan manual untuk menjamin teks Januari - Desember selalu muncul
+                        $daftarBulan = [
+                            1 => 'Jan', 2 => 'Feb', 3 => 'Mar', 4 => 'Apr', 
+                            5 => 'May', 6 => 'Jun', 7 => 'Jul', 8 => 'Aug', 
+                            9 => 'Sep', 10 => 'Oct', 11 => 'Nov', 12 => 'Dec'
+                        ];
+                        $bulanSekarang = (int) date('m');
+                    @endphp
+
+                    @foreach($daftarBulan as $angka => $nama)
+                        @php
+                            // Ambil berat dari database jika ada, jika tidak ada set ke 0
+                            $berat = $monthlyData[$angka] ?? 0; 
+                            
+                            // Hitung tinggi grafik (contoh target maksimal 1000 kg per bulan untuk tinggi 100%)
+                            $percentage = $berat > 0 ? min(($berat / 1000) * 100, 100) : 0;
+                            
+                            // Cek apakah iterasi ini merupakan bulan berjalan saat ini
+                            $isBulanSekarang = ($angka === $bulanSekarang);
+                        @endphp
+                        <div class="flex flex-col items-center gap-2 w-full">
+                            <div class="w-full {{ $isBulanSekarang ? 'bg-primary shadow-lg' : 'bg-primary-fixed' }} rounded-t chart-bar" 
+                                style="height: {{ $percentage > 0 ? $percentage : 2 }}%"
+                                title="{{ $nama }}: {{ $berat }} kg"></div>
+                            
+                            <span class="text-xs {{ $isBulanSekarang ? 'text-primary font-bold' : 'text-on-surface-variant font-medium' }}">
+                                {{ $nama }}
+                            </span>
+                        </div>
+                    @endforeach
                 </div>
             </section>
             <!-- Quick Management Actions -->
@@ -379,38 +386,16 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-outline-variant font-body-md">
+                        @foreach($topRt as $rt)
                         <tr class="hover:bg-surface-container-low transition-colors">
-                            <td class="px-lg py-md font-bold">RT 005 - Cilandak</td>
-                            <td class="px-lg py-md">428 Users</td>
-                            <td class="px-lg py-md">1.2 Tons</td>
+                            <td class="px-lg py-md font-bold">{{ $rt->no_rt }} - {{ $rt->kelurahan }}</td>
+                            <td class="px-lg py-md">{{ $rt->warga_count }} Users</td>
+                            <td class="px-lg py-md">{{ $rt->total_waste_ton }} Tons</td>
                             <td class="px-lg py-md">
-                                <span class="px-3 py-1 bg-primary text-white rounded-full text-xs">98.2</span>
+                                <span class="px-3 py-1 bg-primary text-white rounded-full text-xs">95.0</span>
                             </td>
                         </tr>
-                        <tr class="hover:bg-surface-container-low transition-colors">
-                            <td class="px-lg py-md font-bold">RT 012 - Kemang</td>
-                            <td class="px-lg py-md">315 Users</td>
-                            <td class="px-lg py-md">0.9 Tons</td>
-                            <td class="px-lg py-md">
-                                <span class="px-3 py-1 bg-primary text-white rounded-full text-xs">94.5</span>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-surface-container-low transition-colors">
-                            <td class="px-lg py-md font-bold">RT 003 - Menteng</td>
-                            <td class="px-lg py-md">289 Users</td>
-                            <td class="px-lg py-md">0.85 Tons</td>
-                            <td class="px-lg py-md">
-                                <span class="px-3 py-1 bg-primary text-white rounded-full text-xs">92.1</span>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-surface-container-low transition-colors">
-                            <td class="px-lg py-md font-bold">RT 008 - Kebayoran</td>
-                            <td class="px-lg py-md">210 Users</td>
-                            <td class="px-lg py-md">0.6 Tons</td>
-                            <td class="px-lg py-md">
-                                <span class="px-3 py-1 bg-primary text-white rounded-full text-xs">89.4</span>
-                            </td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </section>
@@ -420,57 +405,27 @@
                     <h4 class="font-title-lg text-title-lg text-on-surface">System Activity Log</h4>
                 </div>
                 <div class="flex-1 p-lg space-y-lg overflow-y-auto max-h-[400px]">
+                    @foreach($recentActivities as $activity)
                     <div class="flex gap-md">
                         <div class="flex flex-col items-center">
                             <div class="h-8 w-8 rounded-full bg-primary-container/20 flex items-center justify-center text-primary">
                                 <span class="material-symbols-outlined text-sm" data-icon="add_circle">add_circle</span>
                             </div>
-                            <div class="w-0.5 h-full bg-outline-variant mt-2"></div>
+                            @if(!$loop->last)
+                                <div class="w-0.5 h-full bg-outline-variant mt-2"></div>
+                            @endif
                         </div>
                         <div>
-                            <p class="font-bold text-body-md text-on-surface">New RT Onboarded</p>
-                            <p class="text-xs text-on-surface-variant">RT 014 - Pasar Minggu now active.</p>
-                            <span class="text-[10px] text-outline uppercase font-bold mt-1 block">12 Minutes ago</span>
+                            <p class="font-bold text-body-md text-on-surface">Setor Sampah</p>
+                            <p class="text-xs text-on-surface-variant">
+                                {{ $activity->user->nama ?? 'Warga' }} telah menyetor sampah dengan status <strong class="capitalize">{{ $activity->status }}</strong>.
+                            </p>
+                            <span class="text-[10px] text-outline uppercase font-bold mt-1 block">
+                                {{ $activity->created_at->diffForHumans() }}
+                            </span>
                         </div>
                     </div>
-                    <div class="flex gap-md">
-                        <div class="flex flex-col items-center">
-                            <div class="h-8 w-8 rounded-full bg-error-container/20 flex items-center justify-center text-error">
-                                <span class="material-symbols-outlined text-sm" data-icon="warning">warning</span>
-                            </div>
-                            <div class="w-0.5 h-full bg-outline-variant mt-2"></div>
-                        </div>
-                        <div>
-                            <p class="font-bold text-body-md text-on-surface">User Limit Warning</p>
-                            <p class="text-xs text-on-surface-variant">RT 005 reached 95% capacity.</p>
-                            <span class="text-[10px] text-outline uppercase font-bold mt-1 block">45 Minutes ago</span>
-                        </div>
-                    </div>
-                    <div class="flex gap-md">
-                        <div class="flex flex-col items-center">
-                            <div class="h-8 w-8 rounded-full bg-tertiary-fixed/20 flex items-center justify-center text-tertiary">
-                                <span class="material-symbols-outlined text-sm" data-icon="sync">sync</span>
-                            </div>
-                            <div class="w-0.5 h-full bg-outline-variant mt-2"></div>
-                        </div>
-                        <div>
-                            <p class="font-bold text-body-md text-on-surface">System Update Complete</p>
-                            <p class="text-xs text-on-surface-variant">Version 2.4.1 deployment successful.</p>
-                            <span class="text-[10px] text-outline uppercase font-bold mt-1 block">2 Hours ago</span>
-                        </div>
-                    </div>
-                    <div class="flex gap-md">
-                        <div class="flex flex-col items-center">
-                            <div class="h-8 w-8 rounded-full bg-primary-container/20 flex items-center justify-center text-primary">
-                                <span class="material-symbols-outlined text-sm" data-icon="person_add">person_add</span>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="font-bold text-body-md text-on-surface">Bulk Admin Created</p>
-                            <p class="text-xs text-on-surface-variant">Created 5 regional manager accounts.</p>
-                            <span class="text-[10px] text-outline uppercase font-bold mt-1 block">5 Hours ago</span>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="p-md bg-surface-container-low border-t border-outline-variant text-center">
                     <button class="text-on-surface-variant text-xs font-bold hover:text-primary transition-colors">LOAD MORE LOGS</button>

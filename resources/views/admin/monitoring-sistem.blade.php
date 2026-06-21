@@ -184,24 +184,24 @@
             <p class="text-body-md text-secondary">Admin System</p>
         </div>
         <nav class="flex flex-col gap-sm flex-grow">
-            <a class="flex items-center gap-md text-secondary dark:text-secondary-fixed-dim px-md py-sm hover:bg-secondary-container/50 transition-colors rounded-lg cursor-pointer active:scale-95 duration-200" href="#">
+            <a class="flex items-center gap-md text-secondary dark:text-secondary-fixed-dim px-md py-sm hover:bg-secondary-container/50 transition-colors rounded-lg cursor-pointer active:scale-95 duration-200" href="{{ route('admin.dashboard') }}">
                 <span class="material-symbols-outlined">dashboard</span>
                 <span class="font-body-md">Dashboard</span>
             </a>
-            <a class="flex items-center gap-md text-secondary dark:text-secondary-fixed-dim px-md py-sm hover:bg-secondary-container/50 transition-colors rounded-lg cursor-pointer active:scale-95 duration-200" href="#">
+            <a class="flex items-center gap-md text-secondary dark:text-secondary-fixed-dim px-md py-sm hover:bg-secondary-container/50 transition-colors rounded-lg cursor-pointer active:scale-95 duration-200" href="{{ route('admin.manajemen-pengguna') }}">
                 <span class="material-symbols-outlined">group</span>
                 <span class="font-body-md">Manajemen Pengguna</span>
             </a>
-            <a class="flex items-center gap-md text-secondary dark:text-secondary-fixed-dim px-md py-sm hover:bg-secondary-container/50 transition-colors rounded-lg cursor-pointer active:scale-95 duration-200" href="#">
+            <a class="flex items-center gap-md text-secondary dark:text-secondary-fixed-dim px-md py-sm hover:bg-secondary-container/50 transition-colors rounded-lg cursor-pointer active:scale-95 duration-200" href="{{ route('admin.kategori-sampah') }}">
                 <span class="material-symbols-outlined">recycling</span>
                 <span class="font-body-md">Kategori Sampah</span>
             </a>
             <!-- Active State: Monitoring Sistem -->
-            <a class="flex items-center gap-md bg-secondary-container dark:bg-primary-container text-primary dark:text-on-primary-container rounded-lg px-md py-sm cursor-pointer active:scale-95 duration-200" href="#">
+            <a class="flex items-center gap-md bg-secondary-container dark:bg-primary-container text-primary dark:text-on-primary-container rounded-lg px-md py-sm cursor-pointer active:scale-95 duration-200" href="{{ route('admin.monitoring-sistem') }}">
                 <span class="material-symbols-outlined">analytics</span>
                 <span class="font-body-md font-semibold">Monitoring Sistem</span>
             </a>
-            <a class="flex items-center gap-md text-secondary dark:text-secondary-fixed-dim px-md py-sm hover:bg-secondary-container/50 transition-colors rounded-lg cursor-pointer active:scale-95 duration-200" href="#">
+            <a class="flex items-center gap-md text-secondary dark:text-secondary-fixed-dim px-md py-sm hover:bg-secondary-container/50 transition-colors rounded-lg cursor-pointer active:scale-95 duration-200" href="{{ route('admin.konfigurasi') }}">
                 <span class="material-symbols-outlined">settings</span>
                 <span class="font-body-md">Konfigurasi</span>
             </a>
