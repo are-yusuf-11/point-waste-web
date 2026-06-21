@@ -26,11 +26,10 @@ use App\Http\Controllers\PengurusRT\KategoriSampahController as PengurusKategori
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-// [BERSIH] Duplikasi route login & register yang menumpuk sudah dihapus
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
-Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
-Route::post('/register', [AuthController::class, 'register']);
+Route::get('/login', [AuthController::class, 'showLogin'])->name('showLogin');
+Route::get('/register', [AuthController::class, 'showRegister'])->name('showRegister');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/register', [AuthController::class, 'register'])->name('register');  
 
 // =========================================================
 // ROUTE GLOBAL AUTH ONLY

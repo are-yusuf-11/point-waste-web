@@ -1,254 +1,142 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en">
-
+<html lang="id">
 <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>PointWaste System Admin Dashboard</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
-    <!-- Tailwind Configuration -->
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "tertiary-fixed": "#c9e6ff",
-                        "on-error": "#ffffff",
-                        "on-secondary-fixed": "#131e19",
-                        "error-container": "#ffdad6",
-                        "tertiary-fixed-dim": "#89ceff",
-                        "on-secondary-fixed-variant": "#3e4943",
-                        "on-surface": "#0b1c30",
-                        "on-surface-variant": "#404940",
-                        "secondary-fixed-dim": "#bdcac1",
-                        "surface-variant": "#d3e4fe",
-                        "surface-container-lowest": "#ffffff",
-                        "on-primary-container": "#93e0a2",
-                        "surface-container": "#e5eeff",
-                        "inverse-surface": "#213145",
-                        "tertiary": "#004565",
-                        "on-secondary": "#ffffff",
-                        "inverse-on-surface": "#eaf1ff",
-                        "on-background": "#0b1c30",
-                        "primary": "#004c22",
-                        "secondary-fixed": "#d9e6dd",
-                        "surface": "#f8f9ff",
-                        "on-secondary-container": "#5b6760",
-                        "primary-fixed": "#a6f4b5",
-                        "on-tertiary-fixed": "#001e2f",
-                        "on-tertiary": "#ffffff",
-                        "on-primary-fixed": "#00210b",
-                        "surface-tint": "#1f6c3a",
-                        "tertiary-container": "#005e87",
-                        "secondary": "#55615a",
-                        "primary-fixed-dim": "#8bd79b",
-                        "on-primary-fixed-variant": "#005226",
-                        "outline-variant": "#bfc9bd",
-                        "on-error-container": "#93000a",
-                        "primary-container": "#166534",
-                        "background": "#f8f9ff",
-                        "on-primary": "#ffffff",
-                        "surface-container-high": "#dce9ff",
-                        "on-tertiary-fixed-variant": "#004c6e",
-                        "on-tertiary-container": "#9dd5ff",
-                        "surface-container-highest": "#d3e4fe",
-                        "surface-dim": "#cbdbf5",
-                        "surface-bright": "#f8f9ff",
-                        "secondary-container": "#d9e6dd",
-                        "outline": "#707a6f",
-                        "error": "#ba1a1a",
-                        "surface-container-low": "#eff4ff",
-                        "inverse-primary": "#8bd79b"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "xs": "4px",
-                        "xl": "32px",
-                        "base": "4px",
-                        "sm": "8px",
-                        "md": "16px",
-                        "lg": "24px",
-                        "sidebar-width": "260px",
-                        "gutter": "24px",
-                        "container-max": "1280px"
-                    },
-                    "fontFamily": {
-                        "code-sm": ["Inter"],
-                        "display-lg": ["Inter"],
-                        "body-lg": ["Inter"],
-                        "headline-lg": ["Inter"],
-                        "label-md": ["Inter"],
-                        "title-lg": ["Inter"],
-                        "body-md": ["Inter"],
-                        "headline-md": ["Inter"],
-                        "headline-lg-mobile": ["Inter"]
-                    },
-                    "fontSize": {
-                        "code-sm": ["13px", {
-                            "lineHeight": "18px",
-                            "fontWeight": "400"
-                        }],
-                        "display-lg": ["48px", {
-                            "lineHeight": "56px",
-                            "letterSpacing": "-0.02em",
-                            "fontWeight": "700"
-                        }],
-                        "body-lg": ["16px", {
-                            "lineHeight": "24px",
-                            "fontWeight": "400"
-                        }],
-                        "headline-lg": ["32px", {
-                            "lineHeight": "40px",
-                            "letterSpacing": "-0.01em",
-                            "fontWeight": "600"
-                        }],
-                        "label-md": ["12px", {
-                            "lineHeight": "16px",
-                            "letterSpacing": "0.05em",
-                            "fontWeight": "600"
-                        }],
-                        "title-lg": ["20px", {
-                            "lineHeight": "28px",
-                            "fontWeight": "600"
-                        }],
-                        "body-md": ["14px", {
-                            "lineHeight": "20px",
-                            "fontWeight": "400"
-                        }],
-                        "headline-md": ["24px", {
-                            "lineHeight": "32px",
-                            "fontWeight": "600"
-                        }],
-                        "headline-lg-mobile": ["24px", {
-                            "lineHeight": "32px",
-                            "fontWeight": "600"
-                        }]
-                    }
-                },
-            },
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PointWaste - System Configuration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: '#166534',
+          'primary-dark': '#14532d',
+          'primary-light': '#16a34a',
+          'primary-soft': '#ecfdf3',
+          'surface': '#f7faf8',
+          'success-bg': '#dcfce7',
+          'success-text': '#15803d',
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+        },
+        borderRadius: {
+          xl: '0.85rem',
         }
-    </script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8f9ff;
-        }
-
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-
-        .active-nav-item {
-            font-variation-settings: 'FILL' 1;
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(8px);
-            border: 1px solid #E2E8F0;
-        }
-
-        .chart-bar {
-            transition: height 1s ease-in-out;
-        }
-    </style>
+      }
+    }
+  }
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    font-size: 20px;
+  }
+  .active-nav .material-symbols-outlined { font-variation-settings: 'FILL' 1; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+</style>
 </head>
+<body class="bg-surface text-gray-800">
 
-<body class="text-on-surface">
-    <!-- SideNavBar Shell -->
-    <aside class="w-sidebar-width h-screen fixed left-0 top-0 bg-surface-container-lowest border-r border-outline-variant flex flex-col p-md z-50">
-        <div class="mb-xl px-sm">
-            <h1 class="font-headline-md text-headline-md font-bold text-primary">PointWaste</h1>
-            <p class="font-label-md text-label-md text-on-surface-variant">System Administrator</p>
+<div class="flex min-h-screen">
+
+  <!-- SIDEBAR -->
+  <aside class="fixed left-0 top-0 h-screen w-64 bg-white border-r border-gray-200 flex flex-col">
+    <div class="px-6 py-6">
+      <h1 class="text-xl font-extrabold text-primary leading-tight">PointWaste</h1>
+      <p class="text-xs text-gray-400 mt-0.5">Admin Portal</p>
+    </div>
+
+    <nav class="flex-1 px-3 mt-2 space-y-1">
+      <a href="#" class="active-nav flex items-center gap-3 rounded-lg px-3 py-2.5 bg-primary-soft text-primary font-semibold text-sm">
+        <span class="material-symbols-outlined">dashboard</span>
+        Dashboard
+      </a>
+      <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700 text-sm font-medium transition-colors">
+        <span class="material-symbols-outlined">group</span>
+        User Management
+      </a>
+      <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700 text-sm font-medium transition-colors">
+        <span class="material-symbols-outlined">recycling</span>
+        Waste Categories
+      </a>
+      <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700 text-sm font-medium transition-colors">
+        <span class="material-symbols-outlined">monitoring</span>
+        System Monitoring
+      </a>
+      <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700 text-sm font-medium transition-colors">
+        <span class="material-symbols-outlined">settings</span>
+        System Configuration
+      </a>
+    </nav>
+
+    <div class="px-3 pb-6 mt-auto">
+      <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-red-500 hover:bg-red-50 text-sm font-medium transition-colors">
+        <span class="material-symbols-outlined">logout</span>
+        Logout
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="flex-1 ml-64 flex flex-col">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-30 h-16 bg-white/90 backdrop-blur border-b border-gray-200 flex items-center justify-end px-8 gap-5">
+      <button class="p-2 rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors">
+        <span class="material-symbols-outlined">notifications</span>
+      </button>
+      <button class="p-2 rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors">
+        <span class="material-symbols-outlined">help</span>
+      </button>
+      <div class="flex items-center gap-3 pl-4 border-l border-gray-200">
+        <div class="text-right">
+          <p class="text-sm font-semibold text-gray-800 leading-tight">Budi Santoso</p>
+          <p class="text-[11px] text-primary font-bold uppercase tracking-wide leading-tight">Super Admin</p>
         </div>
-        <nav class="flex-1 space-y-sm overflow-y-auto">
-            <!-- Dashboard (Active) -->
-            <a class="flex items-center gap-md p-md bg-secondary-container text-primary rounded-xl font-bold transition-transform active:scale-95" href="{{ route('admin.dashboard') }}">
-                <span class="material-symbols-outlined active-nav-item" data-icon="dashboard">dashboard</span>
-                <span class="font-body-md text-body-md">Dashboard</span>
-            </a>
-            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="{{ route('admin.manajemen-pengguna') }}">
-                <span class="material-symbols-outlined" data-icon="group">group</span>
-                <span class="font-body-md text-body-md">Manajemen Pengguna</span>
-            </a>
-            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="{{ route('admin.kategori-sampah') }}">
-                <span class="material-symbols-outlined" data-icon="category">category</span>
-                <span class="font-body-md text-body-md">Kategori Sampah</span>
-            </a>
-            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="{{ route('admin.monitoring-sistem') }}">
-                <span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
-                <span class="font-body-md text-body-md">Monitoring Sistem</span>
-            </a>
-            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="{{ route('admin.konfigurasi') }}">
-                <span class="material-symbols-outlined" data-icon="settings">settings</span>
-                <span class="font-body-md text-body-md">Konfigurasi</span>
-            </a>
-            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="#">
-                <span class="material-symbols-outlined" data-icon="person">person</span>
-                <span class="font-body-md text-body-md">Profil</span>
-            </a>
-        </nav>
-        <div class="mt-auto border-t border-outline-variant pt-md space-y-sm">
-            <button class="w-full flex items-center justify-center gap-sm bg-primary text-white py-md rounded-xl font-bold hover:opacity-90 transition-opacity">
-                <span class="material-symbols-outlined" data-icon="add">add</span>
-                <span>New Report</span>
-            </button>
-            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="#">
-                <span class="material-symbols-outlined" data-icon="help">help</span>
-                <span class="font-body-md text-body-md">Help Center</span>
-            </a>
-            <a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container rounded-xl transition-colors" href="#">
-                <span class="material-symbols-outlined" data-icon="logout">logout</span>
-                <span class="font-body-md text-body-md">Logout</span>
-            </a>
-        </div>
-    </aside>
-    <!-- TopNavBar Shell -->
-    <header class="h-16 w-[calc(100%-260px)] sticky top-0 z-40 bg-surface flex justify-between items-center px-lg ml-sidebar-width border-b border-outline-variant">
-        <div class="flex items-center gap-lg">
-            <div class="relative w-64">
-                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
-                <input class="w-full pl-10 pr-4 py-1.5 bg-surface-container text-body-md border-none rounded-full focus:ring-2 focus:ring-primary" placeholder="Search system logs..." type="text" />
-            </div>
-            <h2 class="font-headline-md text-headline-md font-extrabold text-primary">PointWaste Admin</h2>
-        </div>
-        <div class="flex items-center gap-md">
-            <button class="p-2 hover:bg-surface-container rounded-full text-on-surface-variant"><span class="material-symbols-outlined" data-icon="notifications">notifications</span></button>
-            <button class="p-2 hover:bg-surface-container rounded-full text-on-surface-variant"><span class="material-symbols-outlined" data-icon="settings_suggest">settings_suggest</span></button>
-            <button class="p-2 hover:bg-surface-container rounded-full text-on-surface-variant"><span class="material-symbols-outlined" data-icon="apps">apps</span></button>
-            <div class="h-10 w-10 rounded-full overflow-hidden border border-outline-variant">
-                <img class="w-full h-full object-cover" data-alt="A professional headshot of a system administrator in their 30s, dressed in business casual attire with a focused and friendly expression. The background is a clean, modern corporate office with soft natural lighting and subtle green plants to represent sustainability. The image style is sharp, professional photography with a shallow depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLZFvA6DHznuSrtSycfDbBdbMS_vcSrXodAwwxTYiWkOq60ZYetBQWlSR038KhZRaFyWoYLBgeKk6HIa1yQHr9Nci9IFPQkrS_SRfm6pPWL5PI-bjHv5zJfd1QDGe8rS4C4FZOhnssPyPw0u2pV8WPSWKtbl90FQ2rMQRGV_SrKDXCfEFZyC3EeOD1Se4i8foDgdODpfGjUTVblC2j264Yn_Pin6e99HPf7cwXej3-ra0phN7dauYQll1u-LcdVhQ63-vdJ_Nodzk" />
-            </div>
-        </div>
+        <img src="https://i.pravatar.cc/80?img=12" alt="Avatar Budi Santoso" class="w-10 h-10 rounded-full object-cover border border-gray-200" />
+      </div>
     </header>
-    <!-- Main Content Canvas -->
-    <main class="ml-sidebar-width p-lg max-w-[1280px] mx-auto min-h-screen">
-        <!-- Header Section -->
-        <section class="mb-lg">
-            <h3 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Platform Performance</h3>
-            <p class="font-body-lg text-body-lg text-on-surface-variant">Real-time oversight of waste management across all regional units.</p>
-        </section>
-        <!-- Global Stats Bento Grid -->
-        <section class="grid grid-cols-1 md:grid-cols-4 gap-lg mb-xl">
-            <div class="bg-white p-lg border border-outline-variant rounded-xl flex flex-col gap-xs relative overflow-hidden">
-                <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
-                <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Total Registered Users</span>
-                <div class="flex items-end gap-xs">
-                    <span class="font-display-lg text-headline-lg font-bold text-on-surface">{{ number_format($totalUsers) }}</span>
-                    <span class="text-primary font-bold text-sm mb-2 flex items-center"><span class="material-symbols-outlined text-sm" data-icon="arrow_upward">arrow_upward</span> 4.2%</span>
-                </div>
-                <p class="text-xs text-on-surface-variant mt-2 italic">Global platform count</p>
+
+    <!-- CONTENT -->
+    <main class="flex-1 px-8 py-7 max-w-[1280px] w-full">
+
+      <!-- Page title -->
+      <div class="mb-7">
+        <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2">Selamat Datang Atmin <span>👋</span></h2>
+        <p class="text-gray-500 mt-1 text-sm">Mari kelola efisiensi pengelolaan sampah hari ini</p>
+      </div>
+
+      <!-- Top 3 cards -->
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-7">
+
+        <!-- Nilai Tukar Poin -->
+        <div class="bg-white border border-gray-200 rounded-xl p-5">
+          <div class="flex items-center gap-2.5 mb-2">
+            <div class="w-9 h-9 rounded-lg bg-primary-soft flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined" style="font-size:18px;">payments</span>
             </div>
+            <h3 class="font-bold text-gray-800 text-sm">Nilai Tukar Poin</h3>
+          </div>
+          <p class="text-xs text-gray-500 mb-4 leading-relaxed">Atur berapa nilai Rupiah yang didapatkan warga untuk setiap 1 poin sampah.</p>
+          <label class="text-xs font-semibold text-gray-600 mb-1.5 block">1 Poin = ... Rupiah</label>
+          <div class="flex items-center rounded-lg border border-gray-300 overflow-hidden focus-within:ring-2 focus-within:ring-primary/30 focus-within:border-primary">
+            <span class="px-3 text-sm font-bold text-gray-600 bg-gray-50 border-r border-gray-300 py-2.5">Rp</span>
+            <input type="number" value="0" class="w-full px-3 py-2.5 text-sm outline-none border-none" />
+          </div>
+        </div>
+
+        <!-- Batas Setoran -->
+        <div class="bg-white border border-gray-200 rounded-xl p-5">
+          <div class="flex items-center gap-2.5 mb-2">
+            <div class="w-9 h-9 rounded-lg bg-primary-soft flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined" style="font-size:18px;">scale</span>
             <div class="bg-white p-lg border border-outline-variant rounded-xl flex flex-col gap-xs relative overflow-hidden">
                 <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
                 <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Active RT Units</span>
@@ -267,16 +155,21 @@
                 </div>
                 <p class="text-xs text-on-surface-variant mt-2 italic">Past 30 days global average</p>
             </div>
-            <div class="bg-white p-lg border border-outline-variant rounded-xl flex flex-col gap-xs relative overflow-hidden">
-                <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary-container"></div>
-                <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">System Health</span>
-                <div class="flex items-center gap-sm mt-2">
-                    <div class="flex items-center gap-2 px-3 py-1 bg-primary-container/10 text-primary border border-primary/20 rounded-full">
-                        <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                        <span class="font-bold text-sm uppercase">Operational</span>
-                    </div>
-                </div>
-                <p class="text-xs text-on-surface-variant mt-3 italic">Uptime: 99.98% (Last 24h)</p>
+            <h3 class="font-bold text-gray-800 text-sm">Batas Setoran</h3>
+          </div>
+          <p class="text-xs text-gray-500 mb-4 leading-relaxed">Maksimal berat sampah yang dapat disetorkan per warga setiap harinya.</p>
+          <label class="text-xs font-semibold text-gray-600 mb-1.5 block">Batas Harian (kg)</label>
+          <div class="flex items-center rounded-lg border border-gray-300 overflow-hidden focus-within:ring-2 focus-within:ring-primary/30 focus-within:border-primary">
+            <input type="number" value="0" class="w-full px-3 py-2.5 text-sm outline-none border-none" />
+            <span class="px-3 text-sm font-bold text-gray-600 bg-gray-50 border-l border-gray-300 py-2.5">kg</span>
+          </div>
+        </div>
+
+        <!-- Saluran Notifikasi -->
+        <div class="bg-white border border-gray-200 rounded-xl p-5">
+          <div class="flex items-center gap-2.5 mb-2">
+            <div class="w-9 h-9 rounded-lg bg-primary-soft flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined" style="font-size:18px;">campaign</span>
             </div>
         </section>
         <!-- Middle Row: Chart & Quick Actions -->
@@ -432,32 +325,11 @@
                 </div>
             </section>
         </div>
+      </section>
+
     </main>
-    <script>
-        // Micro-interactions for chart bars
-        document.addEventListener('DOMContentLoaded', () => {
-            const bars = document.querySelectorAll('.chart-bar');
-            bars.forEach(bar => {
-                const targetHeight = bar.style.height;
-                bar.style.height = '0px';
-                setTimeout(() => {
-                    bar.style.height = targetHeight;
-                }, 100);
-            });
-        });
+  </div>
+</div>
 
-        // Hover animation for dashboard cards
-        const cards = document.querySelectorAll('.bg-white.p-lg');
-        cards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-4px)';
-                card.style.transition = 'transform 0.3s ease';
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0px)';
-            });
-        });
-    </script>
 </body>
-
 </html>
