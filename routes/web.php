@@ -54,7 +54,7 @@ Route::middleware(['auth', 'check_role'])->group(function () {
         // [TAMBAHAN] Fitur Riwayat & Laporan Mutasi Poin Warga
         Route::get('/mutasi-poin', [MutasiPoinController::class, 'index'])->name('warga.mutasi-poin');
         Route::get('/mutasi-poin/laporan', [MutasiPoinController::class, 'laporan'])->name('warga.mutasi-poin.laporan');
-        Route::get('/mutasi-poin/cetak', [MutasiPoinController::class, 'cetakPdf'])->name('warga.mutasi-poin.cetak');
+        Route::get('/mutasi-poin/cetak', [MutasiPoinController::class, 'cetak'])->name('warga.mutasi-poin.cetak');
         
         // Iuran
         Route::get('/iuran', [IuranWargaController::class, 'index'])->name('warga.iuran');
