@@ -16,8 +16,8 @@ class SetorSampahController extends Controller
     {
         $user = Auth::user();
         $userId = Auth::id();
-        $kategoriSampah = KategoriSampah::where('status_aktif', 1)->get();
-        $riwayatSetor = SetorSampah::where('id_user', $userId)
+        $kategoriSampah = KategoriSampah::query()->where('status_aktif', 1)->get();
+        $riwayatSetor = SetorSampah::query()->where('id_user', $userId)
             ->with(['detailSetorSampah.kategoriSampah'])
             ->orderBy('tgl_setor', 'desc')
             ->take(5)
@@ -61,7 +61,7 @@ class SetorSampahController extends Controller
 
             // 4. Loop data rincian untuk dimasukkan ke tabel: DETAIL_SETOR_SAMPAH
             foreach ($request->rincian as $item) {
-                $kategori = KategoriSampah::where('id_kategori', $item['id_kategori'])->firstOrFail();
+                $kategori = KategoriSampah::query()->where('id_kategori', $item['id_kategori'])->firstOrFail();
                 $poinSubtotal = $item['berat_kg'] * $kategori->poin_per_kg;
 
                 DetailSetorSampah::create([
