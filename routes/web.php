@@ -15,7 +15,7 @@ use App\Http\Controllers\Admin\KategoriSampahController;
 use App\Http\Controllers\Admin\MonitoringSistemController;
 use App\Http\Controllers\Admin\KonfigurasiController;
 use App\Http\Controllers\PengurusRT\LaporanController;
-use App\Http\Controllers\PengurusRT\PengurusDashboardController;
+use App\Http\Controllers\PengurusRT\DashboardRTController as PengurusDashboardController;
 use App\Http\Controllers\PengurusRT\VerifikasiSetoranController;
 use App\Http\Controllers\PengurusRT\TagihanIuranController;
 use App\Http\Controllers\PengurusRT\KategoriSampahController as PengurusKategoriSampahController;
