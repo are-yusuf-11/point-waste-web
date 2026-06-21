@@ -26,11 +26,18 @@ use App\Http\Controllers\PengurusRT\KategoriSampahController as PengurusKategori
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-// [BERSIH] Duplikasi route login & register yang menumpuk sudah dihapus
+// Autentikasi Utama
 Route::get('/login', [AuthController::class, 'showLogin'])->name('showLogin');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/register', [AuthController::class, 'showRegister'])->name('showRegister');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
+
+// [PERBAIKAN] Sinkronisasi Fitur Lupa Password dengan AuthController & View Profil
+Route::get('/forgot-password', [AuthController::class, 'showForgotPassword'])->name('auth.forgot-password');
+Route::post('/forgot-password', [AuthController::class, 'sendVerificationCode'])->name('auth.forgot-password.post');
+Route::get('/verify-otp', [AuthController::class, 'showVerifyForm'])->name('auth.show-verify');
+Route::post('/verify-otp', [AuthController::class, 'submitResetPassword'])->name('auth.verify-otp');
+
 
 // =========================================================
 // ROUTE GLOBAL AUTH ONLY
@@ -51,7 +58,7 @@ Route::middleware(['auth', 'check_role'])->group(function () {
         Route::get('/setor-sampah', [SetorSampahController::class, 'index'])->name('warga.setor-sampah');
         Route::post('/setor-sampah', [SetorSampahController::class, 'store'])->name('warga.setor-sampah.store');
         
-        // [TAMBAHAN] Fitur Riwayat & Laporan Mutasi Poin Warga
+        // Fitur Riwayat & Laporan Mutasi Poin Warga
         Route::get('/mutasi-poin', [MutasiPoinController::class, 'index'])->name('warga.mutasi-poin');
         Route::get('/mutasi-poin/laporan', [MutasiPoinController::class, 'laporan'])->name('warga.mutasi-poin.laporan');
         Route::get('/mutasi-poin/cetak', [MutasiPoinController::class, 'cetak'])->name('warga.mutasi-poin.cetak');
@@ -59,7 +66,7 @@ Route::middleware(['auth', 'check_role'])->group(function () {
         // Iuran
         Route::get('/iuran', [IuranWargaController::class, 'index'])->name('warga.iuran');
         
-        // Profil Akun
+        // Profil Akun (Sudah Selaras dengan Form & Modal View Anda)
         Route::get('/profil', [ProfileWargaController::class, 'index'])->name('warga.profil');
         Route::put('/profil', [ProfileWargaController::class, 'update'])->name('warga.profil.update');
         Route::put('/profil/password', [ProfileWargaController::class, 'changePassword'])->name('warga.profil.password');
