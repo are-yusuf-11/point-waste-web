@@ -10,7 +10,10 @@ use App\Http\Controllers\Warga\IuranWargaController;
 use App\Http\Controllers\Warga\MutasiPoinController;
 use App\Http\Controllers\Warga\ProfileWargaController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\PengurusRT\LaporanController;
+use App\Http\Controllers\PengurusRT\ManajemenIuaranController;
 use App\Http\Controllers\PengurusRT\PengurusDashboardController;
+use App\Http\Controllers\PengurusRT\WasteCategoriesController;
 
 // =========================================================
 // ROUTE PUBLIC (Tidak Butuh Login)
@@ -47,6 +50,15 @@ Route::middleware(['auth', 'check_role'])->group(function () {
         Route::get('/profil', [ProfileWargaController::class, 'index'])->name('warga.profil');
         Route::put('/profil', [ProfileWargaController::class, 'update'])->name('warga.profil.update');
         Route::put('/profil/password', [ProfileWargaController::class, 'changePassword'])->name('warga.profil.password');
+    });
+
+    // PANEL AKTOR: PENGURUS RT
+    Route::prefix('pengurus-rt')->group(function () {
+        Route::get('/dashboard', [PengurusDashboardController::class, 'index'])->name('pengurus-rt.dashboard');
+        Route::get('/laporan', [LaporanController::class, 'index'])->name('pengurus-rt.laporan');
+        Route::get('/manajemen-iuran', [ManajemenIuaranController::class, 'index'])->name('pengurus-rt.manajemen-iuran');
+        Route::get('/setor-sampah', [SetorSampahController::class, 'index'])->name('pengurus-rt.setor-sampah');
+        Route::post('/waste-categories', [WasteCategoriesController::class, 'index'])->name('pengurus-rt.waste-categories');
     });
     
 });
