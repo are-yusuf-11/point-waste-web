@@ -171,6 +171,7 @@
             <p class="text-xs text-gray-400 mt-0.5">Admin Portal</p>
         </div>
         <nav class="flex flex-col gap-sm">
+<<<<<<< HEAD
             <a class="flex items-center gap-md text-secondary px-md py-sm hover:bg-secondary-container/50 transition-colors cursor-pointer active:scale-95 duration-200" href="{{ route('admin.dashboard') }}">
                 <span class="material-symbols-outlined">dashboard</span>
                 Dashboard
@@ -188,6 +189,25 @@
                 <span class="font-body-md text-body-md">Monitoring Sistem</span>
             </a>
             <a class="flex items-center gap-md text-secondary px-md py-sm hover:bg-secondary-container/50 transition-colors cursor-pointer active:scale-95 duration-200" href="{{ route('admin.konfigurasi') }}">
+=======
+            <a class="flex items-center gap-md text-secondary px-md py-sm hover:bg-secondary-container/50 transition-colors cursor-pointer active:scale-95 duration-200" href="#">
+                <span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+            <a class="flex items-center gap-md bg-secondary-container text-primary rounded-lg px-md py-sm cursor-pointer active:scale-95 duration-200" href="#">
+                <span class="material-symbols-outlined">group</span>
+                User Management
+            </a>
+            <a class="flex items-center gap-md text-secondary px-md py-sm hover:bg-secondary-container/50 transition-colors cursor-pointer active:scale-95 duration-200" href="#">
+                <span class="material-symbols-outlined">recycling</span>
+                Waste Categories
+            </a>
+            <a class="flex items-center gap-md text-secondary px-md py-sm hover:bg-secondary-container/50 transition-colors cursor-pointer active:scale-95 duration-200" href="#">
+                <span class="material-symbols-outlined">analytics</span>
+                <span class="font-body-md text-body-md">Monitoring Sistem</span>
+            </a>
+            <a class="flex items-center gap-md text-secondary px-md py-sm hover:bg-secondary-container/50 transition-colors cursor-pointer active:scale-95 duration-200" href="#">
+>>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
                 <span class="material-symbols-outlined">settings</span>
                 System Configuration
             </a>
@@ -299,6 +319,7 @@
                 <!-- Table Content -->
                 <div class="table-container overflow-x-auto">
                     <table class="w-full text-left border-collapse">
+<<<<<<< HEAD
     <thead>
         <tr class="border-b border-outline-variant font-label-lg text-on-surface-variant bg-surface-container-low">
             <th class="px-lg py-md font-semibold">Nama Pengguna</th>
@@ -409,6 +430,125 @@
         @endforeach
     </tbody>
 </table>
+=======
+                        <thead class="bg-secondary-container/30">
+                            <tr>
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">Nama Pengguna</th>
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">Peran</th>
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">Wilayah Tugas</th>
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">Terakhir Aktif</th>
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">Status</th>
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider text-right">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-outline-variant">
+                            <!-- Row 1 -->
+                            <tr class="hover:bg-surface-container-low/50 transition-colors">
+                                <td class="px-lg py-md">
+                                    <div class="flex items-center gap-md">
+                                        <div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center text-primary font-bold">AS</div>
+                                        <div>
+                                            <p class="font-body-md font-semibold text-on-surface">Aris Setiawan</p>
+                                            <p class="text-[12px] text-secondary">aris.s@pointwaste.id</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-lg py-md">
+                                    <span class="px-sm py-xs bg-tertiary-container/10 text-tertiary border border-tertiary-container/20 rounded-md text-[11px] font-bold uppercase tracking-tight">Admin Sistem</span>
+                                </td>
+                                <td class="px-lg py-md text-body-md text-on-surface-variant">Pusat Konfigurasi</td>
+                                <td class="px-lg py-md text-body-md text-on-surface-variant">2 jam yang lalu</td>
+                                <td class="px-lg py-md">
+                                    <div class="flex items-center gap-xs text-primary font-label-md">
+                                        <span class="w-2 h-2 rounded-full bg-primary"></span>
+                                        Aktif
+                                    </div>
+                                </td>
+                                <td class="px-lg py-md text-right">
+                                    <button class="p-xs text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined">more_vert</span></button>
+                                </td>
+                            </tr>
+                            <!-- Row 2 -->
+                            <tr class="hover:bg-surface-container-low/50 transition-colors">
+                                <td class="px-lg py-md">
+                                    <div class="flex items-center gap-md">
+                                        <div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary font-bold">BP</div>
+                                        <div>
+                                            <p class="font-body-md font-semibold text-on-surface">Bambang Pamungkas</p>
+                                            <p class="text-[12px] text-secondary">rt04.rw02@gmail.com</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-lg py-md">
+                                    <span class="px-sm py-xs bg-secondary-container text-on-secondary-container border border-outline-variant rounded-md text-[11px] font-bold uppercase tracking-tight">Admin RT</span>
+                                </td>
+                                <td class="px-lg py-md text-body-md text-on-surface-variant">RT 04 / RW 02, Sukajadi</td>
+                                <td class="px-lg py-md text-body-md text-on-surface-variant">Kemarin, 14:20</td>
+                                <td class="px-lg py-md">
+                                    <div class="flex items-center gap-xs text-primary font-label-md">
+                                        <span class="w-2 h-2 rounded-full bg-primary"></span>
+                                        Aktif
+                                    </div>
+                                </td>
+                                <td class="px-lg py-md text-right">
+                                    <button class="p-xs text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined">more_vert</span></button>
+                                </td>
+                            </tr>
+                            <!-- Row 3 -->
+                            <tr class="hover:bg-surface-container-low/50 transition-colors">
+                                <td class="px-lg py-md">
+                                    <div class="flex items-center gap-md">
+                                        <div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center text-primary font-bold">DW</div>
+                                        <div>
+                                            <p class="font-body-md font-semibold text-on-surface">Dewi Wijaya</p>
+                                            <p class="text-[12px] text-secondary">rt01.rw05@yahoo.com</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-lg py-md">
+                                    <span class="px-sm py-xs bg-secondary-container text-on-secondary-container border border-outline-variant rounded-md text-[11px] font-bold uppercase tracking-tight">Admin RT</span>
+                                </td>
+                                <td class="px-lg py-md text-body-md text-on-surface-variant">RT 01 / RW 05, Menteng</td>
+                                <td class="px-lg py-md text-body-md text-on-surface-variant">3 hari yang lalu</td>
+                                <td class="px-lg py-md">
+                                    <div class="flex items-center gap-xs text-secondary font-label-md">
+                                        <span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+                                        Non-Aktif
+                                    </div>
+                                </td>
+                                <td class="px-lg py-md text-right">
+                                    <button class="p-xs text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined">more_vert</span></button>
+                                </td>
+                            </tr>
+                            <!-- Row 4 -->
+                            <tr class="hover:bg-surface-container-low/50 transition-colors">
+                                <td class="px-lg py-md">
+                                    <div class="flex items-center gap-md">
+                                        <div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center text-primary font-bold">FR</div>
+                                        <div>
+                                            <p class="font-body-md font-semibold text-on-surface">Fahri Ramadhan</p>
+                                            <p class="text-[12px] text-secondary">fahri.r@pointwaste.id</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-lg py-md">
+                                    <span class="px-sm py-xs bg-tertiary-container/10 text-tertiary border border-tertiary-container/20 rounded-md text-[11px] font-bold uppercase tracking-tight">Admin Sistem</span>
+                                </td>
+                                <td class="px-lg py-md text-body-md text-on-surface-variant">Database & Security</td>
+                                <td class="px-lg py-md text-body-md text-on-surface-variant">15 menit yang lalu</td>
+                                <td class="px-lg py-md">
+                                    <div class="flex items-center gap-xs text-primary font-label-md">
+                                        <span class="w-2 h-2 rounded-full bg-primary"></span>
+                                        Aktif
+                                    </div>
+                                </td>
+                                <td class="px-lg py-md text-right">
+                                    <button class="p-xs text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined">more_vert</span></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+>>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
                 </div>
                 <!-- Pagination footer -->
                 <div class="p-md flex items-center justify-between border-t border-outline-variant bg-surface-container-low/30">

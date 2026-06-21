@@ -2,6 +2,7 @@
 <html lang="id">
 
 <head>
+<<<<<<< HEAD
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>PointWaste - Dashboard Warga</title>
@@ -27,6 +28,31 @@
                     }
                 },
             },
+=======
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PointWaste - Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pointwaste: {
+              primary: '#15803D',
+              secondary: '#22C55E',
+              white: '#FFFFFF',
+              dark: '#1F2937',
+              bg: '#F8FAFC'
+            }
+          },
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif'],
+          }
+>>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
         }
     </script>
     <style>
@@ -88,6 +114,9 @@
     </aside>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
     <div class="flex-1 flex flex-col min-h-screen">
         
         <header class="h-[60px] bg-transparent flex items-center justify-between px-6 mb-4">
@@ -149,8 +178,12 @@
                         Selama minggu ini {{ $warga['setoran_minggu_ini_kg'] }} Kg
                     </div>
                 </div>
-            </section>
+              @endforeach
+            </div>
+          </div>
+        @endif
 
+<<<<<<< HEAD
             <section class="bg-surface rounded-2xl border border-gray-100 shadow-sm p-6 space-y-6">
                 <h3 class="text-base font-semibold text-on-surface tracking-tight">Notifikasi Terbaru</h3>
                 
@@ -175,6 +208,10 @@
   </main>
   <x-alert />
 >>>>>>> be2db534ee81329bdc96731711d718b5391e7324
+=======
+      </div>
+  </main>
+>>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
 
 </body>
 </html>

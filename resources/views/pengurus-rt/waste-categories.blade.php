@@ -167,6 +167,7 @@
             <p class="font-label-md text-label-md text-on-surface-variant">Sustainable Community</p>
         </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
         </div>
         <nav class="flex-1 space-y-sm">
             <a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-low transition-colors duration-200" href="#">
@@ -195,14 +196,33 @@
                 <span class="font-body-md">Verification</span>
             </a>
             <a class="flex items-center gap-3 px-sm py-3 text-secondary hover:bg-surface-container-low transition-colors duration-200 rounded-lg group" href="{{ route('pengurus-rt.manajemen-iuran') }}">
+=======
+        </div>
+        <nav class="flex-1 space-y-1">
+            <a class="flex items-center gap-3 px-sm py-3 text-secondary hover:bg-surface-container-low transition-colors duration-200 rounded-lg group" href="#">
+                <span class="material-symbols-outlined">dashboard</span>
+                <span class="font-body-md">Dashboard</span>
+            </a>
+            <a class="flex items-center gap-3 px-sm py-3 text-secondary hover:bg-surface-container-low transition-colors duration-200 rounded-lg group" href="#">
+                <span class="material-symbols-outlined">fact_check</span>
+                <span class="font-body-md">Verification</span>
+            </a>
+            <a class="flex items-center gap-3 px-sm py-3 text-secondary hover:bg-surface-container-low transition-colors duration-200 rounded-lg group" href="#">
+>>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
                 <span class="material-symbols-outlined">payments</span>
                 <span class="font-body-md">Dues Management</span>
             </a>
             <!-- Active State: Waste Categories (Kategori Sampah) -->
+<<<<<<< HEAD
             <a class="flex items-center gap-3 px-sm py-3 bg-secondary-container text-primary font-semibold rounded-lg" href="{{ route('pengurus-rt.waste-categories') }}">
                 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">category</span>
                 <span class="font-body-md">Waste Categories</span>
 >>>>>>> be2db534ee81329bdc96731711d718b5391e7324
+=======
+            <a class="flex items-center gap-3 px-sm py-3 bg-secondary-container text-primary font-semibold rounded-lg" href="#">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">category</span>
+                <span class="font-body-md">Waste Categories</span>
+>>>>>>> 4eb8d365492cd031ddf6f61fda5c0c4e1e94101f
             </a>
             <a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-low transition-colors duration-200" href="#">
                 <span class="material-symbols-outlined" data-icon="bar_chart">bar_chart</span>
