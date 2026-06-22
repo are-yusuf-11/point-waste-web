@@ -4,18 +4,30 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Users;
+use App\Models\RT;
+use App\Models\SetorSampah;
+use App\Models\DetailSetorSampah;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 class AdminDashboardController extends Controller
 {
     public function index()
     {
-        // ==========================================
-        // 1. DATA VALUE CONFIGURATIONS (KOTAK ATAS)
-        // ==========================================
-        // Di dunia nyata, nilai ini idealnya diambil dari tabel settings/configs.
-        // Di bawah ini adalah inisialisasi nilai awal sesuai dengan UI tampilan mockup.
+        // 1. Ambil Total Pengguna Terdaftar
+        $totalUsers = Users::count(); 
+
+        // 2. Ambil Jumlah RT Aktif dan Target RT (Contoh target: 20)
+        // Dianggap RT aktif jika memiliki minimal 1 warga terdaftar
+        $activeRtCount = RT::has('warga')->count();
+        $totalRtTarget = 20; 
+
+        // 3. Hitung Total Sampah Terproses (Mengubah Kg ke Ton)
+        $totalKg = DetailSetorSampah::sum('berat_kg');
+        $totalTonnes = $totalKg > 0 ? round($totalKg / 1000, 2) : 0;
+
+        // 4. Konfigurasi Sistem Statis / Mockup
         $currentPoinExchange = 100; // Rp 100 per poin
         $currentBatasSetoran = 50;  // 50 kg batas harian
         $notificationChannels = [
@@ -23,74 +35,72 @@ class AdminDashboardController extends Controller
             'whatsapp' => true
         ];
 
-        // ==========================================
-        // 2. RIWAYAT PERUBAHAN KONFIGURASI (TABEL TENGAH)
-        // ==========================================
-        // Kita membuat dummy collection yang menyerupai data asli dari database
-        // lengkap dengan nama, tanggal, parameter, dan status sesuai image_444c16.png.
-        $configHistories = collect([
-            (object)[
-                'tanggal' => '24 Okt, 14:20',
-                'admin_nama' => 'Adi Jaya',
-                'admin_initial' => 'AJ',
-                'admin_color' => 'bg-emerald-100 text-emerald-800',
-                'parameter' => 'Nilai Tukar Poin',
-                'nilai_lama' => 'Rp 80',
-                'nilai_baru' => 'Rp 100',
-                'status' => 'BERHASIL'
-            ],
-            (object)[
-                'tanggal' => '23 Okt, 09:15',
-                'admin_nama' => 'Siti Rahma',
-                'admin_initial' => 'SR',
-                'admin_color' => 'bg-sky-100 text-sky-800',
-                'parameter' => 'Batas Setoran Harian',
-                'nilai_lama' => '30 kg',
-                'nilai_baru' => '50 kg',
-                'status' => 'BERHASIL'
-            ],
-            (object)[
-                'tanggal' => '21 Okt, 23:45',
-                'admin_nama' => 'Adi Jaya',
-                'admin_initial' => 'AJ',
-                'admin_color' => 'bg-emerald-100 text-emerald-800',
-                'parameter' => 'Interval Backup',
-                'nilai_lama' => 'Manual',
-                'nilai_baru' => 'Harian',
-                'status' => 'BERHASIL'
-            ],
-            (object)[
-                'tanggal' => '19 Okt, 10:10',
-                'admin_nama' => 'Budi M.',
-                'admin_initial' => 'BM',
-                'admin_color' => 'bg-purple-100 text-purple-800',
-                'parameter' => 'Kanal WhatsApp',
-                'nilai_lama' => 'Nonaktif',
-                'nilai_baru' => 'Aktif',
-                'status' => 'BERHASIL'
-            ],
-        ]);
+        // 5. Data Grafik Bulanan (Total Berat per Bulan di Tahun Berjalan)
+        $monthlyDataRaw = DetailSetorSampah::select(
+                DB::raw('MONTH(setor_sampah.tgl_setor) as bulan'),
+                DB::raw('SUM(detail_setor_sampah.berat_kg) as total_berat')
+            )
+            ->join('setor_sampah', 'detail_setor_sampah.id_setor_sampah', '=', 'setor_sampah.id_setor_sampah')
+            ->whereYear('setor_sampah.tgl_setor', date('Y'))
+            ->groupBy(DB::raw('MONTH(setor_sampah.tgl_setor)'))
+            ->pluck('total_berat', 'bulan')
+            ->toArray();
 
-        // Kirim seluruh data konfigurasi ke view
+        // Inisialisasi array 1-12 agar bulan yang kosong tetap bernilai 0
+        $monthlyData = [];
+        for ($i = 1; $i <= 12; $i++) {
+            $monthlyData[$i] = $monthlyDataRaw[$i] ?? 0;
+        }
+
+        // 6. Data Peringkat RT Terbaik (Top-Performing RT Units)
+        // Menghitung jumlah warga dan total sampah dalam Ton per RT
+        $topRt = RT::withCount('warga')
+            ->leftJoin('users', 'rt.id_rt', '=', 'users.id_rt')
+            ->leftJoin('setor_sampah', 'users.id_user', '=', 'setor_sampah.id_user')
+            ->leftJoin('detail_setor_sampah', 'setor_sampah.id_setor_sampah', '=', 'detail_setor_sampah.id_setor_sampah')
+            ->select(
+                'rt.id_rt',
+                'rt.no_rt',
+                'rt.kelurahan',
+                DB::raw('ROUND(SUM(detail_setor_sampah.berat_kg) / 1000, 2) as total_waste_ton')
+            )
+            ->groupBy('rt.id_rt', 'rt.no_rt', 'rt.kelurahan')
+            ->orderBy('total_waste_ton', 'desc')
+            ->take(5) // Ambil 5 besar
+            ->get()
+            ->map(function ($item) {
+                // Atur default jika belum ada sampah terkumpul
+                $item->total_waste_ton = $item->total_waste_ton ?? 0;
+                return $item;
+            });
+
+        // 7. Log Aktivitas Terbaru (Recent System Activity Log)
+        $recentActivities = SetorSampah::with('user')
+            ->orderBy('created_at', 'desc')
+            ->take(5)
+            ->get();
+
+        // Kirim semua variabel yang dibutuhkan oleh dashboard.blade.php
         return view('admin.dashboard', compact(
+            'totalUsers',
+            'activeRtCount',
+            'totalRtTarget',
+            'totalTonnes',
             'currentPoinExchange',
             'currentBatasSetoran',
             'notificationChannels',
-            'configHistories'
+            'monthlyData',
+            'topRt',
+            'recentActivities'
         ));
     }
 
-    /**
-     * Fungsi untuk memproses penyimpanan perubahan konfigurasi baru
-     */
     public function update(Request $request)
     {
-        // 1. Mengubah 'integer' menjadi 'numeric' agar mendukung desimal/pecahan
         $request->validate([
             'nilai_poin' => 'required|numeric|min:0',
             'batas_setoran' => 'required|numeric|min:0',
         ], [
-            // Kustomisasi pesan jika validasi Laravel gagal
             'nilai_poin.required' => 'Nilai poin tidak boleh kosong.',
             'nilai_poin.numeric' => 'Nilai poin harus berupa angka.',
             'batas_setoran.required' => 'Batas setoran tidak boleh kosong.',
@@ -101,12 +111,7 @@ class AdminDashboardController extends Controller
             $nilaiPoin = $request->input('nilai_poin');
             $batasSetoran = $request->input('batas_setoran');
 
-            // =================================================================
-            // PROSES SIMPAN KE DATABASE KAMU DI SINI
-            // Contoh:
-            // Setting::updateOrCreate(['key' => 'nilai_poin'], ['value' => $nilaiPoin]);
-            // Setting::updateOrCreate(['key' => 'batas_setoran'], ['value' => $batasSetoran]);
-            // =================================================================
+            // Proses simpan data config ke DB kamu bisa ditaruh di sini
 
             return response()->json([
                 'success' => true,

@@ -20,19 +20,7 @@
                         "on-surface-variant": "#404940",
                         "surface": "#f8f9ff",
                         "surface-container-lowest": "#ffffff",
-                        "outline-variant": "#bfc9bd",
-                        "outline": "#707a6f",
-                        "tertiary": "#004565"
-                    },
-                    "fontFamily": {
-                        "display-lg": ["Inter"],
-                        "headline-lg": ["Inter"],
-                        "body-md": ["Inter"]
-                    },
-                    "fontSize": {
-                        "display-lg": ["48px", {"lineHeight": "56px", "fontWeight": "700"}],
-                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
-                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                        "outline-variant": "#bfc9bd"
                     }
                 }
             }
@@ -42,7 +30,6 @@
         .eco-overlay {
             background: linear-gradient(180deg, rgba(0, 35, 15, 0.4) 0%, rgba(0, 50, 20, 0.75) 100%);
         }
-        /* Menghilangkan panah up/down pada input type number */
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
             -webkit-appearance: none;
@@ -68,12 +55,11 @@
                     <span class="inline-flex items-center justify-center p-4 bg-emerald-800 text-white rounded-xl mb-4 shadow-md">
                         <span class="material-symbols-outlined text-[40px]">recycling</span>
                     </span>
-                    <h1 class="font-display-lg text-display-lg text-white mb-2 tracking-tight">PointWaste</h1>
+                    <h1 class="text-[48px] font-bold text-white mb-2 tracking-tight">PointWaste</h1>
                     <p class="text-white/90 leading-relaxed max-w-sm mb-12">
                         Mengelola sampah jadi lebih bernilai. Bergabunglah dengan komunitas kami untuk mewujudkan lingkungan yang lebih bersih dan berkelanjutan.
                     </p>
                 </div>
-
                 <div class="flex gap-4 max-w-sm">
                     <div class="flex-1 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl">
                         <div class="text-2xl font-bold">45.2k</div>
@@ -97,9 +83,22 @@
                     </p>
                 </div>
 
-                <form class="space-y-6" method="POST" action="#">
+                @if (session('success'))
+                    <div class="mb-4 p-3 bg-emerald-100 border border-emerald-400 text-emerald-700 rounded-lg text-xs text-center">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                @if (session('error'))
+                    <div class="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-xs text-center">
+                        {{ session('error') }}
+                    </div>
+                @endif
+
+                <form class="space-y-6" method="POST" action="{{ route('auth.submit-reset') }}" id="otp-form">
                     @csrf
-                    
+                    <input type="hidden" name="code" id="hidden-otp-code">
+
                     <div class="flex justify-between gap-2" id="otp-container">
                         <input class="w-12 h-16 text-center text-xl font-bold bg-white border border-slate-200 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-slate-800 shadow-sm" type="number" maxlength="1" oninput="moveNext(this, 1)" onkeydown="moveBack(event, 1)" id="code-1" required />
                         <input class="w-12 h-16 text-center text-xl font-bold bg-white border border-slate-200 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-slate-800 shadow-sm" type="number" maxlength="1" oninput="moveNext(this, 2)" onkeydown="moveBack(event, 2)" id="code-2" required />
@@ -108,8 +107,11 @@
                         <input class="w-12 h-16 text-center text-xl font-bold bg-white border border-slate-200 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-slate-800 shadow-sm" type="number" maxlength="1" oninput="moveNext(this, 5)" onkeydown="moveBack(event, 5)" id="code-5" required />
                         <input class="w-12 h-16 text-center text-xl font-bold bg-white border border-slate-200 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-slate-800 shadow-sm" type="number" maxlength="1" oninput="moveNext(this, 6)" onkeydown="moveBack(event, 6)" id="code-6" required />
                     </div>
+                    @error('code')
+                        <p class="text-red-600 text-xs mt-1 text-center">{{ $message }}</p>
+                    @enderror
 
-                    <button class="w-full bg-primary-container text-white hover:bg-primary transition-all py-3 rounded-xl font-semibold text-center tracking-wide shadow-md" type="submit">
+                    <button class="w-full bg-primary-container text-white hover:bg-primary transition-all py-3 rounded-xl font-semibold text-center tracking-wide shadow-md mt-6" type="submit">
                         Verifikasi Kode
                     </button>
                 </form>
@@ -118,9 +120,8 @@
                     <p class="text-sm text-slate-600">
                         Tidak menerima kode? <a href="#" class="text-emerald-700 font-bold hover:underline">Kirim ulang</a>
                     </p>
-                    
                     <p>
-                        <a class="text-slate-500 font-semibold hover:text-slate-800 inline-flex items-center gap-1 text-sm transition-colors" href="{{ route('login') }}">
+                        <a class="text-slate-500 font-semibold hover:text-slate-800 inline-flex items-center gap-1 text-sm transition-colors" href="{{ route('showLogin') }}">
                             <span class="material-symbols-outlined text-sm">arrow_back</span> Kembali ke Login
                         </a>
                     </p>
@@ -131,10 +132,9 @@
     </main>
 
     <script>
-        // Otomatis pindah ke kotak kanan saat angka diketik
         function moveNext(current, index) {
             if (current.value.length >= 1) {
-                current.value = current.value.slice(0, 1); // Memastikan hanya 1 digit
+                current.value = current.value.slice(0, 1); 
                 const nextInput = document.getElementById(`code-${index + 1}`);
                 if (nextInput) {
                     nextInput.focus();
@@ -142,7 +142,6 @@
             }
         }
 
-        // Otomatis balik ke kotak kiri saat menekan tombol Backspace (hapus)
         function moveBack(event, index) {
             if (event.key === "Backspace" && event.target.value.length === 0) {
                 const prevInput = document.getElementById(`code-${index - 1}`);
@@ -151,7 +150,22 @@
                 }
             }
         }
-    </script>
-</body>
 
+        document.getElementById('otp-form').addEventListener('submit', function(e) {
+            let combinedCode = '';
+            for (let i = 1; i <= 6; i++) {
+                combinedCode += document.getElementById(`code-${i}`).value;
+            }
+            document.getElementById('hidden-otp-code').value = combinedCode;
+        });
+    </script>
+
+    @if(session('show_otp_to_console'))
+        <script>
+            console.log("==========================================");
+            console.log("[DEBUG] KODE OTP ANDA: {{ session('show_otp_to_console') }}");
+            console.log("==========================================");
+        </script>
+    @endif
+</body>
 </html>

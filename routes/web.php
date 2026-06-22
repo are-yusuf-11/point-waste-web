@@ -1,14 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+//USER AUTH & LANDING PAGE
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
+
+//USER WARGA
 use App\Http\Controllers\Warga\WargaDashboardController;
 use App\Http\Controllers\Warga\SetorSampahController;
 use App\Http\Controllers\Warga\IuranWargaController;
 use App\Http\Controllers\Warga\MutasiPoinController;
 use App\Http\Controllers\Warga\ProfileWargaController;
+
+
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Admin\KategoriSampahController;
@@ -22,6 +27,7 @@ use App\Http\Controllers\PengurusRT\KategoriSampahController as PengurusKategori
 use App\Http\Controllers\Admin\ProfileAdminController;
 
 
+
 // =========================================================
 // ROUTE PUBLIC (Tidak Butuh Login)
 // =========================================================
@@ -32,6 +38,16 @@ Route::get('/login', [AuthController::class, 'showLogin'])->name('showLogin');
 Route::get('/register', [AuthController::class, 'showRegister'])->name('showRegister');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/register', [AuthController::class, 'register'])->name('register');  
+
+// SINKRONISASI ALUR LUPA PASSWORD (3-LANGKAH)
+Route::get('/forgot-password', [AuthController::class, 'showForgotPassword'])->name('auth.forgot-password');
+Route::post('/forgot-password', [AuthController::class, 'sendVerificationCode'])->name('auth.send-verification');
+
+Route::get('/verify-code', [AuthController::class, 'showVerifyForm'])->name('auth.show-verify');
+Route::post('/verify-code', [AuthController::class, 'submitResetPassword'])->name('auth.submit-reset');
+
+Route::get('/reset-password', [AuthController::class, 'showResetPasswordForm'])->name('auth.show-reset-password');
+Route::post('/reset-password', [AuthController::class, 'updatePassword'])->name('auth.update-password');
 
 // =========================================================
 // ROUTE GLOBAL AUTH ONLY
@@ -66,9 +82,8 @@ Route::middleware(['auth', 'check_role'])->group(function () {
         Route::put('/profil/password', [ProfileWargaController::class, 'changePassword'])->name('warga.profil.password');
     });
 
-    // ==========================================
-    // PANEL AKTOR: ADMIN
-    // ==========================================
+
+    // BENAR  
     Route::prefix('admin')->group(function () {
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
         Route::post('/admin/dashboard/update', [AdminDashboardController::class, 'update'])->name('admin.dashboard.update');
@@ -105,6 +120,8 @@ Route::middleware(['auth', 'check_role'])->group(function () {
         Route::get('/tagihan-iuran', [TagihanIuranController::class, 'index'])->name('pengurus-rt.manajemen-iuran');
         Route::get('/kategori-sampah', [PengurusKategoriSampahController::class, 'index'])->name('pengurus-rt.waste-categories');
         Route::get('/laporan', [LaporanController::class, 'index'])->name('pengurus-rt.laporan');
+        Route::get('/laporan/setor-sampah', [LaporanController::class, 'laporanSetorSampah'])->name('pengurus-rt.laporan.setor-sampah');
+
     });
     
 });
